@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BioCircleManagementSystem.Views.Customers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,16 @@ namespace BioCircleManagementSystem.Views
         public ShellWindow()
         {
             InitializeComponent();
-            _mainFrame.NavigationService.Navigate(new Uri("OrderView.xaml", UriKind.Relative));
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void CustomersButton_Click(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.Navigate(new CustomerShell());
         }
     }
 }

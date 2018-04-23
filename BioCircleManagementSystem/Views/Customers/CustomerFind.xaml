@@ -1,4 +1,4 @@
-﻿<Page x:Class="BioCircleManagementSystem.Views.Customers.CustomerCreate"
+﻿<Page x:Class="BioCircleManagementSystem.Views.Customers.CustomerFind"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,9 +6,9 @@
       xmlns:local="clr-namespace:BioCircleManagementSystem.Views.Customers"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CustomerCreate">
+      Title="CustomerFind">
 
     <Grid>
-        <TextBlock>Opret en kunde</TextBlock>
+        <TextBlock>Find en kunde</TextBlock>
     </Grid>
 </Page>

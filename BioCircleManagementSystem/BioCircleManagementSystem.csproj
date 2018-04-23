@@ -66,6 +66,12 @@
     <Compile Include="Views\Customers\CustomerCreate.xaml.cs">
       <DependentUpon>CustomerCreate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Customers\CustomerFind.xaml.cs">
+      <DependentUpon>CustomerFind.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customers\CustomerShell.xaml.cs">
+      <DependentUpon>CustomerShell.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
@@ -108,10 +114,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Customers\CustomerFind.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Customers\CustomerShell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Shell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\biocircle_logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

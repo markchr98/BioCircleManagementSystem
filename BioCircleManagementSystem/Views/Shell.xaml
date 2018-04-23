@@ -6,7 +6,30 @@
         xmlns:local="clr-namespace:BioCircleManagementSystem.Views"
         mc:Ignorable="d"
         Title="Bio-Circle" Height="450" Width="800" WindowState="Maximized">
-    <DockPanel>
-        <Frame x:Name="_mainFrame" />
-    </DockPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Height="60" Width="100" Grid.Row="0" Grid.Column="0">
+                <Image Source="/Resources/Images/biocircle_logo.png"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Height="80" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1">
+            <Button x:Name="HomeButton"
+                    Content="Home" 
+                    MinWidth="100"
+                    Click="HomeButton_Click"
+                    />
+            <Button x:Name="CustomersButton"
+                    Content="Kunder"
+                    MinWidth="100"
+                    Click="CustomersButton_Click"
+                    />
+        </StackPanel>
+        <Frame x:Name="_mainFrame" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+    </Grid>
 </Window>
