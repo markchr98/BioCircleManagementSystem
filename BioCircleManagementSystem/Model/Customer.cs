@@ -62,7 +62,11 @@ namespace BioCircleManagementSystem.Model
             set { _installationCity = value; }
         }
 
-        //Public constructor
+        //Public constructors
+        public Customer()
+        {
+
+        }
         public Customer(string customerName, int customerID, string billingAddress, string billingZipcode, string billingCity, string installationAddress, string installationZipcode, string installationCity)
         {
             _customerName = customerName;

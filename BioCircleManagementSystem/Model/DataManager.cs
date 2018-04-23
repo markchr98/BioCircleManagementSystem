@@ -8,19 +8,19 @@ namespace BioCircleManagementSystem.Model
 {
     class DataManager
     {
-        private static DataManager instance;
+        private static DataManager _instance;
         
-        private DataManager() { }
+        private DataManager() { }        
 
         public static DataManager Instance
         {
             get
             {
-                if (instance == null)
+                if (_instance == null)
                 {
-                    instance = new DataManager();
+                    _instance = new DataManager();
                 }
-                return instance;
+                return _instance;
             }
         }
 
@@ -29,12 +29,12 @@ namespace BioCircleManagementSystem.Model
 
         }
 
-        public void GetOrder(int orderID)
+        public Order GetOrder(string orderID)
         {
 
         }
 
-        public void UpdateOrder(Order order)
+        public void UpdateOrder(string orderID)
         {
 
         }
@@ -44,12 +44,43 @@ namespace BioCircleManagementSystem.Model
 
         }
 
-        public void GetCustomer(Customer customer)
+        public Customer GetCustomer(string customerID)
         {
 
         }
 
-        public void UpdateCustomer(Customer customer)
+        public void UpdateCustomer(string customerID)
+        {
+
+        }
+
+        public void CreateContact(Contact contact)
+        {
+
+        }
+
+        public Contact GetContact(string contactMobilephone)
+        {
+
+        }
+
+        public void UpdateContact(string contactMobilephone)
+        {
+
+        }
+
+        public void CreateMachine(Machine machine)
+        {
+
+        }
+
+        public Machine GetMachine(string machineID)
+        {
+            
+        }
+        
+
+        public void UpdateMachine(string machineID)
         {
 
         }
