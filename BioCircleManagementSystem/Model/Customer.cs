@@ -8,7 +8,7 @@ namespace BioCircleManagementSystem.Model
 {
     class Customer
     {
-        //Private fields
+         //Private fields
         private string _customerName;
         private int _customerID;
         private string _billingAddress;
@@ -74,7 +74,5 @@ namespace BioCircleManagementSystem.Model
             _installationZipcode = installationZipcode;
             _installationCity = installationCity;
         }
-
-
     }
 }

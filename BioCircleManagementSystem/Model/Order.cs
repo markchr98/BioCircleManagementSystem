@@ -16,5 +16,5 @@ namespace BioCircleManagementSystem.Model
             _orderID = orderID;
             _customer = customer;
         }
-    }
+}
 }

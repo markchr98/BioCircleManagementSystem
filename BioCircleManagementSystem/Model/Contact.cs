@@ -14,7 +14,7 @@ namespace BioCircleManagementSystem.Model
         private string _email;
         private string _landline;
         private string _customerID;
-       
+
         //public properties
         public string Name
         {
@@ -54,3 +54,4 @@ namespace BioCircleManagementSystem.Model
 
     }
 }
+
