@@ -58,6 +58,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\Contact.cs" />
+    <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\DataManager.cs" />
+    <Compile Include="Model\Machine.cs" />
+    <Compile Include="Model\Order.cs" />
     <Compile Include="Views\CustomerView.xaml.cs">
       <DependentUpon>CustomerView.xaml</DependentUpon>
     </Compile>
@@ -101,7 +106,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
