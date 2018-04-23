@@ -15,13 +15,14 @@ using System.Windows.Shapes;
 namespace BioCircleManagementSystem.Views
 {
     /// <summary>
-    /// Interaction logic for StorageView.xaml
+    /// Interaction logic for ShellWindow.xaml
     /// </summary>
-    public partial class StorageView : Window
+    public partial class ShellWindow : Window
     {
-        public StorageView()
+        public ShellWindow()
         {
             InitializeComponent();
+            _mainFrame.NavigationService.Navigate(new Uri("OrderView.xaml", UriKind.Relative));
         }
     }
 }

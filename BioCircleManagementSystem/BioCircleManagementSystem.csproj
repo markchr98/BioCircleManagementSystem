@@ -58,25 +58,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\Contact.cs" />
-    <Compile Include="Model\Customer.cs" />
-    <Compile Include="Model\DataManager.cs" />
-    <Compile Include="Model\Machine.cs" />
-    <Compile Include="Model\Order.cs" />
-    <Compile Include="Views\CustomerView.xaml.cs">
-      <DependentUpon>CustomerView.xaml</DependentUpon>
+    <Compile Include="Views\Customers\CustomerCreate.xaml.cs">
+      <DependentUpon>CustomerCreate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\HomeView.xaml.cs">
-      <DependentUpon>HomeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\OrderView.xaml.cs">
-      <DependentUpon>OrderView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ServiceView.xaml.cs">
-      <DependentUpon>ServiceView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\StorageView.xaml.cs">
-      <DependentUpon>StorageView.xaml</DependentUpon>
+    <Compile Include="Views\Shell.xaml.cs">
+      <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -106,26 +92,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Model\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Orders\" />
+    <Folder Include="Views\Service\" />
+    <Folder Include="Views\Storage\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\CustomerView.xaml">
+    <Page Include="Views\Customers\CustomerCreate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\HomeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\OrderView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ServiceView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\StorageView.xaml">
+    <Page Include="Views\Shell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

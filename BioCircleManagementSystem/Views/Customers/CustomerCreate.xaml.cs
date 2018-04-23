@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BioCircleManagementSystem.Views
+namespace BioCircleManagementSystem.Views.Customers
 {
     /// <summary>
-    /// Interaction logic for ServiceView.xaml
+    /// Interaction logic for CustomerCreate.xaml
     /// </summary>
-    public partial class ServiceView : Window
+    public partial class CustomerCreate : Page
     {
-        public ServiceView()
+        public CustomerCreate()
         {
             InitializeComponent();
         }
