@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BioCircleManagementSystem.Views.Customers
+namespace BioCircleManagementSystem.Views.Resources.UserControl
 {
     /// <summary>
-    /// Interaction logic for CustomerCreate.xaml
+    /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class CustomerCreate : Page
+    public partial class UserControl1 : UserControl
     {
-        public CustomerCreate()
+        public UserControl1()
         {
             InitializeComponent();
         }
-
     }
 }
