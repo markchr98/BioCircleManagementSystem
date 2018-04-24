@@ -32,6 +32,7 @@ namespace BioCircleManagementSystem.Model
             set { _machine = value; }
         }
 
+        //Public constructor
         public Order()
         {
         }

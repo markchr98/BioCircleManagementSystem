@@ -8,7 +8,7 @@ namespace BioCircleManagementSystem.Model
 {
     class DataManager
     {
-        //private instance
+        //Private instance
         private static DataManager _instance;
         
         private DataManager() { }        
@@ -29,11 +29,9 @@ namespace BioCircleManagementSystem.Model
         {
             throw new NotImplementedException();
         }
-        
-        public List<Order> GetOrders(string keyword)
+
+        public Order GetOrder(string orderID)
         {
-            //if key not null filter orders
-            //return orders
             throw new NotImplementedException();
         }
 
@@ -52,13 +50,6 @@ namespace BioCircleManagementSystem.Model
             throw new NotImplementedException();
         }
 
-        public List<Customer> GetCustomers(string keyword)
-        {
-            //if key not null filter customers
-            //return customers
-            throw new NotImplementedException();
-        }
-
         public void UpdateCustomer(string customerID)
         {
             throw new NotImplementedException();
@@ -69,10 +60,8 @@ namespace BioCircleManagementSystem.Model
             throw new NotImplementedException();
         }
 
-        public List<Contact> GetContacts(string keyword)
+        public Contact GetContact(string contactMobilephone)
         {
-            //if key not null filter contacts
-            //return contacts
             throw new NotImplementedException();
         }
 
@@ -88,13 +77,6 @@ namespace BioCircleManagementSystem.Model
 
         public Machine GetMachine(string machineID)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Machine> GetMachines(string keyword)
-        {
-            //if key not null filter machines
-            //return machines
             throw new NotImplementedException();
         }
         
