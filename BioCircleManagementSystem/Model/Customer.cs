@@ -17,7 +17,7 @@ namespace BioCircleManagementSystem.Model
         private string _installationAddress;
         private string _installationZipcode;
         private string _installationCity;
-        private List<Contact> _contacts;
+        private List<Contact> Contacts;
 
         //Public properties
         public string CustomerName
@@ -62,18 +62,12 @@ namespace BioCircleManagementSystem.Model
             set { _installationCity = value; }
         }
 
-        public List<Contact> Contacts
-        {
-            get { return _contacts; }
-            set { _contacts = value; }
-        }
-
         //Public constructors
         public Customer()
         {
 
         }
-        public Customer(string customerName, int customerID, string billingAddress, string billingZipcode, string billingCity, string installationAddress, string installationZipcode, string installationCity, List<Contact> contacts)
+        public Customer(string customerName, int customerID, string billingAddress, string billingZipcode, string billingCity, string installationAddress, string installationZipcode, string installationCity)
         {
             _customerName = customerName;
             _customerID = customerID;
@@ -83,7 +77,6 @@ namespace BioCircleManagementSystem.Model
             _installationAddress = installationAddress;
             _installationZipcode = installationZipcode;
             _installationCity = installationCity;
-            _contacts = contacts;
         }
     }
 }
