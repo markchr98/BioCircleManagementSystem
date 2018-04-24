@@ -53,7 +53,7 @@
         
     </Grid>
         <ScrollViewer Margin="40,0,0,0" MaxHeight="375" CanContentScroll="True" VerticalScrollBarVisibility="Auto" Grid.Column="1">
-            <StackPanel x:Name="ContactList" Grid.Column="1">
+            <StackPanel x:Name="contactList" Grid.Column="1">
             </StackPanel>
         </ScrollViewer>
     </Grid>

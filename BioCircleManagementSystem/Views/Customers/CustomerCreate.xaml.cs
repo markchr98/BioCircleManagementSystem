@@ -28,8 +28,8 @@ namespace BioCircleManagementSystem.Views.Customers
         }
 
         public void Button_Click_AddContact(object sender, RoutedEventArgs e)
-        {
-            ContactList.Children.Add(new ContactPerson());
+        {            
+            contactList.Children.Add(new ContactPerson());
         }
       
         public void Button_Click_CustomerCreate(object sender, RoutedEventArgs e)
