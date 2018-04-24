@@ -8,14 +8,14 @@ namespace BioCircleManagementSystem.Model
 {
     class Contact
     {
-        //private fields
+        //Private fields
         private string _name;
         private string _mobilePhone;
         private string _email;
         private string _landline;
         private string _customerID;
 
-        //public properties
+        //Public properties
         public string Name
         {
             get { return _name; }
@@ -42,7 +42,7 @@ namespace BioCircleManagementSystem.Model
             set { _customerID = value; }
         }
 
-        //public constructor
+        //Public constructor
         public Contact(string name, string mobilePhone, string email, string landline, string customerID)
         {
             _name = name;

@@ -9,7 +9,7 @@ namespace BioCircleManagementSystem.ViewModels
 {
     class OrderViewModel
     {        
-        //Constructor
+        //Public constructor
         public OrderViewModel()
         {
            

@@ -9,9 +9,10 @@ namespace BioCircleManagementSystem.ViewModels
 {
     class CustomerViewModel
     {
-        //Constructor
+        //Public constructor
         public CustomerViewModel()
-        {           
+        {
+
         }
         
         public void NewCustomer(string customerName, int customerID, string billingAddress, string billingZipcode, string billingCity, string installationAddress, string installationZipcode, string installationCity)
