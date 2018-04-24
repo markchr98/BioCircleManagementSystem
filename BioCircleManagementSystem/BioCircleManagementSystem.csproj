@@ -74,6 +74,9 @@
     <Compile Include="Views\Customers\CustomerShell.xaml.cs">
       <DependentUpon>CustomerShell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Orders\OrderShell.xaml.cs">
+      <DependentUpon>OrderShell.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
@@ -106,7 +109,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Home\" />
-    <Folder Include="Views\Orders\" />
     <Folder Include="Views\Service\" />
     <Folder Include="Views\Storage\" />
   </ItemGroup>
@@ -120,6 +122,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Customers\CustomerShell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Orders\OrderShell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

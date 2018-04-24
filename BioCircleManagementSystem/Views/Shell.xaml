@@ -15,21 +15,36 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <StackPanel Height="60" Width="100" Grid.Row="0" Grid.Column="0">
+        <Border BorderThickness="5" Grid.Row="0" Grid.Column="0" BorderBrush="White">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="2"/>
+            </Border.Effect>
+            <StackPanel Height="60" Width="100">
                 <Image Source="/Resources/Images/biocircle_logo.png"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Height="80" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1">
-            <Button x:Name="HomeButton"
+            </StackPanel>
+        </Border>
+        <Border BorderThickness="5" Grid.Row="0" Grid.Column="1" BorderBrush="White">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="2"/>
+            </Border.Effect>
+            <StackPanel Orientation="Horizontal" Height="80" VerticalAlignment="Top" >
+                <Button x:Name="HomeButton"
                     Content="Home" 
                     MinWidth="100"
                     Click="HomeButton_Click"
                     />
-            <Button x:Name="CustomersButton"
+                <Button x:Name="CustomersButton"
                     Content="Kunder"
                     MinWidth="100"
                     Click="CustomersButton_Click"
                     />
-        </StackPanel>
+                <Button x:Name="OrdersButton"
+                    Content="Ordre"
+                    MinWidth="100"
+                    Click="OrdersButton_Click"
+                    />
+            </StackPanel>
+        </Border>
         <Frame x:Name="_mainFrame" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

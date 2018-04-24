@@ -1,4 +1,5 @@
 ﻿using BioCircleManagementSystem.Views.Customers;
+using BioCircleManagementSystem.Views.Orders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,11 @@ namespace BioCircleManagementSystem.Views
         private void CustomersButton_Click(object sender, RoutedEventArgs e)
         {
             _mainFrame.Navigate(new CustomerShell());
+        }
+
+        private void OrdersButton_Click(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.Navigate(new OrderShell());
         }
     }
 }
