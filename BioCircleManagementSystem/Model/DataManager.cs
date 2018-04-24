@@ -8,6 +8,7 @@ namespace BioCircleManagementSystem.Model
 {
     class DataManager
     {
+        //private instance
         private static DataManager _instance;
         
         private DataManager() { }        

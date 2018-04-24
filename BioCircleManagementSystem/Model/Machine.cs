@@ -8,8 +8,6 @@ namespace BioCircleManagementSystem.Model
 {
     class Machine
     {
-
-
         public void GetMachine(string machineID)
         {
             DataManager.Instance.GetMachine(machineID);

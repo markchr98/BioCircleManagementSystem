@@ -18,6 +18,5 @@ namespace BioCircleManagementSystem.ViewModels
         {
             DataManager.Instance.CreateCustomer(new Customer(customerName,customerID,billingAddress,billingZipcode,billingCity,installationAddress,installationZipcode,installationCity));
         }
-
     }
 }

@@ -15,7 +15,7 @@ namespace BioCircleManagementSystem.ViewModels
            
         }
 
-        public void NewOrder(string orderID,string customerID, string machineID)
+        public void NewOrder(string orderID, string customerID, string machineID)
         {
             DataManager.Instance.CreateOrder(new Order(orderID,DataManager.Instance.GetCustomer(customerID),DataManager.Instance.GetMachine(machineID)));
         }

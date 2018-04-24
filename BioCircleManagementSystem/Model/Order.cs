@@ -8,10 +8,12 @@ namespace BioCircleManagementSystem.Model
 {
     class Order
     {
+        //private fields
         private string _orderID;
         private Customer _customer;
         private Machine _machine;
 
+        //public properties
         public string OrderID
         {
             get { return _orderID; }
@@ -39,8 +41,6 @@ namespace BioCircleManagementSystem.Model
             _orderID = orderID;
             _customer = customer;
             _machine = machine;
-        }
-
-        
-}
+        }    
+    }
 }

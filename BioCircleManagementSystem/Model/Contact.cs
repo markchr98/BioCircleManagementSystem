@@ -51,7 +51,6 @@ namespace BioCircleManagementSystem.Model
             _landline = landline;
             _customerID = customerID;
         }
-
     }
 }
 
