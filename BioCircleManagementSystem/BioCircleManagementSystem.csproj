@@ -80,6 +80,9 @@
     <Compile Include="Views\Resources\UserControl\AddContactPersons.xaml.cs">
       <DependentUpon>AddContactPersons.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Resources\UserControl\ContactPerson.xaml.cs">
+      <DependentUpon>ContactPerson.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
@@ -133,6 +136,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Resources\UserControl\AddContactPersons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Resources\UserControl\ContactPerson.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

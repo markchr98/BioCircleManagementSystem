@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BioCircleManagementSystem.Views.Resources.UserControl;
+
 
 namespace BioCircleManagementSystem.Views.Customers
 {
@@ -24,6 +26,23 @@ namespace BioCircleManagementSystem.Views.Customers
         {
             InitializeComponent();
         }
+
+        public void Button_Click_AddContact(object sender, RoutedEventArgs e)
+        {
+            ContactList.Children.Add(new ContactPerson());
+        }
+      
+        public void Button_Click_CustomerCreate(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public void Button_Click_CustomerClear(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
 
     }
 }

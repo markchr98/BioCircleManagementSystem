@@ -7,7 +7,13 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CustomerCreate">
+
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+    <Grid Grid.Column="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto" />
@@ -23,8 +29,8 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />          
+        </Grid.ColumnDefinitions>        
         <TextBlock Grid.Row="0" Grid.Column="1" FontSize="24" Margin="0,10,0,10" FontWeight="Bold">Opret kunde</TextBlock>
         <Label Grid.Row="1" Margin="5,0,5,0">Virksomhedsnavn:</Label>
         <TextBox Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" Width="300" />
@@ -39,12 +45,16 @@
         <TextBox Grid.Row="6" Grid.Column="1" Margin="0,0,0,10" Width="300" />
         <Label Grid.Row="7" Margin="5,0,5,0">Postnr. og by:</Label>
         <TextBox Grid.Row="7" Grid.Column="1" Margin="0,0,0,10" Width="180" HorizontalAlignment="Left"/>
-        <TextBox Grid.Row="7" Grid.Column="1" Margin="200,0,0,10" Width="100" HorizontalAlignment="Left"/>
-        <StackPanel Grid.Row="8" Grid.Column="1">
-            
-        </StackPanel>
+        <TextBox Grid.Row="7" Grid.Column="1" Margin="200,0,0,10" Width="100" HorizontalAlignment="Left"/>       
         <TextBlock Grid.Row="9" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">Tilføj kontaktperson</TextBlock>
-        <Button Grid.Row="9" Grid.Column="1" HorizontalAlignment="Left" Margin="120,0,0,0" Height="25" Width="25" Content="+"/>
-        <Button x:Name="CustomerCreateSubmit" Content="OPRET" Grid.Row="10" Grid.Column="1" Height="25" Width="100" HorizontalAlignment="Left" Margin="0,10,0,0" />
+        <Button Grid.Row="9" Grid.Column="1" HorizontalAlignment="Left" Margin="120,0,0,0.4" Height="25" Width="25" Content="+" VerticalAlignment="Bottom" Click="Button_Click_AddContact"/>
+        <Button x:Name="CustomerCreateSubmit" Content="Opret" Grid.Row="10" Grid.Column="1" Height="25" Width="100" HorizontalAlignment="Left" Margin="0,10,0,0" Click="Button_Click_CustomerCreate"/>
+        <Button x:Name="CustomerCreateClear" Content="Nulstil" Grid.Row="10" Grid.Column="1" Height="25" Width="100" HorizontalAlignment="Left" Margin="120,10,0,0" Click="Button_Click_CustomerClear" />
+        
+    </Grid>
+        <ScrollViewer Margin="40,0,0,0" MaxHeight="375" CanContentScroll="True" VerticalScrollBarVisibility="Auto" Grid.Column="1">
+            <StackPanel x:Name="ContactList" Grid.Column="1">
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

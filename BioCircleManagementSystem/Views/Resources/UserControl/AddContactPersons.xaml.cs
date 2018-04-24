@@ -18,11 +18,18 @@ namespace BioCircleManagementSystem.Views.Resources.UserControl
     /// <summary>
     /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class UserControl1 : UserControl
+    
+    //refering to System.Windows.Controls.UserControl becaue of same name as folder and build errors when editing folder
+    public partial class UserControl1 :  System.Windows.Controls.UserControl
     {
         public UserControl1()
         {
             InitializeComponent();
+        }
+
+        public void RemoveTextOnFocus(object sender, RoutedEventArgs e)
+        {
+            ((TextBox)sender).Text = "";
         }
     }
 }
