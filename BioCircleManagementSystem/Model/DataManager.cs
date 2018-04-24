@@ -92,8 +92,7 @@ namespace BioCircleManagementSystem.Model
         }
 
         public List<Machine> GetMachines(string keyword)
-        {
-            //test
+        {           
             //if key not null filter machines
             //return machines
             throw new NotImplementedException();
