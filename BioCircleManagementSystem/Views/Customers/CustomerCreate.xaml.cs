@@ -39,7 +39,7 @@ namespace BioCircleManagementSystem.Views.Customers
       
         public void Button_Click_CustomerCreate(object sender, RoutedEventArgs e)
         {
-            CustomerViewModel.Instance.NewCustomer(customerName.Text, billingAddress.Text, billingCity.Text, billingZipcode.Text, installationCity.Text, installationCity.Text, installationZipcode.Text, economicsCustomerNumber.Text);
+            CustomerViewModel.Instance.NewCustomer(customerName.Text, billingAddress.Text, Int32.Parse(billingZipcode.Text), billingCity.Text, installationCity.Text, Int32.Parse(installationZipcode.Text), installationCity.Text, Int32.Parse(economicsCustomerNumber.Text));
             int CustomerID = CustomerViewModel.Instance.GetLastCustomerID();
             foreach (ContactPerson CP in contactList.Children)
             {

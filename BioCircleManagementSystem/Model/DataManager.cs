@@ -128,7 +128,29 @@ namespace BioCircleManagementSystem.Model
 
         public void CreateContact(Contact contact)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand CreateContact = new SqlCommand("spCreateContact", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    CreateContact.Parameters.Add(new SqlParameter("@Name", contact.Name));
+                    CreateContact.Parameters.Add(new SqlParameter("@Mobile_Phone", contact.Mobilephone));
+                    CreateContact.Parameters.Add(new SqlParameter("@Email", contact.Email));
+                    CreateContact.Parameters.Add(new SqlParameter("@Landline", contact.Landline));
+                    CreateContact.Parameters.Add(new SqlParameter("@Customer_ID", contact.CustomerID));
+
+                    CreateContact.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    //implement exception
+                }
+            }
         }
 
         public List<Contact> GetContacts(string keyword)
