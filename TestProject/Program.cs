@@ -19,7 +19,8 @@ namespace TestProject
 
         public void Run()
         {
-            CustomerViewModel.Instance.NewCustomer("test", "test", 0000, "test", "test", 0000, "test", 0000);            
+            CustomerViewModel.Instance.NewCustomer("test", "test", 0000, "test", "test", 0000, "test", 0000);
+            CustomerViewModel.Instance.NewContact("mark", 9090, "mark", 90, 0);
         }
     }
 }
