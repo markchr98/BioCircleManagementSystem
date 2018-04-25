@@ -18,7 +18,7 @@ namespace BioCircleManagementSystem.Views.Resources.UserControl
     /// <summary>
     /// Interaction logic for Customer.xaml
     /// </summary>
-    public partial class Customer : UserControl
+    public partial class Customer : System.Windows.Controls.UserControl
     {
         public Customer()
         {
