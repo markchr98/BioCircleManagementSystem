@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BioCircleManagementSystem.Model
 {
-    class Customer
+    public class Customer
     {
          //Private fields
         private string _customerName;

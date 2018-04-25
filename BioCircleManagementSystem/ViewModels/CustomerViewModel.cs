@@ -7,7 +7,7 @@ using BioCircleManagementSystem.Model;
 
 namespace BioCircleManagementSystem.ViewModels
 {
-    class CustomerViewModel
+    public class CustomerViewModel
     {       
         private static CustomerViewModel instance;
         //Constructor
@@ -44,7 +44,7 @@ namespace BioCircleManagementSystem.ViewModels
            return DataManager.Instance.GetLastCustomerID();
         }
 
-        public void NewContact(string name, string mobilephone, string email, string landline, int customerID)
+        public void NewContact(string name, int mobilephone, string email, int landline, int customerID)
         {
             DataManager.Instance.CreateContact(new Contact(name, mobilephone, email, landline, customerID));
         }       

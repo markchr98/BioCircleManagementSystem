@@ -43,7 +43,7 @@ namespace BioCircleManagementSystem.Views.Customers
             int CustomerID = CustomerViewModel.Instance.GetLastCustomerID();
             foreach (ContactPerson CP in contactList.Children)
             {
-                CustomerViewModel.Instance.NewContact(CP.name.Text, CP.mobilePhone.Text, CP.email.Text, CP.landline.Text, CustomerID);
+                CustomerViewModel.Instance.NewContact(CP.name.Text, Int32.Parse(CP.mobilePhone.Text), CP.email.Text, Int32.Parse(CP.landline.Text), CustomerID);
             }
         }        
 

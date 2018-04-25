@@ -58,21 +58,21 @@ namespace BioCircleManagementSystem.Model
                     };
 
                     CreateCustomer.Parameters.Add(new SqlParameter("@Name", customer.CustomerName));
-                    CreateCustomer.Parameters.Add(new SqlParameter("@EconomicsCustomerNumber", customer.EconomicsCustomerNumber));
-                    CreateCustomer.Parameters.Add(new SqlParameter("@BillingAddress", customer.CustomerName));
-                    CreateCustomer.Parameters.Add(new SqlParameter("@BillingZipcode", customer.CustomerName));
-                    CreateCustomer.Parameters.Add(new SqlParameter("@BillingCity", customer.CustomerName));
-                    CreateCustomer.Parameters.Add(new SqlParameter("@InstallationAddress", customer.CustomerName));
-                    CreateCustomer.Parameters.Add(new SqlParameter("@InstallationZipcode", customer.CustomerName));
-                    CreateCustomer.Parameters.Add(new SqlParameter("@InstallationCity", customer.CustomerName));
-
+                    CreateCustomer.Parameters.Add(new SqlParameter("@EconomicCustomerNumber", customer.EconomicsCustomerNumber));
+                    CreateCustomer.Parameters.Add(new SqlParameter("@BillingAddress", customer.BillingAddress));
+                    CreateCustomer.Parameters.Add(new SqlParameter("@BillingZipcode", customer.BillingZipcode));
+                    CreateCustomer.Parameters.Add(new SqlParameter("@BillingCity", customer.BillingCity));
+                    CreateCustomer.Parameters.Add(new SqlParameter("@InstallationAddress", customer.InstallationAddress));
+                    CreateCustomer.Parameters.Add(new SqlParameter("@InstallationZipcode", customer.InstallationZipcode));
+                    CreateCustomer.Parameters.Add(new SqlParameter("@InstallationCity", customer.InstallationCity));
+                    Console.WriteLine("executing");
                     CreateCustomer.ExecuteNonQuery();
 
 
                 }
                 catch (SqlException e)
                 {
-                    //implement exception
+                    Console.WriteLine(e.Message);
                 }
             }
         }

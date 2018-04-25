@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace BioCircleManagementSystem.Model
 {
-    class Contact
+    public class Contact
     {
         //Private fields
         private string _name;
-        private string _mobilePhone;
+        private int _mobilePhone;
         private string _email;
-        private string _landline;
+        private int _landline;
         private int _customerID;
 
         //Public properties
@@ -21,7 +21,7 @@ namespace BioCircleManagementSystem.Model
             get { return _name; }
             set { _name = value; }
         }
-        public string Mobilephone
+        public int Mobilephone
         {
             get { return _mobilePhone; }
             set { _mobilePhone = value; }
@@ -31,7 +31,7 @@ namespace BioCircleManagementSystem.Model
             get { return _email; }
             set { _email = value; }
         }
-        public string Landline
+        public int Landline
         {
             get { return _landline; }
             set { _landline = value; }
@@ -43,7 +43,7 @@ namespace BioCircleManagementSystem.Model
         }
 
         //Public constructor
-        public Contact(string name, string mobilePhone, string email, string landline, int customerID)
+        public Contact(string name, int mobilePhone, string email, int landline, int customerID)
         {
             _name = name;
             _mobilePhone = mobilePhone;
