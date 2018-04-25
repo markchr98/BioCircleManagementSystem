@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +12,8 @@ namespace BioCircleManagementSystem.Model
     {
         //private instance
         private static DataManager _instance;
-        
+        private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
+
         private DataManager() { }        
 
         public static DataManager Instance
@@ -44,12 +47,71 @@ namespace BioCircleManagementSystem.Model
 
         public void CreateCustomer(Customer customer)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand CreateCustomer = new SqlCommand("spCreateCustomer", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    CreateCustomer.Parameters.Add(new SqlParameter("@Name", customer.CustomerName));
+                    CreateCustomer.Parameters.Add(new SqlParameter("@EconomicsCustomerNumber", customer.EconomicsCustomerNumber));
+                    CreateCustomer.Parameters.Add(new SqlParameter("@BillingAddress", customer.CustomerName));
+                    CreateCustomer.Parameters.Add(new SqlParameter("@BillingZipcode", customer.CustomerName));
+                    CreateCustomer.Parameters.Add(new SqlParameter("@BillingCity", customer.CustomerName));
+                    CreateCustomer.Parameters.Add(new SqlParameter("@InstallationAddress", customer.CustomerName));
+                    CreateCustomer.Parameters.Add(new SqlParameter("@InstallationZipcode", customer.CustomerName));
+                    CreateCustomer.Parameters.Add(new SqlParameter("@InstallationCity", customer.CustomerName));
+
+                    CreateCustomer.ExecuteNonQuery();
+
+
+                }
+                catch (SqlException e)
+                {
+                    //implement exception
+                }
+            }
         }
 
         public Customer GetCustomer(string customerID)
         {
             throw new NotImplementedException();
+        }
+
+        //used when creating contacts for new customer
+        public int GetLastCustomerID()
+        {
+            int result = -1;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand LastID = new SqlCommand("spCustomerLastID", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SqlDataReader reader = LastID.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            result = Int32.Parse(reader["ID"].ToString());                            
+                        }                        
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //implement exception
+                }
+            }
+            return result;
         }
 
         public List<Customer> GetCustomers(string keyword)

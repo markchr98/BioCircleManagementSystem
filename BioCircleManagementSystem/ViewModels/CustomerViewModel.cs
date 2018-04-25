@@ -27,9 +27,9 @@ namespace BioCircleManagementSystem.ViewModels
             }
         }
         
-        public void NewCustomer(string customerName, string billingAddress, string billingZipcode, string billingCity, string installationAddress, string installationZipcode, string installationCity)
+        public void NewCustomer(string customerName, string billingAddress, int billingZipcode, string billingCity, string installationAddress, int installationZipcode, string installationCity, int economicsCustomerNumber)
         {
-            DataManager.Instance.CreateCustomer(new Customer(customerName, billingAddress, billingZipcode, billingCity, installationAddress, installationZipcode, installationCity));
+            DataManager.Instance.CreateCustomer(new Customer(customerName, billingAddress, billingZipcode, billingCity, installationAddress, installationZipcode, installationCity, economicsCustomerNumber));
             
         }
 
@@ -38,7 +38,13 @@ namespace BioCircleManagementSystem.ViewModels
             return DataManager.Instance.GetCustomers(keyword);
         }
 
-        public void NewContact(string name, string mobilephone, string email, string landline, string customerID)
+        //used when creating contacts for new customer
+        public int GetLastCustomerID()
+        {
+           return DataManager.Instance.GetLastCustomerID();
+        }
+
+        public void NewContact(string name, string mobilephone, string email, string landline, int customerID)
         {
             DataManager.Instance.CreateContact(new Contact(name, mobilephone, email, landline, customerID));
         }       

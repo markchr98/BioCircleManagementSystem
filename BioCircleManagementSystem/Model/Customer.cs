@@ -12,12 +12,13 @@ namespace BioCircleManagementSystem.Model
         private string _customerName;
         private int _customerID;
         private string _billingAddress;
-        private string _billingZipcode;
+        private int _billingZipcode;
         private string _billingCity;
         private string _installationAddress;
-        private string _installationZipcode;
+        private int _installationZipcode;
         private string _installationCity;
         private List<Contact> _contacts;
+        private int _economicsCustomerNumber;
 
         //Public properties
         public string CustomerName
@@ -36,7 +37,7 @@ namespace BioCircleManagementSystem.Model
             get { return _billingAddress; }
             set { _billingAddress = value; }
         }
-        public string BillingZipcode
+        public int BillingZipcode
         {
             get { return _billingZipcode; }
             set { _billingZipcode = value; }
@@ -51,7 +52,7 @@ namespace BioCircleManagementSystem.Model
             get { return _installationAddress; }
             set { _installationAddress = value; }
         }
-        public string InstallationZipcode
+        public int InstallationZipcode
         {
             get { return _installationZipcode; }
             set { _installationZipcode = value; }
@@ -68,12 +69,18 @@ namespace BioCircleManagementSystem.Model
             set { _contacts = value; }
         }
 
+        public int EconomicsCustomerNumber
+        {
+            get { return _economicsCustomerNumber; }
+            set { _economicsCustomerNumber = value; }
+        }
+
         //Public constructors
         public Customer()
         {
 
         }
-        public Customer(string customerName, string billingAddress, string billingZipcode, string billingCity, string installationAddress, string installationZipcode, string installationCity)
+        public Customer(string customerName, string billingAddress, int billingZipcode, string billingCity, string installationAddress, int installationZipcode, string installationCity, int economicsCustomerNumber)
         {
             _customerName = customerName;
             _billingAddress = billingAddress;
@@ -81,7 +88,8 @@ namespace BioCircleManagementSystem.Model
             _billingCity = billingCity;
             _installationAddress = installationAddress;
             _installationZipcode = installationZipcode;
-            _installationCity = installationCity;         
+            _installationCity = installationCity;
+            _economicsCustomerNumber = economicsCustomerNumber;
         }
     }
 }

@@ -13,7 +13,7 @@ namespace BioCircleManagementSystem.Model
         private string _mobilePhone;
         private string _email;
         private string _landline;
-        private string _customerID;
+        private int _customerID;
 
         //Public properties
         public string Name
@@ -36,14 +36,14 @@ namespace BioCircleManagementSystem.Model
             get { return _landline; }
             set { _landline = value; }
         }
-        public string CustomerID
+        public int CustomerID
         {
             get { return _customerID; }
             set { _customerID = value; }
         }
 
         //Public constructor
-        public Contact(string name, string mobilePhone, string email, string landline, string customerID)
+        public Contact(string name, string mobilePhone, string email, string landline, int customerID)
         {
             _name = name;
             _mobilePhone = mobilePhone;
