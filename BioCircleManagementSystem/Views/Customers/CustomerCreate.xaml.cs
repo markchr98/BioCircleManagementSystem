@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BioCircleManagementSystem.Views.Resources.UserControl;
+using BioCircleManagementSystem.Views.Resources.Notifications;
 using BioCircleManagementSystem.ViewModels;
 
 
@@ -45,7 +46,11 @@ namespace BioCircleManagementSystem.Views.Customers
             {
                 CustomerViewModel.Instance.NewContact(CP.name.Text, Int32.Parse(CP.mobilePhone.Text), CP.email.Text, Int32.Parse(CP.landline.Text), CustomerID);
             }
-        }        
+            //Opens the notification when the button is pressed.
+            //ShowDialog prohibits the user from interacting on the main window until the new window has been closed.
+            CustomerCreatedNotification CCN = new CustomerCreatedNotification();
+            CCN.ShowDialog();
+        }
 
         public void Button_Click_CustomerClear(object sender, RoutedEventArgs e)
         {

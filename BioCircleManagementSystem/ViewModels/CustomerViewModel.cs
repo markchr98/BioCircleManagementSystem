@@ -47,6 +47,6 @@ namespace BioCircleManagementSystem.ViewModels
         public void NewContact(string name, int mobilephone, string email, int landline, int customerID)
         {
             DataManager.Instance.CreateContact(new Contact(name, mobilephone, email, landline, customerID));
-        }       
+        }
     }
 }

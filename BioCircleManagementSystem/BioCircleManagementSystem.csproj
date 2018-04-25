@@ -77,6 +77,9 @@
     <Compile Include="Views\Orders\OrderShell.xaml.cs">
       <DependentUpon>OrderShell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Resources\Notifications\CustomerCreatedNotification.xaml.cs">
+      <DependentUpon>CustomerCreatedNotification.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Resources\UserControl\AddContactPersons.xaml.cs">
       <DependentUpon>AddContactPersons.xaml</DependentUpon>
     </Compile>
@@ -135,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Orders\OrderShell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Resources\Notifications\CustomerCreatedNotification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
