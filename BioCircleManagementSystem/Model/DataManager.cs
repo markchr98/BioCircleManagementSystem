@@ -131,10 +131,10 @@ namespace BioCircleManagementSystem.Model
                     };
 
                     CreateContact.Parameters.Add(new SqlParameter("@Name", contact.Name));
-                    CreateContact.Parameters.Add(new SqlParameter("@Mobile_Phone", contact.Mobilephone));
+                    CreateContact.Parameters.Add(new SqlParameter("@Mobilephone", contact.Mobilephone));
                     CreateContact.Parameters.Add(new SqlParameter("@Email", contact.Email));
                     CreateContact.Parameters.Add(new SqlParameter("@Landline", contact.Landline));
-                    CreateContact.Parameters.Add(new SqlParameter("@Customer_ID", contact.CustomerID));
+                    CreateContact.Parameters.Add(new SqlParameter("@CustomerID", contact.CustomerID));
 
                     CreateContact.ExecuteNonQuery();
                 }
