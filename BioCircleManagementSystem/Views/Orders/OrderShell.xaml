@@ -7,28 +7,40 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="OrderShell">
-
     <Grid>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-            <Button x:Name="TestFind"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Border BorderThickness="5,0,5,5" BorderBrush="White" Grid.Row="0" Grid.Column="0">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="2"/>
+            </Border.Effect>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <Button x:Name="TestFind"
                 Content="Test"
                 MinWidth="100"
                 MinHeight="40"
                 Click="Button_Click_TestFind"
                 />
-            <Button x:Name="TestCreate"
+                <Button x:Name="TestCreate"
                 Content="Opret Test"
                 MinWidth="100"
                 MinHeight="40"
                 Click="Button_Click_TestCreate"
                 />
-            <Button x:Name="OrderCreate"
+                <Button x:Name="OrderCreate"
                 Content="Opret Ordre"
                 MinWidth="100"
                 MinHeight="40"
                 Click="Button_Click_OrderCreate"
                 />
-        </StackPanel>
-        <Frame x:Name="_customerFrame" Margin="100,0,0,0" NavigationUIVisibility="Hidden" />
+            </StackPanel>
+        </Border>
+        <Frame x:Name="_orderFrame" NavigationUIVisibility="Hidden" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" />
     </Grid>
 </Page>
