@@ -11,19 +11,19 @@
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
             <Button x:Name="TestFind"
-                Content="TEST"
+                Content="Test"
                 MinWidth="100"
                 MinHeight="40"
                 Click="Button_Click_TestFind"
                 />
             <Button x:Name="TestCreate"
-                Content="OPRET TEST"
+                Content="Opret Test"
                 MinWidth="100"
                 MinHeight="40"
                 Click="Button_Click_TestCreate"
                 />
             <Button x:Name="OrderCreate"
-                Content="OPRET ORDRE"
+                Content="Opret Ordre"
                 MinWidth="100"
                 MinHeight="40"
                 Click="Button_Click_OrderCreate"

@@ -22,13 +22,13 @@
             </Border.Effect>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                 <Button x:Name="CustomerFind"
-                    Content="FIND KUNDE"
+                    Content="Find Kunde"
                     MinWidth="100"
                     MinHeight="40"
                     Click="Button_Click_CustomerFind"
                     />
                 <Button x:Name="CustomerCreate"
-                    Content="OPRET KUNDE"
+                    Content="Opret Kunde"
                     MinWidth="100"
                     MinHeight="40"
                     Click="Button_Click_CustomerCreate"

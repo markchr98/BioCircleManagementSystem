@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BioCircleManagementSystem.Views.Resources.UserControl;
+using BioCircleManagementSystem.ViewModels;
 
 
 namespace BioCircleManagementSystem.Views.Customers
@@ -38,15 +39,20 @@ namespace BioCircleManagementSystem.Views.Customers
       
         public void Button_Click_CustomerCreate(object sender, RoutedEventArgs e)
         {
-
+            CustomerViewModel.Instance.NewCustomer(customerName.ToString(), billingAddress.ToString(), billingCity.ToString(), billingZipcode.ToString(), installationCity.ToString(), installationCity.ToString(), installationZipcode.ToString());
         }
 
         public void Button_Click_CustomerClear(object sender, RoutedEventArgs e)
         {
+            customerName.Text = "Virksomhedsnavn";
+            billingAddress.Text = "Adresse";
+            billingCity.Text = "By";
+            billingZipcode.Text = "Post nr.";
+            installationAddress.Text = "Adresse";
+            installationCity.Text = "By";
+            installationZipcode.Text = "Post nr.";
 
+            contactList.Children.Clear();
         }
-
-
-
     }
 }

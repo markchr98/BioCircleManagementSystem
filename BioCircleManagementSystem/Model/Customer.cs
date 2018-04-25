@@ -73,10 +73,9 @@ namespace BioCircleManagementSystem.Model
         {
 
         }
-        public Customer(string customerName, int customerID, string billingAddress, string billingZipcode, string billingCity, string installationAddress, string installationZipcode, string installationCity, List<Contact> contacts)
+        public Customer(string customerName, string billingAddress, string billingZipcode, string billingCity, string installationAddress, string installationZipcode, string installationCity, List<Contact> contacts)
         {
             _customerName = customerName;
-            _customerID = customerID;
             _billingAddress = billingAddress;
             _billingZipcode = billingZipcode;
             _billingCity = billingCity;
