@@ -26,6 +26,10 @@ namespace BioCircleManagementSystem.Views.Customers
         {
             InitializeComponent();
         }
+        public void RemoveTextOnFocus(object sender, RoutedEventArgs e)
+        {
+            ((TextBox)sender).Text = "";
+        }
 
         public void Button_Click_AddContact(object sender, RoutedEventArgs e)
         {            

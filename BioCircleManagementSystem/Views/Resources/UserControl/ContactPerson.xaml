@@ -9,16 +9,16 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <TextBlock x:Name="Title" Grid.Row="0" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10" TextWrapping="Wrap" Text="Kontakt Person" VerticalAlignment="Top"/>
-        <TextBox Grid.Row="1" HorizontalAlignment="Left" Height="22" Margin="0,0,0,10" TextWrapping="Wrap" Text="Navn" VerticalAlignment="Top" Width="300" GotFocus="RemoveTextOnFocus"/>
-        <TextBox Grid.Row="3" HorizontalAlignment="Left" Height="22" Margin="0,0,0,10" TextWrapping="Wrap" Text="Mobil Tlf." VerticalAlignment="Top" Width="140" GotFocus="RemoveTextOnFocus"/>
-        <TextBox Grid.Row="2" HorizontalAlignment="Left" Height="22" Margin="0,0,0,10" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="300" GotFocus="RemoveTextOnFocus"/>
-        <TextBox Grid.Row="3" HorizontalAlignment="Left" Height="22" Margin="160,0,0,10" TextWrapping="Wrap" Text="Fastnet Tlf." VerticalAlignment="Top" Width="140" GotFocus="RemoveTextOnFocus"/>
+        <TextBox Grid.Row="1" HorizontalAlignment="Left" Margin="0,0,0,10" TextWrapping="Wrap" Text="Navn" VerticalAlignment="Top" Width="300" GotFocus="RemoveTextOnFocus"/>
+        <TextBox Grid.Row="3" HorizontalAlignment="Left" Margin="0,0,0,10" TextWrapping="Wrap" Text="Mobil Tlf." VerticalAlignment="Top" Width="140" GotFocus="RemoveTextOnFocus"/>
+        <TextBox Grid.Row="2" HorizontalAlignment="Left" Margin="0,0,0,10" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="300" GotFocus="RemoveTextOnFocus"/>
+        <TextBox Grid.Row="3" HorizontalAlignment="Left" Margin="160,0,0,10" TextWrapping="Wrap" Text="Fastnet Tlf." VerticalAlignment="Top" Width="140" GotFocus="RemoveTextOnFocus"/>
         <Button x:Name="ContactPersonDelete" Grid.Row="0" Content="Slet" HorizontalAlignment="Left" Margin="225,0,10,0" VerticalAlignment="Top" Width="75" Click="Button_Click_ContactDelete"/>
     </Grid>
 </UserControl>
