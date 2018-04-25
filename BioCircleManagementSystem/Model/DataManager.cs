@@ -95,15 +95,7 @@ namespace BioCircleManagementSystem.Model
                     {
                         CommandType = CommandType.StoredProcedure
                     };
-                    SqlDataReader reader = LastID.ExecuteReader();
-
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            result = Int32.Parse(reader["ID"].ToString());                            
-                        }                        
-                    }
+                    result = (int)LastID.ExecuteScalar();
                     con.Close();
                 }
                 catch (SqlException e)
