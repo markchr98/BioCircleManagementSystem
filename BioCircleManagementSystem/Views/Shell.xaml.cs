@@ -40,5 +40,15 @@ namespace BioCircleManagementSystem.Views
         {
             _mainFrame.Navigate(new OrderShell());
         }
+
+        private void ServiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void StorageButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

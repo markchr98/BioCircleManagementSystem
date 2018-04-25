@@ -35,9 +35,9 @@
                     />
             </StackPanel>
         </Border>
-        <StackPanel Grid.Row="1" Grid.Column="0" Height="300" Background="#ABAAAA">
+        <Border Grid.Row="1" Grid.Column="0" Background="#ABAAAA" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             
-        </StackPanel>
+        </Border>
         <Frame x:Name="_customerFrame" NavigationUIVisibility="Hidden" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" />
     </Grid>
 </Page>

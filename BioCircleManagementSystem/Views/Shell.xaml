@@ -6,10 +6,30 @@
         xmlns:local="clr-namespace:BioCircleManagementSystem.Views"
         mc:Ignorable="d"
         Title="Bio-Circle" Height="450" Width="800" WindowState="Maximized">
+    <Window.Resources>
+        <Style x:Key="MyButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -19,29 +39,69 @@
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="2"/>
             </Border.Effect>
-            <StackPanel Height="60" Width="100">
-                <Image Source="/Resources/Images/biocircle_logo.png" Margin="3,0,3,0"/>
+            <StackPanel Height="Auto" Width="100" Background="#FFFFFF">
+                <Image Source="/Resources/Images/biocircle_logo.png"/>
             </StackPanel>
         </Border>
         <Border BorderThickness="0,5,5,5" Grid.Row="0" Grid.Column="1" BorderBrush="White">
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="2"/>
             </Border.Effect>
-            <StackPanel Orientation="Horizontal" Height="80" VerticalAlignment="Top" >
+            <StackPanel Orientation="Horizontal" Height="80" VerticalAlignment="Top" Background="#FFFFFF">
                 <Button x:Name="HomeButton"
-                    Content="Home" 
-                    MinWidth="100"
-                    Click="HomeButton_Click"
+                        Content="Home" 
+                        Height="50"
+                        MinWidth="100"
+                        Click="HomeButton_Click"
+                        Background="#242323"
+                        Foreground="#FFFFFF"
+                        Margin="5"
+                        BorderBrush="#FFFFFF"
+                        Style="{StaticResource MyButton}"
                     />
                 <Button x:Name="CustomersButton"
-                    Content="Kunder"
-                    MinWidth="100"
-                    Click="CustomersButton_Click"
+                        Content="Kunder"
+                        Height="50"
+                        MinWidth="100"
+                        Click="CustomersButton_Click"
+                        Background="#242323"
+                        Foreground="#FFFFFF"
+                        Margin="5"
+                        BorderBrush="#FFFFFF"
+                        Style="{StaticResource MyButton}"
                     />
                 <Button x:Name="OrdersButton"
-                    Content="Ordre"
-                    MinWidth="100"
-                    Click="OrdersButton_Click"
+                        Content="Ordre"
+                        Height="50"
+                        MinWidth="100"
+                        Click="OrdersButton_Click"
+                        Background="#242323"
+                        Foreground="#FFFFFF"
+                        Margin="5"
+                        BorderBrush="#FFFFFF"
+                        Style="{StaticResource MyButton}"
+                    />
+                <Button x:Name="ServiceButton"
+                        Content="Service"
+                        Height="50"
+                        MinWidth="100"
+                        Click="ServiceButton_Click"
+                        Background="#242323"
+                        Foreground="#FFFFFF"
+                        Margin="5"
+                        BorderBrush="#FFFFFF"
+                        Style="{StaticResource MyButton}"
+                    />
+                <Button x:Name="StorageButton"
+                        Content="Lager"
+                        Height="50"
+                        MinWidth="100"
+                        Click="StorageButton_Click"
+                        Background="#242323"
+                        Foreground="#FFFFFF"
+                        Margin="5"
+                        BorderBrush="#FFFFFF"
+                        Style="{StaticResource MyButton}"
                     />
             </StackPanel>
         </Border>
