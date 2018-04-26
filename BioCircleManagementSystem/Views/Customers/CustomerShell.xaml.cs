@@ -27,18 +27,17 @@ namespace BioCircleManagementSystem.Views.Customers
 
         private void Button_Click_CustomerFind(object sender, RoutedEventArgs e)
         {
-            _customerFrame.Navigate(new CustomerFind());
-
             ChangeOtherButtonsBG(sender);
-            
+            _customerFrame.Navigate(new CustomerFind());
         }
 
         private void Button_Click_CustomerCreate(object sender, RoutedEventArgs e)
         {
+            ChangeOtherButtonsBG(sender);
             _customerFrame.Navigate(new CustomerCreate());
         }
 
-        //used to change other buttons bg to default (change from yellow)
+        // Used to change other buttons background to default color
         private void ChangeOtherButtonsBG(object sender)
         {
             StackPanel Parent = ((StackPanel)((Button)sender).Parent);
@@ -46,7 +45,7 @@ namespace BioCircleManagementSystem.Views.Customers
             {
                 if (button != (Button)sender)
                 {
-                    button.Background = Brushes.Yellow;
+                    button.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#6C6969"));
                 }
             }
         }
