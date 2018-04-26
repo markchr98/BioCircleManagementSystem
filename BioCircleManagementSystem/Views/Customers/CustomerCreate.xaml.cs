@@ -40,18 +40,26 @@ namespace BioCircleManagementSystem.Views.Customers
       
         public void Button_Click_CustomerCreate(object sender, RoutedEventArgs e)
         {
-            CustomerViewModel.Instance.NewCustomer(customerName.Text, billingAddress.Text, Int32.Parse(billingZipcode.Text), billingCity.Text, installationCity.Text, Int32.Parse(installationZipcode.Text), installationCity.Text, Int32.Parse(economicsCustomerNumber.Text));
-            int CustomerID = CustomerViewModel.Instance.GetLastCustomerID();
-            foreach (ContactPerson CP in contactList.Children)
+            if (IsDigitsOnly(billingZipcode.Text) && IsDigitsOnly(installationZipcode.Text) && IsDigitsOnly(economicsCustomerNumber.Text))
             {
-                CustomerViewModel.Instance.NewContact(CP.name.Text, Int32.Parse(CP.mobilePhone.Text), CP.email.Text, Int32.Parse(CP.landline.Text), CustomerID);
-            }
-            //Opens the notification when the button is pressed.
-            //ShowDialog prohibits the user from interacting on the main window until the new window has been closed.
-            CustomerCreatedNotification CCN = new CustomerCreatedNotification();
-            CCN.ShowDialog();
+                CustomerViewModel.Instance.NewCustomer(customerName.Text, billingAddress.Text, Int32.Parse(billingZipcode.Text), billingCity.Text, installationCity.Text, Int32.Parse(installationZipcode.Text), installationCity.Text, Int32.Parse(economicsCustomerNumber.Text));
+                int CustomerID = CustomerViewModel.Instance.GetLastCustomerID();
+                foreach (ContactPerson CP in contactList.Children)
+                {
+                    CustomerViewModel.Instance.NewContact(CP.name.Text, Int32.Parse(CP.mobilePhone.Text), CP.email.Text, Int32.Parse(CP.landline.Text), CustomerID);
+                }
+                //Opens the notification when the button is pressed.
+                //ShowDialog prohibits the user from interacting on the main window until the new window has been closed.
+                CustomerCreatedNotification CCN = new CustomerCreatedNotification();
+                CCN.ShowDialog();
 
-            Clear();
+                Clear();
+            }
+            else
+            {
+                CustomerCreatedNotification CCN = new CustomerCreatedNotification();
+                CCN.Output.Text = "Venligst tjek at Zipcode og E-conomic kunde nr. kun indeholder tal";                
+            }
         }
 
         public void Button_Click_CustomerClear(object sender, RoutedEventArgs e)
@@ -71,6 +79,18 @@ namespace BioCircleManagementSystem.Views.Customers
             installationZipcode.Text = "Post nr.";
 
             contactList.Children.Clear();
+        }
+
+        //used to ensure we can parse to int
+        bool IsDigitsOnly(string str)
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+
+            return true;
         }
     }
 }
