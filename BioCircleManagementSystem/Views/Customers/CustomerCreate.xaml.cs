@@ -50,9 +50,17 @@ namespace BioCircleManagementSystem.Views.Customers
             //ShowDialog prohibits the user from interacting on the main window until the new window has been closed.
             CustomerCreatedNotification CCN = new CustomerCreatedNotification();
             CCN.ShowDialog();
+
+            Clear();
         }
 
         public void Button_Click_CustomerClear(object sender, RoutedEventArgs e)
+        {
+            Clear();
+            
+        }
+
+        private void Clear()
         {
             customerName.Text = "Virksomhedsnavn";
             billingAddress.Text = "Adresse";
