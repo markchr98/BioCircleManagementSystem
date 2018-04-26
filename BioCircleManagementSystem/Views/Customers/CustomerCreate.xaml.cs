@@ -40,25 +40,49 @@ namespace BioCircleManagementSystem.Views.Customers
       
         public void Button_Click_CustomerCreate(object sender, RoutedEventArgs e)
         {
+            bool isDigitsOnly = false;
             if (IsDigitsOnly(billingZipcode.Text) && IsDigitsOnly(installationZipcode.Text) && IsDigitsOnly(economicsCustomerNumber.Text))
             {
-                CustomerViewModel.Instance.NewCustomer(customerName.Text, billingAddress.Text, Int32.Parse(billingZipcode.Text), billingCity.Text, installationCity.Text, Int32.Parse(installationZipcode.Text), installationCity.Text, Int32.Parse(economicsCustomerNumber.Text));
-                int CustomerID = CustomerViewModel.Instance.GetLastCustomerID();
+               
                 foreach (ContactPerson CP in contactList.Children)
                 {
-                    CustomerViewModel.Instance.NewContact(CP.name.Text, Int32.Parse(CP.mobilePhone.Text), CP.email.Text, Int32.Parse(CP.landline.Text), CustomerID);
+                    if (IsDigitsOnly(CP.mobilePhone.Text) && IsDigitsOnly(CP.landline.Text))
+                    {
+                        isDigitsOnly = true;
+                    }
+                    else
+                    {
+                        isDigitsOnly = false;
+                        break;
+                    }
+                    
                 }
-                //Opens the notification when the button is pressed.
-                //ShowDialog prohibits the user from interacting on the main window until the new window has been closed.
-                CustomerCreatedNotification CCN = new CustomerCreatedNotification();
-                CCN.ShowDialog();
+                if (isDigitsOnly)
+                {
+                    CustomerViewModel.Instance.NewCustomer(customerName.Text, billingAddress.Text, Int32.Parse(billingZipcode.Text), billingCity.Text, installationCity.Text, Int32.Parse(installationZipcode.Text), installationCity.Text, Int32.Parse(economicsCustomerNumber.Text));
+                    int CustomerID = CustomerViewModel.Instance.GetLastCustomerID();
+                    foreach (ContactPerson CP in contactList.Children)
+                    {
+                        CustomerViewModel.Instance.NewContact(CP.name.Text, Int32.Parse(CP.mobilePhone.Text), CP.email.Text, Int32.Parse(CP.landline.Text), CustomerID);
+                    }
+                    CustomerCreatedNotification CCN1 = new CustomerCreatedNotification();
+                    CCN1.Output.Text = "Ny kunde oprettet";
+                    CCN1.ShowDialog();
 
-                Clear();
+                    Clear();
+                }
+                else
+                {
+                    CustomerCreatedNotification CCN2 = new CustomerCreatedNotification();
+                    CCN2.Output.Text = "Venligst tjek at mobil og fastnet \nkun indeholder tal";
+                    CCN2.ShowDialog();
+                }              
             }
             else
             {
-                CustomerCreatedNotification CCN = new CustomerCreatedNotification();
-                CCN.Output.Text = "Venligst tjek at Zipcode og \nE-conomic kunde nr. kun indeholder tal";                
+                CustomerCreatedNotification CCN3 = new CustomerCreatedNotification();
+                CCN3.Output.Text = "Venligst tjek at Zipcode og \nE-conomic kunde nr. kun indeholder tal";
+                CCN3.ShowDialog();
             }
         }
 
@@ -77,6 +101,7 @@ namespace BioCircleManagementSystem.Views.Customers
             installationAddress.Text = "Adresse";
             installationCity.Text = "By";
             installationZipcode.Text = "Post nr.";
+            economicsCustomerNumber.Text = "E-conomic kunde nr.";
 
             contactList.Children.Clear();
         }
