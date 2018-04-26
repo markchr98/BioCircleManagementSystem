@@ -27,17 +27,30 @@ namespace BioCircleManagementSystem.Views.Orders
 
         private void Button_Click_TestFind(object sender, RoutedEventArgs e)
         {
-
+            ChangeOtherButtonsBG(sender);
         }
 
         private void Button_Click_TestCreate(object sender, RoutedEventArgs e)
         {
-
+            ChangeOtherButtonsBG(sender);
         }
 
         private void Button_Click_OrderCreate(object sender, RoutedEventArgs e)
         {
+            ChangeOtherButtonsBG(sender);
+        }
 
+        // Used to change other buttons background to default color
+        private void ChangeOtherButtonsBG(object sender)
+        {
+            StackPanel Parent = ((StackPanel)((Button)sender).Parent);
+            foreach (Button button in Parent.Children)
+            {
+                if (button != (Button)sender)
+                {
+                    button.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#6C6969"));
+                }
+            }
         }
     }
 }
