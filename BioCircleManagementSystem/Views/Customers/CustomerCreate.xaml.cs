@@ -58,7 +58,7 @@ namespace BioCircleManagementSystem.Views.Customers
             else
             {
                 CustomerCreatedNotification CCN = new CustomerCreatedNotification();
-                CCN.Output.Text = "Venligst tjek at Zipcode og E-conomic kunde nr. kun indeholder tal";                
+                CCN.Output.Text = "Venligst tjek at Zipcode og \nE-conomic kunde nr. kun indeholder tal";                
             }
         }
 
