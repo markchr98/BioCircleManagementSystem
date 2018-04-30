@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BioCircleManagementSystem.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,10 @@ namespace BioCircleManagementSystem.ViewModels
             }
         }
 
+        public void CreateMachine(string vesselNo, string vesselType)
+        {
+            DataAccess.DataManager.Instance.CreateMachine(new Machine(vesselNo, vesselType));
+        }
         public void NewMachine(int machineNumber, string machineType)
         {
             //DataManager.Instance.CreateCustomer(new Customer(customerName, billingAddress, billingZipcode, billingCity, installationAddress, installationZipcode, installationCity, economicsCustomerNumber));

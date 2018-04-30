@@ -10,27 +10,33 @@ namespace BioCircleManagementSystem.Model
 {
     class Machine
     {
-        private string vesselType;
-        private string vesselNo;
-        private string machineNo;
-        private string controlBoxNo;
-        private string installationDate;
-        private string wheels;
-        private string inoxGrid;
-        private string lid;
-        private string steelTop;
-        private string canBringLiquid;
+        private string _vesselType;
+        private string _vesselNo;
+        private string _machineNo;
+        private string _controlBoxNo;
+        private string _installationDate;
+        private string _wheels;
+        private string _inoxGrid;
+        private string _lid;
+        private string _steelTop;
+        private string _canBringLiquid;
 
-        public string VesselType { get { return vesselType; } set { vesselType = value; } }
-        public string VesselNo { get { return vesselNo; } set { vesselNo = value; } }
-        public string MachineNo { get { return machineNo; } set { machineNo = value; } }
-        public string ControlBoxNo { get { return controlBoxNo; } set { controlBoxNo = value; } }
-        public string InstallationDate { get { return installationDate; } set { installationDate = value; } }
-        public string Wheels { get { return wheels; } set { wheels = value; } }
-        public string InoxGrid { get { return inoxGrid; } set { inoxGrid = value; } }
-        public string Lid { get { return lid; } set { lid = value; } }
-        public string SteelTop { get { return steelTop; } set { steelTop = value; } }
-        public string CanBringLiquid { get { return canBringLiquid; } set { canBringLiquid = value; } }
+        public Machine(string vesselNo, string vesselType)
+        {
+            this._vesselNo = vesselNo;
+            this._vesselType = vesselType;
+        }
+
+        public string VesselType { get { return _vesselType; } set { _vesselType = value; } }
+        public string VesselNo { get { return _vesselNo; } set { _vesselNo = value; } }
+        public string MachineNo { get { return _machineNo; } set { _machineNo = value; } }
+        public string ControlBoxNo { get { return _controlBoxNo; } set { _controlBoxNo = value; } }
+        public string InstallationDate { get { return _installationDate; } set { _installationDate = value; } }
+        public string Wheels { get { return _wheels; } set { _wheels = value; } }
+        public string InoxGrid { get { return _inoxGrid; } set { _inoxGrid = value; } }
+        public string Lid { get { return _lid; } set { _lid = value; } }
+        public string SteelTop { get { return _steelTop; } set { _steelTop = value; } }
+        public string CanBringLiquid { get { return _canBringLiquid; } set { _canBringLiquid = value; } }
 
         public void GetMachine(string machineID)
         {
