@@ -1,5 +1,4 @@
-﻿using BioCircleManagementSystem.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -7,18 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BioCircleManagementSystem.DataAccess
+namespace BioCircleManagementSystem.Model
 {
     class DataManager
     {
+        #region DataManager
         //private instance
         private static DataManager _instance;
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
 
-        private DataManager()
-        {
-
-        }        
+        private DataManager() { }        
 
         public static DataManager Instance
         {
@@ -31,7 +28,9 @@ namespace BioCircleManagementSystem.DataAccess
                 return _instance;
             }
         }
+        #endregion DataManager
 
+        #region Order
         public void CreateOrder(Order order)
         {
             throw new NotImplementedException();
@@ -48,7 +47,9 @@ namespace BioCircleManagementSystem.DataAccess
         {
             throw new NotImplementedException();
         }
+        #endregion Order
 
+        #region Customer
         public void CreateCustomer(Customer customer)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -112,6 +113,8 @@ namespace BioCircleManagementSystem.DataAccess
 
         public List<Customer> GetCustomers(string keyword)
         {
+            //if key not null filter customers
+            //return customers
             List<Customer> CustomerList = new List<Customer>();
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -159,7 +162,34 @@ namespace BioCircleManagementSystem.DataAccess
         {
             throw new NotImplementedException();
         }
+        public void DeleteCustomer(string customerID, string machineID)
+        {
+            //Måske skal der laves noget vedd MachineID
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand DeleteCustomer = new SqlCommand("spDeleteCustomer", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
 
+                    DeleteCustomer.Parameters.Add(new SqlParameter("@Customerid", customerID));
+                    DeleteCustomer.Parameters.Add(new SqlParameter("@Machineid", machineID));
+
+                    Console.WriteLine("executing");
+                    DeleteCustomer.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+        }
+        #endregion Customer
+
+        #region Contact
         public void CreateContact(Contact contact)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -199,9 +229,57 @@ namespace BioCircleManagementSystem.DataAccess
             throw new NotImplementedException();
         }
 
+        public void DeleteContact(string customerID)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand DeleteContact = new SqlCommand("spDeleteCustomer", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    DeleteContact.Parameters.Add(new SqlParameter("@Customerid", customerID));
+                    
+
+                    Console.WriteLine("executing");
+                    DeleteContact.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+        }
+        #endregion Contact
+
+        #region Machine
         public void CreateMachine(Machine machine)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand CreateMachine = new SqlCommand("spDeleteCustomer", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    CreateMachine.Parameters.Add(new SqlParameter("@VesselNo", machine.VesselNo));
+                    CreateMachine.Parameters.Add(new SqlParameter("@VesselType", machine.VesselType));
+
+
+                    Console.WriteLine("executing");
+                    CreateMachine.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
         }
 
         public Machine GetMachine(string machineID)
@@ -221,5 +299,6 @@ namespace BioCircleManagementSystem.DataAccess
         {
             throw new NotImplementedException();
         }
+        #endregion Machine
     }
 }
