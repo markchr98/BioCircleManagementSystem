@@ -115,7 +115,47 @@ namespace BioCircleManagementSystem.Model
         {
             //if key not null filter customers
             //return customers
-            throw new NotImplementedException();
+            List<Customer> CustomerList = new List<Customer>();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spSearchKeyword", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", keyword));
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string ID = reader["ID"].ToString();
+                            string customerName = reader["Name"].ToString();
+                            int economicsCustomerNo = Convert.ToInt32(reader["EconomicsCustomerNO"]);
+                            string installationAddress = reader["InstallationAddress"].ToString();
+                            string installationCity = reader["InstallationCity"].ToString();
+                            int installationZipcode = Convert.ToInt32(reader["InstallationZipcode"]);
+
+                            CustomerList.Add(new Customer()
+                            {
+                                CustomerName = customerName,
+                                EconomicsCustomerNumber = economicsCustomerNo,
+                                InstallationAddress = installationAddress,
+                                InstallationCity = installationCity,
+                                InstallationZipcode = installationZipcode
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return CustomerList;
         }
 
         public void UpdateCustomer(string customerID)
@@ -218,7 +258,28 @@ namespace BioCircleManagementSystem.Model
         #region Machine
         public void CreateMachine(Machine machine)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand CreateMachine = new SqlCommand("spDeleteCustomer", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    CreateMachine.Parameters.Add(new SqlParameter("@VesselNo", machine.VesselNo));
+                    CreateMachine.Parameters.Add(new SqlParameter("@VesselType", machine.VesselType));
+
+
+                    Console.WriteLine("executing");
+                    CreateMachine.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
         }
 
         public Machine GetMachine(string machineID)
