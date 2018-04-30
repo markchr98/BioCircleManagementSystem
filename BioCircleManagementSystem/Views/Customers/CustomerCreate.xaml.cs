@@ -89,7 +89,6 @@ namespace BioCircleManagementSystem.Views.Customers
         public void Button_Click_CustomerClear(object sender, RoutedEventArgs e)
         {
             Clear();
-            
         }
 
         private void Clear()

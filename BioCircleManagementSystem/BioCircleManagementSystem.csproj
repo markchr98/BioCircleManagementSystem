@@ -60,7 +60,7 @@
     </Compile>
     <Compile Include="Model\Contact.cs" />
     <Compile Include="Model\Customer.cs" />
-    <Compile Include="Model\DataManager.cs" />
+    <Compile Include="DataAccess\DataManager.cs" />
     <Compile Include="Model\Machine.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
