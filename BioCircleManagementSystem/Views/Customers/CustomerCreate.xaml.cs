@@ -65,7 +65,7 @@ namespace BioCircleManagementSystem.Views.Customers
                     {
                         CustomerViewModel.Instance.NewContact(CP.name.Text, Int32.Parse(CP.mobilePhone.Text), CP.email.Text, Int32.Parse(CP.landline.Text), CustomerID);
                     }
-                    CustomerCreatedNotification CCN1 = new CustomerCreatedNotification();
+                    Notification CCN1 = new Notification();
                     CCN1.Output.Text = "Ny kunde oprettet";
                     CCN1.ShowDialog();
 
@@ -73,14 +73,14 @@ namespace BioCircleManagementSystem.Views.Customers
                 }
                 else
                 {
-                    CustomerCreatedNotification CCN2 = new CustomerCreatedNotification();
+                    Notification CCN2 = new Notification();
                     CCN2.Output.Text = "Venligst tjek at mobil og fastnet \nkun indeholder tal";
                     CCN2.ShowDialog();
                 }              
             }
             else
             {
-                CustomerCreatedNotification CCN3 = new CustomerCreatedNotification();
+                Notification CCN3 = new Notification();
                 CCN3.Output.Text = "Venligst tjek at Zipcode og \nE-conomic kunde nr. kun indeholder tal";
                 CCN3.ShowDialog();
             }

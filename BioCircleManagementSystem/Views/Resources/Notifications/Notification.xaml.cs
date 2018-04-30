@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace BioCircleManagementSystem.Views.Resources.Notifications
 {
     /// <summary>
-    /// Interaction logic for CustomerCreatedNotification.xaml
+    /// Interaction logic for Notification.xaml
     /// </summary>
-    public partial class CustomerCreatedNotification : Window
+    public partial class Notification : Window
     {
-        public CustomerCreatedNotification()
+        public Notification()
         {
             InitializeComponent();
         }
