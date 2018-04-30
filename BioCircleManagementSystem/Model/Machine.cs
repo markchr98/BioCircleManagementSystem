@@ -36,5 +36,16 @@ namespace BioCircleManagementSystem.Model
         {
             DataManager.Instance.GetMachine(machineID);
         }
+
+        // Public constructors
+        public Machine()
+        {
+
+        }
+
+        public Machine(int machineNumber, string machineType)
+        {
+            
+        }
     }
 }

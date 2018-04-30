@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BioCircleManagementSystem.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,7 @@ namespace BioCircleManagementSystem.Views.Storage
 
         private void Button_Click_StorageCreate(object sender, RoutedEventArgs e)
         {
-
+            StorageViewModel.Instance.NewMachine(Int32.Parse(machineNumber.Text), machineType.Text);
         }
     }
 }
