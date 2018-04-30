@@ -10,6 +10,7 @@ namespace BioCircleManagementSystem.Model
 {
     class DataManager
     {
+        #region DataManager
         //private instance
         private static DataManager _instance;
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
@@ -27,7 +28,9 @@ namespace BioCircleManagementSystem.Model
                 return _instance;
             }
         }
+        #endregion DataManager
 
+        #region Order
         public void CreateOrder(Order order)
         {
             throw new NotImplementedException();
@@ -44,7 +47,9 @@ namespace BioCircleManagementSystem.Model
         {
             throw new NotImplementedException();
         }
+        #endregion Order
 
+        #region Customer
         public void CreateCustomer(Customer customer)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -117,7 +122,34 @@ namespace BioCircleManagementSystem.Model
         {
             throw new NotImplementedException();
         }
+        public void DeleteCustomer(string customerID, string machineID)
+        {
+            //Måske skal der laves noget vedd MachineID
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand DeleteCustomer = new SqlCommand("spDeleteCustomer", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
 
+                    DeleteCustomer.Parameters.Add(new SqlParameter("@Customerid", customerID));
+                    DeleteCustomer.Parameters.Add(new SqlParameter("@Machineid", machineID));
+
+                    Console.WriteLine("executing");
+                    DeleteCustomer.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+        }
+        #endregion Customer
+
+        #region Contact
         public void CreateContact(Contact contact)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -157,6 +189,33 @@ namespace BioCircleManagementSystem.Model
             throw new NotImplementedException();
         }
 
+        public void DeleteContact(string customerID)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand DeleteContact = new SqlCommand("spDeleteCustomer", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    DeleteContact.Parameters.Add(new SqlParameter("@Customerid", customerID));
+                    
+
+                    Console.WriteLine("executing");
+                    DeleteContact.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+        }
+        #endregion Contact
+
+        #region Machine
         public void CreateMachine(Machine machine)
         {
             throw new NotImplementedException();
@@ -179,5 +238,6 @@ namespace BioCircleManagementSystem.Model
         {
             throw new NotImplementedException();
         }
+        #endregion Machine
     }
 }
