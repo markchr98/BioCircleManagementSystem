@@ -49,5 +49,17 @@ namespace BioCircleManagementSystem.ViewModels
         {
             DataManager.Instance.CreateContact(new Contact(name, mobilephone, email, landline, customerID));
         }
+
+        public void DeleteCustomer(string customerID, string machineID)
+        {
+            //Måske skal der laves noget vedd MachineID
+            DataManager.Instance.DeleteCustomer(customerID, machineID);
+        }
+
+        public void DeleteContact(string customerID)
+        {
+            DataManager.Instance.DeleteContact(customerID);
+        }
+        
     }
 }
