@@ -14,10 +14,10 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="CustomerName" Grid.Column="0" HorizontalAlignment="Left" Height="23" Margin="0, 0, 0, 0" TextWrapping="Wrap" Text="Virksomhedsnavn" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="EconomicsCustomerNo" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0, 0, 0, 0" TextWrapping="Wrap" Text="E-conomic Kunde nr." VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="InstallationAddress" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="0, 0, 0, 0" TextWrapping="Wrap" Text="Installations Addresse" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="InstallationCity" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="0, 0, 0, 0" TextWrapping="Wrap" Text="Installations By" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="InstallationZipcode" Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="0, 0, 0, 0" TextWrapping="Wrap" Text="Installations Post nr." VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="CustomerName" Grid.Column="0" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="0, 0, 0, 0" TextWrapping="Wrap" Text="Virksomhedsnavn" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="EconomicsCustomerNo" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="0, 0, 0, 0" TextWrapping="Wrap" Text="E-conomic Kunde nr." VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="InstallationAddress" Grid.Column="2" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="0, 0, 0, 0" TextWrapping="Wrap" Text="Installations Addresse" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="InstallationCity" Grid.Column="3" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="0, 0, 0, 0" TextWrapping="Wrap" Text="Installations By" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="InstallationZipcode" Grid.Column="4" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="0, 0, 0, 0" TextWrapping="Wrap" Text="Installations Post nr." VerticalAlignment="Top" Width="120"/>
     </Grid>
 </UserControl>
