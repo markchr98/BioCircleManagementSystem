@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BioCircleManagementSystem.Model;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BioCircleManagementSystem.Model
+namespace BioCircleManagementSystem.DataAccess
 {
     class DataManager
     {
@@ -15,7 +16,10 @@ namespace BioCircleManagementSystem.Model
         private static DataManager _instance;
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
 
-        private DataManager() { }        
+        private DataManager()
+        {
+
+        }        
 
         public static DataManager Instance
         {
