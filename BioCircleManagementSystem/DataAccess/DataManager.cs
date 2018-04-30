@@ -274,7 +274,7 @@ namespace BioCircleManagementSystem.DataAccess
 
                     CreateMachine.Parameters.Add(new SqlParameter("@VesselNo", machine.VesselNo));
                     CreateMachine.Parameters.Add(new SqlParameter("@VesselType", machine.VesselType));
-
+                    //CreateMachine.Parameters.Add(new SqlParameter("@machineNo", machine.machineNo));
 
                     Console.WriteLine("executing");
                     CreateMachine.ExecuteNonQuery();

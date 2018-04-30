@@ -28,7 +28,7 @@ namespace BioCircleManagementSystem.Views.Storage
 
         private void Button_Click_StorageCreate(object sender, RoutedEventArgs e)
         {
-            StorageViewModel.Instance.NewMachine(Int32.Parse(machineNumber.Text), machineType.Text);
+            StorageViewModel.Instance.CreateMachine(Int32.Parse(vesselNo.Text), vesselType.Text, Int32.Parse(machineNo.Text));
         }
     }
 }

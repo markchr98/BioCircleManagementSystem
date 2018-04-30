@@ -19,15 +19,19 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" FontSize="24" Margin="10" FontWeight="Bold" Width="200">Registrer kar</TextBlock>
-        <Label Grid.Row="1" Grid.Column="0" Margin="10,0,0,0">Maskine nummer</Label>
-        <TextBox Grid.Row="2" Grid.Column="0" Margin="10,0,0,0" x:Name="machineNumber"></TextBox>
+        <Label Grid.Row="1" Grid.Column="0" Margin="10,0,0,0">Kar nummer</Label>
+        <TextBox Grid.Row="2" Grid.Column="0" Margin="10,0,0,0" x:Name="vesselNo"></TextBox>
         <Label Grid.Row="3" Grid.Column="0" Margin="10,0,0,0">Kar type</Label>
-        <TextBox Grid.Row="4" Grid.Column="0" Margin="10,0,0,0" x:Name="machineType"></TextBox>
+        <TextBox Grid.Row="4" Grid.Column="0" Margin="10,0,0,0" x:Name="vesselType"></TextBox>
+        <Label Grid.Row="5" Grid.Column="0" Margin="10,0,0,0">Maskine nummer</Label>
+        <TextBox Grid.Row="6" Grid.Column="0" Margin="10,0,0,0" x:Name="machineNo"></TextBox>
         <Button 
             x:Name="StorageCreateButton"
-            Grid.Row="5" 
+            Grid.Row="7" 
             Grid.Column="0" 
             Margin="10,15,0,0" 
             Height="25" 

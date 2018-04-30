@@ -11,8 +11,8 @@ namespace BioCircleManagementSystem.Model
     class Machine
     {
         private string _vesselType;
-        private string _vesselNo;
-        private string _machineNo;
+        private int _vesselNo;
+        private int _machineNo;
         private string _controlBoxNo;
         private string _installationDate;
         private string _wheels;
@@ -21,15 +21,9 @@ namespace BioCircleManagementSystem.Model
         private string _steelTop;
         private string _canBringLiquid;
 
-        public Machine(string vesselNo, string vesselType)
-        {
-            this._vesselNo = vesselNo;
-            this._vesselType = vesselType;
-        }
-
         public string VesselType { get { return _vesselType; } set { _vesselType = value; } }
-        public string VesselNo { get { return _vesselNo; } set { _vesselNo = value; } }
-        public string MachineNo { get { return _machineNo; } set { _machineNo = value; } }
+        public int VesselNo { get { return _vesselNo; } set { _vesselNo = value; } }
+        public int MachineNo { get { return _machineNo; } set { _machineNo = value; } }
         public string ControlBoxNo { get { return _controlBoxNo; } set { _controlBoxNo = value; } }
         public string InstallationDate { get { return _installationDate; } set { _installationDate = value; } }
         public string Wheels { get { return _wheels; } set { _wheels = value; } }
@@ -49,9 +43,11 @@ namespace BioCircleManagementSystem.Model
 
         }
 
-        public Machine(int machineNumber, string machineType)
+        public Machine(int vesselNumber, string vesselType, int machineNo)
         {
-            
+            _vesselNo = vesselNumber;
+            _vesselType = vesselType;
+            _machineNo = machineNo;
         }
     }
 }

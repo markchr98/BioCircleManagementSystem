@@ -29,14 +29,9 @@ namespace BioCircleManagementSystem.ViewModels
             }
         }
 
-        public void CreateMachine(string vesselNo, string vesselType)
+        public void CreateMachine(int vesselNo, string vesselType, int machineNo)
         {
-            DataAccess.DataManager.Instance.CreateMachine(new Machine(vesselNo, vesselType));
-        }
-        public void NewMachine(int machineNumber, string machineType)
-        {
-            DataManager.Instance.CreateCustomer(new Machine(machineNumber, machineType));
-
+            DataAccess.DataManager.Instance.CreateMachine(new Machine(vesselNo, vesselType, machineNo));
         }
     }
 }
