@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BioCircleManagementSystem.Model;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BioCircleManagementSystem.Model
+namespace BioCircleManagementSystem.DataAccess
 {
     class DataManager
     {
@@ -14,7 +15,10 @@ namespace BioCircleManagementSystem.Model
         private static DataManager _instance;
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
 
-        private DataManager() { }        
+        private DataManager()
+        {
+
+        }        
 
         public static DataManager Instance
         {
@@ -108,9 +112,47 @@ namespace BioCircleManagementSystem.Model
 
         public List<Customer> GetCustomers(string keyword)
         {
-            //if key not null filter customers
-            //return customers
-            throw new NotImplementedException();
+            List<Customer> CustomerList = new List<Customer>();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spSearchKeyword", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", keyword));
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string ID = reader["ID"].ToString();
+                            string customerName = reader["Name"].ToString();
+                            int economicsCustomerNo = Convert.ToInt32(reader["EconomicsCustomerNO"]);
+                            string installationAddress = reader["InstallationAddress"].ToString();
+                            string installationCity = reader["InstallationCity"].ToString();
+                            int installationZipcode = Convert.ToInt32(reader["InstallationZipcode"]);
+
+                            CustomerList.Add(new Customer()
+                            {
+                                CustomerName = customerName,
+                                EconomicsCustomerNumber = economicsCustomerNo,
+                                InstallationAddress = installationAddress,
+                                InstallationCity = installationCity,
+                                InstallationZipcode = installationZipcode
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return CustomerList;
         }
 
         public void UpdateCustomer(string customerID)

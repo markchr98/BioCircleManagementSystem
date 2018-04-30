@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BioCircleManagementSystem.ViewModels;
+using BioCircleManagementSystem.Model;
 
 namespace BioCircleManagementSystem.Views.Customers
 {
@@ -23,6 +27,24 @@ namespace BioCircleManagementSystem.Views.Customers
         public CustomerFind()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click_SearchForCustomer(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void RemoveFocus(object sender, RoutedEventArgs e)
+        {
+            SearchBox.Text.Count();
+            if(SearchBox.Text.Count() > 3)
+            {
+                SearchBox.Text = SearchBox.Text;
+            }
+            else
+            {
+                ((TextBox)sender).Text = "";
+            }
         }
     }
 }

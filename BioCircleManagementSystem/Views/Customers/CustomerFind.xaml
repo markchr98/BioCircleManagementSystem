@@ -22,8 +22,8 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-            <TextBox Grid.Row="0" Grid.Column="0" Margin="0, 10, 0, 0" HorizontalAlignment="Right" Height="25" TextWrapping="Wrap" Text="Søg" VerticalAlignment="Top" Width="150"/>
-            <Button Grid.Row="0" Grid.Column="1" Margin="0, 10, 10, 0" Content="Søg" HorizontalAlignment="Right" Height="25" VerticalAlignment="Top" Width="50"/>
+                <TextBox x:Name="SearchBox" Grid.Row="0" Grid.Column="0" Margin="0, 10, 0, 0" HorizontalAlignment="Right" Height="25" TextWrapping="Wrap" Text="Søg" VerticalAlignment="Top" Width="150" GotFocus="RemoveFocus"/>
+                <Button Grid.Row="0" Grid.Column="1" Margin="0,10,10,0" Content="Søg" HorizontalAlignment="Right" Width="50" Height="25" VerticalAlignment="Top" Click="Button_Click_SearchForCustomer"/>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -50,12 +50,13 @@
                 </Border>
             </Grid>
         </Grid>
-         
 
-     
-        <StackPanel x:Name="CustomerList" Grid.Row="1">
-            
-        </StackPanel>
-        
+
+        <Border Grid.Row="1" BorderBrush="#000000" BorderThickness="1,1,0,1" Margin="10,0,0,0">
+            <StackPanel x:Name="CustomerList" Grid.Row="1">
+                
+            </StackPanel>
+        </Border>
+
     </Grid>
 </Page>
