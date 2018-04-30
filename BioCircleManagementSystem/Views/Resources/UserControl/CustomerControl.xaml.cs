@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace BioCircleManagementSystem.Views.Resources.UserControl
 {
     /// <summary>
-    /// Interaction logic for Customer.xaml
+    /// Interaction logic for CustomerControl.xaml
     /// </summary>
-    public partial class Customer : System.Windows.Controls.UserControl
+    public partial class CustomerControl : System.Windows.Controls.UserControl
     {
-        public Customer()
+        public CustomerControl()
         {
             InitializeComponent();
         }
