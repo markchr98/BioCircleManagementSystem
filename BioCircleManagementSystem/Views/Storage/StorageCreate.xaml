@@ -22,9 +22,9 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" FontSize="24" Margin="10" FontWeight="Bold" Width="200">Registrer kar</TextBlock>
         <Label Grid.Row="1" Grid.Column="0" Margin="10,0,0,0">Maskine nummer</Label>
-        <TextBox Grid.Row="2" Grid.Column="0" Margin="10,0,0,0"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="0" Margin="10,0,0,0" x:Name="machineNumber"></TextBox>
         <Label Grid.Row="3" Grid.Column="0" Margin="10,0,0,0">Kar type</Label>
-        <TextBox Grid.Row="4" Grid.Column="0" Margin="10,0,0,0"></TextBox>
+        <TextBox Grid.Row="4" Grid.Column="0" Margin="10,0,0,0" x:Name="machineType"></TextBox>
         <Button 
             x:Name="StorageCreateButton"
             Grid.Row="5" 
@@ -33,6 +33,7 @@
             Height="25" 
             Width="100" 
             HorizontalAlignment="Left" 
-            Content="Opret"/>
+            Content="Opret"
+            Click="Button_Click_StorageCreate"/>
     </Grid>
 </Page>

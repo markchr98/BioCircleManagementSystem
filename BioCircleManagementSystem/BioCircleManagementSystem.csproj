@@ -65,6 +65,7 @@
     <Compile Include="Model\Order.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Compile Include="ViewModels\StorageViewModel.cs" />
     <Compile Include="Views\Customers\CustomerCreate.xaml.cs">
       <DependentUpon>CustomerCreate.xaml</DependentUpon>
     </Compile>

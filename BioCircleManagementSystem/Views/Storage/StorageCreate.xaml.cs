@@ -24,5 +24,10 @@ namespace BioCircleManagementSystem.Views.Storage
         {
             InitializeComponent();
         }
+
+        private void Button_Click_StorageCreate(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
