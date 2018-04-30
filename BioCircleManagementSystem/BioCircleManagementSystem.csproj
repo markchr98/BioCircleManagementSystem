@@ -92,6 +92,12 @@
     <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Storage\StorageCreate.xaml.cs">
+      <DependentUpon>StorageCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Storage\StorageShell.xaml.cs">
+      <DependentUpon>StorageShell.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -122,7 +128,6 @@
   <ItemGroup>
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Service\" />
-    <Folder Include="Views\Storage\" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\Customers\CustomerCreate.xaml">
@@ -158,6 +163,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Shell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Storage\StorageCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Storage\StorageShell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
