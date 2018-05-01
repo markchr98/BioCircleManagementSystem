@@ -1,4 +1,5 @@
 ﻿using BioCircleManagementSystem.ViewModels;
+using BioCircleManagementSystem.Views.Resources.Notifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,20 @@ namespace BioCircleManagementSystem.Views.Storage
 
         private void Button_Click_StorageCreate(object sender, RoutedEventArgs e)
         {
-            StorageViewModel.Instance.CreateMachine(Int32.Parse(vesselNo.Text), vesselType.Text, Int32.Parse(machineNo.Text));
+            StorageViewModel.Instance.CreateMachine(vesselNo.Text, vesselType.Text, machineNo.Text);
+
+            Notification CCN1 = new Notification();
+            CCN1.Output.Text = "Nyt kar oprettet";
+            CCN1.ShowDialog();
+
+            Clear();
+        }
+
+        private void Clear()
+        {
+            vesselNo.Text = "";
+            vesselType.Text = "";
+            machineNo.Text = "";
         }
     }
 }
