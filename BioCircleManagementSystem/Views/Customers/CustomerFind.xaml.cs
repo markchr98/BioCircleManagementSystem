@@ -30,7 +30,7 @@ namespace BioCircleManagementSystem.Views.Customers
             InitializeComponent();
         }
 
-        private void Button_Click_SearchForCustomer(object sender, RoutedEventArgs e)
+        private void Button_Click_GetCustomers(object sender, RoutedEventArgs e)
         {
             CustomerList.Children.Clear();
             foreach(Customer customer in CustomerViewModel.Instance.GetCustomers(SearchBox.Text))
@@ -42,19 +42,6 @@ namespace BioCircleManagementSystem.Views.Customers
                 CC.InstallationCity.Text = customer.InstallationCity;
                 CC.InstallationZipcode.Text = customer.InstallationZipcode.ToString();
                 CustomerList.Children.Add(CC);
-            }
-        }
-
-        public void RemoveFocus(object sender, RoutedEventArgs e)
-        {
-            SearchBox.Text.Count();
-            if(SearchBox.Triggers.Count > 1)
-            {
-                SearchBox.Text = SearchBox.Text;
-            }
-            else
-            {
-                ((TextBox)sender).Text = "";
             }
         }
     }

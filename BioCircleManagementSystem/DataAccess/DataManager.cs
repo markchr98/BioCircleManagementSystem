@@ -92,7 +92,7 @@ namespace BioCircleManagementSystem.DataAccess
         }
 
         //used when creating contacts for new customer
-        public int GetLastCustomerID()
+        public int GetNewestCustomerID()
         {
             int result = -1;
             using (SqlConnection con = new SqlConnection(connectionString))

@@ -24,5 +24,11 @@ namespace BioCircleManagementSystem.Views.Resources.UserControl
         {
             InitializeComponent();
         }
+
+        public void Button_Click_ViewCustomer(object sender, MouseButtonEventArgs e)
+        {
+            ((CustomerControl)sender).CustomerName
+        }
+
     }
 }
