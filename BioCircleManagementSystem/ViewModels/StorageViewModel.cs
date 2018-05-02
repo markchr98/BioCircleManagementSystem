@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BioCircleManagementSystem.DataAccess;
-using BioCircleManagementSystem.Model;
 
 namespace BioCircleManagementSystem.ViewModels
 {
@@ -29,7 +28,7 @@ namespace BioCircleManagementSystem.ViewModels
             }
         }
 
-        public void CreateMachine(int vesselNo, string vesselType, int machineNo)
+        public void CreateMachine(string vesselNo, string vesselType, string machineNo)
         {
             DataAccess.DataManager.Instance.CreateMachine(new Machine(vesselNo, vesselType, machineNo));
         }

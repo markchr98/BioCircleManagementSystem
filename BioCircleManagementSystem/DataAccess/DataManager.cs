@@ -166,7 +166,7 @@ namespace BioCircleManagementSystem.DataAccess
         {
             throw new NotImplementedException();
         }
-        public void DeleteCustomer(string customerID, string machineID)
+        public void DeleteCustomer(string customerID)
         {
             //Måske skal der laves noget vedd MachineID
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -180,8 +180,7 @@ namespace BioCircleManagementSystem.DataAccess
                     };
 
                     DeleteCustomer.Parameters.Add(new SqlParameter("@Customerid", customerID));
-                    DeleteCustomer.Parameters.Add(new SqlParameter("@Machineid", machineID));
-
+           
                     Console.WriteLine("executing");
                     DeleteCustomer.ExecuteNonQuery();
                 }
@@ -267,14 +266,14 @@ namespace BioCircleManagementSystem.DataAccess
                 try
                 {
                     con.Open();
-                    SqlCommand CreateMachine = new SqlCommand("spDeleteCustomer", con)
+                    SqlCommand CreateMachine = new SqlCommand("spCreateMachine", con)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
 
                     CreateMachine.Parameters.Add(new SqlParameter("@VesselNo", machine.VesselNo));
                     CreateMachine.Parameters.Add(new SqlParameter("@VesselType", machine.VesselType));
-                    //CreateMachine.Parameters.Add(new SqlParameter("@machineNo", machine.machineNo));
+                    CreateMachine.Parameters.Add(new SqlParameter("@MachineNo", machine.MachineNo));
 
                     Console.WriteLine("executing");
                     CreateMachine.ExecuteNonQuery();
