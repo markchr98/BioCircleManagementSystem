@@ -126,6 +126,7 @@ namespace BioCircleManagementSystem.Model
             set
             {
                 _economicsCustomerNumber = value;
+                OnPropertyChanged("EconomicsCustomerNumber");
             }
         }
 

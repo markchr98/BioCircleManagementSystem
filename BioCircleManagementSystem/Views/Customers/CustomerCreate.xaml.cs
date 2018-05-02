@@ -124,5 +124,10 @@ namespace BioCircleManagementSystem.Views.Customers
 
             return true;
         }
+
+        private void customerName_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+
+        }
     }
 }
