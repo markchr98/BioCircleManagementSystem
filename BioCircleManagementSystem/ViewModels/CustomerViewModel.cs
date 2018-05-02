@@ -11,12 +11,22 @@ namespace BioCircleManagementSystem.ViewModels
 {
     public class CustomerViewModel:INotifyPropertyChanged
     {
-        public Customer customer;       
+        public Customer _customer = new Customer();       
         private static CustomerViewModel instance;
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
-        //Constructor
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        //Constructor 
         public CustomerViewModel()
         {            
             

@@ -24,9 +24,12 @@ namespace BioCircleManagementSystem.Views.Customers
     /// </summary>
     public partial class CustomerCreate : Page
     {
+        CustomerViewModel customerViewModel;
         public CustomerCreate()
         {
             InitializeComponent();
+            customerViewModel = new CustomerViewModel();
+            DataContext = customerViewModel;
         }
         public void RemoveTextOnFocus(object sender, RoutedEventArgs e)
         {
@@ -42,51 +45,52 @@ namespace BioCircleManagementSystem.Views.Customers
       
         public void Button_Click_CustomerCreate(object sender, RoutedEventArgs e)
         {
-            // Skal som minimum ned i ViewModel 
-            bool isDigitsOnly = false;
-            if (IsDigitsOnly(billingZipcode.Text) && IsDigitsOnly(installationZipcode.Text) && IsDigitsOnly(economicsCustomerNumber.Text))
-            {
+            customerViewModel._customer.CreateCustomer();
+            //// Skal som minimum ned i ViewModel 
+            //bool isDigitsOnly = false;
+            //if (IsDigitsOnly(billingZipcode.Text) && IsDigitsOnly(installationZipcode.Text) && IsDigitsOnly(economicsCustomerNumber.Text))
+            //{
                
-                foreach (ContactPerson CP in contactList.Children)
-                {
-                    if (IsDigitsOnly(CP.mobilePhone.Text) && IsDigitsOnly(CP.landline.Text))
-                    {
-                        isDigitsOnly = true;
-                    }
-                    else
-                    {
-                        isDigitsOnly = false;
-                        break;
-                    }
+            //    foreach (ContactPerson CP in contactList.Children)
+            //    {
+            //        if (IsDigitsOnly(CP.mobilePhone.Text) && IsDigitsOnly(CP.landline.Text))
+            //        {
+            //            isDigitsOnly = true;
+            //        }
+            //        else
+            //        {
+            //            isDigitsOnly = false;
+            //            break;
+            //        }
                     
-                }
-                if (isDigitsOnly)
-                {
-                    CustomerViewModel.Instance.NewCustomer(customerName.Text, billingAddress.Text, Int32.Parse(billingZipcode.Text), billingCity.Text, installationCity.Text, Int32.Parse(installationZipcode.Text), installationCity.Text, Int32.Parse(economicsCustomerNumber.Text));
-                    int CustomerID = CustomerViewModel.Instance.GetLastCustomerID();
-                    foreach (ContactPerson CP in contactList.Children)
-                    {
-                        CustomerViewModel.Instance.NewContact(CP.name.Text, Int32.Parse(CP.mobilePhone.Text), CP.email.Text, Int32.Parse(CP.landline.Text), CustomerID);
-                    }
-                    Notification CCN1 = new Notification();
-                    CCN1.Output.Text = "Ny kunde oprettet";
-                    CCN1.ShowDialog();
+            //    }
+            //    if (isDigitsOnly)
+            //    {
+            //        CustomerViewModel.Instance.NewCustomer(customerName.Text, billingAddress.Text, Int32.Parse(billingZipcode.Text), billingCity.Text, installationCity.Text, Int32.Parse(installationZipcode.Text), installationCity.Text, Int32.Parse(economicsCustomerNumber.Text));
+            //        int CustomerID = CustomerViewModel.Instance.GetNewestCustomerID();
+            //        foreach (ContactPerson CP in contactList.Children)
+            //        {
+            //            CustomerViewModel.Instance.NewContact(CP.name.Text, Int32.Parse(CP.mobilePhone.Text), CP.email.Text, Int32.Parse(CP.landline.Text), CustomerID);
+            //        }
+            //        Notification CCN1 = new Notification();
+            //        CCN1.Output.Text = "Ny kunde oprettet";
+            //        CCN1.ShowDialog();
 
-                    Clear();
-                }
-                else
-                {
-                    Notification CCN2 = new Notification();
-                    CCN2.Output.Text = "Venligst tjek at mobil og fastnet \nkun indeholder tal";
-                    CCN2.ShowDialog();
-                }              
-            }
-            else
-            {
-                Notification CCN3 = new Notification();
-                CCN3.Output.Text = "Venligst tjek at Zipcode og \nE-conomic kunde nr. kun indeholder tal";
-                CCN3.ShowDialog();
-            }
+            //        Clear();
+            //    }
+            //    else
+            //    {
+            //        Notification CCN2 = new Notification();
+            //        CCN2.Output.Text = "Venligst tjek at mobil og fastnet \nkun indeholder tal";
+            //        CCN2.ShowDialog();
+            //    }              
+            //}
+            //else
+            //{
+            //    Notification CCN3 = new Notification();
+            //    CCN3.Output.Text = "Venligst tjek at Zipcode og \nE-conomic kunde nr. kun indeholder tal";
+            //    CCN3.ShowDialog();
+            //}
         }
 
         public void Button_Click_CustomerClear(object sender, RoutedEventArgs e)

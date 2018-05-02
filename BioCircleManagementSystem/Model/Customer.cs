@@ -25,66 +25,114 @@ namespace BioCircleManagementSystem.Model
         public List<Contact> contactList;
 
         public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
         //Public properties
         public string CustomerName
         {
             get { return _customerName; }
-            set { _customerName = value; }
+            set
+            {
+                _customerName = value;
+                OnPropertyChanged("CustomerName");
+            }
         }
 
         public int CustomerID
         {
             get { return _customerID; }
-            set { _customerID = value; }
+            set
+            {
+                _customerID = value;
+                OnPropertyChanged("CustomerID");
+            }
         }
         public string BillingAddress
         {
             get { return _billingAddress; }
-            set { _billingAddress = value; }
+            set
+            {
+                _billingAddress = value;
+                OnPropertyChanged("BillingAddress");
+            }
         }
         public int BillingZipcode
         {
             get { return _billingZipcode; }
-            set { _billingZipcode = value; }
+            set
+            {
+                _billingZipcode = value;
+                OnPropertyChanged("BillingZipcode");
+            }
         }
         public string BillingCity
         {
             get { return _billingCity; }
-            set { _billingCity = value; }
+            set
+            {
+                _billingCity = value;
+                OnPropertyChanged("BillingCity");
+            }
         }
         public string InstallationAddress
         {
             get { return _installationAddress; }
-            set { _installationAddress = value; }
+            set
+            {
+                _installationAddress = value;
+                OnPropertyChanged("InstallationAddress");
+            }
         }
         public int InstallationZipcode
         {
             get { return _installationZipcode; }
-            set { _installationZipcode = value; }
+            set
+            {
+                _installationZipcode = value;
+                OnPropertyChanged("InstallationZipcode");
+            }
         }
         public string InstallationCity
         {
             get { return _installationCity; }
-            set { _installationCity = value; }
+            set
+            {
+                _installationCity = value;
+                OnPropertyChanged("InstallationCity");
+            }
         }
 
         public List<Contact> Contacts
         {
             get { return _contacts; }
-            set { _contacts = value; }
+            set
+            {
+                _contacts = value;
+                OnPropertyChanged("Contacts");
+            }
         }
 
         public int EconomicsCustomerNumber
         {
             get { return _economicsCustomerNumber; }
-            set { _economicsCustomerNumber = value; }
+            set
+            {
+                _economicsCustomerNumber = value;
+            }
         }
 
         //Public constructors
         public Customer()
         {
-
+            contactList = new List<Contact>();
         }
         public Customer(string customerName, string billingAddress, int billingZipcode, string billingCity, string installationAddress, int installationZipcode, string installationCity, int economicsCustomerNumber)
         {

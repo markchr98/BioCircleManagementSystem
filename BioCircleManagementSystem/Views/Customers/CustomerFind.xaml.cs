@@ -32,7 +32,7 @@ namespace BioCircleManagementSystem.Views.Customers
 
         // Data Binding
         // Bindes til sin egen instance af ViewModel
-        private void Button_Click_SearchForCustomer(object sender, RoutedEventArgs e)
+        private void Button_Click_GetCustomers(object sender, RoutedEventArgs e)
         {
             CustomerList.Children.Clear();
             foreach(Customer customer in CustomerViewModel.Instance.GetCustomers(SearchBox.Text))
