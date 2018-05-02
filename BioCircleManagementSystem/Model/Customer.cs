@@ -1,12 +1,14 @@
-﻿using System;
+﻿using BioCircleManagementSystem.DataAccess;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BioCircleManagementSystem.Model
 {
-    public class Customer
+    public class Customer : INotifyPropertyChanged
     {
          //Private fields
         private string _customerName;
@@ -19,6 +21,10 @@ namespace BioCircleManagementSystem.Model
         private string _installationCity;
         private List<Contact> _contacts;
         private int _economicsCustomerNumber;
+
+        public List<Contact> contactList;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         //Public properties
         public string CustomerName
@@ -90,6 +96,15 @@ namespace BioCircleManagementSystem.Model
             _installationZipcode = installationZipcode;
             _installationCity = installationCity;
             _economicsCustomerNumber = economicsCustomerNumber;
+        }
+
+        public void CreateCustomer()
+        {
+            DataManager.Instance.CreateCustomer(this);            
+            foreach(Contact c in contactList)
+            {
+                c.CreateContact();                
+            }
         }
     }
 }

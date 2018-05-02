@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BioCircleManagementSystem.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,6 +51,13 @@ namespace BioCircleManagementSystem.Model
             _email = email;
             _landline = landline;
             _customerID = customerID;
+        }
+
+        internal void CreateContact()
+        {
+            int customerID = DataManager.Instance.GetNewestCustomerID();
+            CustomerID = customerID;
+            DataManager.Instance.CreateContact(this);
         }
     }
 }

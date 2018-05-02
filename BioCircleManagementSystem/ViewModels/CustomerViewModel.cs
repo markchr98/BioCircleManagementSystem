@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +9,15 @@ using BioCircleManagementSystem.Model;
 
 namespace BioCircleManagementSystem.ViewModels
 {
-    public class CustomerViewModel
+    public class CustomerViewModel:INotifyPropertyChanged
     {
+        public Customer customer;       
         private static CustomerViewModel instance;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         //Constructor
-        private CustomerViewModel()
+        public CustomerViewModel()
         {            
             
         }
@@ -37,13 +42,7 @@ namespace BioCircleManagementSystem.ViewModels
         public List<Customer> GetCustomers(string keyword)
         {
             return DataManager.Instance.GetCustomers(keyword);
-        }
-
-        //used when creating contacts for new customer
-        public int GetLastCustomerID()
-        {
-           return DataManager.Instance.GetLastCustomerID();
-        }
+        }        
 
         public void NewContact(string name, int mobilephone, string email, int landline, int customerID)
         {
