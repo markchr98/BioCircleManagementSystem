@@ -27,8 +27,10 @@ namespace BioCircleManagementSystem.Views.Storage
             InitializeComponent();
         }
 
+
         private void Button_Click_StorageCreate(object sender, RoutedEventArgs e)
         {
+            //Parameter skal bindes
             StorageViewModel.Instance.CreateMachine(vesselNo.Text, vesselType.Text, machineNo.Text);
 
             Notification CCN1 = new Notification();

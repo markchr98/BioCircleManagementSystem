@@ -30,6 +30,8 @@ namespace BioCircleManagementSystem.Views.Customers
             InitializeComponent();
         }
 
+        // Data Binding
+        // Bindes til sin egen instance af ViewModel
         private void Button_Click_SearchForCustomer(object sender, RoutedEventArgs e)
         {
             CustomerList.Children.Clear();

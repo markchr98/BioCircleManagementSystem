@@ -34,12 +34,15 @@ namespace BioCircleManagementSystem.Views.Customers
         }
 
         public void Button_Click_AddContact(object sender, RoutedEventArgs e)
-        {            
+        {   
+            //contactlist er en stack panel
+            // new ContactPerson er UserControl
             contactList.Children.Add(new ContactPerson());
         }
       
         public void Button_Click_CustomerCreate(object sender, RoutedEventArgs e)
         {
+            // Skal som minimum ned i ViewModel 
             bool isDigitsOnly = false;
             if (IsDigitsOnly(billingZipcode.Text) && IsDigitsOnly(installationZipcode.Text) && IsDigitsOnly(economicsCustomerNumber.Text))
             {
@@ -105,6 +108,7 @@ namespace BioCircleManagementSystem.Views.Customers
             contactList.Children.Clear();
         }
 
+        // minimum Viewmodel Lag
         //used to ensure we can parse to int
         bool IsDigitsOnly(string str)
         {

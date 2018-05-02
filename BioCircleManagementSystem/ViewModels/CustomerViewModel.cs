@@ -9,7 +9,7 @@ using BioCircleManagementSystem.Model;
 namespace BioCircleManagementSystem.ViewModels
 {
     public class CustomerViewModel
-    {       
+    {
         private static CustomerViewModel instance;
         //Constructor
         private CustomerViewModel()
