@@ -1,6 +1,7 @@
 ﻿using BioCircleManagementSystem.DataAccess;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -8,33 +9,142 @@ using System.Threading.Tasks;
 
 namespace BioCircleManagementSystem.Model
 {
-    class Machine
+    public class Machine : INotifyPropertyChanged, IDataErrorInfo
     {
-        private string _vesselType;
-        private string _vesselNo;
-        private string _machineNo;
-        private string _controlBoxNo;
-        private string _installationDate;
-        private string _wheels;
-        private string _inoxGrid;
-        private string _lid;
-        private string _steelTop;
-        private string _canBringLiquid;
+        // Define the private variables of this model
+        private string vesselType;
+        private string vesselNo;
+        private string machineNo;
+        private string controlBoxNo;
+        private string installationDate;
+        private string wheels;
+        private string inoxGrid;
+        private string lid;
+        private string steelTop;
+        private string canBringLiquid;
 
-        public string VesselType { get { return _vesselType; } set { _vesselType = value; } }
-        public string VesselNo { get { return _vesselNo; } set { _vesselNo = value; } }
-        public string MachineNo { get { return _machineNo; } set { _machineNo = value; } }
-        public string ControlBoxNo { get { return _controlBoxNo; } set { _controlBoxNo = value; } }
-        public string InstallationDate { get { return _installationDate; } set { _installationDate = value; } }
-        public string Wheels { get { return _wheels; } set { _wheels = value; } }
-        public string InoxGrid { get { return _inoxGrid; } set { _inoxGrid = value; } }
-        public string Lid { get { return _lid; } set { _lid = value; } }
-        public string SteelTop { get { return _steelTop; } set { _steelTop = value; } }
-        public string CanBringLiquid { get { return _canBringLiquid; } set { _canBringLiquid = value; } }
+        // Required when using data binding
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public void GetMachine(string machineID)
+        // Define the public accessable variables of this model
+        public string VesselType {
+            get
+            {
+                return vesselType;
+            }
+            set
+            {
+                vesselType = value;
+                OnPropertyChanged("VesselType");
+            }
+        }
+        public string VesselNo
         {
-            DataManager.Instance.GetMachine(machineID);
+            get
+            {
+                return vesselNo;
+            }
+            set
+            {
+                vesselNo = value;
+                OnPropertyChanged("VesselNo");
+            }
+        }
+        public string MachineNo
+        {
+            get
+            {
+                return machineNo;
+            }
+            set
+            {
+                machineNo = value;
+                OnPropertyChanged("machineNo");
+            }
+        }
+        public string ControlBoxNo
+        {
+            get
+            {
+                return controlBoxNo;
+            }
+            set
+            {
+                controlBoxNo = value;
+                OnPropertyChanged("ControlBoxNo");
+            }
+        }
+        public string InstallationDate
+        {
+            get
+            {
+                return installationDate;
+            }
+            set
+            {
+                installationDate = value;
+                OnPropertyChanged("InstallationDate");
+            }
+        }
+        public string Wheels
+        {
+            get
+            {
+                return wheels;
+            }
+            set
+            {
+                wheels = value;
+                OnPropertyChanged("Wheels");
+            }
+        }
+        public string InoxGrid
+        {
+            get
+            {
+                return inoxGrid;
+            }
+            set
+            {
+                inoxGrid = value;
+                OnPropertyChanged("InoxGrid");
+            }
+        }
+        public string Lid
+        {
+            get
+            {
+                return lid;
+            }
+            set
+            {
+                lid = value;
+                OnPropertyChanged("Lid");
+            }
+        }
+        public string SteelTop
+        {
+            get
+            {
+                return steelTop;
+            }
+            set
+            {
+                steelTop = value;
+                OnPropertyChanged("SteelTop");
+            }
+        }
+        public string CanBringLiquid
+        {
+            get
+            {
+                return canBringLiquid;
+            }
+            set
+            {
+                canBringLiquid = value;
+                OnPropertyChanged("CanBringLiquid");
+            }
         }
 
         // Public constructors
@@ -42,12 +152,77 @@ namespace BioCircleManagementSystem.Model
         {
 
         }
-
-        public Machine(string vesselNumber, string vesselType, string machineNo)
+        public Machine(string vesselType, string vesselNo, string machineNo)
         {
-            _vesselNo = vesselNumber;
-            _vesselType = vesselType;
-            _machineNo = machineNo;
+            VesselType = vesselType;
+            VesselNo = vesselNo;
+            MachineNo = machineNo;
         }
+
+        #region INotifyPropertyChanged Members
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+        }
+        #endregion
+
+        #region IDataErrorInfo Members
+
+        public string Error
+        {
+            get;
+            private set;
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                Error = null;
+ 
+                    if (String.IsNullOrWhiteSpace(VesselNo))
+                    {
+                        Error = "VesselNo must be defined!";
+                    }
+                    if (String.IsNullOrWhiteSpace(VesselType))
+                    {
+                        Error = "Vesseltype must be defined!";
+                    }
+                    if (String.IsNullOrWhiteSpace(MachineNo))
+                    {
+                        Error = "MachineNo must be defined!";
+                    }
+                return Error;
+            }
+        }
+
+        //public string this[string columnName]
+        //{
+        //    get
+        //    {
+        //        string Errors = String.Empty;
+        //        if (columnName.Equals("VesselNo"))
+        //        {
+        //            if (String.IsNullOrWhiteSpace(VesselNo))
+        //                Errors = "Du skal angive et vesselNo.";
+        //        }
+        //        else if (columnName.Equals("VesselType"))
+        //        {
+        //            if (string.IsNullOrWhiteSpace(VesselType))
+        //                Errors = "Du skal angive vesselType.";
+        //        }
+        //        else if (columnName.Equals("MachineNo"))
+        //        {
+        //            if (string.IsNullOrWhiteSpace(MachineNo))
+        //                Errors = "Du skal angive et maskine nummer.";
+        //        }
+        //        else
+        //        {
+        //            Errors = String.Empty;
+        //        }  
+        //        return Errors;
+        //    }
+        //}
+        #endregion
     }
 }

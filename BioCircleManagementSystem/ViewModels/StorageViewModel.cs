@@ -5,27 +5,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BioCircleManagementSystem.DataAccess;
+using System.Windows.Input;
+using BioCircleManagementSystem.Commands.Storage;
 
 namespace BioCircleManagementSystem.ViewModels
 {
-    class StorageViewModel
+    internal class StorageViewModel
     {
-        private static StorageViewModel instance;
+        public Machine machine { get; set; }
         //Constructor
-        private StorageViewModel()
+        public StorageViewModel()
         {
-
+            machine = new Machine();
+            CreateCommand = new CreateMachineCommand(this);
         }
-        public static StorageViewModel Instance
+
+        // Gets the costumer instance (this is public accessable)
+        public Machine Machine
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new StorageViewModel();
-                }
-                return instance;
+                return machine;
             }
+        }
+
+        public ICommand CreateCommand
+        {
+            get;
+            private set;
         }
 
         public void CreateMachine(string vesselNo, string vesselType, string machineNo)

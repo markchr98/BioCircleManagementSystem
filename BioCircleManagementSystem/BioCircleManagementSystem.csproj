@@ -58,6 +58,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Commands\Storage\CreateMachineCommand.cs" />
+    <Compile Include="Commands\Storage\UpdateMachineCommand.cs" />
     <Compile Include="Model\Contact.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="DataAccess\DataManager.cs" />
