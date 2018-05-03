@@ -137,10 +137,10 @@ namespace BioCircleManagementSystem.DataAccess
                         {
                             string ID = reader["ID"].ToString();
                             string customerName = reader["Name"].ToString();
-                            int economicsCustomerNo = Convert.ToInt32(reader["EconomicsCustomerNO"]);
+                            string economicsCustomerNo = reader["EconomicsCustomerNO"].ToString();
                             string installationAddress = reader["InstallationAddress"].ToString();
                             string installationCity = reader["InstallationCity"].ToString();
-                            int installationZipcode = Convert.ToInt32(reader["InstallationZipcode"]);
+                            string installationZipcode = reader["InstallationZipcode"].ToString();
 
                             CustomerList.Add(new Customer()
                             {

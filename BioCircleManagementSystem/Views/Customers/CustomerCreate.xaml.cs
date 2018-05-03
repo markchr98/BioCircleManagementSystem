@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using BioCircleManagementSystem.Views.Resources.UserControl;
 using BioCircleManagementSystem.Views.Resources.Notifications;
 using BioCircleManagementSystem.ViewModels;
-
+using BioCircleManagementSystem.Model;
 
 namespace BioCircleManagementSystem.Views.Customers
 {
@@ -24,11 +24,11 @@ namespace BioCircleManagementSystem.Views.Customers
     /// </summary>
     public partial class CustomerCreate : Page
     {
-        CustomerViewModel customerViewModel;
+        CustomerCreateViewModel customerViewModel;
         public CustomerCreate()
         {
             InitializeComponent();
-            customerViewModel = new CustomerViewModel();
+            customerViewModel = new CustomerCreateViewModel();
             DataContext = customerViewModel;
         }
         public void RemoveTextOnFocus(object sender, RoutedEventArgs e)
@@ -37,15 +37,25 @@ namespace BioCircleManagementSystem.Views.Customers
         }
 
         public void Button_Click_AddContact(object sender, RoutedEventArgs e)
-        {   
+        {
+            customerViewModel.AddContact();
             //contactlist er en stack panel
             // new ContactPerson er UserControl
-            contactList.Children.Add(new ContactPerson());
+            //contactList.Children.Add(new ContactPerson());
+        }
+
+        public void Button_Click_RemoveContact(object sender, RoutedEventArgs e)
+        {
+            Button contact = ((Button)sender);
+            if (contact.DataContext is Contact deleteme)
+            {
+                customerViewModel.RemoveContact(deleteme);
+            }
         }
       
         public void Button_Click_CustomerCreate(object sender, RoutedEventArgs e)
         {
-            customerViewModel._customer.CreateCustomer();
+            customerViewModel.CreateCustomer();
             //// Skal som minimum ned i ViewModel 
             //bool isDigitsOnly = false;
             //if (IsDigitsOnly(billingZipcode.Text) && IsDigitsOnly(installationZipcode.Text) && IsDigitsOnly(economicsCustomerNumber.Text))
@@ -100,16 +110,7 @@ namespace BioCircleManagementSystem.Views.Customers
 
         private void Clear()
         {
-            customerName.Text = "Virksomhedsnavn";
-            billingAddress.Text = "Adresse";
-            billingCity.Text = "By";
-            billingZipcode.Text = "Post nr.";
-            installationAddress.Text = "Adresse";
-            installationCity.Text = "By";
-            installationZipcode.Text = "Post nr.";
-            economicsCustomerNumber.Text = "E-conomic kunde nr.";
-
-            contactList.Children.Clear();
+            customerViewModel.ClearCustomer();
         }
 
         // minimum Viewmodel Lag

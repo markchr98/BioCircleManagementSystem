@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10" TextWrapping="Wrap" Text="Kontakt Person" VerticalAlignment="Top"/>
-        <TextBox x:Name="name" Grid.Row="1" HorizontalAlignment="Left" Margin="0,0,0,10" TextWrapping="Wrap" Text="Navn" VerticalAlignment="Top" Width="300" GotFocus="RemoveTextOnFocus"/>
+        <TextBox x:Name="name" Grid.Row="1" HorizontalAlignment="Left" Margin="0,0,0,10" TextWrapping="Wrap" Text="{Binding Path=Name}" VerticalAlignment="Top" Width="300" GotFocus="RemoveTextOnFocus"/>
         <TextBox x:Name="mobilePhone"  Grid.Row="3" HorizontalAlignment="Left" Margin="0,0,0,10" TextWrapping="Wrap" Text="Mobil Tlf." VerticalAlignment="Top" Width="140" GotFocus="RemoveTextOnFocus"/>
         <TextBox x:Name="email" Grid.Row="2" HorizontalAlignment="Left" Margin="0,0,0,10" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="300" GotFocus="RemoveTextOnFocus"/>
         <TextBox x:Name="landline" Grid.Row="3" HorizontalAlignment="Left" Margin="160,0,0,10" TextWrapping="Wrap" Text="Fastnet Tlf." VerticalAlignment="Top" Width="140" GotFocus="RemoveTextOnFocus"/>

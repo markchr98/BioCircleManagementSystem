@@ -65,7 +65,8 @@
     <Compile Include="DataAccess\DataManager.cs" />
     <Compile Include="Model\Machine.cs" />
     <Compile Include="Model\Order.cs" />
-    <Compile Include="ViewModels\CustomerViewModel.cs" />
+    <Compile Include="ViewModels\CustomerFindViewModel.cs" />
+    <Compile Include="ViewModels\CustomerCreateViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\StorageViewModel.cs" />
     <Compile Include="Views\Customers\CustomerCreate.xaml.cs">

@@ -25,39 +25,20 @@ namespace BioCircleManagementSystem.Views.Customers
     /// </summary>
     public partial class CustomerFind : Page
     {
+        CustomerFindViewModel customerFindViewModel;
         public CustomerFind()
         {
             InitializeComponent();
+            customerFindViewModel = new CustomerFindViewModel();
+            DataContext = customerFindViewModel;
         }
 
         // Data Binding
         // Bindes til sin egen instance af ViewModel
-        private void Button_Click_GetCustomers(object sender, RoutedEventArgs e)
+        private void Button_Click_SearchCustomers(object sender, RoutedEventArgs e)
         {
-            CustomerList.Children.Clear();
-            foreach(Customer customer in CustomerViewModel.Instance.GetCustomers(SearchBox.Text))
-            {
-                CustomerControl CC = new CustomerControl();
-                CC.CustomerName.Text = customer.CustomerName;
-                CC.EconomicsCustomerNo.Text = customer.EconomicsCustomerNumber.ToString();
-                CC.InstallationAddress.Text = customer.InstallationAddress;
-                CC.InstallationCity.Text = customer.InstallationCity;
-                CC.InstallationZipcode.Text = customer.InstallationZipcode.ToString();
-                CustomerList.Children.Add(CC);
-            }
+            customerFindViewModel.SearchCustomers(SearchBox.Text);
         }
-
-        public void RemoveFocus(object sender, RoutedEventArgs e)
-        {
-            SearchBox.Text.Count();
-            if(SearchBox.Triggers.Count > 1)
-            {
-                SearchBox.Text = SearchBox.Text;
-            }
-            else
-            {
-                ((TextBox)sender).Text = "";
-            }
-        }
+        
     }
 }

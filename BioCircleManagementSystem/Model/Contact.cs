@@ -77,6 +77,11 @@ namespace BioCircleManagementSystem.Model
         }
 
         //Public constructor
+        public Contact()
+        {
+
+         }
+
         public Contact(string name, int mobilePhone, string email, int landline, int customerID)
         {
             _name = name;
