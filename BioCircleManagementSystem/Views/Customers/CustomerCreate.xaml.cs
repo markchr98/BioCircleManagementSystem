@@ -24,12 +24,12 @@ namespace BioCircleManagementSystem.Views.Customers
     /// </summary>
     public partial class CustomerCreate : Page
     {
-        CustomerCreateViewModel customerViewModel;
+        CustomerCreateViewModel customerCreateViewModel;
         public CustomerCreate()
         {
             InitializeComponent();
-            customerViewModel = new CustomerCreateViewModel();
-            DataContext = customerViewModel;
+            customerCreateViewModel = new CustomerCreateViewModel();
+            DataContext = customerCreateViewModel;
         }
         public void RemoveTextOnFocus(object sender, RoutedEventArgs e)
         {
@@ -38,7 +38,7 @@ namespace BioCircleManagementSystem.Views.Customers
 
         public void Button_Click_AddContact(object sender, RoutedEventArgs e)
         {
-            customerViewModel.AddContact();
+            customerCreateViewModel.AddContact();
             //contactlist er en stack panel
             // new ContactPerson er UserControl
             //contactList.Children.Add(new ContactPerson());
@@ -49,13 +49,13 @@ namespace BioCircleManagementSystem.Views.Customers
             Button contact = ((Button)sender);
             if (contact.DataContext is Contact deleteme)
             {
-                customerViewModel.RemoveContact(deleteme);
+                customerCreateViewModel.RemoveContact(deleteme);
             }
         }
       
         public void Button_Click_CustomerCreate(object sender, RoutedEventArgs e)
         {
-            customerViewModel.CreateCustomer();
+            customerCreateViewModel.CreateCustomer();
             //// Skal som minimum ned i ViewModel 
             //bool isDigitsOnly = false;
             //if (IsDigitsOnly(billingZipcode.Text) && IsDigitsOnly(installationZipcode.Text) && IsDigitsOnly(economicsCustomerNumber.Text))
@@ -110,7 +110,7 @@ namespace BioCircleManagementSystem.Views.Customers
 
         private void Clear()
         {
-            customerViewModel.ClearCustomer();
+            customerCreateViewModel.ClearCustomer();
         }
 
         // minimum Viewmodel Lag

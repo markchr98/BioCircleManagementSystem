@@ -13,6 +13,8 @@ namespace BioCircleManagementSystem.ViewModels
     public class CustomerCreateViewModel:INotifyPropertyChanged
     {
         public Customer Customer { get; set; }
+
+
         public ObservableCollection<Contact> Contacts { get; set; }        
         
         public event PropertyChangedEventHandler PropertyChanged;
