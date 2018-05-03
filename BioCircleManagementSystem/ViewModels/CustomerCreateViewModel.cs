@@ -10,12 +10,12 @@ using BioCircleManagementSystem.Model;
 
 namespace BioCircleManagementSystem.ViewModels
 {
-    public class CustomerViewModel:INotifyPropertyChanged
+    public class CustomerCreateViewModel:INotifyPropertyChanged
     {
         public Customer Customer { get; set; }
         public ObservableCollection<Contact> Contacts { get; set; }
 
-        private static CustomerViewModel instance;
+        private static CustomerCreateViewModel instance;
         
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -30,18 +30,18 @@ namespace BioCircleManagementSystem.ViewModels
         }
 
         //Constructor 
-        public CustomerViewModel()
+        public CustomerCreateViewModel()
         {            
             Customer = new Customer();
             Contacts = new ObservableCollection<Contact>();
         }
-        public static CustomerViewModel Instance
+        public static CustomerCreateViewModel Instance
         {
             get
             {
                 if(instance == null)
                 {
-                    instance = new CustomerViewModel();
+                    instance = new CustomerCreateViewModel();
                 }                
                 return instance;
             }
@@ -90,9 +90,18 @@ namespace BioCircleManagementSystem.ViewModels
             DataManager.Instance.DeleteContact(customerID);
         }
 
-        internal void ClearCustomer()
+        public void ClearCustomer()
         {
-            throw new NotImplementedException();
+            Customer.CustomerName = "";
+            Customer.EconomicsCustomerNumber = "";
+            Customer.BillingAddress = "";
+            Customer.BillingCity = "";
+            Customer.BillingZipcode = "";
+            Customer.InstallationAddress = "";
+            Customer.InstallationCity = "";
+            Customer.InstallationZipcode = "";
+            Contacts.Clear();
+            
         }
     }
 }

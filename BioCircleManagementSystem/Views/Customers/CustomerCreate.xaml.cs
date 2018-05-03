@@ -24,11 +24,11 @@ namespace BioCircleManagementSystem.Views.Customers
     /// </summary>
     public partial class CustomerCreate : Page
     {
-        CustomerViewModel customerViewModel;
+        CustomerCreateViewModel customerViewModel;
         public CustomerCreate()
         {
             InitializeComponent();
-            customerViewModel = new CustomerViewModel();
+            customerViewModel = new CustomerCreateViewModel();
             DataContext = customerViewModel;
         }
         public void RemoveTextOnFocus(object sender, RoutedEventArgs e)
