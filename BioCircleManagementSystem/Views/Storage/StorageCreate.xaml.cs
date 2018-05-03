@@ -25,26 +25,7 @@ namespace BioCircleManagementSystem.Views.Storage
         public StorageCreate()
         {
             InitializeComponent();
-        }
-
-
-        private void Button_Click_StorageCreate(object sender, RoutedEventArgs e)
-        {
-            //Parameter skal bindes
-            StorageViewModel.Instance.CreateMachine(vesselNo.Text, vesselType.Text, machineNo.Text);
-
-            Notification CCN1 = new Notification();
-            CCN1.Output.Text = "Nyt kar oprettet";
-            CCN1.ShowDialog();
-
-            Clear();
-        }
-
-        private void Clear()
-        {
-            vesselNo.Text = "";
-            vesselType.Text = "";
-            machineNo.Text = "";
+            DataContext = new StorageViewModel();
         }
     }
 }

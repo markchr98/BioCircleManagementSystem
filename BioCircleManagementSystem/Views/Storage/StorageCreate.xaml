@@ -7,6 +7,17 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="StorageCreate">
+    <Page.Resources>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                    Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                    Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -24,11 +35,11 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" FontSize="24" Margin="10" FontWeight="Bold" Width="200">Registrer kar</TextBlock>
         <Label Grid.Row="1" Grid.Column="0" Margin="10,0,0,0">Kar nummer</Label>
-        <TextBox Grid.Row="2" Grid.Column="0" Margin="10,0,0,0" x:Name="vesselNo"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="0" Margin="10,0,0,0" x:Name="VesselNo" Text="{Binding Machine.VesselNo, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
         <Label Grid.Row="3" Grid.Column="0" Margin="10,0,0,0">Kar type</Label>
-        <TextBox Grid.Row="4" Grid.Column="0" Margin="10,0,0,0" x:Name="vesselType"></TextBox>
+        <TextBox Grid.Row="4" Grid.Column="0" Margin="10,0,0,0" x:Name="VesselType" Text="{Binding Machine.VesselType, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
         <Label Grid.Row="5" Grid.Column="0" Margin="10,0,0,0">Maskine nummer</Label>
-        <TextBox Grid.Row="6" Grid.Column="0" Margin="10,0,0,0" x:Name="machineNo"></TextBox>
+        <TextBox Grid.Row="6" Grid.Column="0" Margin="10,0,0,0" x:Name="MachineNo" Text="{Binding Machine.MachineNo, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
         <Button 
             x:Name="StorageCreateButton"
             Grid.Row="7" 
@@ -38,6 +49,6 @@
             Width="100" 
             HorizontalAlignment="Left" 
             Content="Opret"
-            Click="Button_Click_StorageCreate"/>
+            Command="{Binding CreateCommand}"/>
     </Grid>
 </Page>
