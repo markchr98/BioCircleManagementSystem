@@ -57,7 +57,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <TextBlock FontSize="20" Margin="0,0,0,10" FontWeight="Bold">Kontakt personer</TextBlock>
-            <ListBox x:Name="contacts" Grid.Row="1" ItemsSource="{Binding Path = Contacts}" ScrollViewer.CanContentScroll="False" Margin="0,0,0,0" MaxHeight="500" BorderBrush="White">
+            <ListBox x:Name="contacts" Grid.Row="1" ItemsSource="{Binding Path = Customer.Contacts}" ScrollViewer.CanContentScroll="False" Margin="0,0,0,0" MaxHeight="500" BorderBrush="White">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border BorderThickness="1" BorderBrush="Gray">

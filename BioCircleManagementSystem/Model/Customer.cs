@@ -20,7 +20,7 @@ namespace BioCircleManagementSystem.Model
         private string _installationAddress;
         private string _installationZipcode;
         private string _installationCity;
-        private List<Contact> _contacts;
+        private ObservableCollection<Contact> _contacts;
         private string _economicsCustomerNumber;
 
         
@@ -34,6 +34,16 @@ namespace BioCircleManagementSystem.Model
             {
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        public void RemoveContact(Contact contact)
+        {
+            Contacts.Remove(contact);
+        }
+
+        public void AddContact(Contact contact)
+        {
+            Contacts.Add(contact);
         }
 
         //Public properties
@@ -111,12 +121,13 @@ namespace BioCircleManagementSystem.Model
             }
         }
 
-        public List<Contact> Contacts
+        public ObservableCollection<Contact> Contacts
         {
             get { return _contacts; }
             set
             {
-                _contacts = value;                
+                _contacts = value;
+                OnPropertyChanged("Contacts");
             }
         }
 
@@ -128,12 +139,12 @@ namespace BioCircleManagementSystem.Model
                 _economicsCustomerNumber = value;
                 OnPropertyChanged("EconomicsCustomerNumber");
             }
-        }
+        }      
 
         //Public constructors
         public Customer()
         {
-            Contacts = new List<Contact>();
+            Contacts = new ObservableCollection<Contact>();
         }
         public Customer(string customerName, string billingAddress, string billingZipcode, string billingCity, string installationAddress, string installationZipcode, string installationCity, string economicsCustomerNumber)
         {
