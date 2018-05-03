@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,9 @@ namespace BioCircleManagementSystem.ViewModels
 {
     public class CustomerViewModel:INotifyPropertyChanged
     {
-        public Customer _customer = new Customer();       
+        public Customer Customer { get; set; }
+        public ObservableCollection<Contact> Contacts { get; set; }
+
         private static CustomerViewModel instance;
         
         public event PropertyChangedEventHandler PropertyChanged;
@@ -29,7 +32,8 @@ namespace BioCircleManagementSystem.ViewModels
         //Constructor 
         public CustomerViewModel()
         {            
-            
+            Customer = new Customer();
+            Contacts = new ObservableCollection<Contact>();
         }
         public static CustomerViewModel Instance
         {
@@ -43,10 +47,26 @@ namespace BioCircleManagementSystem.ViewModels
             }
         }
         
-        public void NewCustomer(string customerName, string billingAddress, int billingZipcode, string billingCity, string installationAddress, int installationZipcode, string installationCity, int economicsCustomerNumber)
+        public void NewCustomer(string customerName, string billingAddress, string billingZipcode, string billingCity, string installationAddress, string installationZipcode, string installationCity, string economicsCustomerNumber)
         {
             DataManager.Instance.CreateCustomer(new Customer(customerName, billingAddress, billingZipcode, billingCity, installationAddress, installationZipcode, installationCity, economicsCustomerNumber));
             
+        }
+
+        public void RemoveContact(Contact contact)
+        {
+            Contacts.Remove(contact);
+        }
+
+        public void AddContact()
+        {
+            Contacts.Add(new Contact());
+        }
+
+        public void CreateCustomer()
+        {
+            //how da fuk we deal wit contacts
+            Customer.CreateCustomer();
         }
 
         public List<Customer> GetCustomers(string keyword)
@@ -69,6 +89,10 @@ namespace BioCircleManagementSystem.ViewModels
         {
             DataManager.Instance.DeleteContact(customerID);
         }
-        
+
+        internal void ClearCustomer()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using BioCircleManagementSystem.DataAccess;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -14,15 +15,15 @@ namespace BioCircleManagementSystem.Model
         private string _customerName;
         private int _customerID;
         private string _billingAddress;
-        private int _billingZipcode;
+        private string _billingZipcode;
         private string _billingCity;
         private string _installationAddress;
-        private int _installationZipcode;
+        private string _installationZipcode;
         private string _installationCity;
         private List<Contact> _contacts;
-        private int _economicsCustomerNumber;
+        private string _economicsCustomerNumber;
 
-        public List<Contact> contactList;
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
@@ -64,7 +65,7 @@ namespace BioCircleManagementSystem.Model
                 OnPropertyChanged("BillingAddress");
             }
         }
-        public int BillingZipcode
+        public string BillingZipcode
         {
             get { return _billingZipcode; }
             set
@@ -91,7 +92,7 @@ namespace BioCircleManagementSystem.Model
                 OnPropertyChanged("InstallationAddress");
             }
         }
-        public int InstallationZipcode
+        public string InstallationZipcode
         {
             get { return _installationZipcode; }
             set
@@ -115,12 +116,11 @@ namespace BioCircleManagementSystem.Model
             get { return _contacts; }
             set
             {
-                _contacts = value;
-                OnPropertyChanged("Contacts");
+                _contacts = value;                
             }
         }
 
-        public int EconomicsCustomerNumber
+        public string EconomicsCustomerNumber
         {
             get { return _economicsCustomerNumber; }
             set
@@ -133,9 +133,9 @@ namespace BioCircleManagementSystem.Model
         //Public constructors
         public Customer()
         {
-            contactList = new List<Contact>();
+            Contacts = new List<Contact>();
         }
-        public Customer(string customerName, string billingAddress, int billingZipcode, string billingCity, string installationAddress, int installationZipcode, string installationCity, int economicsCustomerNumber)
+        public Customer(string customerName, string billingAddress, string billingZipcode, string billingCity, string installationAddress, string installationZipcode, string installationCity, string economicsCustomerNumber)
         {
             _customerName = customerName;
             _billingAddress = billingAddress;
@@ -150,7 +150,7 @@ namespace BioCircleManagementSystem.Model
         public void CreateCustomer()
         {
             DataManager.Instance.CreateCustomer(this);            
-            foreach(Contact c in contactList)
+            foreach(Contact c in Contacts)
             {
                 c.CreateContact();                
             }
