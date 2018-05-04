@@ -162,9 +162,30 @@ namespace BioCircleManagementSystem.DataAccess
             return CustomerList;
         }
 
-        public void UpdateCustomer(string customerID)
+        public void UpdateCustomer(Customer customer)
         {
-            throw new NotImplementedException();
+            using(SqlConnection con = new SqlConnection())
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand EditCustomer = new SqlCommand("spUpdateCustomer", con);
+                    EditCustomer.CommandType = CommandType.StoredProcedure;
+                    EditCustomer.Parameters.Add(new SqlParameter("@Name", customer.CustomerName));
+                    EditCustomer.Parameters.Add(new SqlParameter("@EconomicCustomerNumber", customer.EconomicsCustomerNumber));
+                    EditCustomer.Parameters.Add(new SqlParameter("@BillingAddress", customer.BillingAddress));
+                    EditCustomer.Parameters.Add(new SqlParameter("@BillingZipcode", customer.BillingZipcode));
+                    EditCustomer.Parameters.Add(new SqlParameter("@BillingCity", customer.BillingCity));
+                    EditCustomer.Parameters.Add(new SqlParameter("@InstallationAddress", customer.InstallationAddress));
+                    EditCustomer.Parameters.Add(new SqlParameter("@InstallationZipcode", customer.InstallationZipcode));
+                    EditCustomer.Parameters.Add(new SqlParameter("@InstallationCity", customer.InstallationCity));
+                    EditCustomer.ExecuteNonQuery();                   
+                }
+                catch(SqlException e)
+                {
+
+                }
+            }
         }
         public void DeleteCustomer(string customerID)
         {
@@ -291,10 +312,44 @@ namespace BioCircleManagementSystem.DataAccess
         }
 
         public List<Machine> GetMachines(string keyword)
-        {           
-            //if key not null filter machines
-            //return machines
-            throw new NotImplementedException();
+        {
+            List<Machine> MachineList = new List<Machine>();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {   
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spSearchMachines", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", keyword));
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string ID = reader["ID"].ToString();
+                            string machineNo = reader["MachineNo"].ToString();
+                            string vesselNo = reader["VesselNo"].ToString();
+                            string vesselType = reader["VesselType"].ToString();
+
+                            MachineList.Add(new Machine()
+                            {
+                                MachineNo = machineNo,
+                                VesselNo = vesselNo,
+                                VesselType = vesselType,
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return MachineList;
         }
         
 

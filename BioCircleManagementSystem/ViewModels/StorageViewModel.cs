@@ -7,15 +7,43 @@ using System.Threading.Tasks;
 using BioCircleManagementSystem.DataAccess;
 using System.Windows.Input;
 using BioCircleManagementSystem.Commands.Storage;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace BioCircleManagementSystem.ViewModels
 {
-    internal class StorageViewModel
+    internal class StorageViewModel : INotifyPropertyChanged
     {
         public Machine machine { get; set; }
         //Constructor
+        
+        private ObservableCollection<Machine> _machines;
+        public ObservableCollection<Machine> Machines
+        {
+            get { return _machines; }
+            set
+            {
+                _machines = value;
+                OnPropertyChanged("Machines");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
         public StorageViewModel()
         {
+            List<Machine> machines = DataManager.Instance.GetMachines("");
+            _machines = new ObservableCollection<Machine>(machines);
             machine = new Machine();
             CreateCommand = new CreateMachineCommand(this);
         }
@@ -38,6 +66,11 @@ namespace BioCircleManagementSystem.ViewModels
         public void CreateMachine(string vesselNo, string vesselType, string machineNo)
         {
             DataAccess.DataManager.Instance.CreateMachine(new Machine(vesselNo, vesselType, machineNo));
+        }
+
+        public void SearchMachines(string keyword)
+        {
+            Machines = new ObservableCollection<Machine>(DataManager.Instance.GetMachines(keyword));
         }
     }
 }
