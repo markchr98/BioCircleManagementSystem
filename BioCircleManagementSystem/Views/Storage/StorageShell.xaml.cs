@@ -48,5 +48,11 @@ namespace BioCircleManagementSystem.Views.Storage
                 }
             }
         }
+
+        private void Button_Click_MachineFind(object sender, RoutedEventArgs e)
+        {
+            ChangeOtherButtonsBG(sender);
+            _storageFrame.Navigate(new StorageFind());
+        }
     }
 }
