@@ -115,11 +115,76 @@ namespace BioCircleManagementSystem.DataAccess
             return result;
         }
 
+        //public List<Customer> GetCustomers(string keyword)
+        //{
+        //    //if key not null filter customers
+        //    //return customers
+        //    List<Customer> CustomerList = new List<Customer>();
+            
+        //    using (SqlConnection con = new SqlConnection(connectionString))
+        //    {
+        //        try
+        //        {
+        //            con.Open();
+        //            SqlCommand SearchKeyword = new SqlCommand("spSearchKeyword", con)
+        //            {
+        //                CommandType = CommandType.StoredProcedure
+        //            };
+        //            SqlCommand GetContacts = new SqlCommand("spGetContacts", con)
+        //            {
+        //                CommandType = CommandType.StoredProcedure
+        //            };
+        //            SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", keyword));
+        //            GetContacts.Parameters.Add(new SqlParameter("@Keyword", keyword));
+        //            SqlDataReader reader = SearchKeyword.ExecuteReader();
+        //            if (reader.HasRows)
+        //            {
+        //                while (reader.Read())
+        //                {
+        //                    string ID = reader["ID"].ToString();
+        //                    string customerName = reader["Name"].ToString();
+        //                    string economicsCustomerNo = reader["EconomicsCustomerNO"].ToString();
+        //                    string installationAddress = reader["InstallationAddress"].ToString();
+        //                    string installationCity = reader["InstallationCity"].ToString();
+        //                    string installationZipcode = reader["InstallationZipcode"].ToString();
+
+        //                    CustomerList.Add(new Customer()
+        //                    {
+        //                        CustomerName = customerName,
+        //                        EconomicsCustomerNumber = economicsCustomerNo,
+        //                        InstallationAddress = installationAddress,
+        //                        InstallationCity = installationCity,
+        //                        InstallationZipcode = installationZipcode
+        //                    });
+        //                }
+        //                SqlDataReader reader2 = GetContacts.ExecuteReader();
+        //                while (reader2.Read())
+        //                {
+        //                    string contactID = reader["ContactID"].ToString();
+        //                    string contactName = reader["Name"].ToString();
+        //                    string contactEmail = reader["Email"].ToString();
+        //                    string contactMopilePhone = reader["Mobilephone"].ToString();
+        //                    string contactLandline = reader["Landline"].ToString();
+        //                    string customer_ID = reader["Customer_ID"].ToString();
+        //                }
+        //            }
+        //            con.Close();
+        //        }
+        //        catch (SqlException e)
+        //        {
+        //            //Implement exception
+        //        }
+        //    }
+        //    return CustomerList;
+        //}
+
+        #region OldGetCustomer
         public List<Customer> GetCustomers(string keyword)
         {
             //if key not null filter customers
             //return customers
             List<Customer> CustomerList = new List<Customer>();
+            Customer customer;
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
@@ -130,27 +195,23 @@ namespace BioCircleManagementSystem.DataAccess
                         CommandType = CommandType.StoredProcedure
                     };
                     SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", keyword));
+                    
                     SqlDataReader reader = SearchKeyword.ExecuteReader();
                     if (reader.HasRows)
                     {
                         while (reader.Read())
                         {
-                            string ID = reader["ID"].ToString();
-                            string customerName = reader["Name"].ToString();
-                            string economicsCustomerNo = reader["EconomicsCustomerNO"].ToString();
-                            string installationAddress = reader["InstallationAddress"].ToString();
-                            string installationCity = reader["InstallationCity"].ToString();
-                            string installationZipcode = reader["InstallationZipcode"].ToString();
+                            customer = new Customer();
+                            customer.CustomerID = Int32.Parse(reader["ID"].ToString());
+                            customer.CustomerName = reader["Name"].ToString();
+                            customer.EconomicsCustomerNumber = reader["EconomicsCustomerNO"].ToString();
+                            customer.InstallationAddress = reader["InstallationAddress"].ToString();
+                            customer.InstallationCity = reader["InstallationCity"].ToString();
+                            customer.InstallationZipcode = reader["InstallationZipcode"].ToString();
 
-                            CustomerList.Add(new Customer()
-                            {
-                                CustomerName = customerName,
-                                EconomicsCustomerNumber = economicsCustomerNo,
-                                InstallationAddress = installationAddress,
-                                InstallationCity = installationCity,
-                                InstallationZipcode = installationZipcode
-                            });
-                        }
+                            GetContacts(customer);
+                            CustomerList.Add(customer);
+                        }                        
                     }
                     con.Close();
                 }
@@ -161,6 +222,7 @@ namespace BioCircleManagementSystem.DataAccess
             }
             return CustomerList;
         }
+        #endregion
 
         public void UpdateCustomer(Customer customer)
         {
@@ -241,11 +303,45 @@ namespace BioCircleManagementSystem.DataAccess
             }
         }
 
-        public List<Contact> GetContacts(string keyword)
+        public List<Contact> GetContacts(Customer customer)
         {
-            //if key not null filter contacts
-            //return contacts
-            throw new NotImplementedException();
+            List<Contact> contactList = new List<Contact>();
+            Contact contact;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchContact= new SqlCommand("spGetContacts ", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchContact.Parameters.Add(new SqlParameter("@Keyword", customer.CustomerID));
+
+                    SqlDataReader reader = SearchContact.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                                contact = new Contact();
+                                contact.ID = Int32.Parse(reader["ID"].ToString());
+                                contact.Name = reader["Name"].ToString();
+                                contact.Email = reader["Email"].ToString();
+                                contact.Mobilephone = Int32.Parse(reader["Mobilephone"].ToString());
+                                contact.Landline = Int32.Parse(reader["Landline"].ToString());
+                                contact.CustomerID = Int32.Parse(reader["Customer_ID"].ToString());
+                                //customer.AddContact(contact);
+                                contactList.Add(contact);
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return contactList;
         }
 
         public void UpdateContact(string contactMobilephone)

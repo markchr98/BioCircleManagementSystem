@@ -11,6 +11,7 @@ namespace BioCircleManagementSystem.Model
     public class Contact : INotifyPropertyChanged
     {
         //Private fields
+        private int _id;
         private string _name;
         private int _mobilePhone;
         private string _email;
@@ -30,6 +31,15 @@ namespace BioCircleManagementSystem.Model
         }
 
         //Public properties
+        public int ID
+        {
+            get { return _id; }
+            set
+            {
+                _id = value;
+                OnPropertyChanged("ID");
+            }
+        }
         public string Name
         {
             get { return _name; }

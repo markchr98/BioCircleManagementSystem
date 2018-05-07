@@ -39,6 +39,5 @@ namespace BioCircleManagementSystem.Views.Customers
         {
             customerFindViewModel.SearchCustomers(SearchBox.Text);
         }
-        
     }
 }
