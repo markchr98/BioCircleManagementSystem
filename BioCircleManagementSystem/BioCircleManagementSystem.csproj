@@ -72,6 +72,9 @@
     <Compile Include="Views\Customers\CustomerCreate.xaml.cs">
       <DependentUpon>CustomerCreate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Customers\CustomerEditView.xaml.cs">
+      <DependentUpon>CustomerEditView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Customers\CustomerFind.xaml.cs">
       <DependentUpon>CustomerFind.xaml</DependentUpon>
     </Compile>
@@ -135,6 +138,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\Customers\CustomerCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Customers\CustomerEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

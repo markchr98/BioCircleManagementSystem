@@ -50,7 +50,7 @@
                 </Border>
             </Grid>
         </Grid>       
-            <ListBox Width="Auto" MaxHeight="600" Grid.Row="1" x:Name="customers" ItemsSource="{Binding Path = Customers}" Margin="3.7,0,0,0">
+            <ListBox SelectionChanged="customers_SelectionChanged" SelectedItem ="{Binding Path = SelectedCustomer}" Width="Auto" MaxHeight="600" Grid.Row="1" x:Name="customers" ItemsSource="{Binding Path = Customers}" Margin="3.7,0,0,0">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
