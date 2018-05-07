@@ -12,7 +12,23 @@ namespace BioCircleManagementSystem.ViewModels
 {
     class CustomerFindViewModel : INotifyPropertyChanged
     {
-        //endless loop 
+        private Customer _selectedCustomer;
+             
+        public Customer SelectedCustomer
+        {
+            get
+            {
+                return _selectedCustomer;
+            }
+            set
+            {
+                _selectedCustomer = value;
+                OnPropertyChanged("SelectedCustomer");
+            }
+        }
+
+        private static CustomerFindViewModel _instance;
+
         private ObservableCollection<Customer> _customers;
         public ObservableCollection<Customer> Customers
         {
@@ -35,10 +51,30 @@ namespace BioCircleManagementSystem.ViewModels
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-        public CustomerFindViewModel()
+        
+
+        public void RemoveContact(Contact deleteme)
+        {
+            SelectedCustomer.RemoveContact(deleteme);
+        }
+
+        private CustomerFindViewModel()
         {
             List<Customer> customers = DataManager.Instance.GetCustomers("");
             _customers = new ObservableCollection<Customer>(customers);
+        }
+
+        public static CustomerFindViewModel Instance
+        {
+            get
+            {
+                if(_instance == null)
+                {
+                    _instance = new CustomerFindViewModel();
+                }
+                return _instance;
+            }
+            
         }
 
         public void SearchCustomers(string keyword)

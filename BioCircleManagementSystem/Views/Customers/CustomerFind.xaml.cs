@@ -29,7 +29,7 @@ namespace BioCircleManagementSystem.Views.Customers
         public CustomerFind()
         {
             InitializeComponent();
-            customerFindViewModel = new CustomerFindViewModel();
+            customerFindViewModel = CustomerFindViewModel.Instance;
             DataContext = customerFindViewModel;
         }
 
@@ -39,6 +39,11 @@ namespace BioCircleManagementSystem.Views.Customers
         {
             customerFindViewModel.SearchCustomers(SearchBox.Text);
         }
-        
+
+        private void customers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CustomerEditView CEV = new CustomerEditView();
+            this.NavigationService.Navigate(CEV);
+        }
     }
 }

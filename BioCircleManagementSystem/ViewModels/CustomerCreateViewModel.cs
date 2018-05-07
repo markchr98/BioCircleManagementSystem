@@ -12,8 +12,7 @@ namespace BioCircleManagementSystem.ViewModels
 {
     public class CustomerCreateViewModel:INotifyPropertyChanged
     {
-        public Customer Customer { get; set; }
-        public ObservableCollection<Contact> Contacts { get; set; }        
+        public Customer Customer { get; set; }                
         
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -30,19 +29,18 @@ namespace BioCircleManagementSystem.ViewModels
         //Constructor 
         public CustomerCreateViewModel()
         {            
-            Customer = new Customer();
-            Contacts = new ObservableCollection<Contact>();
+            Customer = new Customer();            
         }       
         
 
         public void RemoveContact(Contact contact)
         {
-            Contacts.Remove(contact);
+            Customer.RemoveContact(contact);
         }
 
         public void AddContact()
         {
-            Contacts.Add(new Contact());
+            Customer.AddContact(new Contact());
         }
 
         public void CreateCustomer()
@@ -66,7 +64,7 @@ namespace BioCircleManagementSystem.ViewModels
             Customer.InstallationAddress = "";
             Customer.InstallationCity = "";
             Customer.InstallationZipcode = "";
-            Contacts.Clear();
+            Customer.Contacts.Clear();
             
         }
     }
