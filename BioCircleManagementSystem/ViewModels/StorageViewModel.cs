@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using BioCircleManagementSystem.DataAccess;
 using System.Windows.Input;
-using BioCircleManagementSystem.Commands.Storage;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -45,10 +44,9 @@ namespace BioCircleManagementSystem.ViewModels
             List<Machine> machines = DataManager.Instance.GetMachines("");
             _machines = new ObservableCollection<Machine>(machines);
             machine = new Machine();
-            CreateCommand = new CreateMachineCommand(this);
         }
 
-        // Gets the costumer instance (this is public accessable)
+        // Gets the Machine instance (this is public accessable)
         public Machine Machine
         {
             get
@@ -72,5 +70,25 @@ namespace BioCircleManagementSystem.ViewModels
         {
             Machines = new ObservableCollection<Machine>(DataManager.Instance.GetMachines(keyword));
         }
+
+        public void CreateMachine()
+        {
+            Machine.CreateMachine();
+        }
+
+        public void ClearMachine()
+        {
+            Machine.VesselType = "";
+            Machine.VesselNo = "";
+            Machine.MachineNo = "";
+            Machine.ControlBoxNo = "";
+            Machine.InstallationDate = "";
+            Machine.Wheels = "";
+            Machine.InoxGrid = "";
+            Machine.Lid = "";
+            Machine.SteelTop = "";
+            Machine.CanBringLiquid = "";
+        }
+
     }
 }

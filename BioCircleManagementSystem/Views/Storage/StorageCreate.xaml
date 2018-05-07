@@ -49,6 +49,6 @@
             Width="100" 
             HorizontalAlignment="Left" 
             Content="Opret"
-            Command="{Binding CreateCommand}"/>
+            Click="Button_Click_StorageCreate"/>
     </Grid>
 </Page>
