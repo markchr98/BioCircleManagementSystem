@@ -22,10 +22,23 @@ namespace BioCircleManagementSystem.Views.Storage
     /// </summary>
     public partial class StorageCreate : Page
     {
+        StorageViewModel storageViewModel;
         public StorageCreate()
         {
             InitializeComponent();
-            DataContext = new StorageViewModel();
+            storageViewModel = new StorageViewModel();
+            DataContext = storageViewModel;
+        }
+
+        private void Button_Click_StorageCreate(object sender, RoutedEventArgs e)
+        {
+            storageViewModel.CreateMachine();
+            Clear();
+        }
+
+        private void Clear()
+        {
+            storageViewModel.ClearMachine();
         }
     }
 }

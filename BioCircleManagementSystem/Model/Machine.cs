@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BioCircleManagementSystem.Model
 {
-    public class Machine : INotifyPropertyChanged, IDataErrorInfo
+    public class Machine : INotifyPropertyChanged
     {
         // Define the private variables of this model
         private string vesselType;
@@ -59,7 +59,7 @@ namespace BioCircleManagementSystem.Model
             set
             {
                 machineNo = value;
-                OnPropertyChanged("machineNo");
+                OnPropertyChanged("MachineNo");
             }
         }
         public string ControlBoxNo
@@ -159,70 +159,21 @@ namespace BioCircleManagementSystem.Model
             MachineNo = machineNo;
         }
 
+        public void CreateMachine()
+        {
+            DataManager.Instance.CreateMachine(this);
+        }
+
         #region INotifyPropertyChanged Members
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
-        }
-        #endregion
 
-        #region IDataErrorInfo Members
-
-        public string Error
-        {
-            get;
-            private set;
-        }
-
-        public string this[string columnName]
-        {
-            get
+            if (handler != null)
             {
-                Error = null;
- 
-                    if (String.IsNullOrWhiteSpace(VesselNo))
-                    {
-                        Error = "VesselNo must be defined!";
-                    }
-                    if (String.IsNullOrWhiteSpace(VesselType))
-                    {
-                        Error = "Vesseltype must be defined!";
-                    }
-                    if (String.IsNullOrWhiteSpace(MachineNo))
-                    {
-                        Error = "MachineNo must be defined!";
-                    }
-                return Error;
+                handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
-        //public string this[string columnName]
-        //{
-        //    get
-        //    {
-        //        string Errors = String.Empty;
-        //        if (columnName.Equals("VesselNo"))
-        //        {
-        //            if (String.IsNullOrWhiteSpace(VesselNo))
-        //                Errors = "Du skal angive et vesselNo.";
-        //        }
-        //        else if (columnName.Equals("VesselType"))
-        //        {
-        //            if (string.IsNullOrWhiteSpace(VesselType))
-        //                Errors = "Du skal angive vesselType.";
-        //        }
-        //        else if (columnName.Equals("MachineNo"))
-        //        {
-        //            if (string.IsNullOrWhiteSpace(MachineNo))
-        //                Errors = "Du skal angive et maskine nummer.";
-        //        }
-        //        else
-        //        {
-        //            Errors = String.Empty;
-        //        }  
-        //        return Errors;
-        //    }
-        //}
         #endregion
     }
 }

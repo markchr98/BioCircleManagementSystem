@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using BioCircleManagementSystem.DataAccess;
 using System.Windows.Input;
-using BioCircleManagementSystem.Commands.Storage;
 
 namespace BioCircleManagementSystem.ViewModels
 {
@@ -17,10 +16,9 @@ namespace BioCircleManagementSystem.ViewModels
         public StorageViewModel()
         {
             machine = new Machine();
-            CreateCommand = new CreateMachineCommand(this);
         }
 
-        // Gets the costumer instance (this is public accessable)
+        // Gets the machine instance (this is public accessable)
         public Machine Machine
         {
             get
@@ -29,15 +27,23 @@ namespace BioCircleManagementSystem.ViewModels
             }
         }
 
-        public ICommand CreateCommand
+        public void CreateMachine()
         {
-            get;
-            private set;
+            Machine.CreateMachine();
         }
 
-        public void CreateMachine(string vesselNo, string vesselType, string machineNo)
+        public void ClearMachine()
         {
-            DataAccess.DataManager.Instance.CreateMachine(new Machine(vesselNo, vesselType, machineNo));
+            Machine.VesselType = "";
+            Machine.VesselNo = "";
+            Machine.MachineNo = "";
+            Machine.ControlBoxNo = "";
+            Machine.InstallationDate = "";
+            Machine.Wheels = "";
+            Machine.InoxGrid = "";
+            Machine.Lid = "";
+            Machine.SteelTop = "";
+            Machine.CanBringLiquid = "";
         }
     }
 }
