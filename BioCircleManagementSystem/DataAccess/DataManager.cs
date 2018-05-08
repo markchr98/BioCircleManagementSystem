@@ -302,7 +302,7 @@ namespace BioCircleManagementSystem.DataAccess
                 }
             }
         }
-
+        
         public List<Contact> GetContacts(Customer customer)
         {
             List<Contact> contactList = new List<Contact>();
@@ -316,7 +316,7 @@ namespace BioCircleManagementSystem.DataAccess
                     {
                         CommandType = CommandType.StoredProcedure
                     };
-                    SearchContact.Parameters.Add(new SqlParameter("@Keyword", customer.CustomerID));
+                    SearchContact.Parameters.Add(new SqlParameter("@CustomerID", customer.CustomerID));
 
                     SqlDataReader reader = SearchContact.ExecuteReader();
                     if (reader.HasRows)
@@ -325,7 +325,7 @@ namespace BioCircleManagementSystem.DataAccess
                         {
                                 contact = new Contact();
                                 contact.ID = Int32.Parse(reader["ID"].ToString());
-                                contact.Name = reader["Name"].ToString();
+                                contact.Name = reader["Name"].ToString(); 
                                 contact.Email = reader["Email"].ToString();
                                 contact.Mobilephone = Int32.Parse(reader["Mobilephone"].ToString());
                                 contact.Landline = Int32.Parse(reader["Landline"].ToString());
