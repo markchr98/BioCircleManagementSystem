@@ -11,6 +11,7 @@ namespace BioCircleManagementSystem.Model
 {
     public class Machine : INotifyPropertyChanged, IDataErrorInfo
     {
+       
         // Define the private variables of this model
         private string vesselType;
         private string vesselNo;
@@ -22,6 +23,8 @@ namespace BioCircleManagementSystem.Model
         private string lid;
         private string steelTop;
         private string canBringLiquid;
+        private int _serviceInterval;
+        private bool _serviceContract;
 
         // Required when using data binding
         public event PropertyChangedEventHandler PropertyChanged;
@@ -146,6 +149,28 @@ namespace BioCircleManagementSystem.Model
                 OnPropertyChanged("CanBringLiquid");
             }
         }
+        public int ServiceInterval
+        {
+            get
+            {
+                return _serviceInterval;
+            }
+            set
+            {
+                _serviceInterval = value;
+                OnPropertyChanged("ServiceInterval");
+            }
+        }
+
+
+        public bool ServiceContract
+        {
+            get { return _serviceContract; }
+            set { _serviceContract = value; OnPropertyChanged("ServiceContract"); }
+        }
+
+      
+
 
         // Public constructors
         public Machine()

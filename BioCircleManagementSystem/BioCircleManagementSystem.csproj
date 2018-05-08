@@ -60,13 +60,18 @@
     </Compile>
     <Compile Include="Commands\Storage\CreateMachineCommand.cs" />
     <Compile Include="Commands\Storage\UpdateMachineCommand.cs" />
+    <Compile Include="Model\Brush.cs" />
     <Compile Include="Model\Contact.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="DataAccess\DataManager.cs" />
+    <Compile Include="Model\Filters.cs" />
+    <Compile Include="Model\Liquid.cs" />
     <Compile Include="Model\Machine.cs" />
     <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\Service.cs" />
     <Compile Include="ViewModels\CustomerFindViewModel.cs" />
     <Compile Include="ViewModels\CustomerCreateViewModel.cs" />
+    <Compile Include="ViewModels\OrderCreateViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\StorageViewModel.cs" />
     <Compile Include="Views\Customers\CustomerCreate.xaml.cs">
@@ -77,6 +82,12 @@
     </Compile>
     <Compile Include="Views\Customers\CustomerShell.xaml.cs">
       <DependentUpon>CustomerShell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orders\OrderCreate.xaml.cs">
+      <DependentUpon>OrderCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orders\OrderCustomerCreate.xaml.cs">
+      <DependentUpon>OrderCustomerCreate.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Orders\OrderShell.xaml.cs">
       <DependentUpon>OrderShell.xaml</DependentUpon>
@@ -143,6 +154,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Customers\CustomerShell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Orders\OrderCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Orders\OrderCustomerCreate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

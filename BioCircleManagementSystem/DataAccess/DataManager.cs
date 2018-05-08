@@ -37,7 +37,28 @@ namespace BioCircleManagementSystem.DataAccess
         #region Order
         public void CreateOrder(Order order)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand CreateOrder = new SqlCommand("spCreateOrder", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    CreateOrder.Parameters.Add(new SqlParameter("@CustomerID", order.Customer.CustomerID));
+                    CreateOrder.Parameters.Add(new SqlParameter("@MachineID", order.Machine.MachineNo));
+                    Console.WriteLine("executing");
+                    CreateOrder.ExecuteNonQuery();
+
+
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
         }
         
         public List<Order> GetOrders(string keyword)
@@ -298,9 +319,35 @@ namespace BioCircleManagementSystem.DataAccess
         }
         
 
-        public void UpdateMachine(string machineID)
+        public void UpdateOrderMachine(Machine machine)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand UpdateOrderMachine = new SqlCommand("spUpdateMachine", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@InstallationDate", machine.InstallationDate));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Wheels", machine.Wheels));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@InoxGrid", machine.InoxGrid));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Lid", machine.Lid));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@SteelTop", machine.SteelTop));
+                    
+
+                    Console.WriteLine("executing");
+                    UpdateOrderMachine.ExecuteNonQuery();
+
+
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
         }
         #endregion Machine
     }

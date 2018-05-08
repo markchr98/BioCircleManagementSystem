@@ -9,13 +9,24 @@ using BioCircleManagementSystem.Model;
 namespace BioCircleManagementSystem.ViewModels
 {
     class OrderViewModel
-    {        
+    {
+        public static OrderViewModel instance;
         //Public constructor
         public OrderViewModel()
         {
            
         }
-
+        public static OrderViewModel Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new OrderViewModel();
+                }
+                return instance;
+            }
+        }
         public void NewOrder(string orderID, string customerID, string machineID)
         {
             DataManager.Instance.CreateOrder(new Order(orderID,DataManager.Instance.GetCustomer(customerID),DataManager.Instance.GetMachine(machineID)));

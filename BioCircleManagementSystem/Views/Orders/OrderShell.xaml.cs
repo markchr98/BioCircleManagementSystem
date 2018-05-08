@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BioCircleManagementSystem.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace BioCircleManagementSystem.Views.Orders
         public OrderShell()
         {
             InitializeComponent();
+            
         }
 
         private void Button_Click_TestFind(object sender, RoutedEventArgs e)
@@ -38,6 +40,7 @@ namespace BioCircleManagementSystem.Views.Orders
         private void Button_Click_OrderCreate(object sender, RoutedEventArgs e)
         {
             ChangeOtherButtonsBG(sender);
+            _orderFrame.Navigate(new OrderCustomerCreate());
         }
 
         // Used to change other buttons background to default color
