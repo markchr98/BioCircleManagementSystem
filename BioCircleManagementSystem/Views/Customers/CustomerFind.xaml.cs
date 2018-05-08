@@ -42,6 +42,7 @@ namespace BioCircleManagementSystem.Views.Customers
 
         private void customers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if(customers.SelectedItem != null) { 
             //Must be changed to page with navigation in frame 
             CustomerEditView CEV = new CustomerEditView();            
             ShellWindow window = new ShellWindow();
@@ -49,6 +50,7 @@ namespace BioCircleManagementSystem.Views.Customers
             window.ShowDialog();
             window.Height = 450;
             window.Width = 900;
+            }
         }
         
     }
