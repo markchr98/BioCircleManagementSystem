@@ -47,8 +47,8 @@
             <TextBox x:Name="billingAddress" Grid.Row="7" Grid.Column="1" Margin="0,0,0,10" Width="300" Text="{Binding Path=Customer.BillingAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Grid.Row="8" Grid.Column="1" Margin="0,0,0,5" FontSize="15">By</TextBlock>
             <TextBlock Grid.Row="8" Grid.Column="1" Margin="200,0,0,5" FontSize="15">Post nr.</TextBlock>
-            <TextBox x:Name="billingCity" Grid.Row="9" Grid.Column="1" Margin="0,0,0,10" Width="180" HorizontalAlignment="Left" Text="{Binding Path=Customer.BillingZipcode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox x:Name="billingZipcode" Grid.Row="9" Grid.Column="1" Margin="200,0,0,10" Width="100" HorizontalAlignment="Left" Text="{Binding Path=Customer.BillingCity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="billingCity" Grid.Row="9" Grid.Column="1" Margin="0,0,0,10" Width="180" HorizontalAlignment="Left" Text="{Binding Path=Customer.BillingCity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="billingZipcode" Grid.Row="9" Grid.Column="1" Margin="200,0,0,10" Width="100" HorizontalAlignment="Left" Text="{Binding Path=Customer.BillingZipcode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Grid.Row="10" Grid.Column="1" Margin="0,0,0,5" FontSize="15" FontWeight="Bold">Installationsadresse</TextBlock>
             <TextBox x:Name="installationAddress" Grid.Row="11" Grid.Column="1" Margin="0,0,0,10" Width="300" Text="{Binding Path=Customer.InstallationAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Grid.Row="12" Grid.Column="1" Margin="0,0,0,5" FontSize="15">By</TextBlock>
@@ -67,7 +67,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <TextBlock FontSize="20" Margin="0,0,0,10" FontWeight="Bold">Kontakt personer</TextBlock>
-            <ListBox x:Name="contacts" Grid.Row="1" ItemsSource="{Binding Path = Customer.Contacts}" ScrollViewer.CanContentScroll="False" Margin="0,0,0,0" MaxHeight="500" BorderBrush="White">
+            <ListBox  x:Name="contacts" Grid.Row="1" ItemsSource="{Binding Path = Customer.Contacts}" ScrollViewer.CanContentScroll="False" Margin="0,0,0,0" MaxHeight="500" BorderBrush="White">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border BorderThickness="1" BorderBrush="Gray">
