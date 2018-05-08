@@ -45,7 +45,6 @@ namespace BioCircleManagementSystem.ViewModels
 
         public void CreateCustomer()
         {
-            //how da fuk we deal wit contacts
             Customer.CreateCustomer();
         }
 
