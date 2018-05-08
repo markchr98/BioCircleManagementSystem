@@ -267,8 +267,8 @@ namespace BioCircleManagementSystem.DataAccess
                                 ID = Int32.Parse(reader["ID"].ToString()),
                                 Name = reader["Name"].ToString(),
                                 Email = reader["Email"].ToString(),
-                                Mobilephone = Int32.Parse(reader["Mobilephone"].ToString()),
-                                Landline = Int32.Parse(reader["Landline"].ToString()),
+                                Mobilephone = (reader["Mobilephone"].ToString()),
+                                Landline = reader["Landline"].ToString(),
                                 CustomerID = Int32.Parse(reader["Customer_ID"].ToString())
                             };
                             //customer.AddContact(contact);
