@@ -168,6 +168,9 @@ namespace BioCircleManagementSystem.DataAccess
                             customer.InstallationAddress = reader["InstallationAddress"].ToString();
                             customer.InstallationCity = reader["InstallationCity"].ToString();
                             customer.InstallationZipcode = reader["InstallationZipcode"].ToString();
+                            customer.BillingAddress = reader["BillingAddress"].ToString();
+                            customer.BillingCity = reader["BillingCity"].ToString();
+                            customer.BillingZipcode = reader["BillingZipcode"].ToString();
 
                             customer.Contacts = new System.Collections.ObjectModel.ObservableCollection<Contact>(GetContacts(customer));
                             CustomerList.Add(customer);
