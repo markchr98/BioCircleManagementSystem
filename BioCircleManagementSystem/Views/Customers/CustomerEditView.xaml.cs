@@ -38,5 +38,10 @@ namespace BioCircleManagementSystem.Views.Customers
                 customerFindViewModel.RemoveContact(deleteme);
             }
         }
+
+        public void Test(object sender, RoutedEventArgs e)
+        {
+            customerFindViewModel.Test();
+        }
     }
 }

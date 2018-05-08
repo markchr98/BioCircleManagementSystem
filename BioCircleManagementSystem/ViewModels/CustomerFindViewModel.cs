@@ -82,5 +82,10 @@ namespace BioCircleManagementSystem.ViewModels
             Customers = new ObservableCollection<Customer>(DataManager.Instance.GetCustomers(keyword));
         }
 
+        public void Test()
+        {
+            SelectedCustomer.AddContact(new Contact());
+        }
+
     }
 }
