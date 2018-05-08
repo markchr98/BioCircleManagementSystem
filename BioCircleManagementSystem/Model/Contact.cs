@@ -11,10 +11,11 @@ namespace BioCircleManagementSystem.Model
     public class Contact : INotifyPropertyChanged
     {
         //Private fields
+        private int _id;
         private string _name;
-        private int _mobilePhone;
+        private string _mobilePhone;
         private string _email;
-        private int _landline;
+        private string _landline;
         private int _customerID;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -30,6 +31,15 @@ namespace BioCircleManagementSystem.Model
         }
 
         //Public properties
+        public int ID
+        {
+            get { return _id; }
+            set
+            {
+                _id = value;
+                OnPropertyChanged("ID");
+            }
+        }
         public string Name
         {
             get { return _name; }
@@ -39,7 +49,7 @@ namespace BioCircleManagementSystem.Model
                 OnPropertyChanged("Name");
             }
         }
-        public int Mobilephone
+        public string Mobilephone
         {
             get { return _mobilePhone; }
             set
@@ -57,7 +67,7 @@ namespace BioCircleManagementSystem.Model
                 OnPropertyChanged("Email");
             }
         }
-        public int Landline
+        public string Landline
         {
             get { return _landline; }
             set
@@ -82,7 +92,7 @@ namespace BioCircleManagementSystem.Model
 
          }
 
-        public Contact(string name, int mobilePhone, string email, int landline, int customerID)
+        public Contact(string name, string mobilePhone, string email, string landline, int customerID)
         {
             _name = name;
             _mobilePhone = mobilePhone;

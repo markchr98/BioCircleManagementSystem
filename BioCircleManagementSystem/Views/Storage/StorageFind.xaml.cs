@@ -1,6 +1,4 @@
-﻿using BioCircleManagementSystem.ViewModels;
-using BioCircleManagementSystem.Views.Resources.Notifications;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,31 +12,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BioCircleManagementSystem.ViewModels;
 
 namespace BioCircleManagementSystem.Views.Storage
 {
     /// <summary>
-    /// Interaction logic for StorageCreate.xaml
+    /// Interaction logic for StorageFind.xaml
     /// </summary>
-    public partial class StorageCreate : Page
+    public partial class StorageFind : Page
     {
         StorageViewModel storageViewModel;
-        public StorageCreate()
+        public StorageFind()
         {
             InitializeComponent();
             storageViewModel = new StorageViewModel();
             DataContext = storageViewModel;
         }
 
-        private void Button_Click_StorageCreate(object sender, RoutedEventArgs e)
+        private void Button_Click_SearchMachines(object sender, RoutedEventArgs e)
         {
-            storageViewModel.CreateMachine();
-            Clear();
-        }
-
-        private void Clear()
-        {
-            storageViewModel.ClearMachine();
+            storageViewModel.SearchMachines(SearchBox.Text);
         }
     }
 }

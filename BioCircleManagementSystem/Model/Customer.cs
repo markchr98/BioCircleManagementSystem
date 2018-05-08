@@ -166,5 +166,16 @@ namespace BioCircleManagementSystem.Model
                 c.CreateContact();                
             }
         }
+
+        public void EditCustomer(Customer customer)
+        {
+            DataManager.Instance.UpdateCustomer(customer);
+
+        }
+
+        public void DeleteCustomer()
+        {
+
+        }
     }
 }

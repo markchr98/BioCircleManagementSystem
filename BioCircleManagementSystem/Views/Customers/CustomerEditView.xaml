@@ -1,0 +1,47 @@
+﻿<Page x:Class="BioCircleManagementSystem.Views.Customers.CustomerEditView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BioCircleManagementSystem.Views.Customers"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CustomerEditView">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+      
+        <TextBox Grid.Column="0" HorizontalAlignment="Left" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="{Binding Path= SelectedCustomer.CustomerName}" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Test" HorizontalAlignment="Left" Margin="68,156,0,0" VerticalAlignment="Top" Width="75" Click="Test"/>
+        <ListBox x:Name="contacts" Grid.Column="1" ItemsSource="{Binding Path = SelectedCustomer.Contacts}" ScrollViewer.CanContentScroll="False" Margin="0,0,0,0" MaxHeight="500" BorderBrush="White">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="1" BorderBrush="Gray">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Margin="10,10,0,5" FontSize="15">Navn</TextBlock>
+                            <Button x:Name="ContactPersonDelete" Grid.Row="0" Content="Slet" HorizontalAlignment="Left" Margin="225,10,10,10" VerticalAlignment="Top" Width="75" Click="Button_Click_RemoveContact"/>
+                            <TextBox x:Name="name" Grid.Row="1" HorizontalAlignment="Left" Margin="10,0,10,10" TextWrapping="Wrap" Text="{Binding Path=Name}" VerticalAlignment="Top" Width="300"/>
+                            <TextBlock Grid.Row="2" Margin="10,0,0,5" FontSize="15">E-mail</TextBlock>
+                            <TextBox x:Name="email" Grid.Row="3" HorizontalAlignment="Left" Margin="10,0,10,10" TextWrapping="Wrap" Text="{Binding Path=Email}" VerticalAlignment="Top" Width="300" />
+                            <TextBlock Grid.Row="4" Margin="10,0,0,5" FontSize="15">Mobil tlf.</TextBlock>
+                            <TextBlock Grid.Row="4" Margin="165,0,0,5" FontSize="15">Fastnet tlf.</TextBlock>
+                            <TextBox x:Name="mobilePhone"  Grid.Row="5" HorizontalAlignment="Left" Margin="10,0,10,10" TextWrapping="Wrap" Text="{Binding Path=Mobilephone}" VerticalAlignment="Top" Width="145"/>
+                            <TextBox x:Name="landline" Grid.Row="5" HorizontalAlignment="Left" Margin="165,0,10,10" TextWrapping="Wrap" Text="{Binding Path=Landline}" VerticalAlignment="Top" Width="145"/>       
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Page>
