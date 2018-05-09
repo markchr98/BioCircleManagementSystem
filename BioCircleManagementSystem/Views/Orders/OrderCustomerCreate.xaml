@@ -49,7 +49,12 @@
             </ComboBox>
 
             <TextBlock Grid.Row="4" Grid.Column="1" Width="300" Height="Auto" Margin="0,5,0,0">Vælg Maskine:</TextBlock>
-            <ComboBox ItemsSource="{Binding MachineList}" SelectedItem="{Binding SelectedMachine}" Grid.Row="5" Grid.Column="1" Width="300" Margin="0,0,0,0">
+            <ComboBox TextSearch.TextPath="VesselNo" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding MachineList}" SelectedItem="{Binding SelectedMachine}" Grid.Row="5" Grid.Column="1" Width="300" Margin="0,0,0,0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=VesselNo}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
             </ComboBox>
 
             <TextBlock Grid.Row="6" Grid.Column="1" Width="300" Margin="0,5,0,0">Maskine Type:</TextBlock>
