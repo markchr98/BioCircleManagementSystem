@@ -9,69 +9,98 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CustomerCreate">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+        <Grid>
+            <!-- Main grid - consists of just three columns -->
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20" />
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="1" Grid.Column="1" FontSize="24" Margin="0,0,0,10" FontWeight="Bold">Opret kunde</TextBlock>
-            <TextBlock Grid.Row="2" Grid.Column="1" Margin="0,0,0,5" FontSize="15">Kunde navn</TextBlock>
-            <TextBox x:Name="customerName" Text="{Binding Path=Customer.CustomerName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" Width="300"/>
-            <TextBlock Grid.Row="4" Grid.Column="1" Margin="0,0,0,5" FontSize="15">E-conomics kunde nr.</TextBlock>
-            <TextBox x:Name="economicsCustomerNumber" Grid.Row="5" Grid.Column="1" Margin="0,0,0,10" Width="300" Text="{Binding Path=Customer.EconomicsCustomerNumber,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBlock Grid.Row="6" Grid.Column="1" Margin="0,0,0,5" FontSize="15" FontWeight="Bold">Faktueringsadresse</TextBlock>
-            <TextBox x:Name="billingAddress" Grid.Row="7" Grid.Column="1" Margin="0,0,0,10" Width="300" Text="{Binding Path=Customer.BillingAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBlock Grid.Row="8" Grid.Column="1" Margin="0,0,0,5" FontSize="15">By</TextBlock>
-            <TextBlock Grid.Row="8" Grid.Column="1" Margin="200,0,0,5" FontSize="15">Post nr.</TextBlock>
-            <TextBox x:Name="billingCity" Grid.Row="9" Grid.Column="1" Margin="0,0,0,10" Width="180" HorizontalAlignment="Left" Text="{Binding Path=Customer.BillingCity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox x:Name="billingZipcode" Grid.Row="9" Grid.Column="1" Margin="200,0,0,10" Width="100" HorizontalAlignment="Left" Text="{Binding Path=Customer.BillingZipcode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBlock Grid.Row="10" Grid.Column="1" Margin="0,0,0,5" FontSize="15" FontWeight="Bold">Installationsadresse</TextBlock>
-            <TextBox x:Name="installationAddress" Grid.Row="11" Grid.Column="1" Margin="0,0,0,10" Width="300" Text="{Binding Path=Customer.InstallationAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBlock Grid.Row="12" Grid.Column="1" Margin="0,0,0,5" FontSize="15">By</TextBlock>
-            <TextBlock Grid.Row="12" Grid.Column="1" Margin="200,0,0,5" FontSize="15">Post nr.</TextBlock>
-            <TextBox x:Name="installationCity" Grid.Row="13" Grid.Column="1" Margin="0,0,0,10" Width="180" HorizontalAlignment="Left" Text="{Binding Path=Customer.InstallationCity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox x:Name="installationZipcode" Grid.Row="13" Grid.Column="1" Margin="200,0,0,10" Width="100" HorizontalAlignment="Left" Text="{Binding Path=Customer.InstallationZipcode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBlock Grid.Row="15" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">Tilføj kontaktperson</TextBlock>
-            <Button Grid.Row="15" Grid.Column="1" HorizontalAlignment="Left" Margin="120,0,0,0.4" Height="25" Width="25" Content="+" VerticalAlignment="Bottom" Click="Button_Click_AddContact"/>
-            <Button x:Name="CustomerCreateSubmit" Content="Opret" Grid.Row="16" Grid.Column="1" Height="25" Width="100" HorizontalAlignment="Left" Margin="0,10,0,0" Click="Button_Click_CustomerCreate"/>
-            <Button x:Name="CustomerCreateClear" Content="Nulstil" Grid.Row="16" Grid.Column="1" Height="25" Width="100" HorizontalAlignment="Left" Margin="120,10,0,0" Click="Button_Click_CustomerClear" />
-           
-        </Grid>
-        <Grid Grid.Column="1" VerticalAlignment="Top" Margin="20,15,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <TextBlock FontSize="20" Margin="0,0,0,10" FontWeight="Bold">Kontakt personer</TextBlock>
-            <ListBox  x:Name="contacts" Grid.Row="1" ItemsSource="{Binding Path = Customer.Contacts}" ScrollViewer.CanContentScroll="False" Margin="0,0,0,0" MaxHeight="500" BorderBrush="White">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderThickness="1" BorderBrush="Gray">
+            <!-- Customer section start -->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Row="1" Grid.Column="1" FontSize="20" FontWeight="Bold">1. Opret kunde</TextBlock>
+                <DockPanel Grid.Row="2" Grid.Column="1" Name="HelpText01" Margin="0,5,0,10">
+                    <TextBlock TextWrapping="Wrap" MaxWidth="{Binding ElementName=HelpText01,Path=ActualWidth}" Foreground="#6E6E6E">
+                    Opret kunden ved at angive følgende informationer: kundens navn, E-conomics nummer og hele faktueringsadressen.
+                    </TextBlock>
+                </DockPanel>
+                <Label Grid.Row="3" Grid.Column="1" Margin="0,0,0,5" FontSize="15">Kunde navn</Label>
+                <TextBox Height="25" VerticalContentAlignment="Center" x:Name="customerName" Text="{Binding Path=Customer.CustomerName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" Margin="0,0,0,10"/>
+                <Label Grid.Row="5" Grid.Column="1" Margin="0,0,0,5" FontSize="15">E-conomics kunde nr.</Label>
+                <TextBox Height="25" VerticalContentAlignment="Center" x:Name="economicsCustomerNumber" Grid.Row="6" Grid.Column="1" Margin="0,0,0,10" Text="{Binding Path=Customer.EconomicsCustomerNumber,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Grid.Row="7" Grid.Column="1" Margin="0,0,0,5" FontSize="15">Faktueringsadresse</Label>
+                <TextBox Height="25" VerticalContentAlignment="Center" x:Name="billingAddress" Grid.Row="8" Grid.Column="1" Margin="0,0,0,10" Text="{Binding Path=Customer.BillingAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Grid.Row="9" Grid.Column="1" Margin="0,0,0,5" FontSize="15">By og post nr.</Label>
+                <Grid Grid.Row="10" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBox Height="25" VerticalContentAlignment="Center" x:Name="billingCity" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,10,10" HorizontalAlignment="Stretch" Text="{Binding Path=Customer.BillingCity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Height="25" VerticalContentAlignment="Center" x:Name="billingZipcode" Grid.Row="0" Grid.Column="2" Margin="0,0,0,10" HorizontalAlignment="Stretch" Text="{Binding Path=Customer.BillingZipcode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </Grid>
+                <Rectangle Grid.Row="1" Grid.Column="2" Grid.RowSpan="10" HorizontalAlignment="Right" Fill="#848484" Width="1"></Rectangle>
+            </Grid>
+            <!-- Customer section end -->
+
+            <!-- Contact section start -->
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" Grid.Column="1" FontSize="20" FontWeight="Bold">2. Kontaktperson</TextBlock>
+                <DockPanel Grid.Row="2" Grid.Column="1" Name="HelpText02" Margin="0,5,0,10">
+                    <TextBlock TextWrapping="Wrap" MaxWidth="{Binding ElementName=HelpText02,Path=ActualWidth}" Foreground="#6E6E6E">
+                    Opret en eller flere kontaktpersoner til kunden. Disse personer skal derefrer tilføjes til en afdeling.
+                    </TextBlock>
+                </DockPanel>
+                <ListBox x:Name="contacts" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Path = Customer.Contacts}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" BorderBrush="Transparent" BorderThickness="0">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Padding" Value="5,5,5,10"/>
+                            <Setter Property="Margin" Value="0,0,0,10"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
                             <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -79,25 +108,65 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <TextBlock Grid.Row="0" Margin="10,10,0,5" FontSize="15">Navn</TextBlock>
-                                <Button x:Name="ContactPersonDelete" Grid.Row="0" Content="Slet" HorizontalAlignment="Left" Margin="225,10,10,10" VerticalAlignment="Top" Width="75" Click="Button_Click_RemoveContact"/>
-                                <TextBox x:Name="name" Grid.Row="1" HorizontalAlignment="Left" Margin="10,0,10,10" TextWrapping="Wrap" Text="{Binding Path=Name}" VerticalAlignment="Top" Width="300"/>
-                                <TextBlock Grid.Row="2" Margin="10,0,0,5" FontSize="15">E-mail</TextBlock>
-                                <TextBox x:Name="email" Grid.Row="3" HorizontalAlignment="Left" Margin="10,0,10,10" TextWrapping="Wrap" Text="{Binding Path=Email}" VerticalAlignment="Top" Width="300" />
-                                <TextBlock Grid.Row="4" Margin="10,0,0,5" FontSize="15">Mobil tlf.</TextBlock>
-                                <TextBlock Grid.Row="4" Margin="165,0,0,5" FontSize="15">Fastnet tlf.</TextBlock>
-                                <TextBox x:Name="mobilePhone"  Grid.Row="5" HorizontalAlignment="Left" Margin="10,0,10,10" TextWrapping="Wrap" Text="{Binding Path=Mobilephone}" VerticalAlignment="Top" Width="145"/>                                
-                                <TextBox x:Name="landline" Grid.Row="5" HorizontalAlignment="Left" Margin="165,0,10,10" TextWrapping="Wrap" Text="{Binding Path=Landline}" VerticalAlignment="Top" Width="145"/>
-                                
-                                
+                                <Label Grid.Row="0" Grid.Column="0" Margin="0,0,0,5" FontSize="15">Navn</Label>
+                                <Button x:Name="ContactPersonDelete" Grid.Row="0" Grid.Column="0" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" Margin="0,0,0,0" Width="30" Height="30" Click="Button_Click_RemoveContact">
+                                    <Image Source="/Resources/Images/x-button.png"/>
+                                </Button>
+                                <TextBox x:Name="name" Height="25" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path=Name}"/>
+                                <Label Grid.Row="2" Grid.Column="0" FontSize="15">E-mail</Label>
+                                <TextBox x:Name="email" Height="25" VerticalContentAlignment="Center" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path=Email}"/>
+                                <Label Grid.Row="4" FontSize="15">Mobil og fastnet tlf.</Label>
+                                <Grid Grid.Row="5" Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="10"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBox x:Name="mobilePhone" Height="25" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path=Mobilephone}"/>
+                                    <TextBox x:Name="landline" Height="25" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path=Landline}"/>
+                                </Grid>
+                                <Rectangle Margin="0,15,0,0" Grid.Row="6" Grid.Column="0" Fill="#A4A4A4" Height="1"></Rectangle>
                             </Grid>
-                        </Border>
-                    </DataTemplate>                    
-                </ListBox.ItemTemplate>                
-            </ListBox>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Button Grid.Row="4" Grid.Column="1" BorderBrush="Transparent" Background="Transparent" HorizontalAlignment="Left" Margin="0,0,0,10" Height="40" Width="40" VerticalAlignment="Bottom" Click="Button_Click_AddContact">
+                    <Image Source="/Resources/Images/plus-button.png"/>
+                </Button>
+                <Rectangle Grid.Row="1" Grid.Column="2" Grid.RowSpan="100" HorizontalAlignment="Right" Fill="#848484" Width="1"></Rectangle>
+            </Grid>
+            <!-- Contact section end -->
+
+            <!-- Installationaddress section start -->
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" Grid.Column="1" FontSize="20" FontWeight="Bold">3. Installationsadresse</TextBlock>
+                <DockPanel Grid.Row="2" Grid.Column="1" Name="HelpText03" Margin="0,5,0,10">
+                    <TextBlock TextWrapping="Wrap" MaxWidth="{Binding ElementName=HelpText03,Path=ActualWidth}" Foreground="#6E6E6E">
+                    Opret en eller flere installationsadresser (afdelinger). Tilføj derefter den/de ønskede kontaktpersoner til afdelingen.
+                    </TextBlock>
+                </DockPanel>
+                
+            </Grid>
+            <!-- Installationaddress section end -->
         </Grid>
-        
-    </Grid>
-    
+    </ScrollViewer>
+
 </Page>

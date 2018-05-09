@@ -44,6 +44,11 @@ namespace BioCircleManagementSystem.Views.Customers
             //contactList.Children.Add(new ContactPerson());
         }
 
+        public void Button_Click_AddInstallation(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
         public void Button_Click_RemoveContact(object sender, RoutedEventArgs e)
         {
             Button contact = ((Button)sender);
