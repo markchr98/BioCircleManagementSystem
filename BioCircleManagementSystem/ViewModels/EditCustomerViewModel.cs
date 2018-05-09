@@ -39,11 +39,6 @@ namespace BioCircleManagementSystem.ViewModels
             
         }
 
-        public void EditCustomer()
-        {
-            
-        }
-
         public void DeleteCustomer()
         {
             Customer.DeleteCustomer();

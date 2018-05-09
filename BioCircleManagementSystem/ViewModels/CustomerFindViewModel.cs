@@ -87,5 +87,9 @@ namespace BioCircleManagementSystem.ViewModels
             SelectedCustomer.AddContact(new Contact());
         }
 
+        public void UpdateCustomer()
+        {
+            _selectedCustomer.UpdateCustomer();
+        }
     }
 }
