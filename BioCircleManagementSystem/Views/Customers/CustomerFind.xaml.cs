@@ -42,15 +42,20 @@ namespace BioCircleManagementSystem.Views.Customers
 
         private void customers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //if statement to prevent endless loop caused by UnselectAll() causing a slectionChanged event
             if(customers.SelectedItem != null) { 
-            //Must be changed to page with navigation in frame 
-            CustomerEditView CEV = new CustomerEditView();            
-            ShellWindow window = new ShellWindow();
-            window.Content = CEV;           
-            window.ShowDialog();
-            window.Height = 450;
-            window.Width = 900;
+            //Might be changed to page with navigation in frame 
+                CustomerEditView CEV = new CustomerEditView();            
+                ShellWindow window = new ShellWindow();
+                window.Content = CEV;
+                window.ShowDialog();
+                window.Height = 450;
+                window.Width = 900;
+                customers.UnselectAll(); 
+                //Unselect current item so that a selection changed does not happen again
+                //when exiting and re-entering the find customer page
             }
+            
         }
         
     }

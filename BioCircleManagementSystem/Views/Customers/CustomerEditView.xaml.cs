@@ -43,5 +43,15 @@ namespace BioCircleManagementSystem.Views.Customers
         {
             customerFindViewModel.Test();
         }
+
+        private void contacts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_UpdateCustomer(object sender, RoutedEventArgs e)
+        {
+            customerFindViewModel.UpdateCustomer();
+        }
     }
 }

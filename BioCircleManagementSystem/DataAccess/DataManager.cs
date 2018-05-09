@@ -185,21 +185,22 @@ namespace BioCircleManagementSystem.DataAccess
 
         public void UpdateCustomer(Customer customer)
         {
-            using(SqlConnection con = new SqlConnection())
+            using(SqlConnection con = new SqlConnection(connectionString))
             {
                 try
                 {
                     con.Open();
-                    SqlCommand EditCustomer = new SqlCommand("spUpdateCustomer", con);
-                    EditCustomer.CommandType = CommandType.StoredProcedure;
+                    SqlCommand EditCustomer = new SqlCommand("spUpdateCustomer", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    EditCustomer.Parameters.Add(new SqlParameter("@ID", customer.CustomerID));
                     EditCustomer.Parameters.Add(new SqlParameter("@Name", customer.CustomerName));
-                    EditCustomer.Parameters.Add(new SqlParameter("@EconomicCustomerNumber", customer.EconomicsCustomerNumber));
+                    EditCustomer.Parameters.Add(new SqlParameter("@EconomicsCustomerNo", customer.EconomicsCustomerNumber));
                     EditCustomer.Parameters.Add(new SqlParameter("@BillingAddress", customer.BillingAddress));
                     EditCustomer.Parameters.Add(new SqlParameter("@BillingZipcode", customer.BillingZipcode));
                     EditCustomer.Parameters.Add(new SqlParameter("@BillingCity", customer.BillingCity));
-                    EditCustomer.Parameters.Add(new SqlParameter("@InstallationAddress", customer.InstallationAddress));
-                    EditCustomer.Parameters.Add(new SqlParameter("@InstallationZipcode", customer.InstallationZipcode));
-                    EditCustomer.Parameters.Add(new SqlParameter("@InstallationCity", customer.InstallationCity));
                     EditCustomer.ExecuteNonQuery();                   
                 }
                 catch(SqlException e)
@@ -209,7 +210,7 @@ namespace BioCircleManagementSystem.DataAccess
             }
         }
         public void DeleteCustomer(Customer customerID)
-        {
+        { 
             //Måske skal der laves noget vedd MachineID
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -251,7 +252,7 @@ namespace BioCircleManagementSystem.DataAccess
                     CreateContact.Parameters.Add(new SqlParameter("@Mobilephone", contact.Mobilephone));
                     CreateContact.Parameters.Add(new SqlParameter("@Email", contact.Email));
                     CreateContact.Parameters.Add(new SqlParameter("@Landline", contact.Landline));
-                    CreateContact.Parameters.Add(new SqlParameter("@CustomerID", contact.CustomerID));
+                    CreateContact.Parameters.Add(new SqlParameter("@Customer_ID", contact.CustomerID));
 
                     CreateContact.ExecuteNonQuery();
                 }
@@ -359,7 +360,53 @@ namespace BioCircleManagementSystem.DataAccess
                 }
                 catch (SqlException e)
                 {
-                    Console.WriteLine(e.Message);
+                    
+                }
+            }
+        }
+
+        public void CreateVesselType(string vesselType)
+        {
+            using(SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand CreateVesselType = new SqlCommand("spCreateVesselType", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    CreateVesselType.Parameters.Add(new SqlParameter("@VesselType", vesselType));
+
+                    CreateVesselType.ExecuteNonQuery();
+                }
+                catch(SqlException e)
+                {
+
+                }
+            }
+        }
+
+        public void DeleteVesselType(int vesselType_ID)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand CreateVesselType = new SqlCommand("spDeleteVesselType", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    CreateVesselType.Parameters.Add(new SqlParameter("@VesselType_ID", vesselType_ID));
+
+                    CreateVesselType.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+
                 }
             }
         }
@@ -430,9 +477,7 @@ namespace BioCircleManagementSystem.DataAccess
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@InoxGrid", machine.InoxGrid));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@Lid", machine.Lid));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@SteelTop", machine.SteelTop));
-                    
 
-                    Console.WriteLine("executing");
                     UpdateOrderMachine.ExecuteNonQuery();
 
 
@@ -443,6 +488,45 @@ namespace BioCircleManagementSystem.DataAccess
                 }
             }
         }
+
+        public void UpdateMachine(Machine machine)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand UpdateOrderMachine = new SqlCommand("spUpdateMachine", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@MachineNo", machine.MachineNo));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@VesselType", machine.VesselType));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@VesselNo", machine.VesselNo));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@ControlBoxNo", machine.ControlBoxNo));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@InstallationDate", machine.InstallationDate));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Wheels", machine.Wheels));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@InoxGrid", machine.InoxGrid));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Lid", machine.Lid));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@SteelTop_ID", machine.SteelTop));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Customer_ID", machine.CustomerID));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Filters_ID", machine.Filters));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Brush_ID", machine.Brush));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Liquid_ID", machine.Liquid));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Status_ID", machine.Status));
+
+                    UpdateOrderMachine.ExecuteNonQuery();
+
+
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+        }
+
         #endregion Machine
 
         #region Service
@@ -482,6 +566,7 @@ namespace BioCircleManagementSystem.DataAccess
                     CreateDepartment.Parameters.Add(new SqlParameter("@InstallationCity", department.InstallationCity));
                     CreateDepartment.Parameters.Add(new SqlParameter("@InstallationZipcode", department.InstallationZipcode));
                     CreateDepartment.Parameters.Add(new SqlParameter("@CanBringLiquid", department.CanBringLiquid));
+                    CreateDepartment.Parameters.Add(new SqlParameter("@Customer_ID", department.CustomerID));
 
                     CreateDepartment.ExecuteNonQuery();
                 }
@@ -514,6 +599,7 @@ namespace BioCircleManagementSystem.DataAccess
                             string installationCity = reader["InstallationCity"].ToString();
                             string installationZipcode = reader["InstallationZipcode"].ToString();
                             string canBringLiquid = reader["CanBringLiquid"].ToString();
+                            string customerID = reader["Customer_ID"].ToString();
 
                             DepartmentList.Add(new Department()
                             {
@@ -521,6 +607,7 @@ namespace BioCircleManagementSystem.DataAccess
                                 InstallationCity = installationCity,
                                 InstallationZipcode = installationZipcode,
                                 CanBringLiquid = canBringLiquid,
+                                CustomerID = customerID,
                             });
                         }
                     }

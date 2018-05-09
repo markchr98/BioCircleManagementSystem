@@ -8,7 +8,7 @@ using BioCircleManagementSystem.DataAccess;
 
 namespace BioCircleManagementSystem.Model
 {
-    class Steeltop
+    public class Steeltop
     {
         #region Property
         public event PropertyChangedEventHandler PropertyChanged;

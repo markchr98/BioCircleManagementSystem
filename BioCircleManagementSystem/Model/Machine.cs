@@ -13,18 +13,23 @@ namespace BioCircleManagementSystem.Model
     {
        
         // Define the private variables of this model
-        private string vesselType;
-        private string vesselNo;
-        private string machineNo;
-        private string controlBoxNo;
-        private string installationDate;
-        private string wheels;
-        private string inoxGrid;
-        private string lid;
-        private string steelTop;
-        private string canBringLiquid;
+        private string _vesselType;
+        private string _vesselNo;
+        private string _machineNo;
+        private string _controlBoxNo;
+        private string _installationDate;
+        private string _wheels;
+        private string _inoxGrid;
+        private string _lid;
+        private Steeltop _steelTop;
+        private string _canBringLiquid;
         private int _serviceInterval;
         private bool _serviceContract;
+        private int _customerID;
+        private string _filters;
+        private string _brush;
+        private string _liquid;
+        private string _status;
 
         // Required when using data binding
         public event PropertyChangedEventHandler PropertyChanged;
@@ -33,11 +38,11 @@ namespace BioCircleManagementSystem.Model
         public string VesselType {
             get
             {
-                return vesselType;
+                return _vesselType;
             }
             set
             {
-                vesselType = value;
+                _vesselType = value;
                 OnPropertyChanged("VesselType");
             }
         }
@@ -45,11 +50,11 @@ namespace BioCircleManagementSystem.Model
         {
             get
             {
-                return vesselNo;
+                return _vesselNo;
             }
             set
             {
-                vesselNo = value;
+                _vesselNo = value;
                 OnPropertyChanged("VesselNo");
             }
         }
@@ -57,11 +62,11 @@ namespace BioCircleManagementSystem.Model
         {
             get
             {
-                return machineNo;
+                return _machineNo;
             }
             set
             {
-                machineNo = value;
+                _machineNo = value;
                 OnPropertyChanged("MachineNo");
             }
         }
@@ -69,11 +74,11 @@ namespace BioCircleManagementSystem.Model
         {
             get
             {
-                return controlBoxNo;
+                return _controlBoxNo;
             }
             set
             {
-                controlBoxNo = value;
+                _controlBoxNo = value;
                 OnPropertyChanged("ControlBoxNo");
             }
         }
@@ -81,23 +86,24 @@ namespace BioCircleManagementSystem.Model
         {
             get
             {
-                return installationDate;
+                return _installationDate;
             }
             set
             {
-                installationDate = value;
+                _installationDate = value;
                 OnPropertyChanged("InstallationDate");
             }
         }
+
         public string Wheels
         {
             get
             {
-                return wheels;
+                return _wheels;
             }
             set
             {
-                wheels = value;
+                _wheels = value;
                 OnPropertyChanged("Wheels");
             }
         }
@@ -105,11 +111,11 @@ namespace BioCircleManagementSystem.Model
         {
             get
             {
-                return inoxGrid;
+                return _inoxGrid;
             }
             set
             {
-                inoxGrid = value;
+                _inoxGrid = value;
                 OnPropertyChanged("InoxGrid");
             }
         }
@@ -117,23 +123,23 @@ namespace BioCircleManagementSystem.Model
         {
             get
             {
-                return lid;
+                return _lid;
             }
             set
             {
-                lid = value;
+                _lid = value;
                 OnPropertyChanged("Lid");
             }
         }
-        public string SteelTop
+        public Steeltop SteelTop
         {
             get
             {
-                return steelTop;
+                return _steelTop;
             }
             set
             {
-                steelTop = value;
+                _steelTop = value;
                 OnPropertyChanged("SteelTop");
             }
         }
@@ -141,11 +147,11 @@ namespace BioCircleManagementSystem.Model
         {
             get
             {
-                return canBringLiquid;
+                return _canBringLiquid;
             }
             set
             {
-                canBringLiquid = value;
+                _canBringLiquid = value;
                 OnPropertyChanged("CanBringLiquid");
             }
         }
@@ -165,12 +171,80 @@ namespace BioCircleManagementSystem.Model
 
         public bool ServiceContract
         {
-            get { return _serviceContract; }
-            set { _serviceContract = value; OnPropertyChanged("ServiceContract"); }
+            get
+            {
+                return _serviceContract;
+            }
+            set
+            {
+                _serviceContract = value; OnPropertyChanged("ServiceContract");
+            }
         }
 
-      
+        public int CustomerID
+        {
+            get
+            {
+                return _customerID;
+            }
+            set
+            {
+                _customerID = value;
+                OnPropertyChanged("ServiceInterval");
+            }
+        }
 
+        public string Filters
+        {
+            get
+            {
+                return _filters;
+            }
+            set
+            {
+                _filters = value;
+                OnPropertyChanged("ServiceInterval");
+            }
+        }
+
+        public string Brush
+        {
+            get
+            {
+                return _brush;
+            }
+            set
+            {
+                _brush = value;
+                OnPropertyChanged("ServiceInterval");
+            }
+        }
+
+        public string Liquid
+        {
+            get
+            {
+                return _liquid;
+            }
+            set
+            {
+                _liquid = value;
+                OnPropertyChanged("ServiceInterval");
+            }
+        }
+
+        public string Status
+        {
+            get
+            {
+                return _status;
+            }
+            set
+            {
+                _status = value;
+                OnPropertyChanged("ServiceInterval");
+            }
+        }
 
         // Public constructors
         public Machine()
@@ -187,6 +261,11 @@ namespace BioCircleManagementSystem.Model
         public void CreateMachine()
         {
             DataManager.Instance.CreateMachine(this);
+        }
+
+        internal void UpdateMachine()
+        {
+            DataManager.Instance.UpdateMachine(this);
         }
 
         #region INotifyPropertyChanged Members

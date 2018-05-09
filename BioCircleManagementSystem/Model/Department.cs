@@ -27,6 +27,7 @@ namespace BioCircleManagementSystem.Model
         private string _installationZipcode;
         private string _installationCity;
         private string _canBringLiquid;
+        private string _customerID;
 
         public string InstallationAddress
         {
@@ -70,6 +71,17 @@ namespace BioCircleManagementSystem.Model
             set
             {
                 _canBringLiquid = value; OnPropertyChanged("CanBringLiquid");
+            }
+        }
+        public string CustomerID
+        {
+            get
+            {
+                return _customerID;
+            }
+            set
+            {
+                _customerID = value; OnPropertyChanged("CustomerID");
             }
         }
         public Department()
