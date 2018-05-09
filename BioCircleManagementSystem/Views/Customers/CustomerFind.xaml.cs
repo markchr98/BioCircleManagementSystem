@@ -47,6 +47,7 @@ namespace BioCircleManagementSystem.Views.Customers
             //Might be changed to page with navigation in frame 
                 CustomerEditView CEV = new CustomerEditView();            
                 ShellWindow window = new ShellWindow();
+                window.WindowState = WindowState.Normal;
                 window.Content = CEV;
                 window.ShowDialog();
                 window.Height = 450;
@@ -55,8 +56,6 @@ namespace BioCircleManagementSystem.Views.Customers
                 //Unselect current item so that a selection changed does not happen again
                 //when exiting and re-entering the find customer page
             }
-            
         }
-        
     }
 }

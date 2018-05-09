@@ -33,5 +33,24 @@ namespace BioCircleManagementSystem.Views.Storage
         {
             storageViewModel.SearchMachines(SearchBox.Text);
         }
+
+        private void machines_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //if statement to prevent endless loop caused by UnselectAll() causing a slectionChanged event
+            if (machines.SelectedItem != null)
+            {
+                //Might be changed to page with navigation in frame 
+                StorageEditView SEV = new StorageEditView();
+                ShellWindow window = new ShellWindow();
+                window.WindowState = WindowState.Normal;
+                window.Content = SEV;
+                window.ShowDialog();
+                window.Height = 450;
+                window.Width = 900;
+                machines.UnselectAll();
+                //Unselect current item so that a selection changed does not happen again
+                //when exiting and re-entering the find customer page
+            }
+        }
     }
 }

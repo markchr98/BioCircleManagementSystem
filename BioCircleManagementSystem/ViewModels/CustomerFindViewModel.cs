@@ -13,6 +13,7 @@ namespace BioCircleManagementSystem.ViewModels
     class CustomerFindViewModel : INotifyPropertyChanged
     {
         private Customer _selectedCustomer;
+        
              
         public Customer SelectedCustomer
         {
@@ -34,7 +35,7 @@ namespace BioCircleManagementSystem.ViewModels
         {
             get { return _customers; }
             set
-            {
+            {   
                 _customers = value;
                 OnPropertyChanged("Customers");
             }
@@ -74,7 +75,6 @@ namespace BioCircleManagementSystem.ViewModels
                 }
                 return _instance;
             }
-            
         }
 
         public void SearchCustomers(string keyword)

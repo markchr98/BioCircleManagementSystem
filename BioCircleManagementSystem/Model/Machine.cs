@@ -190,7 +190,7 @@ namespace BioCircleManagementSystem.Model
             set
             {
                 _customerID = value;
-                OnPropertyChanged("ServiceInterval");
+                OnPropertyChanged("CustomerID");
             }
         }
 
@@ -203,7 +203,7 @@ namespace BioCircleManagementSystem.Model
             set
             {
                 _filters = value;
-                OnPropertyChanged("ServiceInterval");
+                OnPropertyChanged("Filters");
             }
         }
 
@@ -216,7 +216,7 @@ namespace BioCircleManagementSystem.Model
             set
             {
                 _brush = value;
-                OnPropertyChanged("ServiceInterval");
+                OnPropertyChanged("Brush");
             }
         }
 
@@ -229,7 +229,7 @@ namespace BioCircleManagementSystem.Model
             set
             {
                 _liquid = value;
-                OnPropertyChanged("ServiceInterval");
+                OnPropertyChanged("Liquid");
             }
         }
 
@@ -242,7 +242,7 @@ namespace BioCircleManagementSystem.Model
             set
             {
                 _status = value;
-                OnPropertyChanged("ServiceInterval");
+                OnPropertyChanged("Status");
             }
         }
 

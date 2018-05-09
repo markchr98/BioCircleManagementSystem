@@ -52,6 +52,7 @@ namespace BioCircleManagementSystem.Views.Customers
         private void Button_Click_UpdateCustomer(object sender, RoutedEventArgs e)
         {
             customerFindViewModel.UpdateCustomer();
+            ((Window)this.Parent).Close();
         }
     }
 }

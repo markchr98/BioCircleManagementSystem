@@ -15,7 +15,9 @@ namespace BioCircleManagementSystem.ViewModels
     {
         public Machine machine { get; set; }
         //Constructor
-        
+
+        private static StorageViewModel _instance;
+
         private ObservableCollection<Machine> _machines;
         public ObservableCollection<Machine> Machines
         {
@@ -40,6 +42,18 @@ namespace BioCircleManagementSystem.ViewModels
             }
         }
 
+        public static StorageViewModel Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new StorageViewModel();
+                }
+                return _instance;
+            }
+        }
+
         public StorageViewModel()
         {
             List<Machine> machines = DataManager.Instance.GetMachines("");
@@ -56,15 +70,9 @@ namespace BioCircleManagementSystem.ViewModels
             }
         }
 
-        public ICommand CreateCommand
-        {
-            get;
-            private set;
-        }
-
         public void CreateMachine(string vesselNo, string vesselType, string machineNo, string controlBoxNo)
         {
-            DataAccess.DataManager.Instance.CreateMachine(new Machine(vesselNo, vesselType, machineNo, controlBoxNo));
+            DataManager.Instance.CreateMachine(new Machine(vesselNo, vesselType, machineNo, controlBoxNo));
         }
 
         public void SearchMachines(string keyword)
@@ -76,10 +84,9 @@ namespace BioCircleManagementSystem.ViewModels
         {
             Machine.CreateMachine();
         }
-
-        public void UpdateMachine()
+        public List<Machine> GetMachines(string keyword)
         {
-            machine.UpdateMachine();
+            return DataManager.Instance.GetMachines(keyword);
         }
 
         public void ClearMachine()

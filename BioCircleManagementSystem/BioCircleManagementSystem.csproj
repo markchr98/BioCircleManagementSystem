@@ -75,6 +75,7 @@
     <Compile Include="ViewModels\OrderCreateViewModel.cs" />
     <Compile Include="ViewModels\EditCustomerViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Compile Include="ViewModels\StorageFindViewModel.cs" />
     <Compile Include="ViewModels\StorageViewModel.cs" />
     <Compile Include="Views\Customers\CustomerCreate.xaml.cs">
       <DependentUpon>CustomerCreate.xaml</DependentUpon>
@@ -114,6 +115,9 @@
     </Compile>
     <Compile Include="Views\Storage\StorageCreate.xaml.cs">
       <DependentUpon>StorageCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Storage\StorageEditView.xaml.cs">
+      <DependentUpon>StorageEditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Storage\StorageFind.xaml.cs">
       <DependentUpon>StorageFind.xaml</DependentUpon>
@@ -202,6 +206,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Storage\StorageCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Storage\StorageEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
