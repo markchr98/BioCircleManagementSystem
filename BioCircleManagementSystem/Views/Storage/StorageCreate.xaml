@@ -32,6 +32,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" FontSize="24" Margin="10" FontWeight="Bold" Width="200">Registrer kar</TextBlock>
         <Label Grid.Row="1" Grid.Column="0" Margin="10,0,0,0">Kar nummer</Label>
@@ -40,9 +42,12 @@
         <TextBox Grid.Row="4" Grid.Column="0" Margin="10,0,0,0" x:Name="VesselType" Text="{Binding Machine.VesselType, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
         <Label Grid.Row="5" Grid.Column="0" Margin="10,0,0,0">Maskine nummer</Label>
         <TextBox Grid.Row="6" Grid.Column="0" Margin="10,0,0,0" x:Name="MachineNo" Text="{Binding Machine.MachineNo, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
+        <Label Grid.Row="7" Grid.Column="0" Margin="10,0,0,0">Kontrolboks nummer</Label>
+        <TextBox Grid.Row="8" Grid.Column="0" Margin="10,0,0,0" x:Name="ControlBoxNo" Text="{Binding Machine.ControlBoxNo, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></TextBox>
+
         <Button 
             x:Name="StorageCreateButton"
-            Grid.Row="7" 
+            Grid.Row="9" 
             Grid.Column="0" 
             Margin="10,15,0,0" 
             Height="25" 

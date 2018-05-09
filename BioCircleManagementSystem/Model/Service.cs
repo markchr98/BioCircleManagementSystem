@@ -29,7 +29,7 @@ namespace BioCircleManagementSystem.Model
         private int _depature;
         private int _PHValue;
         private string _smell;
-        private double _tempature;
+        private double _temperature;
         private string _cleaningEffect;
 
         public int ID
@@ -64,6 +64,20 @@ namespace BioCircleManagementSystem.Model
             get { return _PHValue; }
             set { _PHValue = value; OnPropertyChanged("PHValue"); }
         }
-
+        public string Smell
+        {
+            get { return _smell; }
+            set { _smell = value; OnPropertyChanged("Smell"); }
+        }
+        public double Temperature
+        {
+            get { return _temperature; }
+            set { _temperature = value; OnPropertyChanged("Temperature"); }
+        }
+        public string CleaningEffect
+        {
+            get { return _cleaningEffect; }
+            set { _cleaningEffect = value; OnPropertyChanged("CleaningEffect"); }
+        }
     }
 }

@@ -62,9 +62,9 @@ namespace BioCircleManagementSystem.ViewModels
             private set;
         }
 
-        public void CreateMachine(string vesselNo, string vesselType, string machineNo)
+        public void CreateMachine(string vesselNo, string vesselType, string machineNo, string controlBoxNo)
         {
-            DataAccess.DataManager.Instance.CreateMachine(new Machine(vesselNo, vesselType, machineNo));
+            DataAccess.DataManager.Instance.CreateMachine(new Machine(vesselNo, vesselType, machineNo, controlBoxNo));
         }
 
         public void SearchMachines(string keyword)
