@@ -31,7 +31,7 @@
                     <ColumnDefinition Width="162"/>
                     <ColumnDefinition Width="244"/>
                     <ColumnDefinition Width="163" />
-                    <ColumnDefinition Width="83"/>
+                    <ColumnDefinition Width="163"/>
                     <ColumnDefinition Width="102"/>
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" BorderBrush="#000000" BorderThickness="1,1,0,1" Margin="10,0,0,0">
@@ -42,6 +42,9 @@
                 </Border>
                 <Border Grid.Column="2" BorderBrush="#000000" BorderThickness="1,1,1,1">
                     <Label Content="Kar Type" HorizontalAlignment="Left" Margin="2, 0, 0, 0" Grid.Row="1" VerticalAlignment="Top"/>
+                </Border>
+                <Border Grid.Column="3" BorderBrush="#000000" BorderThickness="1,1,1,1">
+                    <Label Content="Kontrolboks Nummer" HorizontalAlignment="Left" Margin="2, 0, 0, 0" Grid.Row="1" VerticalAlignment="Top"/>
                 </Border>
             </Grid>
         </Grid>
@@ -64,6 +67,9 @@
                         </Border>
                         <Border Grid.Column="2" BorderThickness="0.5" BorderBrush="Black">
                             <TextBlock x:Name="VesselType" HorizontalAlignment="Left" Height="20" Margin="2, 0, 0, 0" TextWrapping="Wrap" Text="{Binding Path=VesselType}" VerticalAlignment="Top" Width="160"/>
+                        </Border>
+                        <Border Grid.Column="3" BorderThickness="0.5" BorderBrush="Black">
+                            <TextBlock x:Name="ControlBoxNo" HorizontalAlignment="Left" Height="20" Margin="2, 0, 0, 0" TextWrapping="Wrap" Text="{Binding Path=ControlBoxNo}" VerticalAlignment="Top" Width="160"/>
                         </Border>
                     </Grid>
                 </DataTemplate>

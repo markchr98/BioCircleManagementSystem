@@ -356,6 +356,7 @@ namespace BioCircleManagementSystem.DataAccess
                     CreateMachine.Parameters.Add(new SqlParameter("@VesselNo", machine.VesselNo));
                     CreateMachine.Parameters.Add(new SqlParameter("@VesselType", machine.VesselType));
                     CreateMachine.Parameters.Add(new SqlParameter("@MachineNo", machine.MachineNo));
+                    CreateMachine.Parameters.Add(new SqlParameter("@ControlBoxNo", machine.ControlBoxNo));
 
                     Console.WriteLine("executing");
                     CreateMachine.ExecuteNonQuery();
@@ -394,12 +395,14 @@ namespace BioCircleManagementSystem.DataAccess
                             string machineNo = reader["MachineNo"].ToString();
                             string vesselNo = reader["VesselNo"].ToString();
                             string vesselType = reader["VesselType"].ToString();
+                            string controlBoxNo = reader["ControlBoxNo"].ToString();
 
                             MachineList.Add(new Machine()
                             {
                                 MachineNo = machineNo,
                                 VesselNo = vesselNo,
                                 VesselType = vesselType,
+                                ControlBoxNo = controlBoxNo,
                             });
                         }
                     }
@@ -445,5 +448,42 @@ namespace BioCircleManagementSystem.DataAccess
             }
         }
         #endregion Machine
+
+        #region Service
+
+        public void CreateService()
+        {
+
+        }
+
+        public void GetServices()
+        {
+
+        }
+
+        public void GetService()
+        {
+
+        }
+
+        #endregion
+
+        #region Department
+
+        public void CreateDepartment()
+        {
+
+        }
+
+        public void GetDepartments()
+        {
+
+        }
+
+        public void GetDepartment()
+        {
+
+        }
+        #endregion
     }
 }

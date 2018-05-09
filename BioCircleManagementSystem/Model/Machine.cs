@@ -177,7 +177,7 @@ namespace BioCircleManagementSystem.Model
         {
 
         }
-        public Machine(string vesselType, string vesselNo, string machineNo)
+        public Machine(string vesselType, string vesselNo, string machineNo, string controlBoxNo)
         {
             VesselType = vesselType;
             VesselNo = vesselNo;
