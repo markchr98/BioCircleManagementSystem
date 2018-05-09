@@ -60,7 +60,7 @@ namespace BioCircleManagementSystem.DataAccess
                 }
             }
         }
-        
+
         public List<Order> GetOrders(string keyword)
         {
             //if key not null filter orders
@@ -92,9 +92,7 @@ namespace BioCircleManagementSystem.DataAccess
                     CreateCustomer.Parameters.Add(new SqlParameter("@BillingAddress", customer.BillingAddress));
                     CreateCustomer.Parameters.Add(new SqlParameter("@BillingZipcode", customer.BillingZipcode));
                     CreateCustomer.Parameters.Add(new SqlParameter("@BillingCity", customer.BillingCity));
-                    CreateCustomer.Parameters.Add(new SqlParameter("@InstallationAddress", customer.InstallationAddress));
-                    CreateCustomer.Parameters.Add(new SqlParameter("@InstallationZipcode", customer.InstallationZipcode));
-                    CreateCustomer.Parameters.Add(new SqlParameter("@InstallationCity", customer.InstallationCity));
+
                     Console.WriteLine("executing");
                     CreateCustomer.ExecuteNonQuery();
 
@@ -165,14 +163,12 @@ namespace BioCircleManagementSystem.DataAccess
                             customer.CustomerID = Int32.Parse(reader["ID"].ToString());
                             customer.CustomerName = reader["Name"].ToString();
                             customer.EconomicsCustomerNumber = reader["EconomicsCustomerNO"].ToString();
-                            customer.InstallationAddress = reader["InstallationAddress"].ToString();
-                            customer.InstallationCity = reader["InstallationCity"].ToString();
-                            customer.InstallationZipcode = reader["InstallationZipcode"].ToString();
                             customer.BillingAddress = reader["BillingAddress"].ToString();
                             customer.BillingCity = reader["BillingCity"].ToString();
                             customer.BillingZipcode = reader["BillingZipcode"].ToString();
 
                             customer.Contacts = new System.Collections.ObjectModel.ObservableCollection<Contact>(GetContacts(customer));
+
                             CustomerList.Add(customer);
                         }                        
                     }
@@ -212,7 +208,7 @@ namespace BioCircleManagementSystem.DataAccess
                 }
             }
         }
-        public void DeleteCustomer(string customerID)
+        public void DeleteCustomer(Customer customerID)
         {
             //Måske skal der laves noget vedd MachineID
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -470,20 +466,134 @@ namespace BioCircleManagementSystem.DataAccess
 
         #region Department
 
-        public void CreateDepartment()
+        public void CreateDepartment(Department department)
         {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand CreateDepartment = new SqlCommand("spCreateDepartment", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
 
+                    CreateDepartment.Parameters.Add(new SqlParameter("@InstallationAddress", department.InstallationAddress));
+                    CreateDepartment.Parameters.Add(new SqlParameter("@InstallationCity", department.InstallationCity));
+                    CreateDepartment.Parameters.Add(new SqlParameter("@InstallationZipcode", department.InstallationZipcode));
+                    CreateDepartment.Parameters.Add(new SqlParameter("@CanBringLiquid", department.CanBringLiquid));
+
+                    CreateDepartment.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
         }
 
-        public void GetDepartments()
+        public List<Department> GetDepartments(string keyword)
         {
+            List<Department> DepartmentList = new List<Department>();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spSearchDepartment", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", keyword));
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string installationAddress = reader["InstallationAddress"].ToString();
+                            string installationCity = reader["InstallationCity"].ToString();
+                            string installationZipcode = reader["InstallationZipcode"].ToString();
+                            string canBringLiquid = reader["CanBringLiquid"].ToString();
 
+                            DepartmentList.Add(new Department()
+                            {
+                                InstallationAddress = installationAddress,
+                                InstallationCity = installationCity,
+                                InstallationZipcode = installationZipcode,
+                                CanBringLiquid = canBringLiquid,
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return DepartmentList;
         }
 
         public void GetDepartment()
         {
 
         }
+        #endregion
+
+        #region Brush
+
+        public void CreateBrush(Brush brush)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Brush> GetBrushes(string keyword)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Liquid
+
+        public void CreateLiquid(Brush brush)
+        {
+
+        }
+
+        public List<Liquid> GetLiquids(string keyword)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Filters
+
+        public void CreateFilters(Filters filters)
+        {
+            
+        }
+
+        public List<Filters> GetFilters(string keyword)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region
+
+        public void CreateSteeltop(Steeltop steeltop)
+        {
+
+        }
+
+        public List<Steeltop> GetSteeltops(string keyword)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

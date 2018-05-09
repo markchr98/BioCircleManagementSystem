@@ -8,7 +8,7 @@ using BioCircleManagementSystem.DataAccess;
 
 namespace BioCircleManagementSystem.Model
 {
-    class Brush : INotifyPropertyChanged
+    class Steeltop
     {
         #region Property
         public event PropertyChangedEventHandler PropertyChanged;
@@ -23,28 +23,23 @@ namespace BioCircleManagementSystem.Model
             }
         }
         #endregion Property
-        private int _ID;
-        private string _type;
+        private string _steeltopType;
 
-        public string Type
+        public string SteeltopType
         {
-            get { return _type; }
+            get
+            {
+                return _steeltopType;
+            }
             set
             {
-                _type = value;
-                OnPropertyChanged("Type");
+                _steeltopType = value; OnPropertyChanged("SteeltopType");
             }
         }
 
-        public int ID
+        public void CreateSteeltop()
         {
-            get { return _ID; }
-            set { _ID = value; OnPropertyChanged("ID"); }
-        }
-
-        public void CreateBrush()
-        {
-            DataManager.Instance.CreateBrush(this);
+            DataManager.Instance.CreateSteeltop(this);
         }
     }
 }

@@ -21,6 +21,7 @@ namespace BioCircleManagementSystem.Model
         private string _installationZipcode;
         private string _installationCity;
         private ObservableCollection<Contact> _contacts;
+        private ObservableCollection<Department> _departments;
         private string _economicsCustomerNumber;
 
         
@@ -130,6 +131,15 @@ namespace BioCircleManagementSystem.Model
                 OnPropertyChanged("Contacts");
             }
         }
+        public ObservableCollection<Department> Departments
+        {
+            get { return _departments; }
+            set
+            {
+                _departments = value;
+                OnPropertyChanged("Contacts");
+            }
+        }
 
         public string EconomicsCustomerNumber
         {
@@ -165,17 +175,21 @@ namespace BioCircleManagementSystem.Model
             {
                 c.CreateContact();                
             }
+            foreach(Department d in Departments)
+            {
+                d.CreateDepartment();
+            }
         }
 
-        public void EditCustomer(Customer customer)
+        public void EditCustomer()
         {
-            DataManager.Instance.UpdateCustomer(customer);
+            DataManager.Instance.UpdateCustomer(this);
 
         }
 
         public void DeleteCustomer()
         {
-
+            DataManager.Instance.DeleteCustomer(this);
         }
     }
 }
