@@ -25,27 +25,33 @@ namespace BioCircleManagementSystem.ViewModels
             }
         }
         #endregion Property
+
+        private Machine _selectedMachine;
         public Customer SelectedCustomer { get; set; }
 
         public ObservableCollection<Customer> CustomerList { get; set; }
+        
+        public Machine SelectedMachine { get { return _selectedMachine; } set { _selectedMachine = value; OnPropertyChanged("SelectedMachine"); } }
 
-        public Machine SelectedMachine { get; set; }
-
-        public List<Machine> MachineList = new List<Machine>();
+        public ObservableCollection<Machine> MachineList { get; set; }
 
         public Liquid SelectedLiquid { get; set; }
 
-        public List<Liquid> LiquidList = new List<Liquid>();
+        public ObservableCollection<Liquid> LiquidList { get; set; }
         public Filters SelectedFilters { get; set; }
 
-        public List<Filters> FiltersList = new List<Filters>();
+        public ObservableCollection<Filters> FiltersList { get; set; }
         public Brush SelectedBrush { get; set; }
 
-        public List<Filters> BrushList = new List<Filters>();
+        public ObservableCollection<Brush> BrushList { get; set; }
 
         public OrderCreateViewModel()
         {
             CustomerList = new ObservableCollection<Customer>(DataManager.Instance.GetCustomers(""));
+            MachineList = new ObservableCollection<Machine>(DataManager.Instance.GetMachines(""));
+            //LiquidList = new ObservableCollection<Liquid>(DataManager.Instance.GetLiquids(""));
+            //FiltersList = new ObservableCollection<Filters>(DataManager.Instance.GetFilters(""));
+            BrushList = new ObservableCollection<Brush>(DataManager.Instance.GetBrushes(""));
         }
 
     }

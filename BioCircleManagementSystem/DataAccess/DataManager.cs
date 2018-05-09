@@ -549,9 +549,41 @@ namespace BioCircleManagementSystem.DataAccess
 
         public List<Brush> GetBrushes(string keyword)
         {
-            throw new NotImplementedException();
-        }
+            //if key not null filter customers
+            //return customers
+            List<Brush> BrushList = new List<Brush>();
+            Brush brush;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchLiquid = new SqlCommand("spSearchLiquid", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchLiquid.Parameters.Add(new SqlParameter("@Keyword", keyword));
 
+                    SqlDataReader reader = SearchLiquid.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            brush = new Brush();
+                            brush.Type = reader["Type"].ToString();
+                            
+                            BrushList.Add(brush);
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+                return BrushList;
+            }
+        }
         #endregion
 
         #region Liquid
