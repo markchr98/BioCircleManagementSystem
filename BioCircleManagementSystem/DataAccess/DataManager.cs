@@ -165,9 +165,6 @@ namespace BioCircleManagementSystem.DataAccess
                             customer.CustomerID = Int32.Parse(reader["ID"].ToString());
                             customer.CustomerName = reader["Name"].ToString();
                             customer.EconomicsCustomerNumber = reader["EconomicsCustomerNO"].ToString();
-                            customer.InstallationAddress = reader["InstallationAddress"].ToString();
-                            customer.InstallationCity = reader["InstallationCity"].ToString();
-                            customer.InstallationZipcode = reader["InstallationZipcode"].ToString();
                             customer.BillingAddress = reader["BillingAddress"].ToString();
                             customer.BillingCity = reader["BillingCity"].ToString();
                             customer.BillingZipcode = reader["BillingZipcode"].ToString();
