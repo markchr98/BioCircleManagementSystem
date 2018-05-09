@@ -77,6 +77,11 @@ namespace BioCircleManagementSystem.ViewModels
             Machine.CreateMachine();
         }
 
+        public void UpdateMachine()
+        {
+            machine.UpdateMachine();
+        }
+
         public void ClearMachine()
         {
             Machine.VesselType = "";
@@ -87,7 +92,7 @@ namespace BioCircleManagementSystem.ViewModels
             Machine.Wheels = "";
             Machine.InoxGrid = "";
             Machine.Lid = "";
-            Machine.SteelTop = "";
+            Machine.SteelTop = null;
             Machine.CanBringLiquid = "";
         }
 

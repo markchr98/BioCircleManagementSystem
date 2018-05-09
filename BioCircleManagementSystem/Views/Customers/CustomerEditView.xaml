@@ -40,6 +40,7 @@
             <Label Grid.Column="0" Grid.Row="5" FontSize="15" Margin="0,5,0,5">Faktueringsadresse</Label>
             <TextBox Grid.Column="0" Grid.Row="6" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedCustomer.BillingAddress}"/>
             <Label Grid.Column="0" Grid.Row="7" FontSize="15" Margin="0,5,0,5">By og post nr.</Label>
+            <Button Content="Gem" HorizontalAlignment="Left" Margin="50,15,0,5" Grid.Row="9" VerticalAlignment="Top" Width="75" Click="Button_Click_UpdateCustomer"/>
             <Grid Grid.Column="0" Grid.Row="8">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -52,9 +53,6 @@
                 <TextBox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="0,0,5,0" Height="25" TextWrapping="Wrap" Text="{Binding Path= SelectedCustomer.BillingCity}"/>
                 <TextBox Grid.Column="2" Grid.Row="0" HorizontalAlignment="Stretch" Height="25" TextWrapping="Wrap" Text="{Binding Path= SelectedCustomer.BillingZipcode}"/>
             </Grid>
-            <Label Grid.Column="0" Grid.Row="9" FontSize="15" Margin="0,5,0,5">Installationsadresse</Label>
-            <TextBox Grid.Column="0" Grid.Row="10" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedCustomer.InstallationAddress}"/>
-            <Label Grid.Column="0" Grid.Row="11" FontSize="15" Margin="0,5,0,5">By og post nr.</Label>
             <Grid Grid.Column="0" Grid.Row="12">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -64,11 +62,9 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="0,0,5,0" Height="25" TextWrapping="Wrap" Text="{Binding Path= SelectedCustomer.BillingCity}"/>
-                <TextBox Grid.Column="2" Grid.Row="0" HorizontalAlignment="Stretch" Height="25" TextWrapping="Wrap" Text="{Binding Path= SelectedCustomer.BillingZipcode}"/>
             </Grid>
 
-            <ListBox x:Name="contacts" Grid.Column="2" Grid.RowSpan="3" ItemsSource="{Binding Path = SelectedCustomer.Contacts}" ScrollViewer.CanContentScroll="False" Margin="0,0,0,0" MaxHeight="500" BorderBrush="White">
+            <ListBox x:Name="contacts" Background="GhostWhite" Grid.Column="2" Grid.RowSpan="3" ItemsSource="{Binding Path = SelectedCustomer.Contacts}" ScrollViewer.CanContentScroll="False" Margin="0,0,0,0" MaxHeight="500" BorderBrush="White" SelectionChanged="contacts_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border BorderThickness="1" BorderBrush="Gray">

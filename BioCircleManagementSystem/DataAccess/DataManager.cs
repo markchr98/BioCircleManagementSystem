@@ -60,7 +60,7 @@ namespace BioCircleManagementSystem.DataAccess
                 }
             }
         }
-        
+
         public List<Order> GetOrders(string keyword)
         {
             //if key not null filter orders
@@ -92,9 +92,7 @@ namespace BioCircleManagementSystem.DataAccess
                     CreateCustomer.Parameters.Add(new SqlParameter("@BillingAddress", customer.BillingAddress));
                     CreateCustomer.Parameters.Add(new SqlParameter("@BillingZipcode", customer.BillingZipcode));
                     CreateCustomer.Parameters.Add(new SqlParameter("@BillingCity", customer.BillingCity));
-                    CreateCustomer.Parameters.Add(new SqlParameter("@InstallationAddress", customer.InstallationAddress));
-                    CreateCustomer.Parameters.Add(new SqlParameter("@InstallationZipcode", customer.InstallationZipcode));
-                    CreateCustomer.Parameters.Add(new SqlParameter("@InstallationCity", customer.InstallationCity));
+
                     Console.WriteLine("executing");
                     CreateCustomer.ExecuteNonQuery();
 
@@ -165,14 +163,12 @@ namespace BioCircleManagementSystem.DataAccess
                             customer.CustomerID = Int32.Parse(reader["ID"].ToString());
                             customer.CustomerName = reader["Name"].ToString();
                             customer.EconomicsCustomerNumber = reader["EconomicsCustomerNO"].ToString();
-                            customer.InstallationAddress = reader["InstallationAddress"].ToString();
-                            customer.InstallationCity = reader["InstallationCity"].ToString();
-                            customer.InstallationZipcode = reader["InstallationZipcode"].ToString();
                             customer.BillingAddress = reader["BillingAddress"].ToString();
                             customer.BillingCity = reader["BillingCity"].ToString();
                             customer.BillingZipcode = reader["BillingZipcode"].ToString();
 
                             customer.Contacts = new System.Collections.ObjectModel.ObservableCollection<Contact>(GetContacts(customer));
+
                             CustomerList.Add(customer);
                         }                        
                     }
@@ -189,21 +185,22 @@ namespace BioCircleManagementSystem.DataAccess
 
         public void UpdateCustomer(Customer customer)
         {
-            using(SqlConnection con = new SqlConnection())
+            using(SqlConnection con = new SqlConnection(connectionString))
             {
                 try
                 {
                     con.Open();
-                    SqlCommand EditCustomer = new SqlCommand("spUpdateCustomer", con);
-                    EditCustomer.CommandType = CommandType.StoredProcedure;
+                    SqlCommand EditCustomer = new SqlCommand("spUpdateCustomer", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    EditCustomer.Parameters.Add(new SqlParameter("@ID", customer.CustomerID));
                     EditCustomer.Parameters.Add(new SqlParameter("@Name", customer.CustomerName));
-                    EditCustomer.Parameters.Add(new SqlParameter("@EconomicCustomerNumber", customer.EconomicsCustomerNumber));
+                    EditCustomer.Parameters.Add(new SqlParameter("@EconomicsCustomerNo", customer.EconomicsCustomerNumber));
                     EditCustomer.Parameters.Add(new SqlParameter("@BillingAddress", customer.BillingAddress));
                     EditCustomer.Parameters.Add(new SqlParameter("@BillingZipcode", customer.BillingZipcode));
                     EditCustomer.Parameters.Add(new SqlParameter("@BillingCity", customer.BillingCity));
-                    EditCustomer.Parameters.Add(new SqlParameter("@InstallationAddress", customer.InstallationAddress));
-                    EditCustomer.Parameters.Add(new SqlParameter("@InstallationZipcode", customer.InstallationZipcode));
-                    EditCustomer.Parameters.Add(new SqlParameter("@InstallationCity", customer.InstallationCity));
                     EditCustomer.ExecuteNonQuery();                   
                 }
                 catch(SqlException e)
@@ -212,8 +209,8 @@ namespace BioCircleManagementSystem.DataAccess
                 }
             }
         }
-        public void DeleteCustomer(string customerID)
-        {
+        public void DeleteCustomer(Customer customerID)
+        { 
             //Måske skal der laves noget vedd MachineID
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -255,7 +252,7 @@ namespace BioCircleManagementSystem.DataAccess
                     CreateContact.Parameters.Add(new SqlParameter("@Mobilephone", contact.Mobilephone));
                     CreateContact.Parameters.Add(new SqlParameter("@Email", contact.Email));
                     CreateContact.Parameters.Add(new SqlParameter("@Landline", contact.Landline));
-                    CreateContact.Parameters.Add(new SqlParameter("@CustomerID", contact.CustomerID));
+                    CreateContact.Parameters.Add(new SqlParameter("@Customer_ID", contact.CustomerID));
 
                     CreateContact.ExecuteNonQuery();
                 }
@@ -363,7 +360,53 @@ namespace BioCircleManagementSystem.DataAccess
                 }
                 catch (SqlException e)
                 {
-                    Console.WriteLine(e.Message);
+                    
+                }
+            }
+        }
+
+        public void CreateVesselType(string vesselType)
+        {
+            using(SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand CreateVesselType = new SqlCommand("spCreateVesselType", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    CreateVesselType.Parameters.Add(new SqlParameter("@VesselType", vesselType));
+
+                    CreateVesselType.ExecuteNonQuery();
+                }
+                catch(SqlException e)
+                {
+
+                }
+            }
+        }
+
+        public void DeleteVesselType(int vesselType_ID)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand CreateVesselType = new SqlCommand("spDeleteVesselType", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    CreateVesselType.Parameters.Add(new SqlParameter("@VesselType_ID", vesselType_ID));
+
+                    CreateVesselType.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+
                 }
             }
         }
@@ -434,9 +477,7 @@ namespace BioCircleManagementSystem.DataAccess
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@InoxGrid", machine.InoxGrid));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@Lid", machine.Lid));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@SteelTop", machine.SteelTop));
-                    
 
-                    Console.WriteLine("executing");
                     UpdateOrderMachine.ExecuteNonQuery();
 
 
@@ -447,6 +488,45 @@ namespace BioCircleManagementSystem.DataAccess
                 }
             }
         }
+
+        public void UpdateMachine(Machine machine)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand UpdateOrderMachine = new SqlCommand("spUpdateMachine", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@MachineNo", machine.MachineNo));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@VesselType", machine.VesselType));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@VesselNo", machine.VesselNo));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@ControlBoxNo", machine.ControlBoxNo));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@InstallationDate", machine.InstallationDate));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Wheels", machine.Wheels));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@InoxGrid", machine.InoxGrid));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Lid", machine.Lid));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@SteelTop_ID", machine.SteelTop));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Customer_ID", machine.CustomerID));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Filters_ID", machine.Filters));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Brush_ID", machine.Brush));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Liquid_ID", machine.Liquid));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Status_ID", machine.Status));
+
+                    UpdateOrderMachine.ExecuteNonQuery();
+
+
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+        }
+
         #endregion Machine
 
         #region Service
@@ -470,20 +550,169 @@ namespace BioCircleManagementSystem.DataAccess
 
         #region Department
 
-        public void CreateDepartment()
+        public void CreateDepartment(Department department)
         {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand CreateDepartment = new SqlCommand("spCreateDepartment", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
 
+                    CreateDepartment.Parameters.Add(new SqlParameter("@InstallationAddress", department.InstallationAddress));
+                    CreateDepartment.Parameters.Add(new SqlParameter("@InstallationCity", department.InstallationCity));
+                    CreateDepartment.Parameters.Add(new SqlParameter("@InstallationZipcode", department.InstallationZipcode));
+                    CreateDepartment.Parameters.Add(new SqlParameter("@CanBringLiquid", department.CanBringLiquid));
+                    CreateDepartment.Parameters.Add(new SqlParameter("@Customer_ID", department.CustomerID));
+
+                    CreateDepartment.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
         }
 
-        public void GetDepartments()
+        public List<Department> GetDepartments(string keyword)
         {
+            List<Department> DepartmentList = new List<Department>();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spSearchDepartment", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", keyword));
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string installationAddress = reader["InstallationAddress"].ToString();
+                            string installationCity = reader["InstallationCity"].ToString();
+                            string installationZipcode = reader["InstallationZipcode"].ToString();
+                            string canBringLiquid = reader["CanBringLiquid"].ToString();
+                            string customerID = reader["Customer_ID"].ToString();
 
+                            DepartmentList.Add(new Department()
+                            {
+                                InstallationAddress = installationAddress,
+                                InstallationCity = installationCity,
+                                InstallationZipcode = installationZipcode,
+                                CanBringLiquid = canBringLiquid,
+                                CustomerID = customerID,
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return DepartmentList;
         }
 
         public void GetDepartment()
         {
 
         }
+        #endregion
+
+        #region Brush
+
+        public void CreateBrush(Brush brush)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Brush> GetBrushes(string keyword)
+        {
+            //if key not null filter customers
+            //return customers
+            List<Brush> BrushList = new List<Brush>();
+            Brush brush;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchLiquid = new SqlCommand("spSearchLiquid", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchLiquid.Parameters.Add(new SqlParameter("@Keyword", keyword));
+
+                    SqlDataReader reader = SearchLiquid.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            brush = new Brush();
+                            brush.Type = reader["Type"].ToString();
+                            
+                            BrushList.Add(brush);
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+                return BrushList;
+            }
+        }
+        #endregion
+
+        #region Liquid
+
+        public void CreateLiquid(Brush brush)
+        {
+
+        }
+
+        public List<Liquid> GetLiquids(string keyword)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Filters
+
+        public void CreateFilters(Filters filters)
+        {
+            
+        }
+
+        public List<Filters> GetFilters(string keyword)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region
+
+        public void CreateSteeltop(Steeltop steeltop)
+        {
+
+        }
+
+        public List<Steeltop> GetSteeltops(string keyword)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

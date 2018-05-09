@@ -21,6 +21,7 @@ namespace BioCircleManagementSystem.Model
         private string _installationZipcode;
         private string _installationCity;
         private ObservableCollection<Contact> _contacts;
+        private ObservableCollection<Department> _departments;
         private string _economicsCustomerNumber;
 
         
@@ -93,6 +94,7 @@ namespace BioCircleManagementSystem.Model
                 OnPropertyChanged("BillingCity");
             }
         }
+
         public string InstallationAddress
         {
             get { return _installationAddress; }
@@ -130,6 +132,15 @@ namespace BioCircleManagementSystem.Model
                 OnPropertyChanged("Contacts");
             }
         }
+        public ObservableCollection<Department> Departments
+        {
+            get { return _departments; }
+            set
+            {
+                _departments = value;
+                OnPropertyChanged("Contacts");
+            }
+        }
 
         public string EconomicsCustomerNumber
         {
@@ -152,9 +163,6 @@ namespace BioCircleManagementSystem.Model
             _billingAddress = billingAddress;
             _billingZipcode = billingZipcode;
             _billingCity = billingCity;
-            _installationAddress = installationAddress;
-            _installationZipcode = installationZipcode;
-            _installationCity = installationCity;
             _economicsCustomerNumber = economicsCustomerNumber;
         }
 
@@ -165,17 +173,20 @@ namespace BioCircleManagementSystem.Model
             {
                 c.CreateContact();                
             }
+            foreach(Department d in Departments)
+            {
+                d.CreateDepartment();
+            }
         }
 
-        public void EditCustomer(Customer customer)
+        internal void UpdateCustomer()
         {
-            DataManager.Instance.UpdateCustomer(customer);
-
+            DataManager.Instance.UpdateCustomer(this);
         }
 
         public void DeleteCustomer()
         {
-
+            DataManager.Instance.DeleteCustomer(this);
         }
     }
 }

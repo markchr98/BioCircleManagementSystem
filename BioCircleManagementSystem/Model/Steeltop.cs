@@ -1,28 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BioCircleManagementSystem.Model;
 using BioCircleManagementSystem.DataAccess;
-using System.ComponentModel;
 
-namespace BioCircleManagementSystem.ViewModels
+namespace BioCircleManagementSystem.Model
 {
-    public class EditCustomerViewModel : INotifyPropertyChanged
+    public class Steeltop
     {
-        public Customer Customer
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-
-            }
-        }
-
+        #region Property
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string propertyName)
@@ -34,14 +22,24 @@ namespace BioCircleManagementSystem.ViewModels
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-        private EditCustomerViewModel()
+        #endregion Property
+        private string _steeltopType;
+
+        public string SteeltopType
         {
-            
+            get
+            {
+                return _steeltopType;
+            }
+            set
+            {
+                _steeltopType = value; OnPropertyChanged("SteeltopType");
+            }
         }
 
-        public void DeleteCustomer()
+        public void CreateSteeltop()
         {
-            Customer.DeleteCustomer();
+            DataManager.Instance.CreateSteeltop(this);
         }
     }
 }

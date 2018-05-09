@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BioCircleManagementSystem.DataAccess;
 
 namespace BioCircleManagementSystem.Model
 {
@@ -41,5 +42,9 @@ namespace BioCircleManagementSystem.Model
             set { _ID = value; OnPropertyChanged("ID"); }
         }
 
+        public void CreateBrush()
+        {
+            DataManager.Instance.CreateBrush(this);
+        }
     }
 }
