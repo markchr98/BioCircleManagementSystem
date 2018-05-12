@@ -42,12 +42,7 @@ namespace BioCircleManagementSystem.Views.Customers
             //contactlist er en stack panel
             // new ContactPerson er UserControl
             //contactList.Children.Add(new ContactPerson());
-        }
-
-        public void Button_Click_AddInstallation(object sender, RoutedEventArgs e)
-        {
-            
-        }
+        }       
 
         public void Button_Click_RemoveContact(object sender, RoutedEventArgs e)
         {
@@ -57,7 +52,21 @@ namespace BioCircleManagementSystem.Views.Customers
                 customerCreateViewModel.RemoveContact(deleteme);
             }
         }
-      
+
+        public void Button_Click_AddDepartment(object sender, RoutedEventArgs e)
+        {
+            customerCreateViewModel.AddDepartment();
+        }
+
+        public void Button_Click_RemoveDepartment(object sender, RoutedEventArgs e)
+        {
+            Button Department = ((Button)sender);
+            if (Department.DataContext is Department deleteme)
+            {
+                customerCreateViewModel.RemoveDepartment(deleteme);
+            }
+        }
+
         public void Button_Click_CustomerCreate(object sender, RoutedEventArgs e)
         {
             customerCreateViewModel.CreateCustomer();

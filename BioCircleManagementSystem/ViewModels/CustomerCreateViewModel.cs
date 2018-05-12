@@ -66,5 +66,15 @@ namespace BioCircleManagementSystem.ViewModels
             Customer.Contacts.Clear();
             
         }
+
+        internal void AddDepartment()
+        {
+            Customer.AddDepartment(new Department());
+        }
+
+        internal void RemoveDepartment(Department deleteme)
+        {
+            Customer.DeleteDepartment(deleteme);
+        }
     }
 }

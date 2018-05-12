@@ -601,11 +601,13 @@ namespace BioCircleManagementSystem.DataAccess
                             string canBringLiquid = reader["CanBringLiquid"].ToString();
                             string customerID = reader["Customer_ID"].ToString();
 
+
+
                             DepartmentList.Add(new Department()
                             {
                                 InstallationAddress = installationAddress,
                                 InstallationCity = installationCity,
-                                InstallationZipcode = installationZipcode,
+                                InstallationZipcode = installationZipcode,                             
                                 CanBringLiquid = canBringLiquid,
                                 CustomerID = customerID,
                             });
