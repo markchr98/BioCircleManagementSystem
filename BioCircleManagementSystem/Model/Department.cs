@@ -26,7 +26,7 @@ namespace BioCircleManagementSystem.Model
         private string _installationAddress;
         private string _installationZipcode;
         private string _installationCity;
-        private string _canBringLiquid;
+        private string _canBringLiquid; //should be bool
         private string _customerID;
 
         public string InstallationAddress

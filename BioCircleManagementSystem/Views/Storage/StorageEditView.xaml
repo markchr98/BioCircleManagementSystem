@@ -1,0 +1,78 @@
+﻿<Page x:Class="BioCircleManagementSystem.Views.Storage.StorageEditView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BioCircleManagementSystem.Views.Storage"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StorageEditView">
+
+    <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="10" Padding="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0" Grid.Row="0" FontSize="24" Margin="0,0,0,10" FontWeight="Bold">Rediger maskine</TextBlock>
+            <Label Grid.Column="0" Grid.Row="1" FontSize="15" Margin="0,0,0,5">Maskine nr</Label>
+            <TextBox Grid.Column="0" Grid.Row="2" Margin="0,0,5,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.MachineNo}"/>
+            <Label Grid.Column="0" Grid.Row="3" FontSize="15" Margin="0,5,0,5">Kar type</Label>
+            <TextBox Grid.Column="0" Grid.Row="4" Margin="0,0,5,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.VesselType}"/>
+            <Label Grid.Column="0" Grid.Row="5" FontSize="15" Margin="0,5,0,5">Kar nr</Label>
+            <TextBox Grid.Column="0" Grid.Row="6" Margin="0,0,5,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.VesselNo}"/>
+            <Label Grid.Column="0" Grid.Row="7" FontSize="15" Margin="0,5,0,5">Kontrolboks nr</Label>
+            <TextBox Grid.Column="0" Grid.Row="8" Margin="0,0,5,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.ControlBoksNo}"/>
+            <Button Content="Gem" HorizontalAlignment="Left" Margin="50,15,0,5" Grid.Row="9" VerticalAlignment="Top" Width="75" Click="Button_Click_UpdateCustomer"/>
+            <Label Grid.Column="1" Grid.Row="1" FontSize="15" Margin="5,0,0,5">Installations dato</Label>
+            <TextBox Grid.Column="1" Grid.Row="2" Margin="5,0,4,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.InstallationDate}"/>
+            <Label Grid.Column="1" Grid.Row="3"  FontSize="15" Margin="5,5,0,5">Hjul</Label>
+            <TextBox Grid.Column="1" Grid.Row="4" Margin="5,0,4,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.Wheels}"/>
+            <Label Grid.Column="1" Grid.Row="5" FontSize="15" Margin="5,5,0,5">Inox Grid</Label>
+            <TextBox Grid.Column="1" Grid.Row="6" Margin="5,0,4,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.InoxGrid}"/>
+            <Label Grid.Column="1" Grid.Row="7" FontSize="15" Margin="5,5,0,5">Låg</Label>
+            <TextBox Grid.Column="1" Grid.Row="8" Margin="5,0,5,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.Lid}"/>
+            <Label Grid.Column="2" Grid.Row="1" FontSize="15" Margin="5,0,0,5">Ståltop</Label>
+            <TextBox Grid.Column="2" Grid.Row="2" Margin="5,0,4,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.SteelTop}"/>
+            <Label Grid.Column="2" Grid.Row="3"  FontSize="15" Margin="5,5,0,5">Kunde</Label>
+            <TextBox Grid.Column="2" Grid.Row="4" Margin="5,0,4,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.CustomerID}"/>
+            <Label Grid.Column="2" Grid.Row="5" FontSize="15" Margin="5,5,0,5">Filter</Label>
+            <TextBox Grid.Column="2" Grid.Row="6" Margin="5,0,4,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.Filters}"/>
+            <Label Grid.Column="2" Grid.Row="7" FontSize="15" Margin="5,5,0,5">Børste</Label>
+            <TextBox Grid.Column="2" Grid.Row="8" Margin="5,0,5,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.Brush}"/>
+            <Label Grid.Column="3" Grid.Row="3" FontSize="15" Margin="5,5,0,5">Væske</Label>
+            <TextBox Grid.Column="3" Grid.Row="4" Margin="5,0,4,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.Liquid}"/>
+            <Label Grid.Column="3" Grid.Row="5" FontSize="15" Margin="5,5,0,5">Status</Label>
+            <TextBox Grid.Column="3" Grid.Row="6" Margin="5,0,5,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.Status}"/>
+            <Grid Grid.Column="0" Grid.Row="12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+            </Grid>
+        </Grid>
+    </Border>
+</Page>

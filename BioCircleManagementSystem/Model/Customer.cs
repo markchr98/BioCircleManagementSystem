@@ -22,30 +22,7 @@ namespace BioCircleManagementSystem.Model
         private string _installationCity;
         private ObservableCollection<Contact> _contacts;
         private ObservableCollection<Department> _departments;
-        private string _economicsCustomerNumber;
-
-        
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        public void RemoveContact(Contact contact)
-        {
-            Contacts.Remove(contact);
-        }
-
-        public void AddContact(Contact contact)
-        {
-            Contacts.Add(contact);
-        }
+        private string _economicsCustomerNumber;         
 
         //Public properties
         public string CustomerName
@@ -75,7 +52,8 @@ namespace BioCircleManagementSystem.Model
                 _billingAddress = value;
                 OnPropertyChanged("BillingAddress");
             }
-        }
+        }        
+
         public string BillingZipcode
         {
             get { return _billingZipcode; }
@@ -150,12 +128,24 @@ namespace BioCircleManagementSystem.Model
                 _economicsCustomerNumber = value;
                 OnPropertyChanged("EconomicsCustomerNumber");
             }
-        }      
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
         //Public constructors
         public Customer()
         {
             Contacts = new ObservableCollection<Contact>();
+            Departments = new ObservableCollection<Department>();
         }
         public Customer(string customerName, string billingAddress, string billingZipcode, string billingCity, string installationAddress, string installationZipcode, string installationCity, string economicsCustomerNumber)
         {
@@ -166,6 +156,7 @@ namespace BioCircleManagementSystem.Model
             _economicsCustomerNumber = economicsCustomerNumber;
         }
 
+        //Methods
         public void CreateCustomer()
         {
             DataManager.Instance.CreateCustomer(this);            
@@ -188,5 +179,26 @@ namespace BioCircleManagementSystem.Model
         {
             DataManager.Instance.DeleteCustomer(this);
         }
+
+        public void RemoveContact(Contact deleteme)
+        {
+            Contacts.Remove(deleteme);
+        }
+
+        public void AddContact(Contact contact)
+        {
+            Contacts.Add(contact);
+        }
+        public void AddDepartment(Department department)
+        {
+            Departments.Add(department);
+        }
+
+        public void DeleteDepartment(Department deleteme)
+        {
+            Departments.Remove(deleteme);
+        }
+
+
     }
 }
