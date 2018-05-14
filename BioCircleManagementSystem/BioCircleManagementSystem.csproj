@@ -70,6 +70,7 @@
     <Compile Include="Model\Service.cs" />
     <Compile Include="Model\Steeltop.cs" />
     <Compile Include="Model\Technician.cs" />
+    <Compile Include="ViewModels\CreateServiceViewModel.cs" />
     <Compile Include="ViewModels\CustomerFindViewModel.cs" />
     <Compile Include="ViewModels\CustomerCreateViewModel.cs" />
     <Compile Include="ViewModels\OrderCreateViewModel.cs" />
@@ -109,6 +110,18 @@
     </Compile>
     <Compile Include="Views\Resources\UserControl\CustomerControl.xaml.cs">
       <DependentUpon>CustomerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Service\ServiceCreate.xaml.cs">
+      <DependentUpon>ServiceCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Service\ServiceFind.xaml.cs">
+      <DependentUpon>ServiceFind.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Service\ServicePlan.xaml.cs">
+      <DependentUpon>ServicePlan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Service\ServiceShell.xaml.cs">
+      <DependentUpon>ServiceShell.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
@@ -154,7 +167,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Home\" />
-    <Folder Include="Views\Service\" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\Customers\CustomerCreate.xaml">
@@ -200,6 +212,22 @@
     <Page Include="Views\Resources\UserControl\CustomerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Service\ServiceCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Service\ServiceFind.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Service\ServicePlan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Service\ServiceShell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Shell.xaml">
       <SubType>Designer</SubType>
