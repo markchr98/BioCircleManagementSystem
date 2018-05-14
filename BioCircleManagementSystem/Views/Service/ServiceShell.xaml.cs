@@ -13,41 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BioCircleManagementSystem.Views.Customers
+namespace BioCircleManagementSystem.Views.Service
 {
     /// <summary>
-    /// Interaction logic for CustomerCreate.xaml
+    /// Interaction logic for ServiceShell.xaml
     /// </summary>
-    public partial class CustomerShell : Page
+    public partial class ServiceShell : Page
     {
-        public CustomerShell()
+        public ServiceShell()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click_CustomerFind(object sender, RoutedEventArgs e)
-        {
-            ChangeOtherButtonsBG(sender);
-            _customerFrame.Navigate(new CustomerFind());
-        }
-
-        private void Button_Click_CustomerCreate(object sender, RoutedEventArgs e)
-        {
-            ChangeOtherButtonsBG(sender);
-            _customerFrame.Navigate(new CustomerCreate());
-        }
-
-        // Used to change other buttons background to default color
-        private void ChangeOtherButtonsBG(object sender)
-        {
-            StackPanel Parent = ((StackPanel)((Button)sender).Parent);
-            foreach (Button button in Parent.Children)
-            {
-                if (button != (Button)sender)
-                {
-                    button.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#6C6969"));
-                }
-            }
         }
     }
 }

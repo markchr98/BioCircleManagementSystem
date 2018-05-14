@@ -232,8 +232,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Service\ServiceShell.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Shell.xaml">
       <SubType>Designer</SubType>

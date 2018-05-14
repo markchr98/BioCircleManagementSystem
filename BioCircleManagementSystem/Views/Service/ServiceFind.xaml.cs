@@ -24,5 +24,7 @@ namespace BioCircleManagementSystem.Views.Service
         {
             InitializeComponent();
         }
+
+        public static Uri Instance { get; internal set; }
     }
 }
