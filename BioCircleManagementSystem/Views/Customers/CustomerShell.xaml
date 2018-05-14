@@ -50,7 +50,7 @@
                 <DropShadowEffect ShadowDepth="2"/>
             </Border.Effect>
             <StackPanel x:Name="ButtonPanel" Orientation="Vertical" HorizontalAlignment="Left" Background="#FFFFFF">
-                <Button x:Name="CustomerFind"
+                <Button x:Name="CustomerFindButton"
                         Content="Find Kunde"
                         MinWidth="100"
                         MinHeight="40"

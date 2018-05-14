@@ -74,7 +74,6 @@
     <Compile Include="ViewModels\CustomerFindViewModel.cs" />
     <Compile Include="ViewModels\CustomerCreateViewModel.cs" />
     <Compile Include="ViewModels\OrderCreateViewModel.cs" />
-    <Compile Include="ViewModels\EditCustomerViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\StorageFindViewModel.cs" />
     <Compile Include="ViewModels\StorageViewModel.cs" />
@@ -98,6 +97,9 @@
     </Compile>
     <Compile Include="Views\Orders\OrderShell.xaml.cs">
       <DependentUpon>OrderShell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Resources\Notifications\Confirmations.xaml.cs">
+      <DependentUpon>Confirmations.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Resources\Notifications\Notification.xaml.cs">
       <DependentUpon>Notification.xaml</DependentUpon>
@@ -194,6 +196,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Orders\OrderShell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Resources\Notifications\Confirmations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

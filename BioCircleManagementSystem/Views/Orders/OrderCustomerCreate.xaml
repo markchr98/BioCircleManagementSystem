@@ -29,6 +29,9 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20" />
@@ -76,7 +79,13 @@
             <TextBox Text="{Binding Machine.ServiceInterval}" Grid.Row="3" Grid.Column="2" Width="300" Margin="0,0,0,0"></TextBox>
 
             <TextBlock Grid.Row="4" Grid.Column="2" Width="300" Margin="5,5,0,0">Filterpose:</TextBlock>
-            <ComboBox ItemsSource="{Binding FiltersList}" SelectedItem="{Binding SelectedFilters}" Grid.Row="5" Grid.Column="2" Width="300" Margin="0,0,0,0"></ComboBox>
+            <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding FiltersList}" SelectedItem="{Binding SelectedFilters}" Grid.Row="5" Grid.Column="2" Width="300" Margin="0,0,0,0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=Type}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
             <TextBlock Grid.Row="6" Grid.Column="2" Width="300" Margin="5,5,0,0">Børstetype:</TextBlock>
             <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding BrushList}" SelectedItem="{Binding SelectedBrush}" Grid.Row="7" Grid.Column="2" Width="300" Margin="0,0,0,0">
@@ -97,19 +106,25 @@
             <CheckBox IsChecked="{Binding Machine.InoxGrid}" Grid.Row="10" Grid.Column="2" Content="" HorizontalAlignment="Left" Margin="60,7,0,0" VerticalAlignment="Top"/>
 
             <TextBlock Grid.Row="2" Grid.Column="3" Width="Auto" Margin="5,5,0,0">Ståltop:</TextBlock>
-            <CheckBox IsChecked="{Binding Machine.SteelTop}" Grid.Row="2" Grid.Column="3" Content="" HorizontalAlignment="Left" Margin="50,7,0,0" VerticalAlignment="Top"/>
+            <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding SteeltopList}" SelectedItem="{Binding SelectedSteeltop}" Grid.Row="3" Grid.Column="3" Width="300" Margin="0,0,0,0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=Type}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
-            <TextBlock Grid.Row="3" Grid.Column="3" Width="Auto" Margin="5,5,0,0">Filterhus:</TextBlock>
-            <CheckBox IsChecked="{Binding Filters.House}" Grid.Row="3" Grid.Column="3" Content="" HorizontalAlignment="Left" Margin="60.2,6.6,0,0.6" VerticalAlignment="Stretch"/>
+            <TextBlock Grid.Row="4" Grid.Column="3" Width="Auto" Margin="5,5,0,0">Filterhus:</TextBlock>
+            <CheckBox IsChecked="{Binding Filters.House}" Grid.Row="4" Grid.Column="3" Content="" HorizontalAlignment="Left" Margin="60.2,6.6,0,0.6" VerticalAlignment="Stretch"/>
 
-            <TextBlock Grid.Row="4" Grid.Column="3" Width="Auto" Margin="5,5,0,0">Filterhus type:</TextBlock>
-            <TextBox Text="{Binding SelectedFilters.Type}" Grid.Row="5" Grid.Column="3" Width="Auto" Margin="5,5,0,0"></TextBox>
+            <TextBlock Grid.Row="5" Grid.Column="3" Width="Auto" Margin="5,5,0,0">Filterhus type:</TextBlock>
+            <TextBox Text="{Binding SelectedFilters.Type}" Grid.Row="6" Grid.Column="3" Width="Auto" Margin="5,5,0,0"></TextBox>
 
-            <TextBlock Grid.Row="6" Grid.Column="3" Width="Auto" Margin="5,5,0,0">Placering af maskine (detaljeret beskrivelse):</TextBlock>
-            <TextBox Grid.Row="7" Grid.Column="3" Width="Auto" Margin="5,0,0,0"></TextBox>
+            <TextBlock Grid.Row="7" Grid.Column="3" Width="Auto" Margin="5,5,0,0">Placering af maskine (detaljeret beskrivelse):</TextBlock>
+            <TextBox Grid.Row="8" Grid.Column="3" Width="Auto" Margin="5,0,0,0"></TextBox>
 
-            <TextBlock Grid.Row="8" Grid.Column="3" Width="Auto" Margin="5,5,0,0">Andet:</TextBlock>
-            <TextBox Grid.Row="9" Grid.Column="3" Width="Auto" Margin="5,0,0,0"></TextBox>
+            <TextBlock Grid.Row="9" Grid.Column="3" Width="Auto" Margin="5,5,0,0">Andet:</TextBlock>
+            <TextBox Grid.Row="10" Grid.Column="3" Width="Auto" Margin="5,0,0,0"></TextBox>
         </Grid>
     </Grid>
 </Page>

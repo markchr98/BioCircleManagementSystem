@@ -45,13 +45,18 @@ namespace BioCircleManagementSystem.ViewModels
 
         public ObservableCollection<Brush> BrushList { get; set; }
 
+        public Steeltop SelectedSteelTop { get; set; }
+
+        public ObservableCollection<Steeltop> SteeltopList { get; set; }
+
         public OrderCreateViewModel()
         {
             CustomerList = new ObservableCollection<Customer>(DataManager.Instance.GetCustomers(""));
             MachineList = new ObservableCollection<Machine>(DataManager.Instance.GetMachines(""));
-            //LiquidList = new ObservableCollection<Liquid>(DataManager.Instance.GetLiquids(""));
-            //FiltersList = new ObservableCollection<Filters>(DataManager.Instance.GetFilters(""));
+            LiquidList = new ObservableCollection<Liquid>(DataManager.Instance.GetLiquids(""));
+            FiltersList = new ObservableCollection<Filters>(DataManager.Instance.GetFilters(""));
             BrushList = new ObservableCollection<Brush>(DataManager.Instance.GetBrushes(""));
+            SteeltopList = new ObservableCollection<Steeltop>(DataManager.Instance.GetSteeltops(""));
         }
 
     }

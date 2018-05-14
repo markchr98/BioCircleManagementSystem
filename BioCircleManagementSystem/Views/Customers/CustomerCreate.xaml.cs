@@ -144,5 +144,10 @@ namespace BioCircleManagementSystem.Views.Customers
         {
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            customerCreateViewModel.CreateCustomer();
+        }
     }
 }

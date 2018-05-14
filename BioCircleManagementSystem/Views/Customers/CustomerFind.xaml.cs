@@ -26,7 +26,23 @@ namespace BioCircleManagementSystem.Views.Customers
     public partial class CustomerFind : Page
     {
         CustomerFindViewModel customerFindViewModel;
-        public CustomerFind()
+        private static CustomerFind _instance;
+        public static CustomerFind Instance
+        {
+            get
+            {
+                if(_instance == null)
+                {
+                    _instance = new CustomerFind();
+                }
+                return _instance;
+            }
+            set
+            {
+                _instance = value;
+            }
+        }
+        private CustomerFind()
         {
             InitializeComponent();
             customerFindViewModel = CustomerFindViewModel.Instance;
@@ -49,6 +65,7 @@ namespace BioCircleManagementSystem.Views.Customers
                 ShellWindow window = new ShellWindow();
                 window.WindowState = WindowState.Normal;
                 window.Content = CEV;
+                window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 window.ShowDialog();
                 window.Height = 450;
                 window.Width = 900;

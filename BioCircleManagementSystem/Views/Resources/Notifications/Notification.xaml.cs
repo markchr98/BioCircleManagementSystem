@@ -25,7 +25,7 @@ namespace BioCircleManagementSystem.Views.Resources.Notifications
         }
 
         //Closes the window
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_Continue(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

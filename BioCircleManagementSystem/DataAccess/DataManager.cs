@@ -209,7 +209,7 @@ namespace BioCircleManagementSystem.DataAccess
                 }
             }
         }
-        public void DeleteCustomer(Customer customerID)
+        public void DeleteCustomer(Customer customer)
         { 
             //Måske skal der laves noget vedd MachineID
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -217,15 +217,15 @@ namespace BioCircleManagementSystem.DataAccess
                 try
                 {
                     con.Open();
-                    SqlCommand DeleteCustomer = new SqlCommand("spDeleteCustomer", con)
+                    SqlCommand DelCustomer = new SqlCommand("spDeleteCustomer", con)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    DeleteCustomer.Parameters.Add(new SqlParameter("@Customerid", customerID));
+                    DelCustomer.Parameters.Add(new SqlParameter("@CustomerID", customer.CustomerID));
            
                     Console.WriteLine("executing");
-                    DeleteCustomer.ExecuteNonQuery();
+                    DelCustomer.ExecuteNonQuery();
                 }
                 catch (SqlException e)
                 {
@@ -647,13 +647,13 @@ namespace BioCircleManagementSystem.DataAccess
                 try
                 {
                     con.Open();
-                    SqlCommand SearchLiquid = new SqlCommand("spSearchLiquid", con)
+                    SqlCommand SearchBrush = new SqlCommand("spSearchBrush", con)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
-                    SearchLiquid.Parameters.Add(new SqlParameter("@Keyword", keyword));
+                    SearchBrush.Parameters.Add(new SqlParameter("@Keyword", keyword));
 
-                    SqlDataReader reader = SearchLiquid.ExecuteReader();
+                    SqlDataReader reader = SearchBrush.ExecuteReader();
                     if (reader.HasRows)
                     {
                         while (reader.Read())
@@ -677,14 +677,45 @@ namespace BioCircleManagementSystem.DataAccess
 
         #region Liquid
 
-        public void CreateLiquid(Brush brush)
+        public void CreateLiquid(Liquid liquid)
         {
 
         }
 
         public List<Liquid> GetLiquids(string keyword)
         {
-            throw new NotImplementedException();
+            List<Liquid> LiquidList = new List<Liquid>();
+            Liquid liquid;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchLiquid = new SqlCommand("spSearchLiquid", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchLiquid.Parameters.Add(new SqlParameter("@Keyword", keyword));
+
+                    SqlDataReader reader = SearchLiquid.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            liquid = new Liquid();
+                            liquid.Type = reader["Type"].ToString();
+
+                            LiquidList.Add(liquid);
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+                return LiquidList;
+            }
         }
 
         #endregion
@@ -698,12 +729,43 @@ namespace BioCircleManagementSystem.DataAccess
 
         public List<Filters> GetFilters(string keyword)
         {
-            throw new NotImplementedException();
+            List<Filters> FiltersList = new List<Filters>();
+            Filters filters;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchFilters = new SqlCommand("spSearchFilters", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchFilters.Parameters.Add(new SqlParameter("@Keyword", keyword));
+
+                    SqlDataReader reader = SearchFilters.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            filters = new Filters();
+                            filters.Type = reader["Type"].ToString();
+
+                            FiltersList.Add(filters);
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+                return FiltersList;
+            }
         }
 
         #endregion
 
-        #region
+        #region SteelTop
 
         public void CreateSteeltop(Steeltop steeltop)
         {
@@ -712,7 +774,38 @@ namespace BioCircleManagementSystem.DataAccess
 
         public List<Steeltop> GetSteeltops(string keyword)
         {
-            throw new NotImplementedException();
+            List<Steeltop> SteeltopList = new List<Steeltop>();
+            Steeltop steeltop;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchSteeltop = new SqlCommand("spSearchSteeltop", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchSteeltop.Parameters.Add(new SqlParameter("@Keyword", keyword));
+
+                    SqlDataReader reader = SearchSteeltop.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            steeltop = new Steeltop();
+                            steeltop.Type = reader["Type"].ToString();
+
+                            SteeltopList.Add(steeltop);
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+                return SteeltopList;
+            }
         }
 
         #endregion
