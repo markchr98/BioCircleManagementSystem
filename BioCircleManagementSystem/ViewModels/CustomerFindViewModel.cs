@@ -91,5 +91,9 @@ namespace BioCircleManagementSystem.ViewModels
         {
             _selectedCustomer.UpdateCustomer();
         }
+        public void DeleteCustomer()
+        {
+            SelectedCustomer.DeleteCustomer();
+        }
     }
 }

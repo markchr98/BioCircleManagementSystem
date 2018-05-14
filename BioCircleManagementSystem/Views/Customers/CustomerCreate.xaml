@@ -1,4 +1,4 @@
-﻿ <Page x:Class="BioCircleManagementSystem.Views.Customers.CustomerCreate"
+﻿<Page x:Class="BioCircleManagementSystem.Views.Customers.CustomerCreate"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -31,13 +31,15 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="20"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <TextBlock Grid.Row="1" Grid.Column="1" FontSize="20" FontWeight="Bold">1. Opret kunde</TextBlock>
                 <DockPanel Grid.Row="2" Grid.Column="1" Name="HelpText01" Margin="0,5,0,10">
                     <TextBlock TextWrapping="Wrap" MaxWidth="{Binding ElementName=HelpText01,Path=ActualWidth}" Foreground="#6E6E6E">
@@ -51,6 +53,7 @@
                 <Label Grid.Row="7" Grid.Column="1" Margin="0,0,0,5" FontSize="15">Faktueringsadresse</Label>
                 <TextBox Height="25" VerticalContentAlignment="Center" x:Name="billingAddress" Grid.Row="8" Grid.Column="1" Margin="0,0,0,10" Text="{Binding Path=Customer.BillingAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Grid.Row="9" Grid.Column="1" Margin="0,0,0,5" FontSize="15">By og Post nr.</Label>
+                <Button Grid.Row="11" Grid.Column="1" Content="Button" HorizontalAlignment="Left" Width="75" Margin="0,0,0,1" Click="Button_Click"/>
                 <Grid Grid.Row="10" Grid.Column="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -161,7 +164,7 @@
                 <DockPanel Grid.Row="2" Grid.Column="1" Name="HelpText03" Margin="0,5,0,10">
                     <TextBlock TextWrapping="Wrap" MaxWidth="{Binding ElementName=HelpText03,Path=ActualWidth}" Foreground="#6E6E6E">
                     Opret en eller flere afdelinger. Tilføj derefter den/de ønskede kontaktpersoner til afdelingen.
-                    </TextBlock>                    
+                    </TextBlock>
                 </DockPanel>
                 <!--listbox for departments -->
                 <ListBox x:Name="departments" Grid.Column="1" Grid.Row="3" ItemsSource="{Binding Path=Customer.Departments}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" BorderBrush="Transparent" BorderThickness="0">
@@ -187,13 +190,13 @@
                                     <Image Source="/Resources/Images/x-button.png"/>
                                 </Button>
                                 <TextBox Grid.Row="1" Height="25" VerticalContentAlignment="Center" Text="{Binding Path=CanBringLiquid}" HorizontalAlignment="Stretch" TextWrapping="Wrap"/>
-                                <Label Grid.Row="2" Margin="0,0,0,5" FontSize="15">By og Post nr.</Label>                                
+                                <Label Grid.Row="2" Margin="0,0,0,5" FontSize="15">By og Post nr.</Label>
                                 <TextBox Grid.Row="3" Height="25" VerticalContentAlignment="Center" Text="{Binding Path=InstallationCity}" HorizontalAlignment="Stretch" TextWrapping="Wrap"/>
                                 <TextBox Grid.Row="3" Height="25" VerticalContentAlignment="Center" Text="{Binding Path=InstallationZipcode}" HorizontalAlignment="Stretch" TextWrapping="Wrap"/>
                                 <Label Grid.Row="4" Margin="0,0,0,5" FontSize="15">Må der medbringes væske?</Label>
                                 <ComboBox SelectedValue="{Binding Path=CanBringLiquid}" SelectedValuePath="Content" Grid.Row="4" Height="25" VerticalAlignment="Center" HorizontalAlignment="Right" Width="50">
-                                    <ComboBoxItem IsSelected="True">Nej</ComboBoxItem>                                    
-                                    <ComboBoxItem>Ja</ComboBoxItem>                                    
+                                    <ComboBoxItem IsSelected="True">Nej</ComboBoxItem>
+                                    <ComboBoxItem>Ja</ComboBoxItem>
                                 </ComboBox>
                                 <Rectangle Margin="0,15,0,0" Grid.Row="5" Fill="#A4A4A4" Height="1"></Rectangle>
                             </Grid>

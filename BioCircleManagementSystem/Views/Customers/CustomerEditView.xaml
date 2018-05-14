@@ -40,7 +40,8 @@
             <Label Grid.Column="0" Grid.Row="5" FontSize="15" Margin="0,5,0,5">Faktueringsadresse</Label>
             <TextBox Grid.Column="0" Grid.Row="6" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedCustomer.BillingAddress}"/>
             <Label Grid.Column="0" Grid.Row="7" FontSize="15" Margin="0,5,0,5">By og post nr.</Label>
-            <Button Content="Gem" HorizontalAlignment="Left" Margin="50,15,0,5" Grid.Row="9" VerticalAlignment="Top" Width="75" Click="Button_Click_UpdateCustomer"/>
+            <Button Content="Gem" HorizontalAlignment="Left" Margin="5,15,0,5" Grid.Row="9" VerticalAlignment="Top" Width="75" Click="Button_Click_UpdateCustomer"/>
+            <Button Content="Slet kunde" HorizontalAlignment="Left" Margin="105,15,0,5" Grid.Row="9" VerticalAlignment="Top" Width="75" Click="Button_Click_DeleteCustomer"/>
             <Grid Grid.Column="0" Grid.Row="8">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>

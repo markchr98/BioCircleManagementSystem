@@ -20,15 +20,17 @@ namespace BioCircleManagementSystem.Views.Customers
     /// </summary>
     public partial class CustomerShell : Page
     {
+        private CustomerFind CF;
         public CustomerShell()
         {
             InitializeComponent();
+            CF = CustomerFind.Instance;
         }
 
         private void Button_Click_CustomerFind(object sender, RoutedEventArgs e)
         {
             ChangeOtherButtonsBG(sender);
-            _customerFrame.Navigate(new CustomerFind());
+            _customerFrame.Navigate(CF);
         }
 
         private void Button_Click_CustomerCreate(object sender, RoutedEventArgs e)

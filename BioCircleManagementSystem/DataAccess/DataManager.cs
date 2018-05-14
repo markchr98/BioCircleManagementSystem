@@ -209,7 +209,7 @@ namespace BioCircleManagementSystem.DataAccess
                 }
             }
         }
-        public void DeleteCustomer(Customer customerID)
+        public void DeleteCustomer(Customer customer)
         { 
             //Måske skal der laves noget vedd MachineID
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -217,15 +217,15 @@ namespace BioCircleManagementSystem.DataAccess
                 try
                 {
                     con.Open();
-                    SqlCommand DeleteCustomer = new SqlCommand("spDeleteCustomer", con)
+                    SqlCommand DelCustomer = new SqlCommand("spDeleteCustomer", con)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    DeleteCustomer.Parameters.Add(new SqlParameter("@Customerid", customerID));
+                    DelCustomer.Parameters.Add(new SqlParameter("@CustomerID", customer.CustomerID));
            
                     Console.WriteLine("executing");
-                    DeleteCustomer.ExecuteNonQuery();
+                    DelCustomer.ExecuteNonQuery();
                 }
                 catch (SqlException e)
                 {
@@ -677,7 +677,7 @@ namespace BioCircleManagementSystem.DataAccess
 
         #region Liquid
 
-        public void CreateLiquid(Brush brush)
+        public void CreateLiquid(Liquid liquid)
         {
 
         }

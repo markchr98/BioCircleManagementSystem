@@ -25,7 +25,7 @@ namespace BioCircleManagementSystem.Views.Customers
         CustomerFindViewModel customerFindViewModel;
         public CustomerEditView()
         {
-            InitializeComponent();            
+            InitializeComponent();
             customerFindViewModel = CustomerFindViewModel.Instance;
             DataContext = customerFindViewModel;
         }
@@ -53,6 +53,18 @@ namespace BioCircleManagementSystem.Views.Customers
         {
             customerFindViewModel.UpdateCustomer();
             ((Window)this.Parent).Close();
+        }
+
+        private void Button_Click_DeleteCustomer(object sender, RoutedEventArgs e)
+        {
+            Resources.Notifications.Confirmations confirmation = new Resources.Notifications.Confirmations();
+            confirmation.Output.Text = "Vil du slette denne kunde?";
+            confirmation.ShowDialog();
+            if (confirmation.confirmed)
+            {
+                customerFindViewModel.DeleteCustomer();
+                ((Window)this.Parent).Close();
+            }
         }
     }
 }
