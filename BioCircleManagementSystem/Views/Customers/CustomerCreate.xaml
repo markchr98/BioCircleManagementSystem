@@ -166,7 +166,7 @@
                     Opret en eller flere afdelinger. Tilføj derefter den/de ønskede kontaktpersoner til afdelingen.
                     </TextBlock>
                 </DockPanel>
-                <!--listbox for departments -->
+                <!-- Listbox for departments -->
                 <ListBox x:Name="departments" Grid.Column="1" Grid.Row="3" ItemsSource="{Binding Path=Customer.Departments}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" BorderBrush="Transparent" BorderThickness="0">
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="ListBoxItem">
@@ -189,10 +189,20 @@
                                 <Button x:Name="DepartmentDelete" Grid.Row="0" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" Margin="0,0,0,0" Width="30" Height="30" Click="Button_Click_RemoveDepartment">
                                     <Image Source="/Resources/Images/x-button.png"/>
                                 </Button>
-                                <TextBox Grid.Row="1" Height="25" VerticalContentAlignment="Center" Text="{Binding Path=CanBringLiquid}" HorizontalAlignment="Stretch" TextWrapping="Wrap"/>
-                                <Label Grid.Row="2" Margin="0,0,0,5" FontSize="15">By og Post nr.</Label>
-                                <TextBox Grid.Row="3" Height="25" VerticalContentAlignment="Center" Text="{Binding Path=InstallationCity}" HorizontalAlignment="Stretch" TextWrapping="Wrap"/>
-                                <TextBox Grid.Row="3" Height="25" VerticalContentAlignment="Center" Text="{Binding Path=InstallationZipcode}" HorizontalAlignment="Stretch" TextWrapping="Wrap"/>
+                                <TextBox Grid.Row="1" Height="25" VerticalContentAlignment="Center" Text="{Binding Path=InstallationAddress}" HorizontalAlignment="Stretch" TextWrapping="Wrap"/>
+                                <Label Grid.Row="2" FontSize="15">By og Post nr.</Label>
+                                <Grid Grid.Row="3" Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBox x:Name="city" Height="25" VerticalContentAlignment="Center" Margin="0,0,10,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path=Mobilephone}"/>
+                                    <TextBox x:Name="zipcode" Height="25" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path=Landline}"/>
+                                </Grid>
                                 <Label Grid.Row="4" Margin="0,0,0,5" FontSize="15">Må der medbringes væske?</Label>
                                 <ComboBox SelectedValue="{Binding Path=CanBringLiquid}" SelectedValuePath="Content" Grid.Row="4" Height="25" VerticalAlignment="Center" HorizontalAlignment="Right" Width="50">
                                     <ComboBoxItem IsSelected="True">Nej</ComboBoxItem>
