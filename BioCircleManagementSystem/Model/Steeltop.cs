@@ -23,17 +23,17 @@ namespace BioCircleManagementSystem.Model
             }
         }
         #endregion Property
-        private string _steeltopType;
+        private string _type;
 
-        public string SteeltopType
+        public string Type
         {
             get
             {
-                return _steeltopType;
+                return _type;
             }
             set
             {
-                _steeltopType = value; OnPropertyChanged("SteeltopType");
+                _type = value; OnPropertyChanged("Type");
             }
         }
 
