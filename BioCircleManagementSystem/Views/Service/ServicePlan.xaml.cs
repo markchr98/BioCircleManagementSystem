@@ -10,24 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BioCircleManagementSystem.Views.Resources.Notifications
+namespace BioCircleManagementSystem.Views.Service
 {
     /// <summary>
-    /// Interaction logic for Notification.xaml
+    /// Interaction logic for ServicePlan.xaml
     /// </summary>
-    public partial class Notification : Window
+    public partial class ServicePlan : Page
     {
-        public Notification()
+        public ServicePlan()
         {
             InitializeComponent();
-        }
-
-        //Closes the window
-        private void Button_Click_Continue(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }
