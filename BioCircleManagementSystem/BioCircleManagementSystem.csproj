@@ -94,6 +94,9 @@
     <Compile Include="Views\Orders\OrderCustomerCreate.xaml.cs">
       <DependentUpon>OrderCustomerCreate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Orders\OrderFind.xaml.cs">
+      <DependentUpon>OrderFind.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Orders\OrderShell.xaml.cs">
       <DependentUpon>OrderShell.xaml</DependentUpon>
     </Compile>
@@ -180,6 +183,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Orders\OrderCustomerCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Orders\OrderFind.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
