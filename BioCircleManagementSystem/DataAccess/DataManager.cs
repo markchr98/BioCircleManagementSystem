@@ -419,6 +419,7 @@ namespace BioCircleManagementSystem.DataAccess
         public List<Machine> GetMachines(string keyword)
         {
             List<Machine> MachineList = new List<Machine>();
+           
             using (SqlConnection con = new SqlConnection(connectionString))
             {   
                 try
@@ -749,6 +750,7 @@ namespace BioCircleManagementSystem.DataAccess
                         {
                             filters = new Filters();
                             filters.Type = reader["Type"].ToString();
+                            filters.TypeHouse = reader["TypeHouse"].ToString();
 
                             FiltersList.Add(filters);
                         }
