@@ -29,6 +29,11 @@ namespace BioCircleManagementSystem.Views.Orders
             DataContext = orderCreateViewModel;
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            orderCreateViewModel.CreateOrder();
+        }
+
         //public void CheckBox1_CheckedChanged(Object sender, EventArgs e)
         //{
         //   if(CheckBox1.IsChecked == true)
@@ -39,7 +44,7 @@ namespace BioCircleManagementSystem.Views.Orders
         //   {
         //        CheckBox1.Content = "Nej";
         //   }
-                       
+
 
         //}
 

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BioCircleManagementSystem.DataAccess;
 
 namespace BioCircleManagementSystem.Model
 {
@@ -23,7 +24,7 @@ namespace BioCircleManagementSystem.Model
         }
         #endregion Property
         //private fields
-        private string _orderID;
+        private int _orderID;
         private Customer _customer;
         private Machine _machine;
         private Liquid _liquid;
@@ -61,7 +62,7 @@ namespace BioCircleManagementSystem.Model
         }
 
 
-        public string OrderID
+        public int OrderID
         {
             get { return _orderID; }
             set { _orderID = value; OnPropertyChanged("OrderID"); }
@@ -82,13 +83,39 @@ namespace BioCircleManagementSystem.Model
         //Public constructor
         public Order()
         {
+            Customer = new Customer();
+            Machine = new Machine();
+            Filters = new Filters();
+            Liquid = new Liquid();
+            Brush = new Brush();
+            Service = new Service();
         }
 
-        public Order(string orderID, Customer customer, Machine machine)
+        public Order(int orderID, Customer customer, Machine machine)
         {
             _orderID = orderID;
             _customer = customer;
             _machine = machine;
-        }    
+        }
+
+        public void GetOrders()
+        {
+            DataManager.Instance.GetOrders("");
+        }
+
+        public void CreateOrder()
+        {
+            DataManager.Instance.CreateOrder(this);
+        }
+
+        public void SendOrder()
+        {
+
+        }
+
+        public void Update()
+        {
+            DataManager.Instance.UpdateOrder("");
+        }
     }
 }

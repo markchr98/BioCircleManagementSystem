@@ -14,24 +14,23 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BioCircleManagementSystem.ViewModels;
 
-namespace BioCircleManagementSystem.Views.Storage
+namespace BioCircleManagementSystem.Views.Orders
 {
     /// <summary>
-    /// Interaction logic for StorageFind.xaml
+    /// Interaction logic for OrderFind.xaml
     /// </summary>
-    public partial class StorageFind : Page
+    public partial class OrderFind : Page
     {
-        StorageFindViewModel storageFindViewModel;
-        StorageViewModel storageViewModel;
+        OrderFindViewModel orderFindViewModel;
 
-        private static StorageFind _instance;
-        public static StorageFind Instance
+        private static OrderFind _instance;
+        public static OrderFind Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new StorageFind();
+                    _instance = new OrderFind();
                 }
                 return _instance;
             }
@@ -40,16 +39,16 @@ namespace BioCircleManagementSystem.Views.Storage
                 _instance = value;
             }
         }
-        public StorageFind()
+        public OrderFind()
         {
             InitializeComponent();
-            storageFindViewModel = StorageFindViewModel.Instance;
-            DataContext = storageFindViewModel;
+            orderFindViewModel = OrderFindViewModel.Instance;
+            DataContext = orderFindViewModel;
         }
 
-        private void Button_Click_SearchMachines(object sender, RoutedEventArgs e)
+        private void Button_Click_SearchOrders(object sender, RoutedEventArgs e)
         {
-            storageFindViewModel.SearchMachines(SearchBox.Text);
+            orderFindViewModel.SearchOrders(SearchBox.Text);
         }
 
         private void machines_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -58,10 +57,11 @@ namespace BioCircleManagementSystem.Views.Storage
             if (machines.SelectedItem != null)
             {
                 //Might be changed to page with navigation in frame 
-                StorageEditView SEV = new StorageEditView();
+                OrderCreateViewModel CEV = new OrderCreateViewModel();
                 ShellWindow window = new ShellWindow();
                 window.WindowState = WindowState.Normal;
-                window.Content = SEV;
+                window.Content = CEV;
+                window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 window.ShowDialog();
                 window.Height = 450;
                 window.Width = 900;

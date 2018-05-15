@@ -30,6 +30,7 @@ namespace BioCircleManagementSystem.Views.Orders
         private void Button_Click_TestFind(object sender, RoutedEventArgs e)
         {
             ChangeOtherButtonsBG(sender);
+            _orderFrame.Navigate(new OrderFind());
         }
 
         private void Button_Click_TestCreate(object sender, RoutedEventArgs e)
