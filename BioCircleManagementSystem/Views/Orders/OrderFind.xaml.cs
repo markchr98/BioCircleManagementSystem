@@ -21,19 +21,20 @@ namespace BioCircleManagementSystem.Views.Orders
     /// </summary>
     public partial class OrderFind : Page
     {
-        OrderCreateViewModel orderCreateViewModel;
+        OrderFindViewModel orderFindViewModel;
         
         public OrderFind()
         {
             InitializeComponent();
+            orderFindViewModel = OrderFindViewModel.Instance;
         }
 
-        private void Button_Click_SearchMachines(object sender, RoutedEventArgs e)
+        private void Button_Click_SearchOrders(object sender, RoutedEventArgs e)
         {
-            
+            orderFindViewModel.SearchOrders(SearchBox.Text);
         }
 
-        private void customers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void machines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //if statement to prevent endless loop caused by UnselectAll() causing a slectionChanged event
             if (machines.SelectedItem != null)

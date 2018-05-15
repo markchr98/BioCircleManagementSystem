@@ -24,7 +24,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="SearchBox" Grid.Row="0" Grid.Column="0" Margin="0, 10, 0, 0" HorizontalAlignment="Right" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
-                <Button Grid.Row="0" Grid.Column="1" Margin="0,10,10,0" Content="Søg" HorizontalAlignment="Right" Width="50" Height="25" VerticalAlignment="Top" Click="Button_Click_SearchMachines"/>
+                <Button Grid.Row="0" Grid.Column="1" Margin="0,10,10,0" Content="Søg" HorizontalAlignment="Right" Width="50" Height="25" VerticalAlignment="Top" Click="Button_Click_SearchOrders"/>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
