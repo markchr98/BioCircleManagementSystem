@@ -21,17 +21,17 @@ namespace BioCircleManagementSystem.Views.Storage
     /// </summary>
     public partial class StorageFind : Page
     {
-        StorageViewModel storageViewModel;
+        StorageFindViewModel storageFindViewModel;
         public StorageFind()
         {
             InitializeComponent();
-            storageViewModel = new StorageViewModel();
-            DataContext = storageViewModel;
+            storageFindViewModel = StorageFindViewModel.Instance;
+            DataContext = storageFindViewModel;
         }
 
         private void Button_Click_SearchMachines(object sender, RoutedEventArgs e)
         {
-            storageViewModel.SearchMachines(SearchBox.Text);
+            storageFindViewModel.SearchMachines(SearchBox.Text);
         }
 
         private void machines_SelectionChanged(object sender, SelectionChangedEventArgs e)

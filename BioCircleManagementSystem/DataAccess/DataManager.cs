@@ -811,5 +811,44 @@ namespace BioCircleManagementSystem.DataAccess
         }
 
         #endregion
+
+        #region status
+        public List<Status> GetStatus(string keyword)
+        {
+            List<Status> StatusList = new List<Status>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchStatus = new SqlCommand("spSearchStatus", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchStatus.Parameters.Add(new SqlParameter("@Keyword", keyword));
+                    SqlDataReader reader = SearchStatus.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string status = reader["Status"].ToString();
+
+                            StatusList.Add(new Status()
+                            {
+                                CurrentStatus = status
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return StatusList;
+        }
+        #endregion
     }
 }

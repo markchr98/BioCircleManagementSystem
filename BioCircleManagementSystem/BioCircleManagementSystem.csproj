@@ -68,6 +68,7 @@
     <Compile Include="Model\Machine.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\Service.cs" />
+    <Compile Include="Model\Status.cs" />
     <Compile Include="Model\Steeltop.cs" />
     <Compile Include="Model\Technician.cs" />
     <Compile Include="ViewModels\CreateServiceViewModel.cs" />

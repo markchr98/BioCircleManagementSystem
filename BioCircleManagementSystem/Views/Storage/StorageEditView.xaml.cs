@@ -21,17 +21,19 @@ namespace BioCircleManagementSystem.Views.Storage
     /// </summary>
     public partial class StorageEditView : Page
     {
-        StorageFindViewModel storageEditViewModel;
+        StorageFindViewModel StorageFindViewModel;
+        //StorageEditViewModel storageEditViewModel;
         public StorageEditView()
         {
             InitializeComponent();
-            storageEditViewModel = StorageFindViewModel.Instance;
-            DataContext = storageEditViewModel;
+            StorageFindViewModel = StorageFindViewModel.Instance;
+            //storageEditViewModel = new StorageEditViewModel();
+            DataContext = StorageFindViewModel;
         }
 
         private void Button_Click_UpdateCustomer(object sender, RoutedEventArgs e)
         {
-            storageEditViewModel.UpdateMachine();
+            StorageFindViewModel.UpdateMachine();
             ((Window)this.Parent).Close();
         }
     }
