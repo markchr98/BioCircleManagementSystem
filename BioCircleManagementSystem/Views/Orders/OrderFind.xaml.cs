@@ -22,11 +22,28 @@ namespace BioCircleManagementSystem.Views.Orders
     public partial class OrderFind : Page
     {
         OrderFindViewModel orderFindViewModel;
-        
+
+        private static OrderFind _instance;
+        public static OrderFind Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new OrderFind();
+                }
+                return _instance;
+            }
+            set
+            {
+                _instance = value;
+            }
+        }
         public OrderFind()
         {
             InitializeComponent();
             orderFindViewModel = OrderFindViewModel.Instance;
+            DataContext = orderFindViewModel;
         }
 
         private void Button_Click_SearchOrders(object sender, RoutedEventArgs e)
