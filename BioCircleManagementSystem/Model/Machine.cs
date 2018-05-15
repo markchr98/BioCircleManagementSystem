@@ -21,7 +21,7 @@ namespace BioCircleManagementSystem.Model
         private string _wheels;
         private string _inoxGrid;
         private string _lid;
-        private Steeltop _steelTop;
+        private string _steelTop;
         private string _canBringLiquid;
         private int _serviceInterval;
         private bool _serviceContract;
@@ -131,7 +131,7 @@ namespace BioCircleManagementSystem.Model
                 OnPropertyChanged("Lid");
             }
         }
-        public Steeltop SteelTop
+        public string SteelTop
         {
             get
             {

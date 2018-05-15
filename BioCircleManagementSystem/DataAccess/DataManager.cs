@@ -49,10 +49,8 @@ namespace BioCircleManagementSystem.DataAccess
 
                     CreateOrder.Parameters.Add(new SqlParameter("@CustomerID", order.Customer.CustomerID));
                     CreateOrder.Parameters.Add(new SqlParameter("@MachineID", order.Machine.MachineNo));
-                    Console.WriteLine("executing");
+
                     CreateOrder.ExecuteNonQuery();
-
-
                 }
                 catch (SqlException e)
                 {
@@ -63,9 +61,43 @@ namespace BioCircleManagementSystem.DataAccess
 
         public List<Order> GetOrders(string keyword)
         {
-            //if key not null filter orders
-            //return orders
-            throw new NotImplementedException();
+            List<Order> OrderList = new List<Order>();
+            Order order = new Order();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spSearchOrders", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", keyword));
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            int ID = Int32.Parse(reader["ID"].ToString());
+                            int customerID = Int32.Parse(reader["Customer_ID"].ToString());
+                            int machineID = Int32.Parse(reader["Machine_ID"].ToString());
+
+                            order.OrderID = ID;
+                            order.Customer = GetCustomer(customerID);
+                            order.Machine = GetMachine(machineID);
+                            //
+
+                            OrderList.Add(order);
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return OrderList;
         }
 
         public void UpdateOrder(string orderID)
@@ -105,9 +137,42 @@ namespace BioCircleManagementSystem.DataAccess
             }
         }
 
-        public Customer GetCustomer(string customerID)
+        public Customer GetCustomer(int customerID)
         {
-            throw new NotImplementedException();
+            Customer customer = new Customer();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spGetCustomerFromID", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", customerID));
+
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            customer = new Customer();
+                            customer.CustomerID = Int32.Parse(reader["ID"].ToString());
+                            customer.CustomerName = reader["Name"].ToString();
+                            customer.EconomicsCustomerNumber = reader["EconomicsCustomerNO"].ToString();
+                            customer.BillingAddress = reader["BillingAddress"].ToString();
+                            customer.BillingCity = reader["BillingCity"].ToString();
+                            customer.BillingZipcode = reader["BillingZipcode"].ToString();
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return customer;
         }
 
         //used when creating contacts for new customer
@@ -168,6 +233,7 @@ namespace BioCircleManagementSystem.DataAccess
                             customer.BillingZipcode = reader["BillingZipcode"].ToString();
 
                             customer.Contacts = new System.Collections.ObjectModel.ObservableCollection<Contact>(GetContacts(customer));
+                            //
 
                             CustomerList.Add(customer);
                         }                        
@@ -411,9 +477,52 @@ namespace BioCircleManagementSystem.DataAccess
             }
         }
 
-        public Machine GetMachine(string machineID)
+        public Machine GetMachine(int machineID)
         {
-            throw new NotImplementedException();
+            Machine machine = new Machine();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spGetMachineFromID", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", machineID));
+
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            machine = new Machine();
+                            machine.MachineNo = reader["MachineNo"].ToString();
+                            machine.VesselType = reader["VesselType"].ToString();
+                            machine.VesselNo = reader["VesselNo"].ToString();
+                            machine.CustomerID = Int32.Parse(reader["Customer_ID"].ToString());
+                            machine.ControlBoxNo = reader["ControlBoxNo"].ToString();
+                            machine.Brush = reader["Brush_ID"].ToString();
+                            machine.Filters = reader["Filters_ID"].ToString();
+                            machine.Wheels = reader["Wheels"].ToString();
+                            machine.Lid = reader["Lid"].ToString();
+                            machine.InstallationDate = reader["InstallationDate"].ToString();
+                            machine.InoxGrid = reader["InoxGrid"].ToString();
+                            machine.SteelTop = reader["SteelTop_ID"].ToString();
+                            machine.Liquid = reader["Liquid_ID"].ToString();
+                            machine.Status = reader["Status_ID"].ToString();
+                            machine.ServiceInterval = Int32.Parse(reader["ServiceInterval"].ToString());
+                            machine.ServiceContract = Boolean.Parse(reader["ServiceContract"].ToString());
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return machine;
         }
 
         public List<Machine> GetMachines(string keyword)

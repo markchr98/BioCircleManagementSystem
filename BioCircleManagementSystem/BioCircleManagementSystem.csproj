@@ -75,6 +75,7 @@
     <Compile Include="ViewModels\CustomerFindViewModel.cs" />
     <Compile Include="ViewModels\CustomerCreateViewModel.cs" />
     <Compile Include="ViewModels\OrderCreateViewModel.cs" />
+    <Compile Include="ViewModels\OrderFindViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\StorageFindViewModel.cs" />
     <Compile Include="ViewModels\StorageViewModel.cs" />
@@ -95,6 +96,9 @@
     </Compile>
     <Compile Include="Views\Orders\OrderCustomerCreate.xaml.cs">
       <DependentUpon>OrderCustomerCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orders\OrderFind.xaml.cs">
+      <DependentUpon>OrderFind.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Orders\OrderShell.xaml.cs">
       <DependentUpon>OrderShell.xaml</DependentUpon>
@@ -193,6 +197,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Orders\OrderCustomerCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Orders\OrderFind.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
