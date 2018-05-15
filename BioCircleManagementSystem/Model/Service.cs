@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BioCircleManagementSystem.DataAccess;
+
 
 namespace BioCircleManagementSystem.Model
 {
@@ -31,6 +33,7 @@ namespace BioCircleManagementSystem.Model
         private string _smell;
         private double _temperature;
         private string _cleaningEffect;
+        private Machine _machine;
 
         public int ID
         {
@@ -48,6 +51,12 @@ namespace BioCircleManagementSystem.Model
             get { return _nextWeekNumber; }
             set { _nextWeekNumber = value; OnPropertyChanged("NextWeekNumber"); }
         }
+
+        internal void Update()
+        {
+            throw new NotImplementedException();
+        }
+
         public int Arrival
         {
             get { return _arrival; }
@@ -78,6 +87,22 @@ namespace BioCircleManagementSystem.Model
         {
             get { return _cleaningEffect; }
             set { _cleaningEffect = value; OnPropertyChanged("CleaningEffect"); }
+        }
+
+        public Machine Machine
+        {
+            get { return _machine; }
+            set { _machine = value; OnPropertyChanged("Machine"); }
+        }
+
+        public Service()
+        {
+
+        }
+
+        public void CreateService()
+        {
+            DataManager.Instance.CreateService(this);
         }
     }
 }

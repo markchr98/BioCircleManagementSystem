@@ -20,9 +20,38 @@ namespace BioCircleManagementSystem.Views.Service
     /// </summary>
     public partial class ServiceShell : Page
     {
+        private ServiceFind SF;
+        private ServiceCreate SC;
+        private static ServiceShell _instance;
         public ServiceShell()
         {
             InitializeComponent();
+           
+
+
+        }
+        public static ServiceShell Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new ServiceShell();
+                }
+                return _instance;
+            }
+        }
+
+        public void Button_Click_ServiceFind(object sender, RoutedEventArgs e)
+        {
+            SF = ServiceFind.Instance;
+            _serviceFrame.Navigate(SF);
+        }
+
+        public void Button_Click_ServiceCreate(object sender, RoutedEventArgs e)
+        {
+            SC = ServiceCreate.Instance;
+            _serviceFrame.Navigate(SC);
         }
     }
 }

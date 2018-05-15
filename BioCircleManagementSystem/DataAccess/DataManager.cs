@@ -105,6 +105,11 @@ namespace BioCircleManagementSystem.DataAccess
             }
         }
 
+        internal void CreateService(Service service)
+        {
+            throw new NotImplementedException();
+        }
+
         public Customer GetCustomer(string customerID)
         {
             throw new NotImplementedException();

@@ -20,11 +20,24 @@ namespace BioCircleManagementSystem.Views.Service
     /// </summary>
     public partial class ServiceCreate : Page
     {
+        //Singleton pattern with "lazy loading". used because of issues with instanciating pages causing dublication of events
+        private static ServiceCreate _instance;
+        public static ServiceCreate Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new ServiceCreate();
+                }
+                return _instance;
+            }
+        }
         public ServiceCreate()
         {
             InitializeComponent();
         }
 
-        public static Uri Instance { get; internal set; }
+       
     }
 }
