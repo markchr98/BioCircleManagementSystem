@@ -95,7 +95,7 @@ namespace BioCircleManagementSystem.ViewModels
             Machine.VesselNo = "";
             Machine.MachineNo = "";
             Machine.ControlBoxNo = "";
-            Machine.InstallationDate = "";
+            Machine.InstallationDate = DateTime.Today;
             Machine.Wheels = "";
             Machine.InoxGrid = "";
             Machine.Lid = "";

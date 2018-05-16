@@ -17,7 +17,7 @@ namespace BioCircleManagementSystem.Model
         private string _vesselNo;
         private string _machineNo;
         private string _controlBoxNo;
-        private string _installationDate;
+        private DateTime _installationDate;
         private string _wheels;
         private string _inoxGrid;
         private string _lid;
@@ -82,7 +82,7 @@ namespace BioCircleManagementSystem.Model
                 OnPropertyChanged("ControlBoxNo");
             }
         }
-        public string InstallationDate
+        public DateTime InstallationDate
         {
             get
             {
@@ -249,7 +249,12 @@ namespace BioCircleManagementSystem.Model
         // Public constructors
         public Machine()
         {
-
+            SteelTop = new Steeltop();
+            Status = new Status();
+            Liquid = new Liquid();
+            Brush = new Brush();
+            Filters = new Filters();
+            Customer = new Customer();
         }
         public Machine(string vesselType, string vesselNo, string machineNo, string controlBoxNo)
         {
