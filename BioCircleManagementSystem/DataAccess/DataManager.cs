@@ -759,9 +759,38 @@ namespace BioCircleManagementSystem.DataAccess
             throw new NotImplementedException();
         }
 
-        public void GetBrush(Brush brush)
+        public Brush GetBrush(int brushID)
         {
+            Brush brush = new Brush();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spGetBrushFromID", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", brushID));
 
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            brush = new Brush();
+                            brush.ID = Int32.Parse(reader["ID"].ToString());
+                            brush.Type = reader["Type"].ToString();
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return brush;
         }
         public List<Brush> GetBrushes(string keyword)
         {
@@ -809,6 +838,40 @@ namespace BioCircleManagementSystem.DataAccess
 
         }
 
+        public Liquid GetLiquid(int LiquidID)
+        {
+            Liquid liquid = new Liquid();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spGetLiquidFromID", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", liquid));
+
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            liquid = new Liquid();
+                            liquid.ID = Int32.Parse(reader["ID"].ToString());
+                            liquid.Type = reader["Type"].ToString();
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return liquid;
+        }
+
         public List<Liquid> GetLiquids(string keyword)
         {
             List<Liquid> LiquidList = new List<Liquid>();
@@ -852,6 +915,42 @@ namespace BioCircleManagementSystem.DataAccess
         public void CreateFilters(Filters filters)
         {
             
+        }
+
+        public Filters GetFilter(int filterID)
+        {
+            Filters filter = new Filters();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spGetFilterFromID", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", filterID));
+
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            filter = new Filters();
+                            filter.ID = Int32.Parse(reader["ID"].ToString());
+                            filter.Type = reader["Type"].ToString();
+                            filter.House = reader["House"].ToString();
+                            filter.TypeHouse = reader["TypeHouse"].ToString();
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return filter;
         }
 
         public List<Filters> GetFilters(string keyword)
@@ -900,6 +999,40 @@ namespace BioCircleManagementSystem.DataAccess
 
         }
 
+        public Steeltop GetSteeltop(int steelTopID)
+        {
+            Steeltop steelTop = new Steeltop();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spGetSteelTopFromID", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", steelTop));
+
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            steelTop = new Steeltop();
+                            steelTop.ID = Int32.Parse(reader["ID"].ToString());
+                            steelTop.Type = reader["Type"].ToString();
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return steelTop;
+        }
+
         public List<Steeltop> GetSteeltops(string keyword)
         {
             List<Steeltop> SteeltopList = new List<Steeltop>();
@@ -939,6 +1072,40 @@ namespace BioCircleManagementSystem.DataAccess
         #endregion
 
         #region status
+
+        public Status GetStatusByID(int StatusID)
+        {
+            Status status = new Status();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spGetStatusFromID", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", status));
+
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            status = new Status();
+                            status.ID = Int32.Parse(reader["ID"].ToString());
+                            status.CurrentStatus = reader["Status"].ToString();
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return status;
+        }
         public List<Status> GetStatus(string keyword)
         {
             List<Status> StatusList = new List<Status>();
