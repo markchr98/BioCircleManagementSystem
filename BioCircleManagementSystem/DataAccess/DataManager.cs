@@ -664,9 +664,44 @@ namespace BioCircleManagementSystem.DataAccess
 
         }
 
-        public void GetService()
+        public Service GetService(int serviceID)
         {
+            Service service = new Service();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spGetServiceFromID", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", serviceID));
 
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            service = new Service();
+                            service.ID = Int32.Parse(reader["ID"].ToString());
+                            service.Arrival = Int32.Parse(reader["Arrival"].ToString());
+                            service.Depature = Int32.Parse(reader["Departure"].ToString());
+                            service.CleaningEffect = reader["CleaningEffect"].ToString();
+                            service.PHValue = Int32.Parse(reader["Arrival"].ToString());
+                            service.Temperature = Int32.Parse(reader["Temperature"].ToString());
+                            service.WeekNumber = Int32.Parse(reader["WeekNumber"].ToString());
+                            service.Smell = reader["Smell"].ToString();
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return service;
         }
 
         #endregion
@@ -838,7 +873,7 @@ namespace BioCircleManagementSystem.DataAccess
 
         }
 
-        public Liquid GetLiquid(int LiquidID)
+        public Liquid GetLiquid(int liquidID)
         {
             Liquid liquid = new Liquid();
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -850,7 +885,7 @@ namespace BioCircleManagementSystem.DataAccess
                     {
                         CommandType = CommandType.StoredProcedure
                     };
-                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", liquid));
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", liquidID));
 
                     SqlDataReader reader = SearchKeyword.ExecuteReader();
                     if (reader.HasRows)
