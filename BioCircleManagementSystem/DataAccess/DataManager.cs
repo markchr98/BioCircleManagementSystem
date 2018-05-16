@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -508,7 +509,7 @@ namespace BioCircleManagementSystem.DataAccess
                             machine.ControlBoxNo = reader["ControlBoxNo"].ToString();
                             machine.Wheels = reader["Wheels"].ToString();
                             machine.Lid = reader["Lid"].ToString();
-                            machine.InstallationDate = reader["InstallationDate"].ToString();
+                            machine.InstallationDate = reader.GetDateTime(reader.GetOrdinal("InstallationDate"));
                             machine.InoxGrid = reader["InoxGrid"].ToString();
                             machine.ServiceInterval = Int32.Parse(reader["ServiceInterval"].ToString());
                             machine.ServiceContract = Boolean.Parse(reader["ServiceContract"].ToString());
