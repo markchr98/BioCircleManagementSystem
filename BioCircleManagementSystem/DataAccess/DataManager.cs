@@ -660,9 +660,53 @@ namespace BioCircleManagementSystem.DataAccess
 
         }
 
-        public void GetServices()
+        public List<Service> GetServices(string keyword)
         {
+            List<Service> serviceList = new List<Service>();
+            Service service = new Service();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spGetServiceFromID", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", keyword));
 
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            service = new Service();
+                            service.ID = Int32.Parse(reader["ID"].ToString());
+                            service.Arrival = Int32.Parse(reader["Arrival"].ToString());
+                            service.Depature = Int32.Parse(reader["Departure"].ToString());
+                            service.CleaningEffect = reader["CleaningEffect"].ToString();
+                            service.PHValue = Int32.Parse(reader["Arrival"].ToString());
+                            service.Temperature = Int32.Parse(reader["Temperature"].ToString());
+                            service.WeekNumber = Int32.Parse(reader["WeekNumber"].ToString());
+                            service.Smell = reader["Smell"].ToString();
+
+                            int MachineID = Int32.Parse(reader["Machine_ID"].ToString());
+                            int TechnicianID = Int32.Parse(reader["Technician_ID"].ToString());
+
+                            service.Machine = GetMachine(MachineID);
+                            service.Technician = GetTechnician(TechnicianID);
+
+                            serviceList.Add(service);
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return serviceList;
         }
 
         public Service GetService(int serviceID)
@@ -1179,5 +1223,44 @@ namespace BioCircleManagementSystem.DataAccess
             return StatusList;
         }
         #endregion
+
+        #region Technician
+        public Technician GetTechnician(int technicianID)
+        {
+            Technician technician = new Technician();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spGetTechnicianFromID", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", technicianID));
+
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            technician = new Technician();
+                            technician.ID = Int32.Parse(reader["ID"].ToString());
+                            technician.FirstName = reader["FirstName"].ToString();
+                            technician.LastName = reader["LastName"].ToString();
+                            technician.Email = reader["Email"].ToString();
+                            technician.MobilePhone = Int32.Parse(reader["MobilePhone"].ToString());
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return technician;
+        }
+        #endregion 
     }
 }
