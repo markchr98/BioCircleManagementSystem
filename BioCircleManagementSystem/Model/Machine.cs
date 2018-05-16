@@ -82,10 +82,15 @@ namespace BioCircleManagementSystem.Model
                 OnPropertyChanged("ControlBoxNo");
             }
         }
+        DateTime MinValue = Convert.ToDateTime("01-01-2000");
         public DateTime InstallationDate
         {
             get
             {
+                if(_installationDate < MinValue)
+                {
+                    return MinValue;
+                }
                 return _installationDate;
             }
             set
