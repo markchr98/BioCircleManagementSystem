@@ -500,19 +500,27 @@ namespace BioCircleManagementSystem.DataAccess
                             machine.MachineNo = reader["MachineNo"].ToString();
                             machine.VesselType = reader["VesselType"].ToString();
                             machine.VesselNo = reader["VesselNo"].ToString();
-                            machine.CustomerID = Int32.Parse(reader["Customer_ID"].ToString());
                             machine.ControlBoxNo = reader["ControlBoxNo"].ToString();
-                            machine.Brush = reader["Brush_ID"].ToString();
-                            machine.Filters = reader["Filters_ID"].ToString();
                             machine.Wheels = reader["Wheels"].ToString();
                             machine.Lid = reader["Lid"].ToString();
                             machine.InstallationDate = reader["InstallationDate"].ToString();
                             machine.InoxGrid = reader["InoxGrid"].ToString();
-                            machine.SteelTop = reader["SteelTop_ID"].ToString();
-                            machine.Liquid = reader["Liquid_ID"].ToString();
-                            machine.Status = reader["Status_ID"].ToString();
                             machine.ServiceInterval = Int32.Parse(reader["ServiceInterval"].ToString());
                             machine.ServiceContract = Boolean.Parse(reader["ServiceContract"].ToString());
+
+                            int SteelTopID = Int32.Parse(reader["SteelTop_ID"].ToString());
+                            int LiquidID = Int32.Parse(reader["Liquid_ID"].ToString());
+                            int StatusID = Int32.Parse(reader["Status_ID"].ToString());
+                            int BrushID = Int32.Parse(reader["Brush_ID"].ToString());
+                            int FiltersID = Int32.Parse(reader["Filters_ID"].ToString());
+                            int CustomerID = Int32.Parse(reader["Customer_ID"].ToString());
+
+                            machine.Customer = GetCustomer(CustomerID);
+                            machine.Brush = GetBrush(BrushID);
+                            machine.Filters = GetFilter(FiltersID);
+                            machine.SteelTop = GetSteeltop(SteelTopID);
+                            machine.Liquid = GetLiquid(LiquidID);
+                            machine.Status = GetStatusByID(StatusID);
                         }
                     }
                     con.Close();
@@ -619,12 +627,12 @@ namespace BioCircleManagementSystem.DataAccess
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@Wheels", machine.Wheels));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@InoxGrid", machine.InoxGrid));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@Lid", machine.Lid));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@SteelTop_ID", machine.SteelTop));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Customer_ID", machine.CustomerID));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Filters_ID", machine.Filters));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Brush_ID", machine.Brush));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Liquid_ID", machine.Liquid));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Status_ID", machine.Status));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@SteelTop_ID", machine.SteelTop.ID));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Customer_ID", machine.Customer.CustomerID));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Filters_ID", machine.Filters.ID));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Brush_ID", machine.Brush.ID));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Liquid_ID", machine.Liquid.ID));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Status_ID", machine.Status.ID));
 
                     UpdateOrderMachine.ExecuteNonQuery();
 
@@ -746,6 +754,10 @@ namespace BioCircleManagementSystem.DataAccess
             throw new NotImplementedException();
         }
 
+        public void GetBrush(Brush brush)
+        {
+
+        }
         public List<Brush> GetBrushes(string keyword)
         {
             //if key not null filter customers
