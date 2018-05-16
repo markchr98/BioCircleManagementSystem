@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BioCircleManagementSystem.Model
 {
-    class Liquid : INotifyPropertyChanged
+    public class Liquid : INotifyPropertyChanged
     {
         #region Property
         public event PropertyChangedEventHandler PropertyChanged;

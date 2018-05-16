@@ -8,7 +8,7 @@ using BioCircleManagementSystem.DataAccess;
 
 namespace BioCircleManagementSystem.Model
 {
-    class Brush : INotifyPropertyChanged
+    public class Brush : INotifyPropertyChanged
     {
         #region Property
         public event PropertyChangedEventHandler PropertyChanged;

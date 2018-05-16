@@ -21,15 +21,15 @@ namespace BioCircleManagementSystem.Model
         private string _wheels;
         private string _inoxGrid;
         private string _lid;
-        private string _steelTop;
+        private Steeltop _steelTop;
         private string _canBringLiquid;
         private int _serviceInterval;
         private bool _serviceContract;
-        private int _customerID;
-        private string _filters;
-        private string _brush;
-        private string _liquid;
-        private string _status;
+        private Customer _customer;
+        private Filters _filters;
+        private Brush _brush;
+        private Liquid _liquid;
+        private Status _status;
 
         // Required when using data binding
         public event PropertyChangedEventHandler PropertyChanged;
@@ -131,7 +131,7 @@ namespace BioCircleManagementSystem.Model
                 OnPropertyChanged("Lid");
             }
         }
-        public string SteelTop
+        public Steeltop SteelTop
         {
             get
             {
@@ -181,20 +181,20 @@ namespace BioCircleManagementSystem.Model
             }
         }
 
-        public int CustomerID
+        public Customer Customer
         {
             get
             {
-                return _customerID;
+                return _customer;
             }
             set
             {
-                _customerID = value;
+                _customer = value;
                 OnPropertyChanged("CustomerID");
             }
         }
 
-        public string Filters
+        public Filters Filters
         {
             get
             {
@@ -207,7 +207,7 @@ namespace BioCircleManagementSystem.Model
             }
         }
 
-        public string Brush
+        public Brush Brush
         {
             get
             {
@@ -220,7 +220,7 @@ namespace BioCircleManagementSystem.Model
             }
         }
 
-        public string Liquid
+        public Liquid Liquid
         {
             get
             {
@@ -233,7 +233,7 @@ namespace BioCircleManagementSystem.Model
             }
         }
 
-        public string Status
+        public Status Status
         {
             get
             {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BioCircleManagementSystem.Model
 {
-    class Status : INotifyPropertyChanged
+    public class Status : INotifyPropertyChanged
     {
         #region Property
         public event PropertyChangedEventHandler PropertyChanged;
@@ -26,6 +26,15 @@ namespace BioCircleManagementSystem.Model
         {
 
         }
+
+        private int _ID;
+
+        public int ID
+        {
+            get { return _ID; }
+            set { _ID = value; }
+        }
+
 
         private string _currentStatus;
 

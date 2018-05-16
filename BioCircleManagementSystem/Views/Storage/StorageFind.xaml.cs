@@ -21,8 +21,6 @@ namespace BioCircleManagementSystem.Views.Storage
     /// </summary>
     public partial class StorageFind : Page
     {
-        StorageViewModel storageViewModel;
-
         private static StorageFind _instance;
         public static StorageFind Instance
         {

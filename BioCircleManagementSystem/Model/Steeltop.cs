@@ -37,6 +37,15 @@ namespace BioCircleManagementSystem.Model
             }
         }
 
+        private int _ID;
+
+        public int ID
+        {
+            get { return _ID; }
+            set { _ID = value; }
+        }
+
+
         public void CreateSteeltop()
         {
             DataManager.Instance.CreateSteeltop(this);
