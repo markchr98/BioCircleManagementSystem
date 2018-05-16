@@ -34,6 +34,14 @@ namespace BioCircleManagementSystem.Model
         private double _temperature;
         private string _cleaningEffect;
         private Machine _machine;
+        private Technician _technician;
+
+        public Technician Technician
+        {
+            get { return _technician; }
+            set { _technician = value; OnPropertyChanged("Technician"); }
+        }
+
 
         public int ID
         {
