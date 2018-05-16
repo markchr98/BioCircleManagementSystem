@@ -71,12 +71,13 @@
     <Compile Include="Model\Status.cs" />
     <Compile Include="Model\Steeltop.cs" />
     <Compile Include="Model\Technician.cs" />
-    <Compile Include="ViewModels\CreateServiceViewModel.cs" />
+    <Compile Include="ViewModels\ServiceCreateViewModel.cs" />
     <Compile Include="ViewModels\CustomerFindViewModel.cs" />
     <Compile Include="ViewModels\CustomerCreateViewModel.cs" />
     <Compile Include="ViewModels\OrderCreateViewModel.cs" />
     <Compile Include="ViewModels\OrderFindViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Compile Include="ViewModels\ServiceFindViewModel.cs" />
     <Compile Include="ViewModels\StorageFindViewModel.cs" />
     <Compile Include="ViewModels\StorageViewModel.cs" />
     <Compile Include="Views\Customers\CustomerCreate.xaml.cs">

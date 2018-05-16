@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BioCircleManagementSystem.ViewModels
 {
-    class CreateServiceViewModel
+    class ServiceCreateViewModel
     {
     }
 }

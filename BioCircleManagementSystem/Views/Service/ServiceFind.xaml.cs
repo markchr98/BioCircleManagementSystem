@@ -20,11 +20,25 @@ namespace BioCircleManagementSystem.Views.Service
     /// </summary>
     public partial class ServiceFind : Page
     {
-        public ServiceFind()
+        //Singleton pattern with "lazy loading". used because of issues with instanciating pages causing dublication of events
+        private static ServiceFind _instance;
+        public static ServiceFind Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new ServiceFind();
+                }
+                return _instance;
+            }
+        }
+
+        private ServiceFind()
         {
             InitializeComponent();
         }
 
-        public static Uri Instance { get; internal set; }
+        
     }
 }

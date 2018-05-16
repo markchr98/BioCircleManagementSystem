@@ -1,5 +1,6 @@
 ﻿using BioCircleManagementSystem.Views.Customers;
 using BioCircleManagementSystem.Views.Orders;
+using BioCircleManagementSystem.Views.Service;
 using BioCircleManagementSystem.Views.Storage;
 using System;
 using System.Collections.Generic;
@@ -44,7 +45,7 @@ namespace BioCircleManagementSystem.Views
 
         private void ServiceButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            _mainFrame.Navigate(new ServiceShell());
         }
 
         private void StorageButton_Click(object sender, RoutedEventArgs e)
