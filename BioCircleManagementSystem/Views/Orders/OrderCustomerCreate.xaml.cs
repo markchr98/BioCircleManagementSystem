@@ -29,7 +29,7 @@ namespace BioCircleManagementSystem.Views.Orders
             DataContext = orderCreateViewModel;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
             orderCreateViewModel.CreateOrder();
         }

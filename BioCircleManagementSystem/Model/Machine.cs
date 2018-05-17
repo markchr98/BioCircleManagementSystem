@@ -17,7 +17,7 @@ namespace BioCircleManagementSystem.Model
         private string _vesselNo;
         private string _machineNo;
         private string _controlBoxNo;
-        private string _installationDate;
+        private DateTime _installationDate;
         private string _wheels;
         private string _inoxGrid;
         private string _lid;
@@ -30,11 +30,25 @@ namespace BioCircleManagementSystem.Model
         private Brush _brush;
         private Liquid _liquid;
         private Status _status;
+        private int _lastService;
+        private int _nextService;
+        private int _ID;
 
         // Required when using data binding
         public event PropertyChangedEventHandler PropertyChanged;
 
         // Define the public accessable variables of this model
+        public int ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                _ID = value;
+            }
+        }
         public string VesselType {
             get
             {
@@ -82,10 +96,15 @@ namespace BioCircleManagementSystem.Model
                 OnPropertyChanged("ControlBoxNo");
             }
         }
-        public string InstallationDate
+        DateTime MinValue = Convert.ToDateTime("01-01-2000");
+        public DateTime InstallationDate
         {
             get
             {
+                if(_installationDate < MinValue)
+                {
+                    return MinValue;
+                }
                 return _installationDate;
             }
             set
@@ -165,6 +184,8 @@ namespace BioCircleManagementSystem.Model
             {
                 _serviceInterval = value;
                 OnPropertyChanged("ServiceInterval");
+                OnPropertyChanged("NextService");
+                OnPropertyChanged("WeekTillNextService");
             }
         }
 
@@ -246,10 +267,44 @@ namespace BioCircleManagementSystem.Model
             }
         }
 
+        public int LastService
+        {
+            get
+            {
+                return _lastService;
+            }
+            set
+            {
+                _lastService = value;
+                OnPropertyChanged("LastService");
+                OnPropertyChanged("NextService");
+                OnPropertyChanged("WeekTillNextService");
+            }
+        }
+        public int NextService
+        {
+            get
+            {
+                return _lastService + _serviceInterval;
+            }
+        }
+        public int WeekTillNextService
+        {
+            get
+            {
+                return _nextService - ((DateTime.Now.DayOfYear / 7) + 1);
+            }
+        }
+
         // Public constructors
         public Machine()
         {
-
+            SteelTop = new Steeltop();
+            Status = new Status();
+            Liquid = new Liquid();
+            Brush = new Brush();
+            Filters = new Filters();
+            Customer = new Customer();
         }
         public Machine(string vesselType, string vesselNo, string machineNo, string controlBoxNo)
         {

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BioCircleManagementSystem.ViewModels;
 
 namespace BioCircleManagementSystem.Views.Service
 {
@@ -39,6 +40,28 @@ namespace BioCircleManagementSystem.Views.Service
             InitializeComponent();
         }
 
-        
+        private void Button_Click_SearchOrders(object sender, RoutedEventArgs e)
+        {
+            ServiceFindViewModel.Instance.GetServices(SearchBox.Text);
+        }
+
+        private void services_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //if statement to prevent endless loop caused by UnselectAll() causing a slectionChanged event
+            if (services.SelectedItem != null)
+            {
+                //Might be changed to page with navigation in frame 
+                ServiceEditView SEV = new ServiceEditView();
+                ShellWindow window = new ShellWindow();
+                window.WindowState = WindowState.Normal;
+                window.Content = SEV;
+                window.ShowDialog();
+                window.Height = 450;
+                window.Width = 900;
+                services.UnselectAll();
+                //Unselect current item so that a selection changed does not happen again
+                //when exiting and re-entering the find customer page
+            }
+        }
     }
 }

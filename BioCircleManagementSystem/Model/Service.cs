@@ -9,7 +9,7 @@ using BioCircleManagementSystem.DataAccess;
 
 namespace BioCircleManagementSystem.Model
 {
-    class Service : INotifyPropertyChanged
+    public class Service : INotifyPropertyChanged
     {
         #region Property
         public event PropertyChangedEventHandler PropertyChanged;
@@ -34,6 +34,14 @@ namespace BioCircleManagementSystem.Model
         private double _temperature;
         private string _cleaningEffect;
         private Machine _machine;
+        private Technician _technician;
+
+        public Technician Technician
+        {
+            get { return _technician; }
+            set { _technician = value; OnPropertyChanged("Technician"); }
+        }
+
 
         public int ID
         {
@@ -50,11 +58,6 @@ namespace BioCircleManagementSystem.Model
         {
             get { return _nextWeekNumber; }
             set { _nextWeekNumber = value; OnPropertyChanged("NextWeekNumber"); }
-        }
-
-        internal void Update()
-        {
-            throw new NotImplementedException();
         }
 
         public int Arrival
@@ -97,12 +100,24 @@ namespace BioCircleManagementSystem.Model
 
         public Service()
         {
-
+            Machine = new Machine();
+            Technician = new Technician();
         }
 
         public void CreateService()
         {
+            _machine.LastService = 0;
             DataManager.Instance.CreateService(this);
+        }
+
+        internal void Update()
+        {
+            DataManager.Instance.UpdateService(this);
+        }
+
+        public void GetServices()
+        {
+            DataManager.Instance.GetServices("");
         }
     }
 }

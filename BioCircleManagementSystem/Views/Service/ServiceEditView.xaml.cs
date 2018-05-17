@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BioCircleManagementSystem.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,14 +17,22 @@ using System.Windows.Shapes;
 namespace BioCircleManagementSystem.Views.Service
 {
     /// <summary>
-    /// Interaction logic for ServicePlan.xaml
+    /// Interaction logic for ServiceEditView.xaml
     /// </summary>
-    public partial class ServicePlan : Page
+    public partial class ServiceEditView : Page
     {
-        public ServicePlan()
+        ServiceFindViewModel serviceFindViewModel;
+        public ServiceEditView()
         {
             InitializeComponent();
+            serviceFindViewModel = ServiceFindViewModel.Instance;
+            DataContext = serviceFindViewModel;
+            DatePicker.Text = "Vælg Dato";
         }
-        //CollextionViewSource to sort machines by lowest week number til next service
+
+        private void Button_Click_UpdateService(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -100,7 +101,12 @@ namespace BioCircleManagementSystem.DataAccess
             return OrderList;
         }
 
-        internal void CreateService(Service service)
+        public void CreateService(Service service)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateService(Service service)
         {
             throw new NotImplementedException();
         }
@@ -508,7 +514,7 @@ namespace BioCircleManagementSystem.DataAccess
                             machine.ControlBoxNo = reader["ControlBoxNo"].ToString();
                             machine.Wheels = reader["Wheels"].ToString();
                             machine.Lid = reader["Lid"].ToString();
-                            machine.InstallationDate = reader["InstallationDate"].ToString();
+                            machine.InstallationDate = reader.GetDateTime(reader.GetOrdinal("InstallationDate"));
                             machine.InoxGrid = reader["InoxGrid"].ToString();
                             machine.ServiceInterval = Int32.Parse(reader["ServiceInterval"].ToString());
                             machine.ServiceContract = Boolean.Parse(reader["ServiceContract"].ToString());
@@ -624,6 +630,7 @@ namespace BioCircleManagementSystem.DataAccess
                         CommandType = CommandType.StoredProcedure
                     };
 
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@ID", machine.ID));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@MachineNo", machine.MachineNo));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@VesselType", machine.VesselType));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@VesselNo", machine.VesselNo));
@@ -633,15 +640,13 @@ namespace BioCircleManagementSystem.DataAccess
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@InoxGrid", machine.InoxGrid));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@Lid", machine.Lid));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@SteelTop_ID", machine.SteelTop.ID));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Customer_ID", machine.Customer.CustomerID));
+                    //UpdateOrderMachine.Parameters.Add(new SqlParameter("@Customer_ID", machine.Customer.CustomerID));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@Filters_ID", machine.Filters.ID));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@Brush_ID", machine.Brush.ID));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@Liquid_ID", machine.Liquid.ID));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@Status_ID", machine.Status.ID));
 
                     UpdateOrderMachine.ExecuteNonQuery();
-
-
                 }
                 catch (SqlException e)
                 {
@@ -659,14 +664,93 @@ namespace BioCircleManagementSystem.DataAccess
 
         }
 
-        public void GetServices()
+        public List<Service> GetServices(string keyword)
         {
+            List<Service> serviceList = new List<Service>();
+            Service service = new Service();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spGetServiceFromID", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", keyword));
 
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            service = new Service();
+                            service.ID = Int32.Parse(reader["ID"].ToString());
+                            service.Arrival = Int32.Parse(reader["Arrival"].ToString());
+                            service.Depature = Int32.Parse(reader["Departure"].ToString());
+                            service.CleaningEffect = reader["CleaningEffect"].ToString();
+                            service.PHValue = Int32.Parse(reader["Arrival"].ToString());
+                            service.Temperature = Int32.Parse(reader["Temperature"].ToString());
+                            service.WeekNumber = Int32.Parse(reader["WeekNumber"].ToString());
+                            service.Smell = reader["Smell"].ToString();
+
+                            int MachineID = Int32.Parse(reader["Machine_ID"].ToString());
+                            int TechnicianID = Int32.Parse(reader["Technician_ID"].ToString());
+
+                            service.Machine = GetMachine(MachineID);
+                            service.Technician = GetTechnician(TechnicianID);
+
+                            serviceList.Add(service);
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return serviceList;
         }
 
-        public void GetService()
+        public Service GetService(int serviceID)
         {
+            Service service = new Service();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spGetServiceFromID", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", serviceID));
 
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            service = new Service();
+                            service.ID = Int32.Parse(reader["ID"].ToString());
+                            service.Arrival = Int32.Parse(reader["Arrival"].ToString());
+                            service.Depature = Int32.Parse(reader["Departure"].ToString());
+                            service.CleaningEffect = reader["CleaningEffect"].ToString();
+                            service.PHValue = Int32.Parse(reader["Arrival"].ToString());
+                            service.Temperature = Int32.Parse(reader["Temperature"].ToString());
+                            service.WeekNumber = Int32.Parse(reader["WeekNumber"].ToString());
+                            service.Smell = reader["Smell"].ToString();
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return service;
         }
 
         #endregion
@@ -838,7 +922,7 @@ namespace BioCircleManagementSystem.DataAccess
 
         }
 
-        public Liquid GetLiquid(int LiquidID)
+        public Liquid GetLiquid(int liquidID)
         {
             Liquid liquid = new Liquid();
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -850,7 +934,7 @@ namespace BioCircleManagementSystem.DataAccess
                     {
                         CommandType = CommandType.StoredProcedure
                     };
-                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", liquid));
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", liquidID));
 
                     SqlDataReader reader = SearchKeyword.ExecuteReader();
                     if (reader.HasRows)
@@ -1143,5 +1227,44 @@ namespace BioCircleManagementSystem.DataAccess
             return StatusList;
         }
         #endregion
+
+        #region Technician
+        public Technician GetTechnician(int technicianID)
+        {
+            Technician technician = new Technician();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spGetTechnicianFromID", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", technicianID));
+
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            technician = new Technician();
+                            technician.ID = Int32.Parse(reader["ID"].ToString());
+                            technician.FirstName = reader["FirstName"].ToString();
+                            technician.LastName = reader["LastName"].ToString();
+                            technician.Email = reader["Email"].ToString();
+                            technician.MobilePhone = Int32.Parse(reader["MobilePhone"].ToString());
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return technician;
+        }
+        #endregion 
     }
 }
