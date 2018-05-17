@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BioCircleManagementSystem.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,12 +34,37 @@ namespace BioCircleManagementSystem.Views.Service
                 return _instance;
             }
         }
-
+        ServiceFindViewModel ServiceFindViewModel;
         private ServiceFind()
         {
             InitializeComponent();
+            ServiceFindViewModel = ServiceFindViewModel.Instance;
+            DataContext = ServiceFindViewModel;
+               
         }
 
-        
+        private void Button_Click_SearchServices(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Services_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ////if statement to prevent endless loop caused by UnselectAll() causing a slectionChanged event
+            //if (machines.SelectedItem != null)
+            //{
+            //    //Might be changed to page with navigation in frame 
+            //    ServiceFindViewModel CEV = new ServiceFindViewModel();
+            //    ShellWindow window = new ShellWindow();
+            //    window.WindowState = WindowState.Normal;
+            //    window.Content = CEV;
+            //    window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            //    window.ShowDialog();
+            //    window.Height = 450;
+            //    window.Width = 900;
+            //    machines.UnselectAll();
+            //    //Unselect current item so that a selection changed does not happen again
+            //    //when exiting and re-entering the find customer page
+            //}
+        }
     }
 }
