@@ -649,7 +649,7 @@ namespace BioCircleManagementSystem.DataAccess
 
         #region Service
 
-        public void CreateService()
+        public void CreateService(Service service)
         {
 
         }
