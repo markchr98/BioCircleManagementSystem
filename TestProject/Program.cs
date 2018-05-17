@@ -20,7 +20,12 @@ namespace TestProject
 
         public void Run()
         {
-           
+            int weekNumber = (DateTime.Now.DayOfYear / 7)+1;
+            int a = 6;
+            int b = 7;
+            Console.WriteLine(weekNumber);
+            Console.WriteLine(DateTime.Now);
+            Console.WriteLine(DateTime.Now.DayOfYear);
         }
     }
 }

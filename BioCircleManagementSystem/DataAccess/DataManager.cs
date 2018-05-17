@@ -625,6 +625,7 @@ namespace BioCircleManagementSystem.DataAccess
                         CommandType = CommandType.StoredProcedure
                     };
 
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@ID", machine.ID));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@MachineNo", machine.MachineNo));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@VesselType", machine.VesselType));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@VesselNo", machine.VesselNo));
@@ -634,15 +635,13 @@ namespace BioCircleManagementSystem.DataAccess
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@InoxGrid", machine.InoxGrid));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@Lid", machine.Lid));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@SteelTop_ID", machine.SteelTop.ID));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Customer_ID", machine.Customer.CustomerID));
+                    //UpdateOrderMachine.Parameters.Add(new SqlParameter("@Customer_ID", machine.Customer.CustomerID));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@Filters_ID", machine.Filters.ID));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@Brush_ID", machine.Brush.ID));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@Liquid_ID", machine.Liquid.ID));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@Status_ID", machine.Status.ID));
 
                     UpdateOrderMachine.ExecuteNonQuery();
-
-
                 }
                 catch (SqlException e)
                 {

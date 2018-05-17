@@ -30,11 +30,25 @@ namespace BioCircleManagementSystem.Model
         private Brush _brush;
         private Liquid _liquid;
         private Status _status;
+        private int _lastService;
+        private int _nextService;
+        private int _ID;
 
         // Required when using data binding
         public event PropertyChangedEventHandler PropertyChanged;
 
         // Define the public accessable variables of this model
+        public int ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                _ID = value;
+            }
+        }
         public string VesselType {
             get
             {
@@ -170,6 +184,8 @@ namespace BioCircleManagementSystem.Model
             {
                 _serviceInterval = value;
                 OnPropertyChanged("ServiceInterval");
+                OnPropertyChanged("NextService");
+                OnPropertyChanged("WeekTillNextService");
             }
         }
 
@@ -248,6 +264,35 @@ namespace BioCircleManagementSystem.Model
             {
                 _status = value;
                 OnPropertyChanged("Status");
+            }
+        }
+
+        public int LastService
+        {
+            get
+            {
+                return _lastService;
+            }
+            set
+            {
+                _lastService = value;
+                OnPropertyChanged("LastService");
+                OnPropertyChanged("NextService");
+                OnPropertyChanged("WeekTillNextService");
+            }
+        }
+        public int NextService
+        {
+            get
+            {
+                return _lastService + _serviceInterval;
+            }
+        }
+        public int WeekTillNextService
+        {
+            get
+            {
+                return _nextService - ((DateTime.Now.DayOfYear / 7) + 1);
             }
         }
 

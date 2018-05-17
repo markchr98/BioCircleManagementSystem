@@ -24,5 +24,6 @@ namespace BioCircleManagementSystem.Views.Service
         {
             InitializeComponent();
         }
+        //CollextionViewSource to sort machines by lowest week number til next service
     }
 }

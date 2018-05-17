@@ -110,6 +110,7 @@ namespace BioCircleManagementSystem.Model
 
         public void CreateService()
         {
+            _machine.LastService = ((DateTime.Now.DayOfYear / 7) + 1);
             DataManager.Instance.CreateService(this);
         }
     }
