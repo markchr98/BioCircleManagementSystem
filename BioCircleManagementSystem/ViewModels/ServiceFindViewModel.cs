@@ -10,23 +10,34 @@ using System.Threading.Tasks;
 
 namespace BioCircleManagementSystem.ViewModels
 {
-    class ServiceFindViewModel : INotifyPropertyChanged
+    internal class ServiceFindViewModel : INotifyPropertyChanged
     {
-        private  Service _selectedService;
+        private Service _selectedService;
+        private ObservableCollection<Service> _services;
+     
+
+
         public Service SelectedService
         {
             get { return _selectedService; }
             set { _selectedService = value; OnPropertyChanged("SelectedService"); }
         }
-
-        private ObservableCollection<Service> _services;
-
         public ObservableCollection<Service> Services
         {
             get { return _services; }
             set { _services = value; OnPropertyChanged("Services"); }
         }
 
+        private ServiceFindViewModel()
+        {
+
+        }
+
+        public void UpdateService()
+        {
+            _selectedService.Update();
+        }
+        #region PropertyChanged
         //INotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
@@ -38,9 +49,11 @@ namespace BioCircleManagementSystem.ViewModels
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
+        #endregion
+        #region singelton
         //Singleton pattern with "lazy loading"
-        private static ServiceFindViewModel _instance;        
+        private static ServiceFindViewModel _instance; 
+        
         public static ServiceFindViewModel Instance
         {
             get

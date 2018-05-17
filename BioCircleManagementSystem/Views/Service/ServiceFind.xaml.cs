@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BioCircleManagementSystem.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,10 +35,13 @@ namespace BioCircleManagementSystem.Views.Service
                 return _instance;
             }
         }
-
+        ServiceFindViewModel ServiceFindViewModel;
         private ServiceFind()
         {
             InitializeComponent();
+            ServiceFindViewModel = ServiceFindViewModel.Instance;
+            DataContext = ServiceFindViewModel;
+               
         }
 
         private void Button_Click_SearchOrders(object sender, RoutedEventArgs e)
