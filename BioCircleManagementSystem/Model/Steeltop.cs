@@ -45,10 +45,14 @@ namespace BioCircleManagementSystem.Model
             set { _ID = value; }
         }
 
-
         public void CreateSteeltop()
         {
             DataManager.Instance.CreateSteeltop(this);
+        }
+
+        public void DeleteSteelTop()
+        {
+
         }
     }
 }

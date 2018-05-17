@@ -67,6 +67,29 @@ namespace BioCircleManagementSystem.Model
             set { _ID = value;}
         }
 
+        public void CreateTechnician()
+        {
 
+        }
+
+        public void GetTechnician()
+        {
+
+        }
+
+        public void GetTechnicians()
+        {
+
+        }
+
+        public void UpdateTechnician()
+        {
+
+        }
+
+        public void DeleteTechnician()
+        {
+
+        }
     }
 }

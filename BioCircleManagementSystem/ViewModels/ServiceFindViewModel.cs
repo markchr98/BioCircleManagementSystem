@@ -28,15 +28,6 @@ namespace BioCircleManagementSystem.ViewModels
             set { _services = value; OnPropertyChanged("Services"); }
         }
 
-        private ServiceFindViewModel()
-        {
-
-        }
-
-        public void UpdateService()
-        {
-            _selectedService.Update();
-        }
         #region PropertyChanged
         //INotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;
@@ -65,6 +56,7 @@ namespace BioCircleManagementSystem.ViewModels
                 return _instance;
             }
         }
+        #endregion
 
         private ServiceFindViewModel()
         {

@@ -1,5 +1,4 @@
-﻿using BioCircleManagementSystem.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,12 +43,12 @@ namespace BioCircleManagementSystem.Views.Service
                
         }
 
-        private void Button_Click_SearchOrders(object sender, RoutedEventArgs e)
+        private void Button_Click_SearchServices(object sender, RoutedEventArgs e)
         {
             ServiceFindViewModel.Instance.GetServices(SearchBox.Text);
         }
 
-        private void services_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Services_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //if statement to prevent endless loop caused by UnselectAll() causing a slectionChanged event
             if (services.SelectedItem != null)
