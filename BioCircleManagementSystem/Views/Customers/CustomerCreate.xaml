@@ -8,7 +8,26 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CustomerCreate">
-
+    <Page.Resources>
+        <Style x:Key="createButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
     <ScrollViewer HorizontalScrollBarVisibility="Auto">
         <Grid>
             <!-- Main grid - consists of just three columns -->
@@ -17,6 +36,23 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="#2D8D3A">
+                <Button 
+                    Content="OPRET KUNDE" 
+                    Width="120" Height="40" 
+                    Style="{StaticResource createButton}" 
+                    Click="Button_Click" 
+                    VerticalAlignment="Bottom" 
+                    HorizontalAlignment="Right" 
+                    Margin="15"
+                    Background="#01400A"
+                    Foreground="#FFFFFF"
+                    FontWeight="Bold"/>
+            </StackPanel>
             <!-- Customer section start -->
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
@@ -53,7 +89,6 @@
                 <Label Grid.Row="7" Grid.Column="1" Margin="0,0,0,5" FontSize="15">Faktueringsadresse</Label>
                 <TextBox Height="25" VerticalContentAlignment="Center" x:Name="billingAddress" Grid.Row="8" Grid.Column="1" Margin="0,0,0,10" Text="{Binding Path=Customer.BillingAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Grid.Row="9" Grid.Column="1" Margin="0,0,0,5" FontSize="15">By og Post nr.</Label>
-                <Button Grid.Row="11" Grid.Column="1" Content="Button" HorizontalAlignment="Left" Width="75" Margin="0,0,0,1" Click="Button_Click"/>
                 <Grid Grid.Row="10" Grid.Column="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
