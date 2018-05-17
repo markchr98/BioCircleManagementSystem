@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BioCircleManagementSystem.ViewModels;
 
 namespace BioCircleManagementSystem.Views.Service
 {
@@ -20,6 +21,7 @@ namespace BioCircleManagementSystem.Views.Service
     /// </summary>
     public partial class ServiceCreate : Page
     {
+        ServiceCreateViewModel serviceCreateViewModel;
         //Singleton pattern with "lazy loading". used because of issues with instanciating pages causing dublication of events
         private static ServiceCreate _instance;
         public static ServiceCreate Instance
@@ -36,8 +38,18 @@ namespace BioCircleManagementSystem.Views.Service
         public ServiceCreate()
         {
             InitializeComponent();
+            serviceCreateViewModel = new ServiceCreateViewModel();
+            DataContext = serviceCreateViewModel;
         }
 
-       
+        private void Button_Click_Save(object sender, RoutedEventArgs e)
+        {
+            serviceCreateViewModel.CreateService();
+        }
+
+        private void Clear()
+        {
+            serviceCreateViewModel.ClearService();
+        }
     }
 }

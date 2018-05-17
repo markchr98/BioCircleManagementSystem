@@ -1,4 +1,5 @@
-﻿using BioCircleManagementSystem.Model;
+﻿using BioCircleManagementSystem.DataAccess;
+using BioCircleManagementSystem.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +12,7 @@ namespace BioCircleManagementSystem.ViewModels
 {
     class ServiceFindViewModel : INotifyPropertyChanged
     {
-        private Service _selectedService;
+        private  Service _selectedService;
         public Service SelectedService
         {
             get { return _selectedService; }
@@ -39,8 +40,8 @@ namespace BioCircleManagementSystem.ViewModels
         }
 
         //Singleton pattern with "lazy loading"
-        private ServiceFindViewModel _instance;        
-        public ServiceFindViewModel Instance
+        private static ServiceFindViewModel _instance;        
+        public static ServiceFindViewModel Instance
         {
             get
             {
@@ -54,7 +55,8 @@ namespace BioCircleManagementSystem.ViewModels
 
         private ServiceFindViewModel()
         {
-
+            List<Service> service = DataManager.Instance.GetServices("");
+            _services = new ObservableCollection<Service>(service);
         }
 
         public void UpdateService()
@@ -62,5 +64,9 @@ namespace BioCircleManagementSystem.ViewModels
             _selectedService.Update();
         }
         
+        public void GetServices(string keyword)
+        {
+            Services = new ObservableCollection<Service>(DataManager.Instance.GetServices(keyword));
+        }
     }
 }

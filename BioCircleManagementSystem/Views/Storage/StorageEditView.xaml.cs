@@ -29,6 +29,7 @@ namespace BioCircleManagementSystem.Views.Storage
             StorageFindViewModel = StorageFindViewModel.Instance;
             //storageEditViewModel = new StorageEditViewModel();
             DataContext = StorageFindViewModel;
+            DatePicker.Text = "Vælg Dato";
         }
 
         private void Button_Click_UpdateCustomer(object sender, RoutedEventArgs e)

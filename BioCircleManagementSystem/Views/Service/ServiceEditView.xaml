@@ -1,12 +1,12 @@
-﻿<Page x:Class="BioCircleManagementSystem.Views.Storage.StorageEditView"
+﻿<Page x:Class="BioCircleManagementSystem.Views.Service.ServiceEditView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:BioCircleManagementSystem.Views.Storage"
+      xmlns:local="clr-namespace:BioCircleManagementSystem.Views.Service"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="StorageEditView">
+      Title="ServiceEditView">
 
     <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="10" Padding="10">
         <Grid Margin="-10,10,10,-10.4">
@@ -34,25 +34,25 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Column="0" Grid.Row="0" FontSize="24" Margin="0,0,0,10" FontWeight="Bold">Rediger maskine</TextBlock>
-            <Label Grid.Column="0" Grid.Row="1" FontSize="15" Margin="0,0,0,5">Maskine nr</Label>
+            <Label Grid.Column="0" Grid.Row="1" FontSize="15" Margin="0,0,0,5">Indsæt</Label>
             <TextBox Grid.Column="0" Grid.Row="2" Margin="0,0,5,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.MachineNo}"/>
-            <Label Grid.Column="0" Grid.Row="3" FontSize="15" Margin="0,5,0,5">Kar type</Label>
+            <Label Grid.Column="0" Grid.Row="3" FontSize="15" Margin="0,5,0,5">Indsæt</Label>
             <TextBox Grid.Column="0" Grid.Row="4" Margin="0,0,5,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.VesselType}"/>
-            <Label Grid.Column="0" Grid.Row="5" FontSize="15" Margin="0,5,0,5">Kar nr</Label>
+            <Label Grid.Column="0" Grid.Row="5" FontSize="15" Margin="0,5,0,5">Indsæt</Label>
             <TextBox Grid.Column="0" Grid.Row="6" Margin="0,0,5,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.VesselNo}"/>
-            <Label Grid.Column="0" Grid.Row="7" FontSize="15" Margin="0,5,0,5">Kontrolboks nr</Label>
+            <Label Grid.Column="0" Grid.Row="7" FontSize="15" Margin="0,5,0,5">Indsæt</Label>
             <TextBox Grid.Column="0" Grid.Row="8" Margin="0,0,5,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.ControlBoxNo}"/>
-            <Button FontSize="36" Content="Gem" HorizontalAlignment="Left" Margin="4.6,6,0,-52" Grid.Row="10" VerticalAlignment="Top" Width="175" Click="Button_Click_UpdateCustomer" Grid.Column="3" Height="78" Grid.RowSpan="4"/>
-            <Label Grid.Column="1" Grid.Row="1" FontSize="15" Margin="5,0,0,5">Installations dato</Label>
+            <Button FontSize="36" Content="Gem" HorizontalAlignment="Left" Margin="4.6,6,0,-52" Grid.Row="10" VerticalAlignment="Top" Width="175" Click="Button_Click_UpdateService" Grid.Column="3" Height="78" Grid.RowSpan="4"/>
+            <Label Grid.Column="1" Grid.Row="1" FontSize="15" Margin="5,0,0,5">Indsæt</Label>
             <DatePicker x:Name="DatePicker" Grid.Column="1" Grid.Row="2" Margin="5,0,4,0" Height="25" HorizontalAlignment="Stretch" Text="{Binding Path= SelectedMachine.InstallationDate, StringFormat='dd-MM-yyyy'}"/>
-            <Label Grid.Column="1" Grid.Row="3"  FontSize="15" Margin="5,5,0,5">Hjul</Label>
+            <Label Grid.Column="1" Grid.Row="3"  FontSize="15" Margin="5,5,0,5">Indsæt</Label>
             <TextBox Grid.Column="1" Grid.Row="4" Margin="5,0,4,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.Wheels}"/>
-            <Label Grid.Column="1" Grid.Row="5" FontSize="15" Margin="5,5,0,5">Inox Grid</Label>
+            <Label Grid.Column="1" Grid.Row="5" FontSize="15" Margin="5,5,0,5">Indsæt</Label>
             <TextBox Grid.Column="1" Grid.Row="6" Margin="5,0,4,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.InoxGrid}"/>
-            <Label Grid.Column="1" Grid.Row="7" FontSize="15" Margin="5,5,0,5">Låg</Label>
+            <Label Grid.Column="1" Grid.Row="7" FontSize="15" Margin="5,5,0,5">Indsæt</Label>
             <TextBox Grid.Column="1" Grid.Row="8" Margin="5,0,5,0" Height="25" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path= SelectedMachine.Lid}"/>
-            <Label Grid.Column="2" Grid.Row="1" FontSize="15" Margin="5,0,0,5">Ståltop</Label>
-            <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding SteeltopList}" SelectedItem="{Binding SelectedMachine.SteelTop}" Grid.Row="2" Grid.Column="2" Width="Auto" Margin="0,0,0,0">
+            <Label Grid.Column="2" Grid.Row="1" FontSize="15" Margin="5,0,0,5">Indsæt</Label>
+            <ComboBox Margin="5,5,0,5" TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding SteeltopList}" SelectedItem="{Binding SelectedMachine.SteelTop}" Grid.Row="2" Grid.Column="2" Width="Auto">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=Type}"></TextBlock>
@@ -60,16 +60,16 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <Label Grid.Column="2" Grid.Row="3" FontSize="15" Margin="5,5,0,5">Filter pose:</Label>
-            <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding FiltersList}" SelectedItem="{Binding SelectedMachine.Filters}" Grid.Row="4" Grid.Column="2" Width="AUTO" Margin="0,0,0,0">
+            <Label Grid.Column="2" Grid.Row="3" FontSize="15" Margin="5,5,0,5">Indsæt</Label>
+            <ComboBox Margin="5,5,0,5" TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding FiltersList}" SelectedItem="{Binding SelectedMachine.Filters}" Grid.Row="4" Grid.Column="2" Width="AUTO">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=Type}"></TextBlock>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Label Grid.Column="2" Grid.Row="5" FontSize="15" Margin="5,5,0,5">Børste</Label>
-            <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding BrushList}" SelectedItem="{Binding SelectedMachine.Brush}" Grid.Row="6" Grid.Column="2" Width="Auto" Margin="0,0,0,0">
+            <Label Grid.Column="2" Grid.Row="5" FontSize="15" Margin="5,5,0,5">Indsæt</Label>
+            <ComboBox Margin="5,5,0,5" TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding BrushList}" SelectedItem="{Binding SelectedMachine.Brush}" Grid.Row="6" Grid.Column="2" Width="Auto">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=Type}"></TextBlock>
@@ -77,25 +77,25 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <Label Grid.Column="3" Grid.Row="1" FontSize="15" Margin="5,5,0,5">Filtertype hus:</Label>
-            <ComboBox TextSearch.TextPath="TypeHouse" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding FiltersList}" SelectedItem="{Binding SelectedMachine.Filters}" Grid.Row="2" Grid.Column="3" Width="Auto" Margin="0,0,0,0">
+            <Label Grid.Column="3" Grid.Row="1" FontSize="15" Margin="5,5,0,5">Indsæt</Label>
+            <ComboBox Margin="5,5,0,5" TextSearch.TextPath="TypeHouse" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding FiltersList}" SelectedItem="{Binding SelectedMachine.Filters}" Grid.Row="2" Grid.Column="3" Width="Auto">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=TypeHouse}"></TextBlock>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Label Grid.Column="3" Grid.Row="3" FontSize="15" Margin="5,5,0,5">Væske</Label>
-            <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding LiquidList}" SelectedItem="{Binding SelectedMachine.Liquid}" Grid.Row="4" Grid.Column="3" Width="Auto" Margin="0,5,0,0">
+            <Label Grid.Column="3" Grid.Row="3" FontSize="15" Margin="5,5,0,5">Indsæt</Label>
+            <ComboBox Margin="5,5,0,5" TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding LiquidList}" SelectedItem="{Binding SelectedMachine.Liquid}" Grid.Row="4" Grid.Column="3" Width="Auto" >
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=Type}"></TextBlock>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            
-            <Label Grid.Column="3" Grid.Row="5" FontSize="15" Margin="5,5,0,5">Status</Label>
-            <ComboBox TextSearch.TextPath="CurrentStatus" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding StatusList}" SelectedItem="{Binding SelectedMachine.Status}" Grid.Row="6" Grid.Column="3" Width="Auto" Margin="0,5,0,0">
+
+            <Label Grid.Column="3" Grid.Row="5" FontSize="15" Margin="5,5,0,5">Indsæt</Label>
+            <ComboBox Margin="5,5,0,5" TextSearch.TextPath="CurrentStatus" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding StatusList}" SelectedItem="{Binding SelectedMachine.Status}" Grid.Row="6" Grid.Column="3" Width="Auto">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=CurrentStatus}"></TextBlock>
