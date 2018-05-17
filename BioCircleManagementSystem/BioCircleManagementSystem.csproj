@@ -122,6 +122,9 @@
     <Compile Include="Views\Service\ServiceCreate.xaml.cs">
       <DependentUpon>ServiceCreate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Service\ServiceEditView.xaml.cs">
+      <DependentUpon>ServiceEditView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Service\ServiceFind.xaml.cs">
       <DependentUpon>ServiceFind.xaml</DependentUpon>
     </Compile>
@@ -230,6 +233,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Service\ServiceCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Service\ServiceEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -9,6 +9,149 @@
       Title="ServiceCreate">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="931.2"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Margin="0,0,2.2,-0.4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="1" Grid.Column="1" FontSize="24" Margin="15,0,0,10" FontWeight="Bold" RenderTransformOrigin="0.5,0.506">Opret Service</TextBlock>
+
+            <TextBlock Grid.Row="2" Grid.Column="1" Width="300" Height="Auto" Margin="0,0,0,0">Vælg Kunde:</TextBlock>
+            <ComboBox TextSearch.TextPath="CustomerName" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding CustomerList}" SelectedItem="{Binding SelectedCustomer}" Grid.Row="3" Grid.Column="1" Width="300" Margin="0,0,0,0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=CustomerName}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <TextBlock Grid.Row="4" Grid.Column="1" Width="300" Height="Auto" Margin="0,5,0,0">Vælg Maskine:</TextBlock>
+            <ComboBox TextSearch.TextPath="VesselNo" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding MachineList}" SelectedItem="{Binding SelectedMachine}" Grid.Row="5" Grid.Column="1" Width="300" Margin="0,0,0,0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=VesselNo}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <TextBlock Grid.Row="6" Grid.Column="1" Width="300" Margin="0,5,0,0">Maskine Type:</TextBlock>
+            <TextBlock Text="{Binding SelectedMachine.VesselType}" Grid.Row="7" Grid.Column="1" Width="300" Margin="0,5,0,0" Background="LightGray"></TextBlock>
+
+            <TextBlock Grid.Row="8" Grid.Column="1" Width="300" Margin="0,5,0,0">Væske Type:</TextBlock>
+            <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding LiquidList}" SelectedItem="{Binding SelectedLiquid}" Grid.Row="9" Grid.Column="1" Width="300" Margin="0,5,0,0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=Type}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <TextBlock Grid.Row="10" Grid.Column="1" Width="300" Margin="0,5,0,0">Servicekontrakt:</TextBlock>
+            <CheckBox IsChecked="{Binding Machine.ServiceContract}" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Left" Margin="90,7,0,0" VerticalAlignment="Top"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="2" Width="300" Margin="5,5,0,0">Service Interval:</TextBlock>
+            <TextBox Text="{Binding Machine.ServiceInterval}" Grid.Row="3" Grid.Column="2" Width="300" Margin="0,0,0,0"></TextBox>
+
+            <TextBlock Grid.Row="4" Grid.Column="2" Width="300" Margin="5,5,0,0">Filterpose:</TextBlock>
+            <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding FiltersList}" SelectedItem="{Binding SelectedFilters}" Grid.Row="5" Grid.Column="2" Width="300" Margin="0,0,0,0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=Type}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <TextBlock Grid.Row="6" Grid.Column="2" Width="300" Margin="5,5,0,0">Børstetype:</TextBlock>
+            <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding BrushList}" SelectedItem="{Binding SelectedBrush}" Grid.Row="7" Grid.Column="2" Width="300" Margin="0,0,0,0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=Type}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <TextBlock Grid.Row="8" Grid.Column="2" Width="300" Margin="5,5,0,0">Låg:</TextBlock>
+            <CheckBox IsChecked="{Binding Machine.Lid}" Grid.Row="8" Grid.Column="2" Content="" HorizontalAlignment="Left" Margin="31,5.8,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
+
+            <TextBlock Grid.Row="9" Grid.Column="2" Width="300" Margin="5,5,0,0">Hjulsæt:</TextBlock>
+            <CheckBox IsChecked="{Binding Machine.Wheels}" Grid.Row="9" Grid.Column="2" Content="" HorizontalAlignment="Left" Margin="50,7,0,0" VerticalAlignment="Top" />
+
+            <TextBlock Grid.Row="10" Grid.Column="2" Width="Auto" Margin="5,5,0,0">Inox Grid:</TextBlock>
+            <CheckBox IsChecked="{Binding Machine.InoxGrid}" Grid.Row="10" Grid.Column="2" HorizontalAlignment="Left" Margin="60,7,0,0" VerticalAlignment="Top"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="3" Width="Auto" Margin="5,5,0,0">Ståltop:</TextBlock>
+            <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding SteeltopList}" SelectedItem="{Binding SelectedSteeltop}" Grid.Row="3" Grid.Column="3" Width="300" Margin="0,0,0,0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=Type}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <TextBlock Grid.Row="4" Grid.Column="3" Width="Auto" Margin="5,5,0,0">Filterhus type:</TextBlock>
+            <ComboBox TextSearch.TextPath="TypeHouse" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding FiltersList}" SelectedItem="{Binding SelectedFilters}" Grid.Row="5" Grid.Column="3" Width="300" Margin="0,0,0,0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=TypeHouse}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <TextBlock Grid.Row="6" Grid.Column="3" Width="Auto" Margin="5,5,0,0">Placering af maskine (detaljeret beskrivelse):</TextBlock>
+            <TextBox Grid.Row="7" Grid.Column="3" Width="Auto" Margin="5,0,0,0"></TextBox>
+
+            <TextBlock Grid.Row="8" Grid.Column="3" Width="Auto" Margin="5,5,0,0">Andet:</TextBlock>
+            <TextBox Grid.Row="9" Grid.Column="3" Width="Auto" Margin="5,0,0,0"></TextBox>
+
+            <Label Grid.Column="3" Grid.Row="10" FontSize="15" Margin="5,0,0,5">Installations dato</Label>
+            <DatePicker Grid.Column="3" Grid.Row="11" Margin="5,0,4,0" Height="25" HorizontalAlignment="Stretch" Text="{Binding Path= SelectedMachine.InstallationDate}"/>
+
+            <TextBlock Grid.Row="12" Grid.Column="2" Width="Auto" Margin="5,5,0,0" FontSize="24">Test:</TextBlock>
+            <CheckBox IsChecked="{Binding Machine.InoxGrid}" Grid.Row="12" Grid.Column="2" HorizontalAlignment="Left" Margin="60,12.5,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="15" Width="15">
+                <CheckBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="2" ScaleY="2"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                    </TransformGroup>
+                </CheckBox.RenderTransform>
+            </CheckBox>
+            <TextBlock FontSize="24" Grid.Row="12" Grid.Column="2" Width="Auto" Margin="100,5,0,0">Salg:</TextBlock>
+            <CheckBox IsChecked="{Binding Machine.InoxGrid}" Grid.Row="12" Grid.Column="2" HorizontalAlignment="Left" Margin="160,12.5,0,0" VerticalAlignment="Top" Width="15" Height="15" RenderTransformOrigin="0.5,0.5">
+                <CheckBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="2" ScaleX="2"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                    </TransformGroup>
+                </CheckBox.RenderTransform>
+            </CheckBox>
+            <Button Content="Gem" Grid.Column="1" HorizontalAlignment="Left" Margin="50,15,0,0" Grid.Row="15" VerticalAlignment="Top" Width="75" Click="Button_Click_Save"/>
+        </Grid>
     </Grid>
 </Page>

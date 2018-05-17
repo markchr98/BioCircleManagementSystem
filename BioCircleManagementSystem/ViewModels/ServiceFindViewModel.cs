@@ -1,4 +1,5 @@
-﻿using BioCircleManagementSystem.Model;
+﻿using BioCircleManagementSystem.DataAccess;
+using BioCircleManagementSystem.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -64,6 +65,21 @@ namespace BioCircleManagementSystem.ViewModels
                 return _instance;
             }
         }
-        #endregion
+
+        private ServiceFindViewModel()
+        {
+            List<Service> service = DataManager.Instance.GetServices("");
+            _services = new ObservableCollection<Service>(service);
+        }
+
+        public void UpdateService()
+        {
+            _selectedService.Update();
+        }
+        
+        public void GetServices(string keyword)
+        {
+            Services = new ObservableCollection<Service>(DataManager.Instance.GetServices(keyword));
+        }
     }
 }

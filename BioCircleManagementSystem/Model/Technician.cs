@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BioCircleManagementSystem.Model
 {
-    class Technician : INotifyPropertyChanged
+    public class Technician : INotifyPropertyChanged
     {
         #region Property
         public event PropertyChangedEventHandler PropertyChanged;
@@ -25,6 +25,7 @@ namespace BioCircleManagementSystem.Model
         private int _ID;
         private string _firstName;
         private string _lastName;
+        private string _fullName;
         private int _mobilrPhone;
         private string _email;
 
@@ -44,14 +45,19 @@ namespace BioCircleManagementSystem.Model
         public string LastName
         {
             get { return _lastName; }
-            set { _lastName = value; OnPropertyChanged("LastName"); }
+            set { _lastName = value; OnPropertyChanged("LastName"); OnPropertyChanged("FullName"); }
         }
-
 
         public string FirstName
         {
             get { return _firstName; }
-            set { _firstName = value; OnPropertyChanged("FirstName"); }
+            set { _firstName = value; OnPropertyChanged("FirstName"); OnPropertyChanged("FullName"); }
+        }
+
+        public string FullName
+        {
+            get { return _fullName; }
+            set { _fullName = value; OnPropertyChanged("FirstName"); OnPropertyChanged("LastName"); OnPropertyChanged("FullName"); }
         }
 
 

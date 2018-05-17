@@ -101,7 +101,12 @@ namespace BioCircleManagementSystem.DataAccess
             return OrderList;
         }
 
-        internal void CreateService(Service service)
+        public void CreateService(Service service)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateService(Service service)
         {
             throw new NotImplementedException();
         }
