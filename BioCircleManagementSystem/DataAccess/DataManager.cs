@@ -101,16 +101,6 @@ namespace BioCircleManagementSystem.DataAccess
             return OrderList;
         }
 
-        public void CreateService(Service service)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateService(Service service)
-        {
-            throw new NotImplementedException();
-        }
-
         public void UpdateOrder(string orderID)
         {
             throw new NotImplementedException();
@@ -659,7 +649,7 @@ namespace BioCircleManagementSystem.DataAccess
 
         #region Service
 
-        public void CreateService()
+        public void CreateService(Service service)
         {
 
         }
@@ -751,6 +741,11 @@ namespace BioCircleManagementSystem.DataAccess
                 }
             }
             return service;
+        }
+
+        public void UpdateService(Service service)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -1229,6 +1224,11 @@ namespace BioCircleManagementSystem.DataAccess
         #endregion
 
         #region Technician
+        public void CreateTechnician()
+        {
+
+        }
+
         public Technician GetTechnician(int technicianID)
         {
             Technician technician = new Technician();
@@ -1264,6 +1264,21 @@ namespace BioCircleManagementSystem.DataAccess
                 }
             }
             return technician;
+        }
+
+        public void GetTechnicians()
+        {
+
+        }
+
+        public void UpdateTechnician()
+        {
+
+        }
+
+        public void DeleteTechnician()
+        {
+
         }
         #endregion 
     }
