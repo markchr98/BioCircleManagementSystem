@@ -52,7 +52,7 @@
                 </Border>
             </Grid>
         </Grid>
-        <ListBox  Width="Auto" MaxHeight="600" Grid.Row="1" x:Name="machines" ItemsSource="{Binding Path = Machines}" Margin="3.7,0,0,0">
+        <ListBox  Width="Auto" MaxHeight="600" Grid.Row="1" x:Name="services" ItemsSource="{Binding Path = Services}" Margin="3.7,0,0,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
