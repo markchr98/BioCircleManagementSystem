@@ -45,7 +45,7 @@ namespace BioCircleManagementSystem.Views
 
         private void ServiceButton_Click(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new ServiceShell());
+            _mainFrame.Navigate(ServiceShell.Instance);
         }
 
         private void StorageButton_Click(object sender, RoutedEventArgs e)
