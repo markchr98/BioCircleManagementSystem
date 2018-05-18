@@ -89,7 +89,7 @@ namespace BioCircleManagementSystem.Model
 
         public void DeleteTechnician()
         {
-
+            
         }
     }
 }
