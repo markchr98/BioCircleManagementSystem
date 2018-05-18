@@ -28,6 +28,10 @@ namespace BioCircleManagementSystem.ViewModels
             set { _services = value; OnPropertyChanged("Services"); }
         }
 
+        public void UpdateService()
+        {
+            _selectedService.Update();
+        }
         #region PropertyChanged
         //INotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;
@@ -57,18 +61,11 @@ namespace BioCircleManagementSystem.ViewModels
             }
         }
         #endregion
-
         private ServiceFindViewModel()
         {
             List<Service> service = DataManager.Instance.GetServices("");
             _services = new ObservableCollection<Service>(service);
         }
-
-        public void UpdateService()
-        {
-            _selectedService.Update();
-        }
-        
         public void GetServices(string keyword)
         {
             Services = new ObservableCollection<Service>(DataManager.Instance.GetServices(keyword));

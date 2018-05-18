@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BioCircleManagementSystem.ViewModels;
 
 namespace BioCircleManagementSystem.Views.Service
 {
@@ -43,6 +42,7 @@ namespace BioCircleManagementSystem.Views.Service
                
         }
 
+       
         private void Button_Click_SearchServices(object sender, RoutedEventArgs e)
         {
             ServiceFindViewModel.Instance.GetServices(SearchBox.Text);
@@ -65,6 +65,6 @@ namespace BioCircleManagementSystem.Views.Service
                 //Unselect current item so that a selection changed does not happen again
                 //when exiting and re-entering the find customer page
             }
-        }
+}
     }
 }

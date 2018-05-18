@@ -31,7 +31,6 @@ namespace BioCircleManagementSystem.Model
         private Liquid _liquid;
         private Status _status;
         private int _lastService;
-        private int _nextService;
         private int _ID;
 
         // Required when using data binding
@@ -292,7 +291,7 @@ namespace BioCircleManagementSystem.Model
         {
             get
             {
-                return _nextService - ((DateTime.Now.DayOfYear / 7) + 1);
+                return NextService - ((DateTime.Now.DayOfYear / 7) + 1);
             }
         }
 
