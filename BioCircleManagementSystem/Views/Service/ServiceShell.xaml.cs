@@ -23,11 +23,9 @@ namespace BioCircleManagementSystem.Views.Service
         private ServiceFind SF;
         private ServiceCreate SC;
         private static ServiceShell _instance;
-        public ServiceShell()
+        private ServiceShell()
         {
-            InitializeComponent();
-           
-
+            InitializeComponent();   
 
         }
         public static ServiceShell Instance
