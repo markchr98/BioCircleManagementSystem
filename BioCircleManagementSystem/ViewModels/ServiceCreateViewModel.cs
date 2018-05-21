@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,35 @@ namespace BioCircleManagementSystem.ViewModels
 {
     class ServiceCreateViewModel : INotifyPropertyChanged
     {
-        public Service Service { get; set; }
+        private Service service;
+
+        public Service Service
+        {
+            get
+            {
+                return service;
+            }
+            set
+            {
+                service = value;
+                OnPropertyChanged("Service");
+            }
+        }
+
+        private ObservableCollection<Machine> machines;
+
+        public ObservableCollection<Machine> Machines
+        {
+            get
+            {
+                return machines;
+            }
+            set
+            {
+                machines = value;
+                OnPropertyChanged("Machines");
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -28,7 +57,9 @@ namespace BioCircleManagementSystem.ViewModels
         //Constructor 
         public ServiceCreateViewModel()
         {
-            Service = new Service();
+            service = new Service();
+            List<Machine> DataList = DataManager.Instance.GetMachines("");
+            machines = new ObservableCollection<Machine>(DataList);
         }
 
 
