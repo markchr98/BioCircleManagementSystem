@@ -25,6 +25,7 @@ namespace BioCircleManagementSystem.Model
         }
         #endregion Property
         private int _ID;
+        private DateTime _date;
         private int _weekNumber;
         private int _nextWeekNumber;
         private int _arrival;
@@ -47,6 +48,12 @@ namespace BioCircleManagementSystem.Model
         {
             get { return _ID; }
             set { _ID = value; OnPropertyChanged("ID"); }
+        }
+
+        public DateTime Date
+        {
+            get { return _date; }
+            set { _date = value; OnPropertyChanged("Date"); }
         }
 
         public int WeekNumber
@@ -102,6 +109,7 @@ namespace BioCircleManagementSystem.Model
         {
             Machine = new Machine();
             Technician = new Technician();
+            Date = new DateTime();
         }
 
         public void CreateService()

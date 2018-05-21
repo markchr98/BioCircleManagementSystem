@@ -26,6 +26,7 @@ namespace TestProject
             Console.WriteLine(weekNumber);
             Console.WriteLine(DateTime.Now);
             Console.WriteLine(DateTime.Now.DayOfYear);
+            Console.WriteLine(DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second);
         }
     }
 }

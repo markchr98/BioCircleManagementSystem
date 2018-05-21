@@ -43,15 +43,15 @@ namespace BioCircleManagementSystem.DataAccess
                 try
                 {
                     con.Open();
-                    SqlCommand CreateOrder = new SqlCommand("spCreateOrder", con)
+                    SqlCommand createOrder = new SqlCommand("spCreateOrder", con)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    CreateOrder.Parameters.Add(new SqlParameter("@CustomerID", order.Customer.CustomerID));
-                    CreateOrder.Parameters.Add(new SqlParameter("@MachineID", order.Machine.MachineNo));
+                    createOrder.Parameters.Add(new SqlParameter("@CustomerID", order.Customer.CustomerID));
+                    createOrder.Parameters.Add(new SqlParameter("@MachineID", order.Machine.ID));
 
-                    CreateOrder.ExecuteNonQuery();
+                    createOrder.ExecuteNonQuery();
                 }
                 catch (SqlException e)
                 {
@@ -115,21 +115,19 @@ namespace BioCircleManagementSystem.DataAccess
                 try
                 {
                     con.Open();
-                    SqlCommand CreateCustomer = new SqlCommand("spCreateCustomer", con)
+                    SqlCommand createCustomer = new SqlCommand("spCreateCustomer", con)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    CreateCustomer.Parameters.Add(new SqlParameter("@Name", customer.CustomerName));
-                    CreateCustomer.Parameters.Add(new SqlParameter("@EconomicCustomerNumber", customer.EconomicsCustomerNumber));
-                    CreateCustomer.Parameters.Add(new SqlParameter("@BillingAddress", customer.BillingAddress));
-                    CreateCustomer.Parameters.Add(new SqlParameter("@BillingZipcode", customer.BillingZipcode));
-                    CreateCustomer.Parameters.Add(new SqlParameter("@BillingCity", customer.BillingCity));
+                    createCustomer.Parameters.Add(new SqlParameter("@Name", customer.CustomerName));
+                    createCustomer.Parameters.Add(new SqlParameter("@EconomicCustomerNumber", customer.EconomicsCustomerNumber));
+                    createCustomer.Parameters.Add(new SqlParameter("@BillingAddress", customer.BillingAddress));
+                    createCustomer.Parameters.Add(new SqlParameter("@BillingZipcode", customer.BillingZipcode));
+                    createCustomer.Parameters.Add(new SqlParameter("@BillingCity", customer.BillingCity));
 
                     Console.WriteLine("executing");
-                    CreateCustomer.ExecuteNonQuery();
-
-
+                    createCustomer.ExecuteNonQuery();
                 }
                 catch (SqlException e)
                 {
@@ -651,7 +649,34 @@ namespace BioCircleManagementSystem.DataAccess
 
         public void CreateService(Service service)
         {
+            using(SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand createService = new SqlCommand("spCreateService", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
 
+                    createService.Parameters.Add(new SqlParameter("@Date", service.Date));
+                    createService.Parameters.Add(new SqlParameter("@Arrival", service.Arrival));
+                    createService.Parameters.Add(new SqlParameter("@Depature", service.Depature));
+                    createService.Parameters.Add(new SqlParameter("@PHValue", service.PHValue));
+                    createService.Parameters.Add(new SqlParameter("@Temperature", service.Temperature));
+                    createService.Parameters.Add(new SqlParameter("@Smell", service.Smell));
+                    createService.Parameters.Add(new SqlParameter("@WeekNumber", service.WeekNumber));
+                    createService.Parameters.Add(new SqlParameter("@NextWeekNumber", service.NextWeekNumber));
+                    createService.Parameters.Add(new SqlParameter("@Machine_ID", service.Machine.ID));
+                    createService.Parameters.Add(new SqlParameter("@Technician_ID", service.Technician.ID));
+
+                    createService.ExecuteNonQuery();
+                }
+                catch(SqlException e)
+                {
+
+                }
+            }
         }
 
         public List<Service> GetServices(string keyword)
@@ -759,18 +784,18 @@ namespace BioCircleManagementSystem.DataAccess
                 try
                 {
                     con.Open();
-                    SqlCommand CreateDepartment = new SqlCommand("spCreateDepartment", con)
+                    SqlCommand createDepartment = new SqlCommand("spCreateDepartment", con)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    CreateDepartment.Parameters.Add(new SqlParameter("@InstallationAddress", department.InstallationAddress));
-                    CreateDepartment.Parameters.Add(new SqlParameter("@InstallationCity", department.InstallationCity));
-                    CreateDepartment.Parameters.Add(new SqlParameter("@InstallationZipcode", department.InstallationZipcode));
-                    CreateDepartment.Parameters.Add(new SqlParameter("@CanBringLiquid", department.CanBringLiquid));
-                    CreateDepartment.Parameters.Add(new SqlParameter("@Customer_ID", department.CustomerID));
+                    createDepartment.Parameters.Add(new SqlParameter("@InstallationAddress", department.InstallationAddress));
+                    createDepartment.Parameters.Add(new SqlParameter("@InstallationCity", department.InstallationCity));
+                    createDepartment.Parameters.Add(new SqlParameter("@InstallationZipcode", department.InstallationZipcode));
+                    createDepartment.Parameters.Add(new SqlParameter("@CanBringLiquid", department.CanBringLiquid));
+                    createDepartment.Parameters.Add(new SqlParameter("@Customer_ID", department.CustomerID));
 
-                    CreateDepartment.ExecuteNonQuery();
+                    createDepartment.ExecuteNonQuery();
                 }
                 catch (SqlException e)
                 {
