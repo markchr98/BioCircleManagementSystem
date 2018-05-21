@@ -64,24 +64,24 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" FontSize="12">Maskine nr:</TextBlock>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" FontSize="12">Kar nr:</TextBlock>
                         <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" FontSize="12">Kar type:</TextBlock>
-                        <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" FontSize="12">Kar nr:</TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" FontSize="12">Maskine nr:</TextBlock>
                         <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" FontSize="12">Kontrolboks nr:</TextBlock>
                         <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" FontSize="12">Installationsdato nr:</TextBlock>
 
-                        <ComboBox ItemsSource="" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="8" Height="15"/>                           
+                            <ComboBox TextSearch.TextPath="VesselNo" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding Path=Machines}" SelectedItem="{Binding SelectedMachine}" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="8" Height="15"/>                           
 
                             <Border Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="8" BorderBrush="Black" BorderThickness="0,0,0,1.5">
-                                <TextBlock  FontSize="12" Text=""/>
+                                <TextBlock  FontSize="12" Text="{Binding Path=SelectedMachine.VesselType}"/>
                             </Border>
                             <Border Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="8" BorderBrush="Black" BorderThickness="0,0,0,1.5">
-                                <TextBlock  FontSize="12" Text=""/>
+                                <TextBlock  FontSize="12" Text="{Binding Path=SelectedMachine.MachineNo}"/>
                             </Border>
                             <Border Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="8" BorderBrush="Black" BorderThickness="0,0,0,1.5">
-                                <TextBlock  FontSize="12" Text=""/>
-                            </Border>                            
-                            <TextBlock Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="8" FontSize="12" Text=""/>
+                                <TextBlock  FontSize="12" Text="{Binding Path=SelectedMachine.ControlBoxNo}"/>
+                            </Border>
+                            <TextBlock Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="8" FontSize="12" Text="{Binding Path=SelectedMachine.InstallationDate, StringFormat=ddMMyyyy}"/>
                             
                     </Grid>
                 </Border>
@@ -112,13 +112,13 @@
                             <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" FontSize="12" VerticalAlignment="Center">Må vi medbringe væske?:</TextBlock>
 
                             <Border Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="8" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1.5">
-                                <TextBlock  FontSize="12" Text=""/>
+                                <TextBlock  FontSize="12" Text="{Binding Path=SelectedMachine.Liquid.Type}"/>
                             </Border>
                             <Border Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="8" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1.5">
                                 <TextBlock  FontSize="12" Text=""/>
                             </Border>
                             <Border Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="8" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1.5">
-                                <TextBlock  FontSize="12" Text=""/>
+                                <TextBlock  FontSize="12" Text="{Binding Path=SelectedMachine.CanBringLiquid}"/>
                             </Border>
                     </Grid>
                 </Border>
@@ -185,19 +185,57 @@
                             <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" FontSize="12">By:</TextBlock>
 
                             <Border Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="8" BorderBrush="Black" BorderThickness="0,0,0,1.5">
-                                <TextBlock  FontSize="12" Text=""/>
+                                <TextBlock  FontSize="12" Text="{Binding Path=SelectedMachine.Customer.CustomerName}"/>
                             </Border>
                             <Border Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="8" BorderBrush="Black" BorderThickness="0,0,0,1.5">
-                                <TextBlock  FontSize="12" Text=""/>
+                                <TextBlock  FontSize="12" Text="{Binding Path=SelectedMachine.Department.InstallationAddress}"/>
                             </Border>
                             <Border Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="8" BorderBrush="Black" BorderThickness="0,0,0,1.5">
-                                <TextBlock  FontSize="12" Text=""/>
-                            </Border>                            
-                                <TextBlock Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="8" FontSize="12" Text=""/>
+                                <TextBlock  FontSize="12" Text="{Binding Path=SelectedMachine.Department.InstallationZipcode}"/>
+                            </Border>
+                            <TextBlock Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="8" FontSize="12" Text="{Binding Path=SelectedMachine.Department.InstallationCity}"/>
                             
                             <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="12" HorizontalAlignment="Stretch" TextAlignment="Center" VerticalAlignment="Top" FontWeight="DemiBold" Background="#2D8D3A" Foreground="White" FontSize="15" >Kontakt personer</TextBlock>
-                            <ListBox x:Name="ContactPersons" Grid.Row="5" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="12" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                                
+                            <ListBox x:Name="ContactPersons" Grid.Row="5" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="12" ItemsSource="{Binding Path=SelectedMachine.Department.Contacts}" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0" Grid.Column="0" Margin="0,0,0,5" FontSize="15">Navn</Label>
+                                            <Button x:Name="ContactPersonDelete" Grid.Row="0" Grid.Column="0" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" Margin="0,0,0,0" Width="30" Height="30" Click="Button_Click_RemoveContact">
+                                                <Image Source="/Resources/Images/x-button.png"/>
+                                            </Button>
+                                            <TextBox x:Name="name" Height="25" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path=Name}"/>
+                                            <Label Grid.Row="2" Grid.Column="0" FontSize="15">E-mail</Label>
+                                            <TextBox x:Name="email" Height="25" VerticalContentAlignment="Center" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path=Email}"/>
+                                            <Label Grid.Row="4" FontSize="15">Mobil og fastnet tlf.</Label>
+                                            <Grid Grid.Row="5" Grid.Column="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="10"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <TextBox x:Name="mobilePhone" Height="25" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path=Mobilephone}"/>
+                                                <TextBox x:Name="landline" Height="25" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path=Landline}"/>
+                                            </Grid>
+                                            <Rectangle Margin="0,15,0,0" Grid.Row="6" Grid.Column="0" Fill="#A4A4A4" Height="1"></Rectangle>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
                             </ListBox>
                             
                             
@@ -276,9 +314,9 @@
                         <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" FontSize="12">Temperatur:</TextBlock>
 
                        
-                        <TextBox Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="8" FontSize="12" Text="" BorderBrush="Black" BorderThickness="0,0,0,1.5"/>
-                        <TextBox Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="8" FontSize="12" Text="" BorderBrush="Black" BorderThickness="0,0,0,1.5"/>
-                        <TextBox Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="8" FontSize="12" Text="" BorderBrush="Black" BorderThickness="0,0,0,1.5"/>
+                        <TextBox Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="8" FontSize="12" Text="{Binding Path=Service.CleaningEffect}" BorderBrush="Black" BorderThickness="0,0,0,1.5"/>
+                        <TextBox Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="8" FontSize="12" Text="{Binding Path=Service.Smell}" BorderBrush="Black" BorderThickness="0,0,0,1.5"/>
+                        <TextBox Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="8" FontSize="12" Text="{Binding Path=Service.Temperature}" BorderBrush="Black" BorderThickness="0,0,0,1.5"/>
                         
                     </Grid>
                     <Grid Grid.Column="1" Margin="10,0,0,0">
@@ -307,7 +345,7 @@
                         <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" FontSize="12">Er serviceinterval tilfredsstillende?:</TextBlock>
 
 
-                        <TextBox Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="8" FontSize="12" Text="" BorderBrush="Black" BorderThickness="0,0,0,1.5"/>
+                        <TextBox Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="8" FontSize="12" Text="{Binding Path=Service.PHValue}" BorderBrush="Black" BorderThickness="0,0,0,1.5"/>
                         <TextBox Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="8" FontSize="12" Text="" BorderBrush="Black" BorderThickness="0,0,0,1.5"/>
                         <TextBox Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="8" FontSize="12" Text="" BorderBrush="Black" BorderThickness="0,0,0,1.5"/>
                     </Grid>
@@ -457,9 +495,9 @@
                         <Border Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="0.5,0.5,0,0">
                             <TextBlock  Background="LightGray" FontStyle="Italic" FontSize="12" TextAlignment="Center"> Uge nr. for besøg</TextBlock>
                         </Border>
-                        <TextBox Grid.Row="2" Grid.Column="0" FontSize="12" TextAlignment="Center"/>
+                        <TextBox Grid.Row="2" Grid.Column="0" FontSize="12" Text="{Binding Path=Service.WeekNumber}" TextAlignment="Center"/>
                         <TextBlock Grid.Row="3" Grid.Column="0" Background="LightGray" FontStyle="Italic" FontSize="12" TextAlignment="Center"> Ankomst kl.</TextBlock>
-                        <TextBox Grid.Row="4" Grid.RowSpan="2" Grid.Column="0" FontSize="12" Text="" VerticalAlignment="Center" TextAlignment="Center"/>
+                        <TextBox Grid.Row="4" Grid.RowSpan="2" Grid.Column="0" FontSize="12" Text="{Binding Path=Service.Arrival}" VerticalAlignment="Center" TextAlignment="Center"/>
 
                         <Border  Grid.Row="0" Grid.RowSpan="5" Grid.Column="1" BorderBrush="Black" BorderThickness="0.5">
                             <Rectangle Fill="White"/>
@@ -468,9 +506,9 @@
                         <Border Grid.Row="1" Grid.Column="2" BorderBrush="Black" BorderThickness="0,0.5,0.5,0">
                             <TextBlock Background="LightGray" FontStyle="Italic" FontSize="12" TextAlignment="Center"> Uge nr. næste</TextBlock>
                         </Border>
-                        <TextBox Grid.Row="2" Grid.Column="2" FontSize="12" TextAlignment="Center"/>
+                        <TextBlock Grid.Row="2" Grid.Column="2" FontSize="12" Text="{Binding Path=Service.NextWeekNumber}" TextAlignment="Center"/>
                         <TextBlock Grid.Row="3" Grid.Column="2" Background="LightGray" FontStyle="Italic" FontSize="12" TextAlignment="Center"> Afgang kl.</TextBlock>
-                        <TextBox Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" FontSize="12" Text="" VerticalAlignment="Center" TextAlignment="Center"/>
+                        <TextBox Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" FontSize="12" Text="{Binding Path=Service.Departure}" VerticalAlignment="Center" TextAlignment="Center"/>
 
                     </Grid>
                     <TextBlock Grid.Row="2" Background="Orange" FontSize="12" TextAlignment="Center" >KUNDE REKVISITIONSNR. (VIGTIGT)</TextBlock>

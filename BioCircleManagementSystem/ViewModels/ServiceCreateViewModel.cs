@@ -12,6 +12,21 @@ namespace BioCircleManagementSystem.ViewModels
 {
     class ServiceCreateViewModel : INotifyPropertyChanged
     {
+        private Machine selectedMachine;
+
+        public Machine SelectedMachine
+        {
+            get
+            {
+                return selectedMachine;
+            }
+            set
+            {
+                selectedMachine = value;
+                OnPropertyChanged("SelectedMachine");
+            }
+        }
+
         private Service service;
 
         public Service Service
@@ -57,6 +72,7 @@ namespace BioCircleManagementSystem.ViewModels
         //Constructor 
         public ServiceCreateViewModel()
         {
+            selectedMachine = new Machine();
             service = new Service();
             List<Machine> DataList = DataManager.Instance.GetMachines("");
             machines = new ObservableCollection<Machine>(DataList);

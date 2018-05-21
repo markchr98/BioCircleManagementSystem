@@ -32,6 +32,8 @@ namespace BioCircleManagementSystem.Model
         private Status _status;
         private int _lastService;
         private int _ID;
+        private Department _department;
+       
 
         // Required when using data binding
         public event PropertyChangedEventHandler PropertyChanged;
@@ -292,6 +294,19 @@ namespace BioCircleManagementSystem.Model
             get
             {
                 return NextService - ((DateTime.Now.DayOfYear / 7) + 1);
+            }
+        }
+
+        public Department Department
+        {
+            get
+            {
+                return _department;
+            }
+            set
+            {
+                _department = value;
+                OnPropertyChanged("Department");
             }
         }
 
