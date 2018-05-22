@@ -27,32 +27,19 @@ namespace BioCircleManagementSystem.ViewModels
         #endregion Property
 
         public Order Order { get; set; }
-
-        private Machine _selectedMachine;
-        public Customer SelectedCustomer { get; set; }
-
+        
         public ObservableCollection<Customer> CustomerList { get; set; }
         
-        public Machine SelectedMachine { get { return _selectedMachine; } set { _selectedMachine = value; OnPropertyChanged("SelectedMachine"); } }
-
         public ObservableCollection<Machine> MachineList { get; set; }
-
-        public Liquid SelectedLiquid { get; set; }
-
+        
         public ObservableCollection<Liquid> LiquidList { get; set; }
-        public Filters SelectedFilters { get; set; }
-
+       
         public ObservableCollection<Filters> FiltersList { get; set; }
-        public Brush SelectedBrush { get; set; }
-
+      
         public ObservableCollection<Brush> BrushList { get; set; }
-
-        public Steeltop SelectedSteelTop { get; set; }
-
+        
         public ObservableCollection<Steeltop> SteeltopList { get; set; }
-
-
-
+        
         public OrderCreateViewModel()
         {
             Order = new Order();
