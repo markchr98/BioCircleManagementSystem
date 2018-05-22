@@ -26,7 +26,7 @@ namespace BioCircleManagementSystem.ViewModels
         }
         #endregion Property
 
-        public Order order { get; set; }
+        public Order Order { get; set; }
 
         private Machine _selectedMachine;
         public Customer SelectedCustomer { get; set; }
@@ -55,7 +55,7 @@ namespace BioCircleManagementSystem.ViewModels
 
         public OrderCreateViewModel()
         {
-            order = new Order();
+            Order = new Order();
             CustomerList = new ObservableCollection<Customer>(DataManager.Instance.GetCustomers(""));
             MachineList = new ObservableCollection<Machine>(DataManager.Instance.GetMachines(""));
             LiquidList = new ObservableCollection<Liquid>(DataManager.Instance.GetLiquids(""));
@@ -66,7 +66,7 @@ namespace BioCircleManagementSystem.ViewModels
 
         public void CreateOrder()
         {
-            order.CreateOrder();
+            Order.CreateOrder();
         }
     }
 }

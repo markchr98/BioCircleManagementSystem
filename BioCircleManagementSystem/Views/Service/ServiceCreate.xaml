@@ -68,7 +68,7 @@
                         <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" FontSize="12">Kar type:</TextBlock>
                         <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" FontSize="12">Maskine nr:</TextBlock>
                         <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" FontSize="12">Kontrolboks nr:</TextBlock>
-                        <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" FontSize="12">Installationsdato nr:</TextBlock>
+                        <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" FontSize="12">Installationsdato:</TextBlock>
 
                             <ComboBox TextSearch.TextPath="VesselNo" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding Path=Machines}" SelectedItem="{Binding SelectedMachine}" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="8" Height="15"/>                           
 
@@ -212,10 +212,7 @@
                                                 <RowDefinition Height="Auto"/>
                                                 <RowDefinition Height="Auto"/>
                                             </Grid.RowDefinitions>
-                                            <Label Grid.Row="0" Grid.Column="0" Margin="0,0,0,5" FontSize="15">Navn</Label>
-                                            <Button x:Name="ContactPersonDelete" Grid.Row="0" Grid.Column="0" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" Margin="0,0,0,0" Width="30" Height="30" Click="Button_Click_RemoveContact">
-                                                <Image Source="/Resources/Images/x-button.png"/>
-                                            </Button>
+                                            <Label Grid.Row="0" Grid.Column="0" Margin="0,0,0,5" FontSize="15">Navn</Label>                                            
                                             <TextBox x:Name="name" Height="25" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path=Name}"/>
                                             <Label Grid.Row="2" Grid.Column="0" FontSize="15">E-mail</Label>
                                             <TextBox x:Name="email" Height="25" VerticalContentAlignment="Center" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path=Email}"/>

@@ -92,9 +92,6 @@
     <Compile Include="Views\Customers\CustomerShell.xaml.cs">
       <DependentUpon>CustomerShell.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Orders\OrderCreate.xaml.cs">
-      <DependentUpon>OrderCreate.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Orders\OrderCustomerCreate.xaml.cs">
       <DependentUpon>OrderCustomerCreate.xaml</DependentUpon>
     </Compile>
@@ -174,7 +171,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Home\" />
@@ -193,10 +192,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Customers\CustomerShell.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Orders\OrderCreate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
