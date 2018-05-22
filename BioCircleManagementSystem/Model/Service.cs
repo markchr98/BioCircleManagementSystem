@@ -26,8 +26,8 @@ namespace BioCircleManagementSystem.Model
         #endregion Property
         private int _ID;
         private DateTime _date;
-        private int _weekNumber;
-        private int _nextWeekNumber;
+        private int _weekNumber; //change property to change machines next service property
+        private int _nextWeekNumber; //change property to be gotten from machine
         private int _arrival;
         private int _depature;
         private int _PHValue;

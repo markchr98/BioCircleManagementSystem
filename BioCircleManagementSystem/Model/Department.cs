@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,8 @@ namespace BioCircleManagementSystem.Model
         private string _installationCity;
         private string _canBringLiquid; //should be bool
         private string _customerID;
+
+        private ObservableCollection<Contact> _contacts;        
 
         public string InstallationAddress
         {
@@ -84,14 +87,25 @@ namespace BioCircleManagementSystem.Model
                 _customerID = value; OnPropertyChanged("CustomerID");
             }
         }
+
+        public ObservableCollection<Contact> Contacts
+        {
+            get
+            {
+                return _contacts;
+            }
+            set
+            {
+                _contacts = value;
+                OnPropertyChanged("Contacts");
+            }
+        }
+
         public Department()
         {
 
         }
-        public Department(string installationAddress, string installationsCity, string installationZipcode, string canBringLiquid)
-        {
-
-        }
+       
         public void CreateDepartment()
         {
             DataManager.Instance.CreateDepartment(this);

@@ -41,14 +41,26 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
-        <Border>
-            <StackPanel Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>      
+            <Border BorderThickness="5,0,5,5" BorderBrush="White" Grid.Row="0" Grid.Column="0">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="2"/>
+                </Border.Effect>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Background="#FFFFFF">
                 <Button Content="Find service" Click="Button_Click_ServiceFind" Background="#6C6969" Foreground="#FFFFFF" Margin="0,10,0,1" MinWidth="100" MinHeight="40" Style="{StaticResource subMenuButton}"/>
-                <Button Content="Opret service" Click="Button_Click_ServiceCreate" Background="#6C6969" Foreground="#FFFFFF" Margin="0,10,0,1" MinWidth="100" MinHeight="40" Style="{StaticResource subMenuButton}"/>
+                <Button Content="Opret service" Click="Button_Click_ServiceCreate" Background="#6C6969" Foreground="#FFFFFF" Margin="0,0,0,1" MinWidth="100" MinHeight="40" Style="{StaticResource subMenuButton}"/>
             </StackPanel>
         </Border>
-        <Frame x:Name="_serviceFrame" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+        <Border Grid.Row="1" Grid.Column="0" Background="#FFFFFF" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="2"/>
+            </Border.Effect>
+        </Border>
+
+        <Frame x:Name="_serviceFrame" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
         
 
     </Grid>
