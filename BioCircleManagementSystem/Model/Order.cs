@@ -27,39 +27,11 @@ namespace BioCircleManagementSystem.Model
         private int _orderID;
         private Customer _customer;
         private Machine _machine;
-        private Liquid _liquid;
-        private Brush _brush;
-        private Filters _filters;
-        private Service _service;
+
 
 
         //public properties
-        public Service Service
-        {
-            get { return _service; }
-            set { _service = value; }
-        }
-
-
-        public Filters Filters
-        {
-            get { return _filters; }
-            set { _filters = value; }
-        }
-
-
-        public Brush Brush
-        {
-            get { return _brush; }
-            set { _brush = value; }
-        }
-
-
-        public Liquid Liquid
-        {
-            get { return _liquid; }
-            set { _liquid = value; }
-        }
+  
 
 
         public int OrderID
@@ -85,19 +57,9 @@ namespace BioCircleManagementSystem.Model
         {
             Customer = new Customer();
             Machine = new Machine();
-            Filters = new Filters();
-            Liquid = new Liquid();
-            Brush = new Brush();
-            Service = new Service();
         }
 
-        public Order(int orderID, Customer customer, Machine machine)
-        {
-            _orderID = orderID;
-            _customer = customer;
-            _machine = machine;
-        }
-
+       
         public void GetOrders()
         {
             DataManager.Instance.GetOrders("");

@@ -682,7 +682,7 @@ namespace BioCircleManagementSystem.DataAccess
         public List<Service> GetServices(string keyword)
         {
             List<Service> serviceList = new List<Service>();
-            Service service = new Service();
+            Service service;
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try

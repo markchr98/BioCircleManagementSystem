@@ -42,7 +42,7 @@
             <TextBlock Grid.Row="1" Grid.Column="1" FontSize="24" Margin="15,0,0,10" FontWeight="Bold" RenderTransformOrigin="0.5,0.506">Opret Order Eller Test</TextBlock>
 
             <TextBlock Grid.Row="2" Grid.Column="1" Width="300" Height="Auto" Margin="0,0,0,0">Vælg Kunde:</TextBlock>
-            <ComboBox TextSearch.TextPath="CustomerName" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding CustomerList}" SelectedItem="{Binding SelectedCustomer}" Grid.Row="3" Grid.Column="1" Width="300" Margin="0,0,0,0">
+            <ComboBox TextSearch.TextPath="CustomerName" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding CustomerList}" SelectedItem="{Binding Order.Customer}" Grid.Row="3" Grid.Column="1" Width="300" Margin="0,0,0,0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=CustomerName}"></TextBlock>
@@ -51,7 +51,7 @@
             </ComboBox>
 
             <TextBlock Grid.Row="4" Grid.Column="1" Width="300" Height="Auto" Margin="0,5,0,0">Vælg Maskine:</TextBlock>
-            <ComboBox TextSearch.TextPath="VesselNo" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding MachineList}" SelectedItem="{Binding SelectedMachine}" Grid.Row="5" Grid.Column="1" Width="300" Margin="0,0,0,0">
+            <ComboBox TextSearch.TextPath="VesselNo" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding MachineList}" SelectedItem="{Binding Order.Machine}" Grid.Row="5" Grid.Column="1" Width="300" Margin="0,0,0,0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=VesselNo}"></TextBlock>
@@ -60,10 +60,10 @@
             </ComboBox>
 
             <TextBlock Grid.Row="6" Grid.Column="1" Width="300" Margin="0,5,0,0">Maskine Type:</TextBlock>
-            <TextBlock Text="{Binding SelectedMachine.VesselType}" Grid.Row="7" Grid.Column="1" Width="300" Margin="0,5,0,0" Background="LightGray"></TextBlock>
+            <TextBlock Text="{Binding Order.Machine.VesselType}" Grid.Row="7" Grid.Column="1" Width="300" Margin="0,5,0,0" Background="LightGray"></TextBlock>
 
             <TextBlock Grid.Row="8" Grid.Column="1" Width="300" Margin="0,5,0,0">Væske Type:</TextBlock>
-            <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding LiquidList}" SelectedItem="{Binding SelectedLiquid}" Grid.Row="9" Grid.Column="1" Width="300" Margin="0,5,0,0">
+            <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding LiquidList}" SelectedItem="{Binding Order.Machine.Liquid}" Grid.Row="9" Grid.Column="1" Width="300" Margin="0,5,0,0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=Type}"></TextBlock>
@@ -75,10 +75,10 @@
             <CheckBox IsChecked="{Binding Machine.ServiceContract}" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Left" Margin="90,7,0,0" VerticalAlignment="Top"/>
 
             <TextBlock Grid.Row="2" Grid.Column="2" Width="300" Margin="5,5,0,0">Service Interval:</TextBlock>
-            <TextBox Text="{Binding Machine.ServiceInterval}" Grid.Row="3" Grid.Column="2" Width="300" Margin="0,0,0,0"></TextBox>
+            <TextBox Text="{Binding Order.Machine.ServiceInterval}" Grid.Row="3" Grid.Column="2" Width="300" Margin="0,0,0,0"></TextBox>
 
             <TextBlock Grid.Row="4" Grid.Column="2" Width="300" Margin="5,5,0,0">Filterpose:</TextBlock>
-            <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding FiltersList}" SelectedItem="{Binding SelectedFilters}" Grid.Row="5" Grid.Column="2" Width="300" Margin="0,0,0,0">
+            <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding FiltersList}" SelectedItem="{Binding Order.Machine.Filters}" Grid.Row="5" Grid.Column="2" Width="300" Margin="0,0,0,0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=Type}"></TextBlock>
@@ -87,7 +87,7 @@
             </ComboBox>
 
             <TextBlock Grid.Row="6" Grid.Column="2" Width="300" Margin="5,5,0,0">Børstetype:</TextBlock>
-            <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding BrushList}" SelectedItem="{Binding SelectedBrush}" Grid.Row="7" Grid.Column="2" Width="300" Margin="0,0,0,0">
+            <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding BrushList}" SelectedItem="{Binding Order.Machine.Brush}" Grid.Row="7" Grid.Column="2" Width="300" Margin="0,0,0,0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=Type}"></TextBlock>
@@ -105,7 +105,7 @@
             <CheckBox IsChecked="{Binding Machine.InoxGrid}" Grid.Row="10" Grid.Column="2" HorizontalAlignment="Left" Margin="60,7,0,0" VerticalAlignment="Top"/>
 
             <TextBlock Grid.Row="2" Grid.Column="3" Width="Auto" Margin="5,5,0,0">Ståltop:</TextBlock>
-            <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding SteeltopList}" SelectedItem="{Binding SelectedSteeltop}" Grid.Row="3" Grid.Column="3" Width="300" Margin="0,0,0,0">
+            <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding SteeltopList}" SelectedItem="{Binding Order.Machine.Steeltop}" Grid.Row="3" Grid.Column="3" Width="300" Margin="0,0,0,0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=Type}"></TextBlock>
@@ -114,7 +114,7 @@
             </ComboBox>
 
             <TextBlock Grid.Row="4" Grid.Column="3" Width="Auto" Margin="5,5,0,0">Filterhus type:</TextBlock>
-            <ComboBox TextSearch.TextPath="TypeHouse" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding FiltersList}" SelectedItem="{Binding SelectedFilters}" Grid.Row="5" Grid.Column="3" Width="300" Margin="0,0,0,0">
+            <ComboBox TextSearch.TextPath="TypeHouse" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding FiltersList}" SelectedItem="{Binding Order.Machine.Filters}" Grid.Row="5" Grid.Column="3" Width="300" Margin="0,0,0,0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=TypeHouse}"></TextBlock>
@@ -129,7 +129,7 @@
             <TextBox Grid.Row="9" Grid.Column="3" Width="Auto" Margin="5,0,0,0"></TextBox>
 
             <Label Grid.Column="3" Grid.Row="10" FontSize="15" Margin="5,0,0,5">Installations dato</Label>
-            <DatePicker Grid.Column="3" Grid.Row="11" Margin="5,0,4,0" Height="25" HorizontalAlignment="Stretch" Text="{Binding Path= SelectedMachine.InstallationDate}"/>
+            <DatePicker Grid.Column="3" Grid.Row="11" Margin="5,0,4,0" Height="25" HorizontalAlignment="Stretch" Text="{Binding Path= Order.Machine.InstallationDate}"/>
 
             <TextBlock Grid.Row="12" Grid.Column="2" Width="Auto" Margin="5,5,0,0" FontSize="24">Test:</TextBlock>
             <CheckBox IsChecked="{Binding Machine.InoxGrid}" Grid.Row="12" Grid.Column="2" HorizontalAlignment="Left" Margin="60,12.5,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="15" Width="15">
