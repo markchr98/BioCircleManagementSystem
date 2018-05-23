@@ -1335,7 +1335,7 @@ namespace BioCircleManagementSystem.DataAccess
                             technician.FirstName = reader["FirstName"].ToString();
                             technician.LastName = reader["LastName"].ToString();
                             technician.Email = reader["Email"].ToString();
-                            technician.MobilePhone = Int32.Parse(reader["MobilePhone"].ToString());
+                            technician.MobilePhone = reader["MobilePhone"].ToString();
                         }
                     }
                     con.Close();
@@ -1348,19 +1348,98 @@ namespace BioCircleManagementSystem.DataAccess
             return technician;
         }
 
-        public void GetTechnicians()
+        public List<Technician> GetTechnicians(string keyword)
         {
+            List<Technician> TechnicianList = new List<Technician>();
 
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spSearchMachines", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", keyword));
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string ID = reader["ID"].ToString();
+                            string firstname = reader["FirstName"].ToString();
+                            string lastname = reader["LastName"].ToString();
+                            string mobilephone = reader["MobilePhone"].ToString();
+                            string email = reader["EMail"].ToString();
+
+                            TechnicianList.Add(new Technician()
+                            {
+                                FirstName = firstname,
+                                LastName = lastname,
+                                MobilePhone = mobilephone,
+                                Email = email,
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return TechnicianList;
         }
 
-        public void UpdateTechnician()
+        public void UpdateTechnician(Technician technician)
         {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand UpdateTechnician = new SqlCommand("spUpdateTechnician", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
 
+                    UpdateTechnician.Parameters.Add(new SqlParameter("@ID", technician.ID));
+                    UpdateTechnician.Parameters.Add(new SqlParameter("@Firstname", technician.FirstName));
+                    UpdateTechnician.Parameters.Add(new SqlParameter("@Lastname", technician.LastName));
+                    UpdateTechnician.Parameters.Add(new SqlParameter("@Mobilephone", technician.MobilePhone));
+                    UpdateTechnician.Parameters.Add(new SqlParameter("@Email", technician.Email));
+
+                    UpdateTechnician.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
         }
 
-        public void DeleteTechnician()
+        public void DeleteTechnician(Technician technician)
         {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand CreateVesselType = new SqlCommand("spDeleteTechnician", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
 
+                    CreateVesselType.Parameters.Add(new SqlParameter("@ID", technician.ID));
+
+                    CreateVesselType.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+
+                }
+            }
         }
         #endregion 
     }
