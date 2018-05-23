@@ -515,7 +515,7 @@ namespace BioCircleManagementSystem.DataAccess
                             machine.InstallationDate = reader.GetDateTime(reader.GetOrdinal("InstallationDate"));
                             machine.InoxGrid = reader["InoxGrid"].ToString();
                             machine.ServiceInterval = Int32.Parse(reader["ServiceInterval"].ToString());
-                            machine.ServiceContract = Boolean.Parse(reader["ServiceContract"].ToString());
+                            machine.ServiceContract = (reader["ServiceContract"].ToString());
 
                             int SteelTopID = Int32.Parse(reader["SteelTop_ID"].ToString());
                             int LiquidID = Int32.Parse(reader["Liquid_ID"].ToString());
@@ -544,6 +544,7 @@ namespace BioCircleManagementSystem.DataAccess
 
         public List<Machine> GetMachines(string keyword)
         {
+            Machine machine;
             List<Machine> MachineList = new List<Machine>();
            
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -561,19 +562,33 @@ namespace BioCircleManagementSystem.DataAccess
                     {
                         while (reader.Read())
                         {
-                            string ID = reader["ID"].ToString();
-                            string machineNo = reader["MachineNo"].ToString();
-                            string vesselNo = reader["VesselNo"].ToString();
-                            string vesselType = reader["VesselType"].ToString();
-                            string controlBoxNo = reader["ControlBoxNo"].ToString();
+                            machine = new Machine();
+                            machine.MachineNo = reader["MachineNo"].ToString();
+                            machine.VesselType = reader["VesselType"].ToString();
+                            machine.VesselNo = reader["VesselNo"].ToString();
+                            machine.ControlBoxNo = reader["ControlBoxNo"].ToString();
+                            machine.Wheels = reader["Wheels"].ToString();
+                            machine.Lid = reader["Lid"].ToString();
+                            machine.InstallationDate = reader.IsDBNull(reader.GetOrdinal("InstallationDate")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("InstallationDate"));
+                            machine.InoxGrid = reader["InoxGrid"].ToString();
+                            machine.ServiceInterval = reader.IsDBNull(reader.GetOrdinal("ServiceInterval")) ? 0 : Int32.Parse(reader["ServiceInterval"].ToString());
+                            machine.ServiceContract = reader["ServiceContract"].ToString();
 
-                            MachineList.Add(new Machine()
-                            {
-                                MachineNo = machineNo,
-                                VesselNo = vesselNo,
-                                VesselType = vesselType,
-                                ControlBoxNo = controlBoxNo,
-                            });
+                            int SteelTopID = Int32.Parse(reader["SteelTop_ID"].ToString());
+                            int LiquidID = Int32.Parse(reader["Liquid_ID"].ToString());
+                            int StatusID = Int32.Parse(reader["Status_ID"].ToString());
+                            int BrushID = Int32.Parse(reader["Brush_ID"].ToString());
+                            int FiltersID = Int32.Parse(reader["Filters_ID"].ToString());
+                            int CustomerID = Int32.Parse(reader["Customer_ID"].ToString());
+
+                            machine.Customer = GetCustomer(CustomerID);
+                            machine.Brush = GetBrush(BrushID);
+                            machine.Filters = GetFilter(FiltersID);
+                            machine.SteelTop = GetSteeltop(SteelTopID);
+                            machine.Liquid = GetLiquid(LiquidID);
+                            machine.Status = GetStatusByID(StatusID);
+
+                            MachineList.Add(machine);
                         }
                     }
                     con.Close();

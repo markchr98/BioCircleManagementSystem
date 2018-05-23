@@ -24,7 +24,7 @@ namespace BioCircleManagementSystem.Model
         private Steeltop _steelTop;
         private string _canBringLiquid;
         private int _serviceInterval;
-        private bool _serviceContract;
+        private string _serviceContract;
         private Customer _customer;
         private Filters _filters;
         private Brush _brush;
@@ -191,7 +191,7 @@ namespace BioCircleManagementSystem.Model
         }
 
 
-        public bool ServiceContract
+        public string ServiceContract
         {
             get
             {
