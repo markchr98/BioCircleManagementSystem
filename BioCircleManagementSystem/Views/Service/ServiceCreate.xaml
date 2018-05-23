@@ -70,7 +70,13 @@
                         <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" FontSize="12">Kontrolboks nr:</TextBlock>
                         <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" FontSize="12">Installationsdato:</TextBlock>
 
-                            <ComboBox TextSearch.TextPath="VesselNo" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding Path=Machines}" SelectedItem="{Binding SelectedMachine}" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="8" Height="20"/>                           
+                            <ComboBox TextSearch.TextPath="VesselNo" IsTextSearchEnabled="True" MaxDropDownHeight="100" IsEditable="True" ItemsSource="{Binding Path=Machines}" SelectedItem="{Binding SelectedMachine}"   Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="8" Height="20">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=VesselNo}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
 
                             <Border Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="8" BorderBrush="Black" BorderThickness="0,0,0,1.5">
                                 <TextBlock  FontSize="12" Text="{Binding Path=SelectedMachine.VesselType}"/>
