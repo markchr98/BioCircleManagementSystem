@@ -231,8 +231,18 @@ namespace BioCircleManagementSystem.DataAccess
                             customer.BillingCity = reader["BillingCity"].ToString();
                             customer.BillingZipcode = reader["BillingZipcode"].ToString();
 
-                            customer.Contacts = new System.Collections.ObjectModel.ObservableCollection<Contact>(GetContacts(customer));
-                            //
+                            List<Contact> contacts = GetContacts(customer);
+                            foreach (Contact c in contacts)
+                            {
+                                c.Customer = customer;
+                            }
+                            customer.Contacts = new System.Collections.ObjectModel.ObservableCollection<Contact>(contacts);
+                            List<Department> departments = GetDepartmentsFromCustomerID(customer.CustomerID);
+                            foreach(Department d in departments)
+                            {
+                                d.Customer = customer;
+                            }
+                            customer.Departments = new System.Collections.ObjectModel.ObservableCollection<Department>(departments);
 
                             CustomerList.Add(customer);
                         }                        
@@ -317,7 +327,7 @@ namespace BioCircleManagementSystem.DataAccess
                     CreateContact.Parameters.Add(new SqlParameter("@Mobilephone", contact.Mobilephone));
                     CreateContact.Parameters.Add(new SqlParameter("@Email", contact.Email));
                     CreateContact.Parameters.Add(new SqlParameter("@Landline", contact.Landline));
-                    CreateContact.Parameters.Add(new SqlParameter("@Customer_ID", contact.CustomerID));
+                    CreateContact.Parameters.Add(new SqlParameter("@CustomerID", contact.Customer.CustomerID));
 
                     CreateContact.ExecuteNonQuery();
                 }
@@ -793,7 +803,7 @@ namespace BioCircleManagementSystem.DataAccess
                     createDepartment.Parameters.Add(new SqlParameter("@InstallationCity", department.InstallationCity));
                     createDepartment.Parameters.Add(new SqlParameter("@InstallationZipcode", department.InstallationZipcode));
                     createDepartment.Parameters.Add(new SqlParameter("@CanBringLiquid", department.CanBringLiquid));
-                    createDepartment.Parameters.Add(new SqlParameter("@Customer_ID", department.CustomerID));
+                    createDepartment.Parameters.Add(new SqlParameter("@Customer_ID", department.Customer.CustomerID));
 
                     createDepartment.ExecuteNonQuery();
                 }
@@ -826,7 +836,7 @@ namespace BioCircleManagementSystem.DataAccess
                             string installationCity = reader["InstallationCity"].ToString();
                             string installationZipcode = reader["InstallationZipcode"].ToString();
                             string canBringLiquid = reader["CanBringLiquid"].ToString();
-                            string customerID = reader["Customer_ID"].ToString();
+                            int customerID = Int32.Parse(reader["Customer_ID"].ToString());
 
 
 
@@ -836,7 +846,7 @@ namespace BioCircleManagementSystem.DataAccess
                                 InstallationCity = installationCity,
                                 InstallationZipcode = installationZipcode,                             
                                 CanBringLiquid = canBringLiquid,
-                                CustomerID = customerID,
+                                Customer = GetCustomer(customerID),
                             });
                         }
                     }
@@ -849,6 +859,53 @@ namespace BioCircleManagementSystem.DataAccess
             }
             return DepartmentList;
         }
+
+        public List<Department> GetDepartmentsFromCustomerID(int ID)
+        {
+            List<Department> DepartmentList = new List<Department>();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spDepartmentsFromCustomerID", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@ID", ID));
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string installationAddress = reader["InstallationAddress"].ToString();
+                            string installationCity = reader["InstallationCity"].ToString();
+                            string installationZipcode = reader["InstallationZipcode"].ToString();
+                            string canBringLiquid = reader["CanBringLiquid"].ToString();
+                            int customerID = Int32.Parse(reader["Customer_ID"].ToString());
+
+
+
+                            DepartmentList.Add(new Department()
+                            {
+                                InstallationAddress = installationAddress,
+                                InstallationCity = installationCity,
+                                InstallationZipcode = installationZipcode,
+                                CanBringLiquid = canBringLiquid,
+                                Customer = GetCustomer(customerID),
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return DepartmentList;
+        }
+
 
         public void GetDepartment()
         {
