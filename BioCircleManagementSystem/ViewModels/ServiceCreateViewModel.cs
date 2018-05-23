@@ -12,32 +12,32 @@ namespace BioCircleManagementSystem.ViewModels
 {
     class ServiceCreateViewModel : INotifyPropertyChanged
     {
-        private Machine selectedMachine;
+        private Machine _selectedMachine;
 
         public Machine SelectedMachine
         {
             get
             {
-                return selectedMachine;
+                return _selectedMachine;
             }
             set
             {
-                selectedMachine = value;
+                _selectedMachine = value;
                 OnPropertyChanged("SelectedMachine");
             }
         }
 
-        private Service service;
+        private Service _service;
 
         public Service Service
         {
             get
             {
-                return service;
+                return _service;
             }
             set
             {
-                service = value;
+                _service = value;
                 OnPropertyChanged("Service");
             }
         }
@@ -72,8 +72,8 @@ namespace BioCircleManagementSystem.ViewModels
         //Constructor 
         public ServiceCreateViewModel()
         {
-            selectedMachine = new Machine();
-            service = new Service();
+            _selectedMachine = new Machine();
+            _service = new Service();
             List<Machine> DataList = DataManager.Instance.GetMachines("");
             machines = new ObservableCollection<Machine>(DataList);
         }

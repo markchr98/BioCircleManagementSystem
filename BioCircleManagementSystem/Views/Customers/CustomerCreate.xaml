@@ -202,7 +202,7 @@
                     </TextBlock>
                 </DockPanel>
                 <!-- Listbox for departments -->
-                <ListBox x:Name="departments" Grid.Column="1" Grid.Row="3" ItemsSource="{Binding Path=Customer.Departments}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" BorderBrush="Transparent" BorderThickness="0">
+                <ListBox x:Name="departments" Grid.Column="1" Grid.Row="3" ItemsSource="{Binding Path=Customer.Departments}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" BorderBrush="Transparent" BorderThickness="0" Grid.ColumnSpan="2" Margin="0,0,19.8,49.8" Grid.RowSpan="2">
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="ListBoxItem">
                             <Setter Property="Padding" Value="5,5,5,10"/>
@@ -235,8 +235,8 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
-                                    <TextBox x:Name="city" Height="25" VerticalContentAlignment="Center" Margin="0,0,10,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path=Mobilephone}"/>
-                                    <TextBox x:Name="zipcode" Height="25" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path=Landline}"/>
+                                    <TextBox x:Name="city" Height="25" VerticalContentAlignment="Center" Margin="0,0,10,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path=InstallationCity}"/>
+                                    <TextBox x:Name="zipcode" Height="25" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding Path=InstallationZipcode}"/>
                                 </Grid>
                                 <Label Grid.Row="4" Margin="0,0,0,5" FontSize="15">Må der medbringes væske?</Label>
                                 <ComboBox SelectedValue="{Binding Path=CanBringLiquid}" SelectedValuePath="Content" Grid.Row="4" Height="25" VerticalAlignment="Center" HorizontalAlignment="Right" Width="50">

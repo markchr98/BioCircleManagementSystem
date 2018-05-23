@@ -17,6 +17,14 @@ namespace BioCircleManagementSystem.Model
         private string _email;
         private string _landline;
         private int _customerID;
+        private Customer _customer;
+
+        public Customer Customer
+        {
+            get { return _customer; }
+            set { _customer = value; OnPropertyChanged("Customer"); }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -103,8 +111,6 @@ namespace BioCircleManagementSystem.Model
 
         internal void CreateContact()
         {
-            int customerID = DataManager.Instance.GetNewestCustomerID();
-            CustomerID = customerID;
             DataManager.Instance.CreateContact(this);
         }
     }

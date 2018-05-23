@@ -28,7 +28,15 @@ namespace BioCircleManagementSystem.Model
         private string _installationZipcode;
         private string _installationCity;
         private string _canBringLiquid; //should be bool
-        private string _customerID;
+        private Customer _customer;
+        private Machine _machine;
+
+        public Machine Machine
+        {
+            get { return _machine; }
+            set { _machine = value; }
+        }
+
 
         private ObservableCollection<Contact> _contacts;        
 
@@ -76,15 +84,15 @@ namespace BioCircleManagementSystem.Model
                 _canBringLiquid = value; OnPropertyChanged("CanBringLiquid");
             }
         }
-        public string CustomerID
+        public Customer Customer
         {
             get
             {
-                return _customerID;
+                return _customer;
             }
             set
             {
-                _customerID = value; OnPropertyChanged("CustomerID");
+                _customer = value; OnPropertyChanged("Customer");
             }
         }
 
@@ -103,7 +111,7 @@ namespace BioCircleManagementSystem.Model
 
         public Department()
         {
-
+            Customer = new Customer();
         }
        
         public void CreateDepartment()

@@ -67,6 +67,7 @@ namespace BioCircleManagementSystem.Model
 
         public void CreateOrder()
         {
+            DataManager.Instance.UpdateMachine(Machine);
             DataManager.Instance.CreateOrder(this);
         }
 

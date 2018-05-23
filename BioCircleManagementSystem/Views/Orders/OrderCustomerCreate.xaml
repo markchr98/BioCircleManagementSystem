@@ -74,6 +74,15 @@
             <TextBlock Grid.Row="10" Grid.Column="1" Width="300" Margin="0,5,0,0">Servicekontrakt:</TextBlock>
             <CheckBox IsChecked="{Binding Machine.ServiceContract}" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Left" Margin="90,7,0,0" VerticalAlignment="Top"/>
 
+            <TextBlock Grid.Row="11" Grid.Column="1" Width="300" Margin="5,5,0,0">Afdeling:</TextBlock>
+            <ComboBox TextSearch.TextPath="InstallationAddress" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding Order.Customer.Departments}" SelectedItem="{Binding Order.Machine.Department}" Grid.Row="12" Grid.Column="1" Width="300" Margin="0,0,0,0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=InstallationAddress}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            
             <TextBlock Grid.Row="2" Grid.Column="2" Width="300" Margin="5,5,0,0">Service Interval:</TextBlock>
             <TextBox Text="{Binding Order.Machine.ServiceInterval}" Grid.Row="3" Grid.Column="2" Width="300" Margin="0,0,0,0"></TextBox>
 
@@ -103,7 +112,7 @@
 
             <TextBlock Grid.Row="10" Grid.Column="2" Width="Auto" Margin="5,5,0,0">Inox Grid:</TextBlock>
             <CheckBox IsChecked="{Binding Machine.InoxGrid}" Grid.Row="10" Grid.Column="2" HorizontalAlignment="Left" Margin="60,7,0,0" VerticalAlignment="Top"/>
-
+            
             <TextBlock Grid.Row="2" Grid.Column="3" Width="Auto" Margin="5,5,0,0">Ståltop:</TextBlock>
             <ComboBox TextSearch.TextPath="Type" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding SteeltopList}" SelectedItem="{Binding Order.Machine.Steeltop}" Grid.Row="3" Grid.Column="3" Width="300" Margin="0,0,0,0">
                 <ComboBox.ItemTemplate>

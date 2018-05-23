@@ -117,7 +117,7 @@ namespace BioCircleManagementSystem.Model
             set
             {
                 _departments = value;
-                OnPropertyChanged("Contacts");
+                OnPropertyChanged("Departments");
             }
         }
 
@@ -162,13 +162,16 @@ namespace BioCircleManagementSystem.Model
         //Methods
         public void CreateCustomer()
         {
-            DataManager.Instance.CreateCustomer(this);            
-            foreach(Contact c in Contacts)
+            DataManager.Instance.CreateCustomer(this);
+            CustomerID = DataManager.Instance.GetNewestCustomerID();
+            foreach (Contact c in Contacts)
             {
+                c.Customer = this;
                 c.CreateContact();                
             }
             foreach(Department d in Departments)
             {
+                d.Customer = this;
                 d.CreateDepartment();
             }
         }
