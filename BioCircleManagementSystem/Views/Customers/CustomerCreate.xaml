@@ -44,7 +44,7 @@
                     Content="OPRET KUNDE" 
                     Width="120" Height="40" 
                     Style="{StaticResource createButton}" 
-                    Click="Button_Click" 
+                    Click="Button_Click_CustomerCreate" 
                     VerticalAlignment="Bottom" 
                     HorizontalAlignment="Right" 
                     Margin="15"

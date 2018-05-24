@@ -26,7 +26,7 @@ namespace BioCircleManagementSystem.Model
         //private fields
         private int _orderID;
         private Customer _customer;
-        private Machine _machine;
+        private Machine _machine; 
 
 
 

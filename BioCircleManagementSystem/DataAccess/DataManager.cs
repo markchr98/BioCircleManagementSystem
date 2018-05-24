@@ -515,7 +515,7 @@ namespace BioCircleManagementSystem.DataAccess
                             machine.InstallationDate = reader.GetDateTime(reader.GetOrdinal("InstallationDate"));
                             machine.InoxGrid = reader["InoxGrid"].ToString();
                             machine.ServiceInterval = Int32.Parse(reader["ServiceInterval"].ToString());
-                            machine.ServiceContract = Boolean.Parse(reader["ServiceContract"].ToString());
+                            machine.ServiceContract = (reader["ServiceContract"].ToString());
 
                             int SteelTopID = Int32.Parse(reader["SteelTop_ID"].ToString());
                             int LiquidID = Int32.Parse(reader["Liquid_ID"].ToString());
@@ -544,6 +544,7 @@ namespace BioCircleManagementSystem.DataAccess
 
         public List<Machine> GetMachines(string keyword)
         {
+            Machine machine;
             List<Machine> MachineList = new List<Machine>();
            
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -561,19 +562,33 @@ namespace BioCircleManagementSystem.DataAccess
                     {
                         while (reader.Read())
                         {
-                            string ID = reader["ID"].ToString();
-                            string machineNo = reader["MachineNo"].ToString();
-                            string vesselNo = reader["VesselNo"].ToString();
-                            string vesselType = reader["VesselType"].ToString();
-                            string controlBoxNo = reader["ControlBoxNo"].ToString();
+                            machine = new Machine();
+                            machine.MachineNo = reader["MachineNo"].ToString();
+                            machine.VesselType = reader["VesselType"].ToString();
+                            machine.VesselNo = reader["VesselNo"].ToString();
+                            machine.ControlBoxNo = reader["ControlBoxNo"].ToString();
+                            machine.Wheels = reader["Wheels"].ToString();
+                            machine.Lid = reader["Lid"].ToString();
+                            machine.InstallationDate = reader.IsDBNull(reader.GetOrdinal("InstallationDate")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("InstallationDate"));
+                            machine.InoxGrid = reader["InoxGrid"].ToString();
+                            machine.ServiceInterval = reader.IsDBNull(reader.GetOrdinal("ServiceInterval")) ? 0 : Int32.Parse(reader["ServiceInterval"].ToString());
+                            machine.ServiceContract = reader["ServiceContract"].ToString();
 
-                            MachineList.Add(new Machine()
-                            {
-                                MachineNo = machineNo,
-                                VesselNo = vesselNo,
-                                VesselType = vesselType,
-                                ControlBoxNo = controlBoxNo,
-                            });
+                            int SteelTopID = Int32.Parse(reader["SteelTop_ID"].ToString());
+                            int LiquidID = Int32.Parse(reader["Liquid_ID"].ToString());
+                            int StatusID = Int32.Parse(reader["Status_ID"].ToString());
+                            int BrushID = Int32.Parse(reader["Brush_ID"].ToString());
+                            int FiltersID = Int32.Parse(reader["Filters_ID"].ToString());
+                            int CustomerID = Int32.Parse(reader["Customer_ID"].ToString());
+
+                            machine.Customer = GetCustomer(CustomerID);
+                            machine.Brush = GetBrush(BrushID);
+                            machine.Filters = GetFilter(FiltersID);
+                            machine.SteelTop = GetSteeltop(SteelTopID);
+                            machine.Liquid = GetLiquid(LiquidID);
+                            machine.Status = GetStatusByID(StatusID);
+
+                            MachineList.Add(machine);
                         }
                     }
                     con.Close();
@@ -634,9 +649,9 @@ namespace BioCircleManagementSystem.DataAccess
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@VesselNo", machine.VesselNo));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@ControlBoxNo", machine.ControlBoxNo));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@InstallationDate", machine.InstallationDate));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Wheels", machine.Wheels));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@InoxGrid", machine.InoxGrid));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Lid", machine.Lid));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Wheels", machine.Wheels == null ? (object)DBNull.Value : machine.Wheels));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@InoxGrid", machine.InoxGrid == null ? (object)DBNull.Value : machine.InoxGrid));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Lid", machine.Lid == null ? (object)DBNull.Value : machine.Lid));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@SteelTop_ID", machine.SteelTop.ID));
                     //UpdateOrderMachine.Parameters.Add(new SqlParameter("@Customer_ID", machine.Customer.CustomerID));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@Filters_ID", machine.Filters.ID));
@@ -1335,7 +1350,7 @@ namespace BioCircleManagementSystem.DataAccess
                             technician.FirstName = reader["FirstName"].ToString();
                             technician.LastName = reader["LastName"].ToString();
                             technician.Email = reader["Email"].ToString();
-                            technician.MobilePhone = Int32.Parse(reader["MobilePhone"].ToString());
+                            technician.MobilePhone = reader["MobilePhone"].ToString();
                         }
                     }
                     con.Close();
@@ -1348,19 +1363,98 @@ namespace BioCircleManagementSystem.DataAccess
             return technician;
         }
 
-        public void GetTechnicians()
+        public List<Technician> GetTechnicians(string keyword)
         {
+            List<Technician> TechnicianList = new List<Technician>();
 
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand SearchKeyword = new SqlCommand("spSearchMachines", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", keyword));
+                    SqlDataReader reader = SearchKeyword.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string ID = reader["ID"].ToString();
+                            string firstname = reader["FirstName"].ToString();
+                            string lastname = reader["LastName"].ToString();
+                            string mobilephone = reader["MobilePhone"].ToString();
+                            string email = reader["EMail"].ToString();
+
+                            TechnicianList.Add(new Technician()
+                            {
+                                FirstName = firstname,
+                                LastName = lastname,
+                                MobilePhone = mobilephone,
+                                Email = email,
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+                catch (SqlException e)
+                {
+                    //Implement exception
+                }
+            }
+            return TechnicianList;
         }
 
-        public void UpdateTechnician()
+        public void UpdateTechnician(Technician technician)
         {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand UpdateTechnician = new SqlCommand("spUpdateTechnician", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
 
+                    UpdateTechnician.Parameters.Add(new SqlParameter("@ID", technician.ID));
+                    UpdateTechnician.Parameters.Add(new SqlParameter("@Firstname", technician.FirstName));
+                    UpdateTechnician.Parameters.Add(new SqlParameter("@Lastname", technician.LastName));
+                    UpdateTechnician.Parameters.Add(new SqlParameter("@Mobilephone", technician.MobilePhone));
+                    UpdateTechnician.Parameters.Add(new SqlParameter("@Email", technician.Email));
+
+                    UpdateTechnician.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
         }
 
-        public void DeleteTechnician()
+        public void DeleteTechnician(Technician technician)
         {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand CreateVesselType = new SqlCommand("spDeleteTechnician", con)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
 
+                    CreateVesselType.Parameters.Add(new SqlParameter("@ID", technician.ID));
+
+                    CreateVesselType.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+
+                }
+            }
         }
         #endregion 
     }

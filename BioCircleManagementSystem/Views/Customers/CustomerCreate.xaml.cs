@@ -68,12 +68,25 @@ namespace BioCircleManagementSystem.Views.Customers
 
         public void Button_Click_CustomerCreate(object sender, RoutedEventArgs e)
         {
+            Notification CCN = new Notification();
             customerCreateViewModel.CreateCustomer();
+            if (customerName.Text == "" || economicsCustomerNumber.Text == "" || billingAddress.Text == "" || billingCity.Text == "" || billingZipcode.Text == "")
+            {
+                CCN.Output.Text = "Udfyld venligst alle felter";
+                CCN.ShowDialog();
+            }
+            else
+            {
+                customerCreateViewModel.CreateCustomer();
+                CCN.Output.Text = "Ny kunde oprettet";
+                CCN.ShowDialog();
+            }
+            
             //// Skal som minimum ned i ViewModel 
             //bool isDigitsOnly = false;
             //if (IsDigitsOnly(billingZipcode.Text) && IsDigitsOnly(installationZipcode.Text) && IsDigitsOnly(economicsCustomerNumber.Text))
             //{
-               
+
             //    foreach (ContactPerson CP in contactList.Children)
             //    {
             //        if (IsDigitsOnly(CP.mobilePhone.Text) && IsDigitsOnly(CP.landline.Text))
@@ -85,7 +98,7 @@ namespace BioCircleManagementSystem.Views.Customers
             //            isDigitsOnly = false;
             //            break;
             //        }
-                    
+
             //    }
             //    if (isDigitsOnly)
             //    {
@@ -142,11 +155,6 @@ namespace BioCircleManagementSystem.Views.Customers
         private void customerName_SourceUpdated(object sender, DataTransferEventArgs e)
         {
 
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            customerCreateViewModel.CreateCustomer();
         }
     }
 }
