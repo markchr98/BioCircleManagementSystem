@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical" MembersFormat="FullSignature">
   <Class Name="BioCircleManagementSystem.DataAccess.DataManager" Collapsed="true">
-    <Position X="11" Y="1.5" Width="1.5" />
+    <Position X="0.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IQAEYQAyA2ASACgIDJEgACCEAGAIBAIAQCogIABBBEE=</HashCode>
+      <HashCode>IQAEYQAyA2ASACgIDJEgASCEAGAIBAIAQCogIABBBEE=</HashCode>
       <FileName>DataAccess\DataManager.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -16,15 +16,15 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Model.Contact" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="5.75" Y="0.5" Width="1.5" />
+    <Position X="0.75" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAQADAAgAAIIABAAAQAkAAAIAAAAABAAAAAAAE=</HashCode>
+      <HashCode>AAEAIAAQADAAgIAIIABAAAQAkAAAIAAAAABAAAAAAAE=</HashCode>
       <FileName>Model\Contact.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Model.Customer" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="9.25" Y="0.5" Width="1.5" />
+    <Position X="4.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAAUHQIAAuAgJCAgAAAg0AABACAAAEABAQBECAA=</HashCode>
       <FileName>Model\Customer.cs</FileName>
@@ -34,12 +34,12 @@
   <Class Name="BioCircleManagementSystem.Model.Department" Collapsed="true">
     <Position X="0.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAQAQIAAEAAIAAgAAAAkEAAAAAAAAQBAQBAAAA=</HashCode>
+      <HashCode>BAEAAAAAAQIAAOAEIAAgAAAAgEAAAAAAAAQBAQBAAAA=</HashCode>
       <FileName>Model\Department.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BioCircleManagementSystem.Model.Filters" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="2.25" Y="2.5" Width="1.5" />
+    <Position X="7" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAQQIAAAAAAAgAAAAAAAAQIACAAEAAA=</HashCode>
       <FileName>Model\Filters.cs</FileName>
@@ -47,7 +47,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Model.Liquid" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="4" Y="2.5" Width="1.5" />
+    <Position X="9.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAQAIAAAAAAAgAAAAAAAAQAAAAAEAAA=</HashCode>
       <FileName>Model\Liquid.cs</FileName>
@@ -55,23 +55,23 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Model.Machine" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="5.75" Y="2.5" Width="1.5" />
+    <Position X="10" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AWHgyAAEQAEAib4IIIAgQAEAkEAggAAwCgQAAgAUAAA=</HashCode>
+      <HashCode>AWHgyAAEQAEAib4IIIAgQAEAkEAggAAwCgQAAgAUCAA=</HashCode>
       <FileName>Model\Machine.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Model.Order" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="9.25" Y="2.5" Width="1.5" />
+    <Position X="4.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACUgARAAAQEQAIIcIIEAAAAAgAAAQAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAUAARAAAQAQAIAEIAEAAAAAgAAAQAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Order.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Model.Service" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="4.5" Width="1.5" />
+    <Position X="12" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgQABAAAIQAEwAAEbAAAAgBAgAAAQAgBAARAIgAGBAI=</HashCode>
       <FileName>Model\Service.cs</FileName>
@@ -79,7 +79,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Model.Status" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="5.75" Y="5.5" Width="1.5" />
+    <Position X="14.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAAAkAAAIAAAAAAAgAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>Model\Status.cs</FileName>
@@ -87,14 +87,14 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Model.Steeltop" Collapsed="true">
-    <Position X="7.5" Y="5.5" Width="1.5" />
+    <Position X="15.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAAAAgAQAIAAgAAAAgAAAAAAAAQAAAAAEAAA=</HashCode>
       <FileName>Model\Steeltop.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BioCircleManagementSystem.Model.Technician" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="7.5" Y="6.5" Width="1.5" />
+    <Position X="9.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IQEAAEAAACAAgIAAIIEAAAIAgCAIAEAAAAAAAAAEAAk=</HashCode>
       <FileName>Model\Technician.cs</FileName>
@@ -102,19 +102,19 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Properties.Resources" Collapsed="true">
-    <Position X="11" Y="3.5" Width="1.5" />
+    <Position X="6.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="BioCircleManagementSystem.Properties.Settings" Collapsed="true">
-    <Position X="2.25" Y="5.5" Width="1.5" />
+    <Position X="2.25" Y="5.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="BioCircleManagementSystem.ViewModels.CustomerCreateViewModel" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="2.25" Y="1.5" Width="1.5" />
+    <Position X="17.5" Y="3.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAEAAAAQDAAAAgAAIAAAAQAAgAAAAAAAAAEAAAABAAA=</HashCode>
       <FileName>ViewModels\CustomerCreateViewModel.cs</FileName>
@@ -122,7 +122,7 @@
     <Lollipop Orientation="Bottom" Position="0.223" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.ViewModels.CustomerFindViewModel" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="7.5" Y="1.5" Width="1.5" />
+    <Position X="2.75" Y="1.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAEMAEAACQAAAAAAJAAAAAAAgAAAAEAAQAAACAAAAAg=</HashCode>
       <FileName>ViewModels\CustomerFindViewModel.cs</FileName>
@@ -130,15 +130,15 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.ViewModels.OrderCreateViewModel" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="3.5" Width="1.5" />
+    <Position X="20.5" Y="3.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AhgAAIABAAAQAAAAIQAQAAACgAAAABAFAAABAAAAAQg=</HashCode>
+      <HashCode>AhkAAIAAAAAQAAAAIQAQAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\OrderCreateViewModel.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.ViewModels.OrderFindViewModel" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="5.75" Y="3.5" Width="1.5" />
+    <Position X="20" Y="5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAEEAAAAAQEAAAAAJABAAAAAgCAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\OrderFindViewModel.cs</FileName>
@@ -146,22 +146,22 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.ViewModels.OrderViewModel" Collapsed="true">
-    <Position X="9.25" Y="3.5" Width="1.5" />
+    <Position X="20.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAIBAAAAAQAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\OrderViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BioCircleManagementSystem.ViewModels.ServiceCreateViewModel" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="5.5" Y="4.25" Width="1.5" />
+    <Position X="18" Y="6.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAKAAAAAAAgAAAQAAAAAAAAAgABAA=</HashCode>
+      <HashCode>AAAAACAAAAAgAAAQKAAAAAAAgAAAQAABAAAAAAgABQA=</HashCode>
       <FileName>ViewModels\ServiceCreateViewModel.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.223" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.ViewModels.ServiceFindViewModel" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="9.25" Y="4.5" Width="1.5" />
+    <Position X="17.5" Y="5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>gAAEAAAAAAAAAAAQKAAAAQAAgAAAAAAAQAAAABAABAA=</HashCode>
       <FileName>ViewModels\ServiceFindViewModel.cs</FileName>
@@ -169,7 +169,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.ViewModels.StorageFindViewModel" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="2.25" Y="6.5" Width="1.5" />
+    <Position X="14.75" Y="8" Width="2" />
     <TypeIdentifier>
       <HashCode>ABgEQKAAAQAQAAAAIQAACAACgAAAABAFQAABAAAAAQA=</HashCode>
       <FileName>ViewModels\StorageFindViewModel.cs</FileName>
@@ -177,7 +177,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.ViewModels.StorageViewModel" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="5.75" Y="6.5" Width="1.5" />
+    <Position X="17.75" Y="4" Width="1.75" />
     <TypeIdentifier>
       <HashCode>CAAEACAAAQAQAAAEIAAABAAAgEAAAAAAQAIAAAAAAAA=</HashCode>
       <FileName>ViewModels\StorageViewModel.cs</FileName>
@@ -193,7 +193,7 @@
     <Lollipop Position="0.192" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Views.Customers.CustomerEditView" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="22.5" Y="0.5" Width="1.75" />
+    <Position X="22.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAEAAAAAAAAAAAAAAAQAAAAAAAACAAAAAQ=</HashCode>
       <FileName>Views\Customers\CustomerEditView.xaml.cs</FileName>
@@ -201,7 +201,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Views.Customers.CustomerFind" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="20.75" Y="1.5" Width="1.25" />
+    <Position X="20.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAAAAAAAAAAAABAAAAAAAAAAAQAAACAAAAIA=</HashCode>
       <FileName>Views\Customers\CustomerFind.xaml.cs</FileName>
@@ -216,16 +216,8 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="BioCircleManagementSystem.Views.Orders.OrderCreate" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="20.5" Y="7.75" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Views\Orders\OrderCreate.xaml.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
   <Class Name="BioCircleManagementSystem.Views.Orders.OrderCustomerCreate" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="20.5" Y="9.5" Width="4" />
+    <Position X="24.75" Y="5.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Views\Orders\OrderCustomerCreate.xaml.cs</FileName>
@@ -233,7 +225,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Views.Orders.OrderFind" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="20.5" Y="8.5" Width="5.25" />
+    <Position X="24.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAQAAAAAAAAAAAAAAAAAAAAAAAAAAQAggAAAAAAA=</HashCode>
       <FileName>Views\Orders\OrderFind.xaml.cs</FileName>
@@ -241,7 +233,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Views.Orders.OrderShell" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="20.5" Y="7" Width="4.5" />
+    <Position X="24.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQACAAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Views\Orders\OrderShell.xaml.cs</FileName>
@@ -249,7 +241,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Views.Resources.Notifications.Confirmations" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="15.75" Y="0.75" Width="4.25" />
+    <Position X="22" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
       <FileName>Views\Resources\Notifications\Confirmations.xaml.cs</FileName>
@@ -257,39 +249,15 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Views.Resources.Notifications.Notification" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="16" Y="1.25" Width="4.25" />
+    <Position X="23.5" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Views\Resources\Notifications\Notification.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="BioCircleManagementSystem.Views.Resources.UserControl.UserControl1" BaseTypeListCollapsed="true">
-    <Position X="9.25" Y="7.5" Width="4.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Views\Resources\UserControl\AddContactPersons.xaml.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="BioCircleManagementSystem.Views.Resources.UserControl.ContactPerson" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="14.5" Y="5" Width="5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAEAAAAAAAAAAAACAAAA=</HashCode>
-      <FileName>Views\Resources\UserControl\ContactPerson.xaml.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="BioCircleManagementSystem.Views.Resources.UserControl.CustomerControl" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="14.5" Y="6" Width="5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
-      <FileName>Views\Resources\UserControl\CustomerControl.xaml.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
   <Class Name="BioCircleManagementSystem.Views.Service.ServiceCreate" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="23.75" Y="1.5" Width="1.25" />
+    <Position X="23.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAIAAAAAAAAAAAAIAAAAAAAAAAAAAQAAAAABAAAA=</HashCode>
       <FileName>Views\Service\ServiceCreate.xaml.cs</FileName>
@@ -305,7 +273,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Views.Service.ServiceFind" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="26" Y="1.5" Width="1.25" />
+    <Position X="26" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAAAAAAAAAggAAAAAAAAAAAAAQAAAAQAAAAA=</HashCode>
       <FileName>Views\Service\ServiceFind.xaml.cs</FileName>
@@ -313,7 +281,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Views.Service.ServicePlan" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="23.75" Y="0.5" Width="1.25" />
+    <Position X="23.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Views\Service\ServicePlan.xaml.cs</FileName>
@@ -321,7 +289,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Views.Service.ServiceShell" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="25.75" Y="0.5" Width="1.25" />
+    <Position X="25.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAAAAEAAAAACAACAAAAEAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>Views\Service\ServiceShell.xaml.cs</FileName>
@@ -329,7 +297,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Views.ShellWindow" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="15.25" Y="4.25" Width="1.25" />
+    <Position X="23" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAABAAKAAAAAAAAAAAAAAAAAUAAA=</HashCode>
       <FileName>Views\Shell.xaml.cs</FileName>
@@ -337,7 +305,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Views.Storage.StorageCreate" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="20.5" Y="5.75" Width="4.5" />
+    <Position X="26.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAIAAAAAABAAAA=</HashCode>
       <FileName>Views\Storage\StorageCreate.xaml.cs</FileName>
@@ -345,7 +313,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Views.Storage.StorageEditView" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="20.5" Y="5.5" Width="4.75" />
+    <Position X="26.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
       <FileName>Views\Storage\StorageEditView.xaml.cs</FileName>
@@ -353,7 +321,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Views.Storage.StorageFind" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="20.5" Y="5.25" Width="5.25" />
+    <Position X="25.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAQAAAQAAwAAAAAAA=</HashCode>
       <FileName>Views\Storage\StorageFind.xaml.cs</FileName>
@@ -361,7 +329,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.Views.Storage.StorageShell" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="20.5" Y="6" Width="4.75" />
+    <Position X="25.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAEAAAAIAAAAAgAAAAAIAAAAAAAAAAA=</HashCode>
       <FileName>Views\Storage\StorageShell.xaml.cs</FileName>

@@ -16,7 +16,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BioCircleManagementSystem.ViewModels;
 using BioCircleManagementSystem.Model;
-using BioCircleManagementSystem.Views.Resources.UserControl;
 
 namespace BioCircleManagementSystem.Views.Customers
 {
