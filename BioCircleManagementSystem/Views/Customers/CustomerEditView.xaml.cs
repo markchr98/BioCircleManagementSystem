@@ -23,6 +23,7 @@ namespace BioCircleManagementSystem.Views.Customers
     public partial class CustomerEditView : Page
     {
         CustomerFindViewModel customerFindViewModel;
+        CustomerCreateViewModel customerCreateViewModel;
         public CustomerEditView()
         {
             InitializeComponent();

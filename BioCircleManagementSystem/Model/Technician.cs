@@ -26,7 +26,7 @@ namespace BioCircleManagementSystem.Model
         private string _firstName;
         private string _lastName;
         private string _fullName;
-        private int _mobilrPhone;
+        private string _mobilrPhone;
         private string _email;
 
         public string Email
@@ -36,7 +36,7 @@ namespace BioCircleManagementSystem.Model
         }
 
 
-        public int MobilePhone
+        public string MobilePhone
         {
             get { return _mobilrPhone; }
             set { _mobilrPhone = value; OnPropertyChanged("MobilePhone"); }

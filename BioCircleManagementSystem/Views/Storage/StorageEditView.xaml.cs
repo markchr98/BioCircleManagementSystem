@@ -29,13 +29,22 @@ namespace BioCircleManagementSystem.Views.Storage
             StorageFindViewModel = StorageFindViewModel.Instance;
             //storageEditViewModel = new StorageEditViewModel();
             DataContext = StorageFindViewModel;
-            DatePicker.Text = "Vælg Dato";
+
         }
 
         private void Button_Click_UpdateCustomer(object sender, RoutedEventArgs e)
         {
             StorageFindViewModel.UpdateMachine();
             ((Window)this.Parent).Close();
+        }
+
+        private void DateSetter()
+        {
+            if (DatePicker.Text != "Væg Dato")
+            {
+                DatePicker.Text = "Vælg Dato";
+            }
+            else DatePicker.Text = DatePicker.Text;
         }
     }
 }
