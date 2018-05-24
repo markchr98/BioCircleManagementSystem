@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BioCircleManagementSystem.Views.Resources.UserControl;
 using BioCircleManagementSystem.Views.Resources.Notifications;
 using BioCircleManagementSystem.ViewModels;
 using BioCircleManagementSystem.Model;

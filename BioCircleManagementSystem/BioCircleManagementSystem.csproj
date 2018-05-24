@@ -107,15 +107,6 @@
     <Compile Include="Views\Resources\Notifications\Notification.xaml.cs">
       <DependentUpon>Notification.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Resources\UserControl\AddContactPersons.xaml.cs">
-      <DependentUpon>AddContactPersons.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Resources\UserControl\ContactPerson.xaml.cs">
-      <DependentUpon>ContactPerson.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Resources\UserControl\CustomerControl.xaml.cs">
-      <DependentUpon>CustomerControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Service\ServiceCreate.xaml.cs">
       <DependentUpon>ServiceCreate.xaml</DependentUpon>
     </Compile>
@@ -213,18 +204,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Resources\Notifications\Notification.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Resources\UserControl\AddContactPersons.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Resources\UserControl\ContactPerson.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Resources\UserControl\CustomerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
