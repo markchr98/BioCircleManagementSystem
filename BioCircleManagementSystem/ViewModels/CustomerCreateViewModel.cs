@@ -12,6 +12,7 @@ namespace BioCircleManagementSystem.ViewModels
 {
     public class CustomerCreateViewModel:INotifyPropertyChanged
     {
+       
         public Customer Customer { get; set; }                
         
         public event PropertyChangedEventHandler PropertyChanged;
@@ -45,6 +46,7 @@ namespace BioCircleManagementSystem.ViewModels
 
         public void CreateCustomer()
         {
+            
             Customer.CreateCustomer();
         }
 

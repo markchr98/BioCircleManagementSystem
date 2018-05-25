@@ -29,7 +29,10 @@ namespace BioCircleManagementSystem.Model
         private string _installationCity;
         private string _canBringLiquid; //should be bool
         private Customer _customer;
+        private ObservableCollection<Contact> _contacts;
         private Machine _machine;
+
+      
 
         public Machine Machine
         {
@@ -38,7 +41,7 @@ namespace BioCircleManagementSystem.Model
         }
 
 
-        private ObservableCollection<Contact> _contacts;        
+               
 
         public string InstallationAddress
         {

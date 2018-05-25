@@ -20,7 +20,7 @@ namespace BioCircleManagementSystem.Views.Service
     /// Interaction logic for ServiceCreate.xaml
     /// </summary>
     public partial class ServiceCreate : Page
-    {
+    {        
         ServiceCreateViewModel serviceCreateViewModel;
         //Singleton pattern with "lazy loading". used because of issues with instanciating pages causing dublication of events
         private static ServiceCreate _instance;
@@ -39,7 +39,7 @@ namespace BioCircleManagementSystem.Views.Service
         {
             InitializeComponent();
             serviceCreateViewModel = new ServiceCreateViewModel();
-            DataContext = serviceCreateViewModel;
+            DataContext = serviceCreateViewModel;            
         }
 
         private void Button_Click_Save(object sender, RoutedEventArgs e)
