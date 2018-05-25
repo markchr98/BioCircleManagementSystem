@@ -40,12 +40,6 @@ namespace BioCircleManagementSystem.Model
             set { _orderID = value; OnPropertyChanged("OrderID"); }
         }
 
-        public Customer Customer
-        {
-            get { return _customer; }
-            set { _customer = value; OnPropertyChanged("Customer"); }
-        }
-
         public Machine Machine
         {
             get { return _machine; }
@@ -55,7 +49,6 @@ namespace BioCircleManagementSystem.Model
         //Public constructor
         public Order()
         {
-            Customer = new Customer();
             Machine = new Machine();
         }
 

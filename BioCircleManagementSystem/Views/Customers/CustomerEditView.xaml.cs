@@ -32,18 +32,30 @@ namespace BioCircleManagementSystem.Views.Customers
         }
         public void Button_Click_RemoveDepartment(object sender, RoutedEventArgs e)
         {
-            Button department = ((Button)sender);
-            if (department.DataContext is Department deleteme)
+            Resources.Notifications.Confirmations confirmation = new Resources.Notifications.Confirmations();
+            confirmation.Output.Text = "Vil du slette denne afdeling?";
+            confirmation.ShowDialog();
+            if (confirmation.confirmed)
             {
-                customerFindViewModel.DeleteDepartment(deleteme);
+                Button department = ((Button)sender);
+                if (department.DataContext is Department deleteme)
+                {
+                    customerFindViewModel.DeleteDepartment(deleteme);
+                }
             }
         }
         public void Button_Click_RemoveContact(object sender, RoutedEventArgs e)
         {
-            Button contact = ((Button)sender);
-            if (contact.DataContext is Contact deleteme)
+            Resources.Notifications.Confirmations confirmation = new Resources.Notifications.Confirmations();
+            confirmation.Output.Text = "Vil du slette denne kontaktperson?";
+            confirmation.ShowDialog();
+            if (confirmation.confirmed)
             {
-                customerFindViewModel.RemoveContact(deleteme);
+                Button contact = ((Button)sender);
+                if (contact.DataContext is Contact deleteme)
+                {
+                    customerFindViewModel.RemoveContact(deleteme);
+                }
             }
         }
 
@@ -59,8 +71,14 @@ namespace BioCircleManagementSystem.Views.Customers
 
         private void Button_Click_UpdateCustomer(object sender, RoutedEventArgs e)
         {
-            customerFindViewModel.UpdateCustomer();
-            ((Window)this.Parent).Close();
+            Resources.Notifications.Confirmations confirmation = new Resources.Notifications.Confirmations();
+            confirmation.Output.Text = "Vil du gemme ændringerne?";
+            confirmation.ShowDialog();
+            if (confirmation.confirmed)
+            {
+                customerFindViewModel.UpdateCustomer();
+                ((Window)this.Parent).Close();
+            }
         }
 
         private void Button_Click_DeleteCustomer(object sender, RoutedEventArgs e)
@@ -73,6 +91,11 @@ namespace BioCircleManagementSystem.Views.Customers
                 customerFindViewModel.DeleteCustomer();
                 ((Window)this.Parent).Close();
             }
+        }
+
+        private void contacts_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

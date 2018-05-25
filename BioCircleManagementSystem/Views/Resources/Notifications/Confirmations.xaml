@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioCircleManagementSystem.Views.Resources.Notifications"
         mc:Ignorable="d"
-        Title="" Height="200" Width="300" Visibility="Visible" AllowsTransparency="True" WindowStyle="None">
-    <Border BorderThickness="5,5,5,5" Grid.Row="0" Grid.Column="0" BorderBrush="Black">
+        Title="" Height="200" Width="300" Visibility="Visible" AllowsTransparency="True" Background="White" WindowStyle="None" MouseDown="Window_MouseDown">
+    <Border BorderThickness="5,5,5,5" Grid.Row="0" Grid.Column="0" BorderBrush="Gainsboro">
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>

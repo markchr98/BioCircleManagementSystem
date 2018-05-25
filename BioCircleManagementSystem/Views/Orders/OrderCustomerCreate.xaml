@@ -42,7 +42,7 @@
             <TextBlock Grid.Row="1" Grid.Column="1" FontSize="24" Margin="15,0,0,10" FontWeight="Bold" RenderTransformOrigin="0.5,0.506">Opret Order Eller Test</TextBlock>
 
             <TextBlock Grid.Row="2" Grid.Column="1" Width="300" Height="Auto" Margin="0,0,0,0">Vælg Kunde:</TextBlock>
-            <ComboBox TextSearch.TextPath="CustomerName" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding CustomerList}" SelectedItem="{Binding Order.Customer}" Grid.Row="3" Grid.Column="1" Width="300" Margin="0,0,0,0">
+            <ComboBox TextSearch.TextPath="CustomerName" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding CustomerList}" SelectedItem="{Binding Order.Machine.Customer}" Grid.Row="3" Grid.Column="1" Width="300" Margin="0,0,0,0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Height="Auto" Width="Auto" Text="{Binding Path=CustomerName}"></TextBlock>

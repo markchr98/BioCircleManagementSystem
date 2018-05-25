@@ -48,7 +48,7 @@ namespace BioCircleManagementSystem.DataAccess
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    createOrder.Parameters.Add(new SqlParameter("@CustomerID", order.Customer.CustomerID));
+                    createOrder.Parameters.Add(new SqlParameter("@CustomerID", order.Machine.Customer.CustomerID));
                     createOrder.Parameters.Add(new SqlParameter("@MachineID", order.Machine.ID));
 
                     createOrder.ExecuteNonQuery();
@@ -84,7 +84,7 @@ namespace BioCircleManagementSystem.DataAccess
                             int machineID = Int32.Parse(reader["Machine_ID"].ToString());
 
                             order.OrderID = ID;
-                            order.Customer = GetCustomer(customerID);
+                            order.Machine.Customer = GetCustomer(customerID);
                             order.Machine = GetMachine(machineID);
                             //
 
