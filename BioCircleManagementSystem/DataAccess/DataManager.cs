@@ -649,7 +649,8 @@ namespace BioCircleManagementSystem.DataAccess
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@VesselType", machine.VesselType));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@VesselNo", machine.VesselNo));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@ControlBoxNo", machine.ControlBoxNo));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@InstallationDate", machine.InstallationDate));
+                    UpdateOrderMachine.Parameters.Add("@InstallationDate", System.Data.SqlDbType.DateTime);
+                    UpdateOrderMachine.Parameters["@InstallationDate"].Value = machine.InstallationDate;
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@Wheels", machine.Wheels));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@InoxGrid", machine.InoxGrid));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@Lid", machine.Lid));
