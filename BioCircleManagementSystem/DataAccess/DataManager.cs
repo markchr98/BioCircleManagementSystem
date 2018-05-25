@@ -148,7 +148,7 @@ namespace BioCircleManagementSystem.DataAccess
                     {
                         CommandType = CommandType.StoredProcedure
                     };
-                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", customerID));
+                    SearchKeyword.Parameters.Add(new SqlParameter("@ID", customerID));
 
                     SqlDataReader reader = SearchKeyword.ExecuteReader();
                     if (reader.HasRows)
@@ -563,6 +563,7 @@ namespace BioCircleManagementSystem.DataAccess
                         while (reader.Read())
                         {
                             machine = new Machine();
+                            machine.ID = Int32.Parse(reader["ID"].ToString());
                             machine.MachineNo = reader["MachineNo"].ToString();
                             machine.VesselType = reader["VesselType"].ToString();
                             machine.VesselNo = reader["VesselNo"].ToString();
@@ -573,7 +574,7 @@ namespace BioCircleManagementSystem.DataAccess
                             machine.InoxGrid = reader["InoxGrid"].ToString();
                             machine.ServiceInterval = reader.IsDBNull(reader.GetOrdinal("ServiceInterval")) ? 0 : Int32.Parse(reader["ServiceInterval"].ToString());
                             machine.ServiceContract = reader["ServiceContract"].ToString();
-
+                          
                             int SteelTopID = Int32.Parse(reader["SteelTop_ID"].ToString());
                             int LiquidID = Int32.Parse(reader["Liquid_ID"].ToString());
                             int StatusID = Int32.Parse(reader["Status_ID"].ToString());
@@ -648,16 +649,17 @@ namespace BioCircleManagementSystem.DataAccess
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@VesselType", machine.VesselType));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@VesselNo", machine.VesselNo));
                     UpdateOrderMachine.Parameters.Add(new SqlParameter("@ControlBoxNo", machine.ControlBoxNo));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@InstallationDate", machine.InstallationDate));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Wheels", machine.Wheels == null ? (object)DBNull.Value : machine.Wheels));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@InoxGrid", machine.InoxGrid == null ? (object)DBNull.Value : machine.InoxGrid));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Lid", machine.Lid == null ? (object)DBNull.Value : machine.Lid));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@SteelTop_ID", machine.SteelTop.ID));
-                    //UpdateOrderMachine.Parameters.Add(new SqlParameter("@Customer_ID", machine.Customer.CustomerID));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Filters_ID", machine.Filters.ID));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Brush_ID", machine.Brush.ID));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Liquid_ID", machine.Liquid.ID));
-                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Status_ID", machine.Status.ID));
+                    UpdateOrderMachine.Parameters.Add("@InstallationDate", System.Data.SqlDbType.DateTime);
+                    UpdateOrderMachine.Parameters["@InstallationDate"].Value = machine.InstallationDate;
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Wheels", machine.Wheels));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@InoxGrid", machine.InoxGrid));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Lid", machine.Lid));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@SteelTopType", machine.SteelTop.Type));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@FilterType", machine.Filters.Type));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@FilterTypeHouse", machine.Filters.TypeHouse));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@BrushType", machine.Brush.Type));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@LiquidType", machine.Liquid.Type));
+                    UpdateOrderMachine.Parameters.Add(new SqlParameter("@Status", machine.Status.CurrentStatus));
 
                     UpdateOrderMachine.ExecuteNonQuery();
                 }
@@ -713,7 +715,7 @@ namespace BioCircleManagementSystem.DataAccess
                 try
                 {
                     con.Open();
-                    SqlCommand SearchKeyword = new SqlCommand("spGetServiceFromID", con)
+                    SqlCommand SearchKeyword = new SqlCommand("spSearchServiceFromID", con)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
@@ -943,11 +945,11 @@ namespace BioCircleManagementSystem.DataAccess
                 try
                 {
                     con.Open();
-                    SqlCommand SearchKeyword = new SqlCommand("spGetBrushFromID", con)
+                    SqlCommand SearchKeyword = new SqlCommand("spSearchBrushFromID", con)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
-                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", brushID));
+                    SearchKeyword.Parameters.Add(new SqlParameter("@ID", brushID));
 
                     SqlDataReader reader = SearchKeyword.ExecuteReader();
                     if (reader.HasRows)
@@ -1022,11 +1024,11 @@ namespace BioCircleManagementSystem.DataAccess
                 try
                 {
                     con.Open();
-                    SqlCommand SearchKeyword = new SqlCommand("spGetLiquidFromID", con)
+                    SqlCommand SearchKeyword = new SqlCommand("spSearchLiquidFromID", con)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
-                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", liquidID));
+                    SearchKeyword.Parameters.Add(new SqlParameter("@ID", liquidID));
 
                     SqlDataReader reader = SearchKeyword.ExecuteReader();
                     if (reader.HasRows)
@@ -1101,11 +1103,11 @@ namespace BioCircleManagementSystem.DataAccess
                 try
                 {
                     con.Open();
-                    SqlCommand SearchKeyword = new SqlCommand("spGetFilterFromID", con)
+                    SqlCommand SearchKeyword = new SqlCommand("spSearchFilterFromID", con)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
-                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", filterID));
+                    SearchKeyword.Parameters.Add(new SqlParameter("@ID", filterID));
 
                     SqlDataReader reader = SearchKeyword.ExecuteReader();
                     if (reader.HasRows)
@@ -1187,7 +1189,7 @@ namespace BioCircleManagementSystem.DataAccess
                     {
                         CommandType = CommandType.StoredProcedure
                     };
-                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", steelTop));
+                    SearchKeyword.Parameters.Add(new SqlParameter("@ID", steelTopID));
 
                     SqlDataReader reader = SearchKeyword.ExecuteReader();
                     if (reader.HasRows)
@@ -1261,7 +1263,7 @@ namespace BioCircleManagementSystem.DataAccess
                     {
                         CommandType = CommandType.StoredProcedure
                     };
-                    SearchKeyword.Parameters.Add(new SqlParameter("@Keyword", status));
+                    SearchKeyword.Parameters.Add(new SqlParameter("@ID", StatusID));
 
                     SqlDataReader reader = SearchKeyword.ExecuteReader();
                     if (reader.HasRows)
