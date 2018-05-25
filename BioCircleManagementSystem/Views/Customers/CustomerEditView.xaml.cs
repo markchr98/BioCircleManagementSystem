@@ -23,14 +23,21 @@ namespace BioCircleManagementSystem.Views.Customers
     public partial class CustomerEditView : Page
     {
         CustomerFindViewModel customerFindViewModel;
-        CustomerCreateViewModel customerCreateViewModel;
+        
         public CustomerEditView()
         {
             InitializeComponent();
             customerFindViewModel = CustomerFindViewModel.Instance;
             DataContext = customerFindViewModel;
         }
-
+        public void Button_Click_RemoveDepartment(object sender, RoutedEventArgs e)
+        {
+            Button department = ((Button)sender);
+            if (department.DataContext is Department deleteme)
+            {
+                customerFindViewModel.DeleteDepartment(deleteme);
+            }
+        }
         public void Button_Click_RemoveContact(object sender, RoutedEventArgs e)
         {
             Button contact = ((Button)sender);

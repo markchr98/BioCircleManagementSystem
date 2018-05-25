@@ -41,6 +41,8 @@ namespace BioCircleManagementSystem.ViewModels
             }
         }
 
+       
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string propertyName)
@@ -94,6 +96,10 @@ namespace BioCircleManagementSystem.ViewModels
         public void DeleteCustomer()
         {
             SelectedCustomer.DeleteCustomer();
+        }
+        public void DeleteDepartment(Department department)
+        {
+            SelectedCustomer.DeleteDepartment(department);
         }
     }
 }
