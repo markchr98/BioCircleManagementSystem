@@ -177,7 +177,7 @@ namespace BioCircleManagementSystem.DataAccess
         //used when creating contacts for new customer
         public int GetNewestCustomerID()
         {
-            int result = -1;
+            int lastCustomerID = -1;
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
@@ -187,7 +187,7 @@ namespace BioCircleManagementSystem.DataAccess
                     {
                         CommandType = CommandType.StoredProcedure
                     };
-                    result = (int)LastID.ExecuteScalar();
+                    lastCustomerID = (int)LastID.ExecuteScalar();
                     con.Close();
                 }
                 catch (SqlException e)
@@ -195,7 +195,7 @@ namespace BioCircleManagementSystem.DataAccess
                     //implement exception
                 }
             }
-            return result;
+            return lastCustomerID;
         }
 
 

@@ -30,6 +30,18 @@ namespace BioCircleManagementSystem.ViewModels
 
         private static CustomerFindViewModel _instance;
 
+        public static CustomerFindViewModel Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new CustomerFindViewModel();
+                }
+                return _instance;
+            }
+        }
+
         private ObservableCollection<Customer> _customers;
         public ObservableCollection<Customer> Customers
         {
@@ -41,7 +53,11 @@ namespace BioCircleManagementSystem.ViewModels
             }
         }
 
-       
+        private CustomerFindViewModel()
+        {
+            List<Customer> customers = DataManager.Instance.GetCustomers("");
+            _customers = new ObservableCollection<Customer>(customers);
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -59,24 +75,6 @@ namespace BioCircleManagementSystem.ViewModels
         public void RemoveContact(Contact deleteme)
         {
             SelectedCustomer.RemoveContact(deleteme);
-        }
-
-        private CustomerFindViewModel()
-        {
-            List<Customer> customers = DataManager.Instance.GetCustomers("");
-            _customers = new ObservableCollection<Customer>(customers);
-        }
-
-        public static CustomerFindViewModel Instance
-        {
-            get
-            {
-                if(_instance == null)
-                {
-                    _instance = new CustomerFindViewModel();
-                }
-                return _instance;
-            }
         }
 
         public void SearchCustomers(string keyword)

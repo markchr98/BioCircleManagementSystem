@@ -69,7 +69,6 @@ namespace BioCircleManagementSystem.Views.Customers
         public void Button_Click_CustomerCreate(object sender, RoutedEventArgs e)
         {
             Notification CCN = new Notification();
-            customerCreateViewModel.CreateCustomer();
             if (customerName.Text == "" || economicsCustomerNumber.Text == "" || billingAddress.Text == "" || billingCity.Text == "" || billingZipcode.Text == "")
             {
                 CCN.Output.Text = "Udfyld venligst alle felter";
