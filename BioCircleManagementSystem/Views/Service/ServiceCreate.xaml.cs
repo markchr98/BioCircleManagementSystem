@@ -42,7 +42,7 @@ namespace BioCircleManagementSystem.Views.Service
             DataContext = serviceCreateViewModel;            
         }
 
-        private void Button_Click_Save(object sender, RoutedEventArgs e)
+        private void Button_Click_CreateService(object sender, RoutedEventArgs e)
         {
             serviceCreateViewModel.CreateService();
         }
