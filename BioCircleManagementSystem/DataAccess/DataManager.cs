@@ -243,8 +243,11 @@ namespace BioCircleManagementSystem.DataAccess
                                 d.Customer = customer;
                             }
                             customer.Departments = new System.Collections.ObjectModel.ObservableCollection<Department>(departments);
-
-                            CustomerList.Add(customer);
+                            
+                            if(customer.CustomerName != "0")
+                            {
+                                CustomerList.Add(customer);
+                            }
                         }                        
                     }
                     con.Close();

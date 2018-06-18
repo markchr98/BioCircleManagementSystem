@@ -320,12 +320,6 @@ namespace BioCircleManagementSystem.Model
             Filters = new Filters();
             Customer = new Customer();
         }
-        public Machine(string vesselType, string vesselNo, string machineNo, string controlBoxNo)
-        {
-            VesselType = vesselType;
-            VesselNo = vesselNo;
-            MachineNo = machineNo;
-        }
 
         public void CreateMachine()
         {

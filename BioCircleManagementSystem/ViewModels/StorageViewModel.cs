@@ -70,11 +70,6 @@ namespace BioCircleManagementSystem.ViewModels
             }
         }
 
-        public void CreateMachine(string vesselNo, string vesselType, string machineNo, string controlBoxNo)
-        {
-            DataManager.Instance.CreateMachine(new Machine(vesselNo, vesselType, machineNo, controlBoxNo));
-        }
-
         //public void SearchMachines(string keyword)
         //{
         //    Machines = new ObservableCollection<Machine>(DataManager.Instance.GetMachines(keyword));

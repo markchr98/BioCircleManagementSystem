@@ -150,14 +150,6 @@ namespace BioCircleManagementSystem.Model
             Contacts = new ObservableCollection<Contact>();
             Departments = new ObservableCollection<Department>();
         }
-        public Customer(string customerName, string billingAddress, string billingZipcode, string billingCity, string installationAddress, string installationZipcode, string installationCity, string economicsCustomerNumber)
-        {
-            _customerName = customerName;
-            _billingAddress = billingAddress;
-            _billingZipcode = billingZipcode;
-            _billingCity = billingCity;
-            _economicsCustomerNumber = economicsCustomerNumber;
-        }
 
         //Methods
         public void CreateCustomer()

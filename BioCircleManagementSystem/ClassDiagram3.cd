@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical" MembersFormat="FullSignature">
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="BioCircleManagementSystem.DataAccess.DataManager" Collapsed="true">
     <Position X="0.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
@@ -65,7 +65,7 @@
   <Class Name="BioCircleManagementSystem.Model.Order" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="4.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAUAARAAAQAQAIAEIAEAAAAAgAAAQAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAARAAAQAQAIAEIAEAAAAAgAAAQAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Order.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -124,7 +124,7 @@
   <Class Name="BioCircleManagementSystem.ViewModels.CustomerFindViewModel" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="2.75" Y="1.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAEMAEAACQAAAAAAJAAAAAAAgAAAAEAAQAAACAAAAAg=</HashCode>
+      <HashCode>AAEMAEAEDQAAAAAAJAAAAAAAgAAAAEAAQAAAAAAAAAg=</HashCode>
       <FileName>ViewModels\CustomerFindViewModel.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -177,9 +177,9 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BioCircleManagementSystem.ViewModels.StorageViewModel" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="17.75" Y="4" Width="1.75" />
+    <Position X="15" Y="0.5" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>CAAEACAAAQAQAAAEIAAABAAAgEAAAAAAQAIAAAAAAAA=</HashCode>
+      <HashCode>CAAEAAAAAAAAAAAEIAAABAAAgEAAAAAAQAIAAAAAAAA=</HashCode>
       <FileName>ViewModels\StorageViewModel.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -187,7 +187,7 @@
   <Class Name="BioCircleManagementSystem.Views.Customers.CustomerCreate" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="22.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACBAAAAAAICBAAAAAIgEAAAgQAAAAAAAAAABAAAA=</HashCode>
+      <HashCode>AAAACBAAAAAAICBAAAAAIgAAAAgQAAAAAAAAAABAAAA=</HashCode>
       <FileName>Views\Customers\CustomerCreate.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.192" Collapsed="true" />
@@ -195,7 +195,7 @@
   <Class Name="BioCircleManagementSystem.Views.Customers.CustomerEditView" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="22.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAAAAAAAAEAAAAAAAAAAAAAAAQAAAAAAAACAAAAAQ=</HashCode>
+      <HashCode>AACAAAAAAAAEAAAAAAAAAAAAAAAQAAAAAAAACABIAAQ=</HashCode>
       <FileName>Views\Customers\CustomerEditView.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -243,7 +243,7 @@
   <Class Name="BioCircleManagementSystem.Views.Resources.Notifications.Confirmations" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="22" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <HashCode>AAABAAAAAAAAAAAAACAAAAAAAAAAAAAAAAABAAAAIAA=</HashCode>
       <FileName>Views\Resources\Notifications\Confirmations.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -259,7 +259,7 @@
   <Class Name="BioCircleManagementSystem.Views.Service.ServiceCreate" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="23.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAIAAAAAAAAAAAAIAAAAAAAAAAAAAQAAAAABAAAA=</HashCode>
+      <HashCode>AAAEAAAAAAAAAAAAAAIAAAAAAAAAAAAAQAAAEABAAAA=</HashCode>
       <FileName>Views\Service\ServiceCreate.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -315,7 +315,7 @@
   <Class Name="BioCircleManagementSystem.Views.Storage.StorageEditView" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="26.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAEAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
       <FileName>Views\Storage\StorageEditView.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
